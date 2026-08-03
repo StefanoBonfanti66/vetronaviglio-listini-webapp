@@ -18,3 +18,11 @@
 - **Test:** unit `app/tests/pricing.test.ts` + e2e `app/tests/pricing-e2e.test.ts` vs valori reali excel (fixture `expected_excel.json`). **1932/1932 check OK sui 44 fogli**.
 - **Dati anomali emersi:** `50ML PE NBN` peso 20 (vs 10); `1000ML PE COL` ricarico rinfusa `/100` (vs frazione). Gestiti via `peso_disegno_g` e `rinfusa_ricarico_div_100`.
 - typecheck + build OK.
+
+## 2026-08-03 — Setup Supabase + deploy primo ambiente
+
+- **Progetto Supabase** `oiyxsebbagxzzpaztahf` (eu-west-1, free tier, org ZBN `ccznwmozaiwopuahtgcy`) via Management API con `SUPABASE_MCP_TOKEN`. DB password in `/tmp/opencode/zbn_dbpass.txt`.
+- **Migrazione + seed** applicati: `0001_init.sql` (6 tabelle con RLS) + `scripts/seed_listino.py` → 4 materiali, 2 colori, 12 capacità, 11 fasce, 44 config.
+- **Utente admin creato** via GoTrue admin API: s.bonfanti@vetronaviglio.it / (password in .env.local, non in repo). role=admin.
+- **UI completa** (`app/src`): login commerciale (email/password), pagina prezzi con 3 select (materiale/colore/capacità), tabella 11 fasce con prezzi allineato/rinfusa (formattati EUR it-IT), breakdown dettagliato (costi, attrezzaggio, ricarichi, prezzo), pagina admin con CRUD materiali/colori + tabella 44 config + editing inline (mp, imballo, pezzi_pallet). Stampa/PDF.
+- **Workaround deadlock Web Locks**: supabase-js@2.106.1 in Chromium headless (Playwright) blocca `getSession()` al mount con sessione in localStorage. Root cause: Web Locks `navigator.locks` deadlock (lock `lock:sb-...` held forever). Soluzione: AuthContext bypassa getSession → parse JWT locale + fetch REST per profile; tutte le API usano fetch REST diretto (non supabase client) per evitare il deadlock. Verificato: login UI OK, SPA naviga correttamente, prezzi corretti vs excel (es. 30ML PP NBN fascia1 Allineato 0,57 € / Rinfusa 0,51 € — identico a excel).
