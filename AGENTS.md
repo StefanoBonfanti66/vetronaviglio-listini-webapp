@@ -16,14 +16,15 @@
 
 ### Completato
 - MVP completo: schema Supabase + seed (44 config), motore prezzi (1932 check vs excel), import excel, UI (login, prezzi + breakdown, admin CRUD).
+- **Percorso B completato**: admin = unica fonte dati. CRUD config listino (create/delete + form completo), anagrafiche (materiali/colori/capacità via CrudManager), fasce (BracketsManager). Migrazione `0002` (capacities.enabled), PETG/PE_PCR attivati e popolabili da admin. Fix bug `updated_at: ''` (400). Smoke test Playwright tutti i flussi OK, DB ripristinato (44 config).
 - Editing parametri macchina (allineato/rinfusa) abilitato in admin; refactor AuthContext con `refresh()`; login naviga su `/`.
+- **Responsive mobile/tablet**: risultati prezzi come card <640px, tabella config admin ridotta a colonne essenziali <768px, fasce con scroll, form/header adattivi. Verificato Playwright 390×844 e 834×1112 (zero overflow).
 - Pulizia: rimosso favicon non usato, `*.tsbuildinfo` in `.gitignore`.
 - typecheck + build + test pricing tutti OK.
 
 ### Da fare / miglioramenti futuri
-- Deploy Vercel + secret + smoke test produzione.
+- **Commit WIP su `main` (gate umano)**, poi deploy Vercel + secret + smoke test produzione.
 - Chiarire con cliente: stampa/export PDF, ruoli admin, popolamento dati.
-- Dati PETG / PE PCR (oggi selezionabili ma vuoti).
 
 ### Prossimo step concreto
-- Commit del WIP corrente su `main`, poi configurare il deploy Vercel (`docs/bootstrap.md`).
+- Dopo validazione umana: commit del WIP, poi configurare il deploy Vercel (`docs/bootstrap.md`).

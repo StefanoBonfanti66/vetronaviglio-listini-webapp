@@ -1,5 +1,6 @@
 import { Navigate, Route, Routes } from 'react-router-dom'
 import { AuthProvider, useAuth } from './context/AuthContext'
+import Layout from './components/layout/Layout'
 import LoginPage from './pages/LoginPage'
 import PriceSearchPage from './pages/PriceSearchPage'
 import AdminPage from './pages/AdminPage'
@@ -8,7 +9,7 @@ function RequireAuth({ children }: { children: React.ReactNode }) {
   const { session, loading } = useAuth()
   if (loading) {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-slate-100 text-slate-500">
+      <div className="flex min-h-screen items-center justify-center bg-bone text-aluminum font-sans text-xs uppercase tracking-[0.2em]">
         Caricamento...
       </div>
     )
@@ -21,7 +22,7 @@ function RequireAdmin({ children }: { children: React.ReactNode }) {
   const { profile, loading } = useAuth()
   if (loading) {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-slate-100 text-slate-500">
+      <div className="flex min-h-screen items-center justify-center bg-bone text-aluminum font-sans text-xs uppercase tracking-[0.2em]">
         Caricamento...
       </div>
     )
@@ -39,20 +40,20 @@ function App() {
           path="/"
           element={
             <RequireAuth>
-              <PriceSearchPage />
+              <Layout />
             </RequireAuth>
           }
-        />
-        <Route
-          path="/admin"
-          element={
-            <RequireAuth>
+        >
+          <Route index element={<PriceSearchPage />} />
+          <Route
+            path="admin"
+            element={
               <RequireAdmin>
                 <AdminPage />
               </RequireAdmin>
-            </RequireAuth>
-          }
-        />
+            }
+          />
+        </Route>
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </AuthProvider>

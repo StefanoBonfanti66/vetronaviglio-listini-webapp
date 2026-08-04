@@ -1,5 +1,4 @@
 import { useEffect, useMemo, useState } from 'react'
-import { Link } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
 import {
   getCapacities,
@@ -26,7 +25,7 @@ function euro(x: number): string {
 }
 
 export default function PriceSearchPage() {
-  const { profile, signOut, session } = useAuth()
+  const { session } = useAuth()
   const accessToken = session?.access_token
   const [materials, setMaterials] = useState<Material[]>([])
   const [colors, setColors] = useState<Color[]>([])
@@ -38,13 +37,14 @@ export default function PriceSearchPage() {
   const [capacityId, setCapacityId] = useState('')
   const [config, setConfig] = useState<ListinoConfig | null>(null)
   const [configError, setConfigError] = useState<string | null>(null)
+  const [selectedOrder, setSelectedOrder] = useState<number | null>(null)
 
   useEffect(() => {
     if (!accessToken) return
     Promise.all([
-      getMaterials(accessToken),
-      getColors(accessToken),
-      getCapacities(accessToken),
+      getMaterials(accessToken, true),
+      getColors(accessToken, true),
+      getCapacities(accessToken, true),
       getPriceBrackets(accessToken),
     ])
       .then(([m, c, ca, b]) => {
@@ -110,6 +110,26 @@ export default function PriceSearchPage() {
       )
   }, [config, brackets])
 
+  useEffect(() => {
+    if (!results.length) {
+      setSelectedOrder(null)
+      return
+    }
+    const last = results[results.length - 1].bracket.sort_order
+    setSelectedOrder((cur) =>
+      cur != null && results.some((r) => r.bracket.sort_order === cur)
+        ? cur
+        : last,
+    )
+  }, [results])
+
+  const selectedResult = useMemo(
+    () =>
+      results.find((r) => r.bracket.sort_order === selectedOrder) ??
+      results[results.length - 1],
+    [results, selectedOrder],
+  )
+
   const bracketMeta = useMemo(
     () => new Map(brackets.map((b) => [b.sort_order, b])),
     [brackets],
@@ -133,152 +153,198 @@ export default function PriceSearchPage() {
   }
 
   const selectCls =
-    'mt-1 block w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none'
+    'mt-1 block w-full border border-aluminum/20 bg-white px-3 py-2.5 font-sans text-sm text-onyx focus:border-onyx focus:outline-none transition-colors'
 
   return (
-    <div className="min-h-screen bg-slate-100">
-      <header className="border-b border-slate-200 bg-white">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
-          <div>
-            <h1 className="text-lg font-bold text-slate-800">Listino Vetronaviglio</h1>
-            <p className="text-xs text-slate-500">
-              {materialName} · {colorName} · {capacityLabel} ml
+    <div className="mx-auto max-w-6xl px-6 py-8">
+      <div className="grid gap-6 sm:grid-cols-3">
+        <div>
+          <label className="block font-sans text-[10px] uppercase tracking-[0.2em] text-aluminum">
+            Materiale
+          </label>
+          <select
+            value={materialId}
+            onChange={(e) => setMaterialId(e.target.value)}
+            className={selectCls}
+          >
+            {materials.map((m) => (
+              <option key={m.id} value={m.id}>
+                {m.name}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div>
+          <label className="block font-sans text-[10px] uppercase tracking-[0.2em] text-aluminum">
+            Colore
+          </label>
+          <select
+            value={colorId}
+            onChange={(e) => setColorId(e.target.value)}
+            className={selectCls}
+          >
+            {colors.map((c) => (
+              <option key={c.id} value={c.id}>
+                {c.name}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div>
+          <label className="block font-sans text-[10px] uppercase tracking-[0.2em] text-aluminum">
+            Capacità (ml)
+          </label>
+          <select
+            value={capacityId}
+            onChange={(e) => setCapacityId(e.target.value)}
+            className={selectCls}
+          >
+            {capacities.map((c) => (
+              <option key={c.id} value={c.id}>
+                {c.label}
+              </option>
+            ))}
+          </select>
+        </div>
+      </div>
+
+      {configError && !config && (
+        <p className="mt-6 border-l-2 border-amber-accent/40 bg-surface p-4 font-sans text-sm text-onyx/70">
+          {configError}
+        </p>
+      )}
+
+      {config && (
+        <>
+          <div className="mt-8 flex flex-wrap items-center justify-between gap-3 print:hidden">
+            <h2 className="font-display text-2xl font-semibold tracking-tight">
+              Prezzi di vendita
+            </h2>
+            <p className="font-sans text-[11px] uppercase tracking-[0.2em] text-aluminum">
+              {capacityLabel} ml · {materialName} · {colorName}
             </p>
-          </div>
-          <div className="flex items-center gap-3">
-            {profile && (
-              <span className="text-xs text-slate-500">
-                {profile.full_name ?? 'Utente'} ({profile.role})
-              </span>
-            )}
-            {profile?.role === 'admin' && (
-              <Link
-                to="/admin"
-                className="rounded-lg border border-slate-300 px-3 py-1.5 text-xs font-semibold text-slate-700 hover:bg-slate-50"
-              >
-                Gestione dati
-              </Link>
-            )}
             <button
-              onClick={signOut}
-              className="rounded-lg border border-slate-300 px-3 py-1.5 text-xs font-semibold text-slate-700 hover:bg-slate-50"
+              onClick={handlePrint}
+              className="border border-onyx px-5 py-2.5 font-sans text-[10px] uppercase tracking-[0.2em] font-medium text-onyx hover:bg-onyx hover:text-bone transition-all duration-300"
             >
-              Esci
+              Stampa / PDF
             </button>
           </div>
-        </div>
-      </header>
 
-      <main className="mx-auto max-w-6xl px-4 py-6">
-        <div className="grid gap-4 sm:grid-cols-3">
-          <div>
-            <label className="block text-sm font-medium text-slate-700">Materiale</label>
-            <select
-              value={materialId}
-              onChange={(e) => setMaterialId(e.target.value)}
-              className={selectCls}
-            >
-              {materials.map((m) => (
-                <option key={m.id} value={m.id}>
-                  {m.name}
-                </option>
-              ))}
-            </select>
+          <div className="mt-4 hidden overflow-x-auto bg-white border border-aluminum/10 sm:block">
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="border-b border-aluminum/10 text-left font-sans text-[10px] uppercase tracking-[0.15em] text-aluminum">
+                  <th className="px-4 py-3 font-medium">Fascia</th>
+                  <th className="px-4 py-3 font-medium">Quantità</th>
+                  <th className="px-4 py-3 font-medium">Prezzo allineato</th>
+                  <th className="px-4 py-3 font-medium">Prezzo rinfusa</th>
+                </tr>
+              </thead>
+              <tbody>
+                {results.map((r) => {
+                  const meta = bracketMeta.get(r.bracket.sort_order)
+                  return (
+                    <tr key={r.bracket.sort_order} className="border-b border-aluminum/10 last:border-b-0">
+                      <td className="px-4 py-3 font-sans text-[13px] text-aluminum">
+                        {(meta?.da ?? 0).toLocaleString('it-IT')} –{' '}
+                        {(meta?.fino ?? 0).toLocaleString('it-IT')}
+                      </td>
+                      <td className="px-4 py-3 font-sans text-sm font-medium text-onyx/80">
+                        {r.bracket.quantita_lotto.toLocaleString('it-IT')}
+                      </td>
+                      <td className="px-4 py-3 font-sans text-sm font-medium text-amber-accent">
+                        {euro(r.allineato.prezzoVendita)}
+                      </td>
+                      <td className="px-4 py-3 font-sans text-sm font-medium text-amber-accent">
+                        {euro(r.rinfusa.prezzoVendita)}
+                      </td>
+                    </tr>
+                  )
+                })}
+              </tbody>
+            </table>
           </div>
-          <div>
-            <label className="block text-sm font-medium text-slate-700">Colore</label>
-            <select
-              value={colorId}
-              onChange={(e) => setColorId(e.target.value)}
-              className={selectCls}
-            >
-              {colors.map((c) => (
-                <option key={c.id} value={c.id}>
-                  {c.name}
-                </option>
-              ))}
-            </select>
+
+          <div className="mt-4 space-y-3 sm:hidden">
+            {results.map((r) => {
+              const meta = bracketMeta.get(r.bracket.sort_order)
+              return (
+                <div key={r.bracket.sort_order} className="bg-white border border-aluminum/10 p-4">
+                  <div className="flex items-center justify-between gap-3">
+                    <span className="font-sans text-[10px] uppercase tracking-[0.15em] text-aluminum">
+                      Fascia
+                    </span>
+                    <span className="font-sans text-[13px] text-onyx/80">
+                      {(meta?.da ?? 0).toLocaleString('it-IT')} –{' '}
+                      {(meta?.fino ?? 0).toLocaleString('it-IT')}
+                    </span>
+                  </div>
+                  <div className="mt-2 flex items-center justify-between gap-3">
+                    <span className="font-sans text-[10px] uppercase tracking-[0.15em] text-aluminum">
+                      Quantità
+                    </span>
+                    <span className="font-sans text-sm font-medium text-onyx/80">
+                      {r.bracket.quantita_lotto.toLocaleString('it-IT')}
+                    </span>
+                  </div>
+                  <div className="mt-2 flex items-center justify-between gap-3">
+                    <span className="font-sans text-[10px] uppercase tracking-[0.15em] text-aluminum">
+                      Prezzo allineato
+                    </span>
+                    <span className="font-sans text-sm font-medium text-amber-accent">
+                      {euro(r.allineato.prezzoVendita)}
+                    </span>
+                  </div>
+                  <div className="mt-2 flex items-center justify-between gap-3">
+                    <span className="font-sans text-[10px] uppercase tracking-[0.15em] text-aluminum">
+                      Prezzo rinfusa
+                    </span>
+                    <span className="font-sans text-sm font-medium text-amber-accent">
+                      {euro(r.rinfusa.prezzoVendita)}
+                    </span>
+                  </div>
+                </div>
+              )
+            })}
           </div>
-          <div>
-            <label className="block text-sm font-medium text-slate-700">
-              Capacità (ml)
-            </label>
-            <select
-              value={capacityId}
-              onChange={(e) => setCapacityId(e.target.value)}
-              className={selectCls}
-            >
-              {capacities.map((c) => (
-                <option key={c.id} value={c.id}>
-                  {c.label}
-                </option>
-              ))}
-            </select>
-          </div>
-        </div>
 
-        {configError && !config && (
-          <p className="mt-6 rounded-lg bg-amber-50 p-4 text-sm text-amber-800">
-            {configError}
-          </p>
-        )}
-
-        {config && (
-          <>
-            <div className="mt-6 flex flex-wrap items-center justify-between gap-2 print:hidden">
-              <h2 className="text-base font-semibold text-slate-800">
-                Prezzi di vendita — {capacityLabel} ml · {materialName} · {colorName}
-              </h2>
-              <button
-                onClick={handlePrint}
-                className="rounded-lg bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700"
-              >
-                Stampa / PDF
-              </button>
-            </div>
-
-            <div className="mt-3 overflow-x-auto rounded-xl bg-white shadow">
-              <table className="w-full text-sm">
-                <thead>
-                  <tr className="border-b border-slate-200 bg-slate-50 text-left text-xs text-slate-500">
-                    <th className="px-3 py-2">Fascia</th>
-                    <th className="px-3 py-2">Quantità</th>
-                    <th className="px-3 py-2">Prezzo allineato</th>
-                    <th className="px-3 py-2">Prezzo rinfusa</th>
-                  </tr>
-                </thead>
-                <tbody>
+          <div className="mt-4 grid gap-4 md:grid-cols-2">
+            <div className="flex items-end gap-2 md:col-span-2 print:hidden">
+              <div className="max-w-xs">
+                <label className="block font-sans text-[10px] uppercase tracking-[0.2em] text-aluminum">
+                  Fascia per dettaglio
+                </label>
+                <select
+                  value={selectedOrder ?? ''}
+                  onChange={(e) => setSelectedOrder(Number(e.target.value))}
+                  className={selectCls}
+                >
                   {results.map((r) => {
                     const meta = bracketMeta.get(r.bracket.sort_order)
                     return (
-                      <tr key={r.bracket.sort_order} className="border-b border-slate-100">
-                        <td className="px-3 py-2 text-slate-500">
-                          {(meta?.da ?? 0).toLocaleString('it-IT')} –{' '}
-                          {(meta?.fino ?? 0).toLocaleString('it-IT')}
-                        </td>
-                        <td className="px-3 py-2 font-medium text-slate-700">
-                          {r.bracket.quantita_lotto.toLocaleString('it-IT')}
-                        </td>
-                        <td className="px-3 py-2 font-semibold text-slate-800">
-                          {euro(r.allineato.prezzoVendita)}
-                        </td>
-                        <td className="px-3 py-2 font-semibold text-slate-800">
-                          {euro(r.rinfusa.prezzoVendita)}
-                        </td>
-                      </tr>
+                      <option key={r.bracket.sort_order} value={r.bracket.sort_order}>
+                        Da {(meta?.da ?? 0).toLocaleString('it-IT')} – fino a{' '}
+                        {(meta?.fino ?? 0).toLocaleString('it-IT')}
+                      </option>
                     )
                   })}
-                </tbody>
-              </table>
+                </select>
+              </div>
             </div>
-
-            <div className="mt-4 grid gap-4 md:grid-cols-2">
-              <BreakdownCard title="Allineato — ultima fascia" result={results[results.length - 1]} side="allineato" />
-              <BreakdownCard title="Rinfusa — ultima fascia" result={results[results.length - 1]} side="rinfusa" />
-            </div>
-          </>
-        )}
-      </main>
+            <BreakdownCard
+              title={`Allineato — ${selectedResult.bracket.quantita_lotto.toLocaleString('it-IT')} pz`}
+              result={selectedResult}
+              side="allineato"
+            />
+            <BreakdownCard
+              title={`Rinfusa — ${selectedResult.bracket.quantita_lotto.toLocaleString('it-IT')} pz`}
+              result={selectedResult}
+              side="rinfusa"
+            />
+          </div>
+        </>
+      )}
     </div>
   )
 }
@@ -297,9 +363,11 @@ function BreakdownCard({
   const r = result.rinfusa
   const d = side === 'allineato' ? a : r
   return (
-    <div className="rounded-xl bg-white p-4 shadow">
-      <h3 className="text-sm font-semibold text-slate-800">{title}</h3>
-      <dl className="mt-2 space-y-1 text-xs">
+    <div className="border border-aluminum/10 bg-white p-5">
+      <h3 className="font-sans text-[10px] uppercase tracking-[0.2em] font-medium text-aluminum">
+        {title}
+      </h3>
+      <dl className="mt-3 space-y-1 font-sans text-xs">
         <Row label="Peso con sfrido (g)" value={`${a.pesoConSfrido} g`} />
         <Row label="Costo materia prima" value={euro(a.costoMateriaPrima)} />
         <Row label="Costo imballo" value={euro(a.costoImballo)} />
@@ -309,10 +377,7 @@ function BreakdownCard({
           value={euro(side === 'allineato' ? a.costoUomoMacchina : r.costoUomoMacchina)}
         />
         <Row label="Totale costo" value={euro(d.totaleCosto)} />
-        <Row
-          label="Totale con ricarico ind."
-          value={euro(d.totaleConRicaricoInd)}
-        />
+        <Row label="Totale con ricarico ind." value={euro(d.totaleConRicaricoInd)} />
         <Row label="Costo unitario" value={euro(d.costoUnitario)} />
         <Row label="Prezzo di vendita" value={euro(d.prezzoVendita)} strong />
       </dl>
@@ -322,9 +387,9 @@ function BreakdownCard({
 
 function Row({ label, value, strong }: { label: string; value: string; strong?: boolean }) {
   return (
-    <div className="flex justify-between border-b border-slate-50 py-1">
-      <dt className="text-slate-500">{label}</dt>
-      <dd className={strong ? 'font-bold text-slate-800' : 'text-slate-700'}>{value}</dd>
+    <div className="flex justify-between border-b border-aluminum/5 py-1 last:border-b-0">
+      <dt className="text-aluminum">{label}</dt>
+      <dd className={strong ? 'font-medium text-amber-accent' : 'text-onyx/80'}>{value}</dd>
     </div>
   )
 }

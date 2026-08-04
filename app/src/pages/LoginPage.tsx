@@ -27,36 +27,53 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-slate-100">
-      <div className="w-full max-w-md rounded-2xl bg-white p-8 shadow-lg">
-        <h1 className="text-2xl font-bold text-slate-800">Listino Vetronaviglio</h1>
-        <p className="mt-1 text-sm text-slate-500">Accesso commerciali</p>
-        <form onSubmit={handleSubmit} className="mt-6 space-y-4">
+    <div className="flex min-h-screen items-center justify-center bg-bone px-6">
+      <div className="w-full max-w-md">
+        <div className="flex justify-center mb-8">
+          <img src="/logo-full.svg" alt="Vetronaviglio" className="h-16 w-auto" />
+        </div>
+        <h1 className="font-display text-4xl mb-2 text-center font-semibold tracking-tight">
+          Listino Vetronaviglio
+        </h1>
+        <p className="mb-12 text-center font-sans text-[10px] uppercase tracking-[0.2em] text-aluminum">
+          Accesso commerciali
+        </p>
+        <form onSubmit={handleSubmit} className="space-y-8">
           <div>
-            <label className="block text-sm font-medium text-slate-700">Email</label>
+            <label className="block text-[10px] uppercase tracking-[0.2em] text-aluminum mb-2">
+              Email
+            </label>
             <input
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-              className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none"
+              autoComplete="email"
+              className="w-full border-b border-aluminum/40 bg-transparent py-2 font-sans text-sm text-onyx placeholder:text-aluminum/50 focus:border-onyx focus:outline-none transition-colors"
+              placeholder="nome@vetronaviglio.it"
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-slate-700">Password</label>
+            <label className="block text-[10px] uppercase tracking-[0.2em] text-aluminum mb-2">
+              Password
+            </label>
             <input
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
-              className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none"
+              autoComplete="current-password"
+              className="w-full border-b border-aluminum/40 bg-transparent py-2 font-sans text-sm text-onyx placeholder:text-aluminum/50 focus:border-onyx focus:outline-none transition-colors"
+              placeholder="••••••••"
             />
           </div>
-          {error && <p className="text-sm text-red-600">{error}</p>}
+          {error && (
+            <p className="text-[10px] text-red-600 uppercase tracking-widest">{error}</p>
+          )}
           <button
             type="submit"
             disabled={loading}
-            className="w-full rounded-lg bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700 disabled:opacity-50"
+            className="w-full bg-onyx text-bone py-4 font-sans text-xs uppercase tracking-[0.2em] font-medium hover:bg-aluminum transition-all disabled:opacity-50"
           >
             {loading ? 'Accesso...' : 'Accedi'}
           </button>

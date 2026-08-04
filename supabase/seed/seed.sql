@@ -3,8 +3,8 @@
 INSERT INTO public.materials (code, name, sort_order, enabled) VALUES
     ('PP', 'PP', 1, true),
     ('PE', 'PE', 2, true),
-    ('PETG', 'PETG', 3, false),
-    ('PE_PCR', 'PE PCR', 4, false)
+    ('PETG', 'PETG', 3, true),
+    ('PE_PCR', 'PE PCR', 4, true)
 ON CONFLICT (code) DO UPDATE SET name = EXCLUDED.name, sort_order = EXCLUDED.sort_order, enabled = EXCLUDED.enabled;
 
 
@@ -13,21 +13,21 @@ INSERT INTO public.colors (code, name, sort_order, enabled) VALUES
     ('COL', 'Colorato custom', 2, true)
 ON CONFLICT (code) DO UPDATE SET name = EXCLUDED.name, sort_order = EXCLUDED.sort_order, enabled = EXCLUDED.enabled;
 
-INSERT INTO public.capacities (label, peso_disegno_g, sort_order) VALUES
-('30', 8.0, 1),
-    ('50', 10.0, 2),
-    ('75', 12.0, 3),
-    ('100', 15.0, 4),
-    ('125', 18.0, 5),
-    ('150', 21.0, 6),
-    ('200', 25.0, 7),
-    ('250', 28.0, 8),
-    ('300 / 350', 38.0, 9),
-    ('400', 38.0, 10),
-    ('500', 42.0, 11),
-    ('1000', 60.0, 12)
+INSERT INTO public.capacities (label, peso_disegno_g, sort_order, enabled) VALUES
+('30', 8.0, 1, true),
+    ('50', 10.0, 2, true),
+    ('75', 12.0, 3, true),
+    ('100', 15.0, 4, true),
+    ('125', 18.0, 5, true),
+    ('150', 21.0, 6, true),
+    ('200', 25.0, 7, true),
+    ('250', 28.0, 8, true),
+    ('300 / 350', 38.0, 9, true),
+    ('400', 38.0, 10, true),
+    ('500', 42.0, 11, true),
+    ('1000', 60.0, 12, true)
 
-ON CONFLICT (label) DO UPDATE SET peso_disegno_g = EXCLUDED.peso_disegno_g, sort_order = EXCLUDED.sort_order;
+ON CONFLICT (label) DO UPDATE SET peso_disegno_g = EXCLUDED.peso_disegno_g, sort_order = EXCLUDED.sort_order, enabled = EXCLUDED.enabled;
 
 INSERT INTO public.price_brackets (sort_order, da, fino, quantita_lotto, sfrido, ricarico_vendite, regola_vendita) VALUES
 (1, 1000, 2999, 2000, 0.1, 180, 'doppio80'),

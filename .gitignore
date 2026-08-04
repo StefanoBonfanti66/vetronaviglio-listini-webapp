@@ -4,3 +4,9 @@ dist/
 *.local
 .vercel/
 *.tsbuildinfo
+.playwright-mcp/
+*.png
+!app/public/*.png
+data/listini/.~lock.*
+mobile-admin-top.jpeg
+app/public/favicon.svg

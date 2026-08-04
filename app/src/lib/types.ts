@@ -19,6 +19,7 @@ export interface Capacity {
   label: string
   peso_disegno_g: number
   sort_order: number
+  enabled: boolean
 }
 
 export interface PriceBracket {

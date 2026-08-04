@@ -43,8 +43,8 @@ def main():
 INSERT INTO public.materials (code, name, sort_order, enabled) VALUES
     ('PP', 'PP', 1, true),
     ('PE', 'PE', 2, true),
-    ('PETG', 'PETG', 3, false),
-    ('PE_PCR', 'PE PCR', 4, false)
+    ('PETG', 'PETG', 3, true),
+    ('PE_PCR', 'PE PCR', 4, true)
 ON CONFLICT (code) DO UPDATE SET name = EXCLUDED.name, sort_order = EXCLUDED.sort_order, enabled = EXCLUDED.enabled;
 """)
 
@@ -55,14 +55,14 @@ INSERT INTO public.colors (code, name, sort_order, enabled) VALUES
 ON CONFLICT (code) DO UPDATE SET name = EXCLUDED.name, sort_order = EXCLUDED.sort_order, enabled = EXCLUDED.enabled;
 """)
 
-    lines.append("INSERT INTO public.capacities (label, peso_disegno_g, sort_order) VALUES")
+    lines.append("INSERT INTO public.capacities (label, peso_disegno_g, sort_order, enabled) VALUES")
     cap_rows = [
-        f"({q(c['label'])}, {q(c['peso_disegno_g'])}, {i + 1})"
+        f"({q(c['label'])}, {q(c['peso_disegno_g'])}, {i + 1}, true)"
         for i, c in enumerate(data["capacities"])
     ]
     lines.append(",\n    ".join(cap_rows))
     lines.append("""
-ON CONFLICT (label) DO UPDATE SET peso_disegno_g = EXCLUDED.peso_disegno_g, sort_order = EXCLUDED.sort_order;
+ON CONFLICT (label) DO UPDATE SET peso_disegno_g = EXCLUDED.peso_disegno_g, sort_order = EXCLUDED.sort_order, enabled = EXCLUDED.enabled;
 """)
 
     lines.append(
