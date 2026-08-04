@@ -1,5 +1,21 @@
 # Changelog — Vetronaviglio Listini Webapp
 
+## 2026-08-04 — Allineamento label colore COL ("Colorato")
+
+- Unica nota aperta risolta: label colore COL era in disaccordo (DB "Colorato custom" vs import_listino.py/seed.json "Colorato").
+- Allineato a "Colorato" in `scripts/seed_listino.py`, `supabase/seed/seed.sql`, commento `supabase/migrations/0001_init.sql`; DB nuovo project aggiornato (`UPDATE colors SET name='Colorato' WHERE code='COL'`).
+- Nessun impatto sui prezzi (label solo). Catena excel→seed→DB→app (1932/1932) invariata.
+
+- Dev server riavviato (pid 27329); ora legge `app/.env.local` con `VITE_SUPABASE_URL=https://fkjaqhydotxubxnieguh.supabase.co`. Vite 6.4.2 ready su localhost:5173.
+- **Smoketest confermato utente:** login `s.bonfanti@vetronaviglio.it` → `/admin` 4 materiali → `30ML PP NBN fascia1 = 0,57 €` (identico excel AC 0.5725…). **Catena verifica dati 100%: excel→seed(1932 check)→DB(4/2/12/11/44)→app.**
+
+- **DB migrato** su Supabase project `fkjaqhydotxubxnieguh` (via Management REST API, token `sbp_5f69c9cb...`): migration `0001`+`0002` + seed.sql applicati. Counts verificati: 4 materiali / 2 colori / 12 capacità / 11 fasce / 44 config.
+- **Env:** `app/.env.local` → `VITE_SUPABASE_URL=https://fkjaqhydotxubxnieguh.supabase.co` + `VITE_SUPABASE_ANON_KEY=<publishable key>` (file escluso da commit via `*.local`).
+- **Fallback URL** hardcodati in `AuthContext.tsx` e `api.ts` aggiornati al nuovo project (era `oiyxsebbagxzzpaztahf`).
+- **Admin rigenerato:** utente `s.bonfanti@vetronaviglio.it` ricreato su nuovo project (signup pubblica + `email_confirmed_at=now()` + `profiles.role='admin'`); login via password grant OK → accessibile `/admin`.
+- **Importante:** il dev server deve riavrirsi per leggere `.env.local`; il browser era loggato sul vecchio project → serve rilogin.
+- **Deploy preview Vercel:** da eseguire dall'utente via dashboard (GitHub integration) con env `VITE_SUPABASE_URL` + `VITE_SUPABASE_ANON_KEY` (tool MCP non supporta env vars / JS 493 kB).
+
 ## 2026-08-04 — Toggle attivo/disattivo materiali, colori, capacità
 
 - **CrudManager**: il campo `enabled` ora è un **checkbox** (non più text input) sia nel form di creazione/modifica sia **live nella colonna "Attivo"** della tabella — un click per disattivare/riattivare senza aprire il form. Il toggle salva subito via API e mostra notifica.

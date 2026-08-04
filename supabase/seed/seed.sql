@@ -10,7 +10,7 @@ ON CONFLICT (code) DO UPDATE SET name = EXCLUDED.name, sort_order = EXCLUDED.sor
 
 INSERT INTO public.colors (code, name, sort_order, enabled) VALUES
     ('NBN', 'Non bianco / neutro', 1, true),
-    ('COL', 'Colorato custom', 2, true)
+    ('COL', 'Colorato', 2, true)
 ON CONFLICT (code) DO UPDATE SET name = EXCLUDED.name, sort_order = EXCLUDED.sort_order, enabled = EXCLUDED.enabled;
 
 INSERT INTO public.capacities (label, peso_disegno_g, sort_order, enabled) VALUES

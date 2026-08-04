@@ -21,7 +21,7 @@ create table public.materials (
 create table public.colors (
   id uuid primary key default gen_random_uuid(),
   code text not null unique,          -- NBN (non bianco/neutro), COL (colorato custom)
-  name text not null,                 -- "Non bianco / neutro", "Colorato custom"
+  name text not null,                 -- "Non bianco / neutro", "Colorato"
   sort_order int not null default 0,
   enabled boolean not null default true,
   created_at timestamptz not null default now()

@@ -32,10 +32,11 @@
 - Test eseguiti: `pricing.test.ts` (unit) + `pricing-e2e.test.ts` (1932 check su 44 fogli) — tutti OK; `typecheck` + `build` OK; smoke test Playwright CRUD (create/delete config, create/delete materiale, edit fascia) — tutti OK, DB ripristinato.
 
 ## TODO aperti
-1. Commit del WIP (tema + restyle + Percorso B) su `main` — gate umano esplicito.
-2. Deploy Vercel (configurazione progetto + secret) e smoke test produzione.
-3. Chiarire con cliente: stampa/export PDF, ruoli admin, popolamento iniziale dati.
-4. Dati PETG / PE PCR ora popolabili da admin (nessun blocco tecnico).
+1. [fatto] Commit del WIP (tema + restyle + Percorso B + responsive + toggle) su `main` — eseguito e pushato (gate umano confermato con commit).
+2. [fatto] Migration DB su nuovo project `fkjaqhydotxubxnieguh` (migrazioni + seed) + admin rigenerato.
+3. Deploy preview Vercel (via dashboard GitHub integration, env `VITE_SUPABASE_URL`+`VITE_SUPABASE_ANON_KEY`) + smoke test produzione.
+4. Smoketest browser su nuovo project: RIATTIVARE dev server (`npm run dev`, per leggire `.env.local`) → login admin → `30ML PP NBN fascia1 = 0,57 €`.
+5. Allineare label colore COL hardcodata ("Colorato" vs "Colorato custom") — **RISOLTO**: DB + seed_listino.py + seed.sql allineati a "Colorato" (nessun impatto prezzi).
 
 ## Problemi aperti
 - Problema: deadlock Web Locks con supabase-js@2.106.1 in Chromium headless.

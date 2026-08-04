@@ -7,7 +7,7 @@ import type {
   Profile,
 } from './types'
 
-const BASE_URL = 'https://oiyxsebbagxzzpaztahf.supabase.co'
+const BASE_URL = 'https://fkjaqhydotxubxnieguh.supabase.co'
 const ANON_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY
 
 function headers(accessToken: string) {

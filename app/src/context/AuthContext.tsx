@@ -2,7 +2,7 @@ import { createContext, useCallback, useContext, useEffect, useState } from 'rea
 import type { Session, User } from '@supabase/supabase-js'
 import type { Profile } from '../lib/types'
 
-const SUPABASE_URL = 'https://oiyxsebbagxzzpaztahf.supabase.co'
+const SUPABASE_URL = 'https://fkjaqhydotxubxnieguh.supabase.co'
 const ANON_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY
 
 function parseJwt(token: string): { exp: number; sub: string; email: string } | null {
