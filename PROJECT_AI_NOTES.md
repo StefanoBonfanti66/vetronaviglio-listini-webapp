@@ -30,13 +30,16 @@
 - File creati: schema `supabase/migrations/0001_init.sql`, seed `supabase/seed/listino_seed.json`, motore `app/src/lib/pricing.ts`, API `app/src/lib/api.ts`, UI (`LoginPage`, `PriceSearchPage`, `AdminPage`), import `scripts/import_listino.py`, layout `app/src/components/layout/{Header,Footer,Layout}.tsx`, asset `app/public/*` (favicon + loghi), migrazione `0002_capacities_enabled.sql`, componenti admin `CrudManager.tsx` + `BracketsManager.tsx`.
 - File modificati: `AuthContext.tsx` (refresh), `LoginPage.tsx` (navigate + restyle), `AdminPage.tsx` (parametri macchina editabili + CRUD completo config/anagrafiche/fasce), `PriceSearchPage.tsx` (restyle + solo dati enabled), `App.tsx` (layout annidato), `index.html`, `index.css` (tema), `package.json` (+@tailwindcss/typography), `.gitignore`, `docs/*`.
 - Test eseguiti: `pricing.test.ts` (unit) + `pricing-e2e.test.ts` (1932 check su 44 fogli) — tutti OK; `typecheck` + `build` OK; smoke test Playwright CRUD (create/delete config, create/delete materiale, edit fascia) — tutti OK, DB ripristinato.
+- **Sessione 2026-08-04**: creazione 3 utenti Supabase Auth via Admin API (`f.rosi`, `b.solitodesolis` come admin; `f.ruffini` come commerciale). Profili auto-creati via DB trigger. Puliti 2 utenti test accidentalmente creati via signup.
 
 ## TODO aperti
 1. [fatto] Commit del WIP (tema + restyle + Percorso B + responsive + toggle) su `main` — eseguito e pushato (gate umano confermato con commit).
 2. [fatto] Migration DB su nuovo project `fkjaqhydotxubxnieguh` (migrazioni + seed) + admin rigenerato.
-3. Deploy preview Vercel (via dashboard GitHub integration, env `VITE_SUPABASE_URL`+`VITE_SUPABASE_ANON_KEY`) + smoke test produzione.
-4. Smoketest browser su nuovo project: RIATTIVARE dev server (`npm run dev`, per leggire `.env.local`) → login admin → `30ML PP NBN fascia1 = 0,57 €`.
-5. Allineare label colore COL hardcodata ("Colorato" vs "Colorato custom") — **RISOLTO**: DB + seed_listino.py + seed.sql allineati a "Colorato" (nessun impatto prezzi).
+3. [fatto] Creazione 3 utenti Supabase Auth via Admin API (no email): `f.rosi@vetronaviglio.it` (admin), `b.solitodesolis@vetronaviglio.it` (admin), `f.ruffini@vetronaviglio.it` (commerciale). Profili auto-creati via DB trigger. Puliti 2 utenti test accidentalmente creati via signup.
+4. [fatto] Log login persistente disponibile in Supabase Dashboard → Authentication → Logs.
+5. Deploy preview Vercel (via dashboard GitHub integration, env `VITE_SUPABASE_URL`+`VITE_SUPABASE_ANON_KEY`) + smoke test produzione.
+6. Smoketest browser su nuovo project: RIATTIVARE dev server (`npm run dev`, per leggire `.env.local`) → login admin → `30ML PP NBN fascia1 = 0,57 €`.
+7. Allineare label colore COL hardcodata ("Colorato" vs "Colorato custom") — **RISOLTO**: DB + seed_listino.py + seed.sql allineati a "Colorato" (nessun impatto prezzi).
 
 ## Problemi aperti
 - Problema: deadlock Web Locks con supabase-js@2.106.1 in Chromium headless.

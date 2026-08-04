@@ -10,3 +10,4 @@ dist/
 data/listini/.~lock.*
 mobile-admin-top.jpeg
 app/public/favicon.svg
+.vercel

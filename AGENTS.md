@@ -23,6 +23,8 @@
 - **Migration DB** su nuovo project `fkjaqhydotxubxnieguh` (Management REST API): migration 0001+0002 + seed applicati, counts verificati; env `app/.env.local` puntato al nuovo project (già in `.gitignore` via `*.local`); fallback URL `AuthContext`/`api.ts` aggiornati col nuovo project; admin `s.bonfanti@vetronaviglio.it` ricreato, login verificato (role=admin).
 - **Commit WIP pushato su `main`** (`git@github.com:StefanoBonfanti66/vetronaviglio-listini-webapp.git`). Build OK.
 - Pulizia: rimosso favicon non usato, `*.tsbuildinfo` in `.gitignore`.
+- **3 utenti creati in Supabase Auth** (via Admin API, no email inviate): `f.rosi@vetronaviglio.it` (admin), `b.solitodesolis@vetronaviglio.it` (admin), `f.ruffini@vetronaviglio.it` (commerciale/user). Profile auto-create via DB trigger. Puliti 2 utenti test accidentalmente creati via signup.
+- **Log login persistente**: disponibile in Supabase Dashboard → Authentication → Logs (`https://supabase.com/dashboard/project/fkjaqhydotxubxnieguh/auth/logs`).
 
 ### Da fare / miglioramenti futuri
 - **Deploy preview Vercel** (manuale, via dashboard GitHub integration) con env `VITE_SUPABASE_URL` + `VITE_SUPABASE_ANON_KEY` (MCP non supporta env vars / JS 493 kB inline).
