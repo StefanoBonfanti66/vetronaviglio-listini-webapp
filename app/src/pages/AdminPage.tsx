@@ -92,8 +92,9 @@ export default function AdminPage() {
   const capLabel = (id: string) =>
     capacities.find((x) => x.id === id)?.label ?? id
 
-  const numInput = (value: number, onChange: (v: number) => void) => (
+  const numInput = (key: number, value: number, onChange: (v: number) => void) => (
     <input
+      key={key}
       type="number"
       step={0.01}
       value={value}
@@ -174,18 +175,18 @@ export default function AdminPage() {
             <div className="mt-3 grid gap-4 sm:grid-cols-2">
               <div>
                 <label className="block text-sm font-medium text-slate-600">Peso (g)</label>
-                {numInput(draft.peso_disegno_g ?? 0, (v) => setDraft({ ...draft, peso_disegno_g: v }))}
+                {numInput(0, draft.peso_disegno_g ?? 0, (v) => setDraft({ ...draft, peso_disegno_g: v }))}
               </div>
               <div>
                 <label className="block text-sm font-medium text-slate-600">Pezzi/pallet</label>
-                {numInput(draft.pezzi_pallet ?? 0, (v) => setDraft({ ...draft, pezzi_pallet: v }))}
+                {numInput(1, draft.pezzi_pallet ?? 0, (v) => setDraft({ ...draft, pezzi_pallet: v }))}
               </div>
 
               <div>
                 <label className="block text-sm font-medium text-slate-600">Costi MP (€/kg)</label>
                 <div className="mt-1 flex gap-1">
                   {(draft.mp_costos_kg ?? []).map((v, i) =>
-                    numInput(v, (nv) => {
+                    numInput(i + 1, v, (nv) => {
                       const a = [...(draft.mp_costos_kg ?? [])]
                       a[i] = nv
                       setDraft({ ...draft, mp_costos_kg: a })
@@ -197,7 +198,7 @@ export default function AdminPage() {
                 <label className="block text-sm font-medium text-slate-600">% utilizzo MP</label>
                 <div className="mt-1 flex gap-1">
                   {(draft.mp_utilizzi_pct ?? []).map((v, i) =>
-                    numInput(v, (v2) => {
+                    numInput(i + 1, v, (v2) => {
                       const a = [...(draft.mp_utilizzi_pct ?? [])]
                       a[i] = v2
                       setDraft({ ...draft, mp_utilizzi_pct: a })
@@ -221,7 +222,7 @@ export default function AdminPage() {
                         }}
                         className="w-48 rounded-lg border border-slate-300 px-2 py-1 text-xs"
                       />
-                      {numInput(it.costo, (v) => {
+                      {numInput(i + 100, it.costo, (v) => {
                         const a = [...(draft.imballo_items ?? [])]
                         a[i] = { ...it, costo: v }
                         setDraft({ ...draft, imballo_items: a })
@@ -234,15 +235,12 @@ export default function AdminPage() {
               <div className="sm:col-span-2 border-t border-slate-200 pt-3">
                 <fieldset className="border border-slate-200 p-3">
                   <legend className="px-1 text-xs font-semibold text-slate-500">Allineato</legend>
-                  <MachineParamsGrid params={draft.allineato ?? null} onChange={(v) => setDraft({ ...draft, allineato: v })} disabled />
+                  <MachineParamsGrid params={draft.allineato ?? null} onChange={(v) => setDraft({ ...draft, allineato: v })} />
                 </fieldset>
                 <fieldset className="border border-slate-200 p-3 mt-2">
                   <legend className="px-1 text-xs font-semibold text-slate-500">Rinfusa</legend>
-                  <MachineParamsGrid params={draft.rinfusa ?? null} onChange={(v) => setDraft({ ...draft, rinfusa: v })} disabled />
+                  <MachineParamsGrid params={draft.rinfusa ?? null} onChange={(v) => setDraft({ ...draft, rinfusa: v })} />
                 </fieldset>
-                <p className="mt-1 text-xs text-slate-400">
-                  I parametri macchina verranno resi modificabili in una prossima release.
-                </p>
               </div>
             </div>
 
@@ -270,7 +268,6 @@ export default function AdminPage() {
 function MachineParamsGrid({
   params,
   onChange,
-  disabled,
 }: {
   params: {
     ore_uomo: number
@@ -282,7 +279,6 @@ function MachineParamsGrid({
     ricarico_costi_ind: number
   } | null
   onChange: (v: any) => void
-  disabled?: boolean
 }) {
   if (!params) return <p className="text-xs text-slate-400">N/D</p>
   const fields: [keyof typeof params, string][] = [
@@ -303,12 +299,10 @@ function MachineParamsGrid({
             type="number"
             step={0.01}
             value={params[k] ?? 0}
-            readOnly={disabled}
             onChange={(e) => {
-              if (disabled) return
               onChange({ ...params, [k]: parseFloat(e.target.value) || 0 })
             }}
-            className="mt-0.5 w-full rounded-lg border border-slate-300 px-1.5 py-0.5 text-xs read-only:bg-slate-50"
+            className="mt-0.5 w-full rounded-lg border border-slate-300 px-1.5 py-0.5 text-xs"
           />
         </div>
       ))}

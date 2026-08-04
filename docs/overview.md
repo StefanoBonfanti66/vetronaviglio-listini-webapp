@@ -39,8 +39,9 @@ MVP di una web app dove il commerciale seleziona **materiale** (PP, PE, PETG, PE
 - Lead ricevuto (email Federico Rosi 03/08/2026), brief compilato in `docs/leads/`
 - Excel sorgente copiato in `data/listini/` e analizzato (44 fogli)
 - **Decisioni confermate (03/08):** PETG/PE PCR vuoti (dati futuri via excel); niente excel a runtime → pagina admin; 11 fasce in tabella; login; GitHub+Vercel; plus = breakdown calcolo prezzi
+- **Realizzato (03–04/08):** schema Supabase + seed, motore prezzi (1932 check vs excel), import excel, UI completa (login, prezzi con breakdown, admin CRUD), parametri macchina editabili in admin
 - Gap noto: **PETG e PE PCR** selezionabili ma senza valori listino (da aggiungere in futuro)
-- Prossimi step: chiarimenti residui (stampa/export, ruoli admin), definire schema Supabase + motore calcolo, scaffold app
+- Prossimi step: chiarimenti residui (stampa/export, ruoli admin), deploy Vercel
 
 ## Documentazione operativa
 

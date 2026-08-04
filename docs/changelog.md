@@ -1,5 +1,12 @@
 # Changelog — Vetronaviglio Listini Webapp
 
+## 2026-08-04 — Editing parametri macchina in admin + refactor auth
+
+- **Admin:** parametri macchina (allineato/rinfusa) ora **editabili** nella pagina admin — rimosso `disabled`/`readOnly` da `MachineParamsGrid`; aggiunte `key` agli input numerici per evitare perdita di stato su rerender.
+- **AuthContext:** logica di inizializzazione estratta in callback `refresh()`, esposta tramite `useAuth`; `signOut` semplificato (pulizia localStorage). `LoginPage` ora chiama `refresh()` dopo `signInWithPassword` e naviga su `/`.
+- **Pulizia:** rimosso `app/public/favicon.svg` (non usato); aggiunto `*.tsbuildinfo` a `.gitignore`.
+- **Verifica:** typecheck + build OK; test pricing invariati (1932/1932 check e2e + unit).
+
 ## 2026-08-03 — Bootstrap
 
 - Repo `vetronaviglio-listini-webapp` creato da `triathlon-starter` (profilo MCP `saas`).
