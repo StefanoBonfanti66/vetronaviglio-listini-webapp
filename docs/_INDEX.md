@@ -9,4 +9,5 @@
 - [Admin / Cashflow](admin/cashflow.md) — movimenti cassa
 - [Admin / Solleciti](admin/solleciti.md) — solleciti di pagamento
 - [Invoices](invoices/index.md) — fatture emesse
+- [Proposals](proposals/) — preventivo + email per Federico Rosi (bozza)
 - [Changelog](changelog.md) — log modifiche

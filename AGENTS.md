@@ -12,7 +12,7 @@
 - Use `PROJECT_AI_NOTES.md` to track decisions, checkpoints, and pending items across sessions.
 - If you use custom commands in your OpenCode setup, document project-specific ones here or in the repository docs.
 
-## Current Focus — 2026-08-04
+## Current Focus — 2026-08-06
 
 ### Completato
 - MVP completo: schema Supabase + seed (44 config), motore prezzi (1932 check vs excel), import excel, UI (login, prezzi + breakdown, admin CRUD).
@@ -26,10 +26,13 @@
 - **3 utenti creati in Supabase Auth** (via Admin API, no email inviate): `f.rosi@vetronaviglio.it` (admin), `b.solitodesolis@vetronaviglio.it` (admin), `f.ruffini@vetronaviglio.it` (commerciale/user). Profile auto-create via DB trigger. Puliti 2 utenti test accidentalmente creati via signup.
 - **Log login persistente**: disponibile in Supabase Dashboard → Authentication → Logs (`https://supabase.com/dashboard/project/fkjaqhydotxubxnieguh/auth/logs`).
 - **Deploy Vercel attivo e verificato (06/08)**: `https://vetronaviglio-listini-webapp.vercel.app`, auto-deploy via GitHub integration; smoketest produzione login + `30ML PP NBN fascia1 = 0,57 €` (identico excel). Bundle JS contiene env corrette del nuovo project.
+- **Password reset 3 utenti + ruoli admin (06/08)**: reset via Admin API (password reali solo nel draft Gmail personale, non nei doc committati), login verificati; fix full_name f.rosi "F. Rossi"→"F. Rosi" e ruoli admin per f.rosi/b.solitodesolis (f.ruffini commerciale). Verificato in produzione (header "F. Rosi · admin", link Gestione dati visibile).
+- **Preventivo + email a Federico Rosi (bozza, 06/08)**: `docs/proposals/preventivo-listini-webapp.md`+.html (2 opzioni: Cloud Vercel Pro+Supabase Pro ≈41€/mese escl. IVA vs On-premise server Sineto una tantum; nota confronto report-visite ~7€ solo hosting) + `email-listini-webapp.md` (credenziali in placeholder, reali solo nel draft Gmail personale `r2340419766766766437`, da inoltrare). Aggiornati `docs/_INDEX.md` e `docs/changelog.md`.
 
 ### Da fare / miglioramenti futuri
 - Chiarire con cliente: stampa/export PDF, popolamento dati PETG/PE PCR, ruoli admin.
 - Allineare label colore COL hardcodata (non bloccante prezzi).
 
 ### Prossimo step concreto
-- Chiarimenti con cliente (stampa/export, popolamento dati) e chiusura docs condivise. (`docs/changelog.md`)
+- **Inoltrare la bozza email a Federico Rosi** (draft Gmail personale `r2340419766766766437`) e cancellare la vecchia bozza `r-1809523374683032986`.
+- Incontro con cliente per validazione prototipo, scelta hosting (cloud/on-premise) e personalizzazioni (PDF, PETG/PE PCR, ruoli).

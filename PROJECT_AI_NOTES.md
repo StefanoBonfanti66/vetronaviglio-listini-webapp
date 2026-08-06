@@ -31,6 +31,9 @@
 - File modificati: `AuthContext.tsx` (refresh), `LoginPage.tsx` (navigate + restyle), `AdminPage.tsx` (parametri macchina editabili + CRUD completo config/anagrafiche/fasce), `PriceSearchPage.tsx` (restyle + solo dati enabled), `App.tsx` (layout annidato), `index.html`, `index.css` (tema), `package.json` (+@tailwindcss/typography), `.gitignore`, `docs/*`.
 - Test eseguiti: `pricing.test.ts` (unit) + `pricing-e2e.test.ts` (1932 check su 44 fogli) — tutti OK; `typecheck` + `build` OK; smoke test Playwright CRUD (create/delete config, create/delete materiale, edit fascia) — tutti OK, DB ripristinato.
 - **Sessione 2026-08-04**: creazione 3 utenti Supabase Auth via Admin API (`f.rosi`, `b.solitodesolis` come admin; `f.ruffini` come commerciale). Profili auto-creati via DB trigger. Puliti 2 utenti test accidentalmente creati via signup.
+- [2026-08-06] Reset password 3 utenti via Admin API + login verificati (password reali solo nel draft Gmail personale `r2340419766766766437`, placeholder nei doc committati).
+- [2026-08-06] Fix header: full_name f.rosi "F. Rossi"→"F. Rosi" + ruolo admin (b.solitodesolis admin) via PATCH profiles. Verificato in produzione (header "F. Rosi · admin", link Gestione dati).
+- [2026-08-06] Preventivo + email a Federico Rosi (bozza): `docs/proposals/preventivo-listini-webapp.md`+.html (Cloud ≈41€/mese escl. IVA vs On-premise Sineto), draft Gmail personale `r2340419766766766437` da inoltrare.
 
 ## TODO aperti
 1. [fatto] Commit del WIP (tema + restyle + Percorso B + responsive + toggle) su `main` — eseguito e pushato (gate umano confermato con commit).
@@ -50,4 +53,4 @@
 - `app/src/context/AuthContext.tsx`, `app/src/pages/LoginPage.tsx`, `app/src/pages/AdminPage.tsx`, `app/src/components/admin/CrudManager.tsx`, `app/src/components/admin/BracketsManager.tsx`, `app/src/lib/api.ts`, `app/src/lib/types.ts`, `app/src/lib/pricing.ts`, `supabase/migrations/0001_init.sql`, `supabase/migrations/0002_capacities_enabled.sql`, `scripts/import_listino.py`, `docs/*`
 
 ## Prossimo step suggerito
-- Deploy Vercel attivo e verificato (2026-08-06). Prossimi: chiarimenti con cliente (stampa/export PDF, popolamento dati PETG/PE PCR, ruoli admin) e chiusura docs condivise.
+- Deploy Vercel attivo e verificato (2026-08-06). Prossimo: **inoltrare la bozza email a Federico Rosi** (draft Gmail personale `r2340419766766766437`, cancellare la vecchia `r-1809523374683032986`), poi incontro cliente per validazione prototipo, scelta hosting (cloud/on-premise) e personalizzazioni (PDF, PETG/PE PCR, ruoli).

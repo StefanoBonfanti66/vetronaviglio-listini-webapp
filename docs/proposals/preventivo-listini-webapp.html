@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 14px; line-height: 1.6; color: #333; max-width: 700px; margin: 0 auto; padding: 24px;">
+  <h2 style="color:#1a1a1a; border-bottom: 2px solid #eee; padding-bottom: 8px;">Preventivo — Web App Listini Commerciali</h2>
+  <p><strong>A cura di:</strong> Stefano Bonfanti<br>
+  <strong>Per:</strong> Federico Rosi — Direttore Qualità, R&amp;D e Sviluppo Prodotto, Vetronaviglio s.r.l.<br>
+  <strong>Data:</strong> 06/08/2026</p>
+
+  <h3 style="color:#1a1a1a;">1. Oggetto</h3>
+  <p>Web app che permette ai commerciali di ottenere in pochi secondi il <strong>prezzo di vendita allineato</strong> e il <strong>prezzo di vendita alla rinfusa</strong> (oggi colonne AC e AD dell'excel), selezionando materiale, colore e capacità.</p>
+  <p>Il prototipo è già <strong>online e funzionante</strong> per la validazione:</p>
+  <p><strong><a href="https://vetronaviglio-listini-webapp.vercel.app" style="color:#0d6efd;">https://vetronaviglio-listini-webapp.vercel.app</a></strong></p>
+
+  <h3 style="color:#1a1a1a;">2. Cosa include il prototipo</h3>
+  <ul>
+    <li><strong>Login</strong> con account individuale per ogni commerciale</li>
+    <li><strong>Ricerca prezzo</strong>: materiale (PP, PE, PETG, PE PCR) + colore + capacità → prezzo allineato e rinfusa per tutte le fasce di quantità</li>
+    <li><strong>Dettaglio calcolo</strong>: vista del breakdown (costi → prezzo)</li>
+    <li><strong>Gestione dati (admin)</strong>: pagina dedicata per aggiornare listino, materiali, colori, capacità e fasce senza toccare file excel</li>
+    <li><strong>Verificato contro l'excel</strong>: 1.932 combinazioni testate, risultato identico al foglio</li>
+  </ul>
+
+  <h3 style="color:#1a1a1a;">3. Due opzioni di messa in produzione</h3>
+  <table style="border-collapse: collapse; width: 100%;">
+    <tr style="background:#f5f5f5;">
+      <th style="border:1px solid #ddd; padding:8px; text-align:left;">Opzione</th>
+      <th style="border:1px solid #ddd; padding:8px; text-align:left;">Costi</th>
+      <th style="border:1px solid #ddd; padding:8px; text-align:left;">Note</th>
+    </tr>
+    <tr>
+      <td style="border:1px solid #ddd; padding:8px;"><strong>A. Cloud</strong><br>(hosting esterno, gestito da me)</td>
+      <td style="border:1px solid #ddd; padding:8px;">
+        Hosting web (Vercel Pro): ~18 €/mese<br>
+        DB + autenticazione (Supabase Pro): ~23 €/mese<br>
+        <strong>Totale ~41 €/mese (escl. IVA)</strong>
+      </td>
+      <td style="border:1px solid #ddd; padding:8px;">Tutto gestito, zero carico IT. Aggiornamenti e backup inclusi. Accessibile da qualsiasi dispositivo, anche fuori sede. Prezzi verificati sui listini ufficiali (06/2026); i piani gratuiti non sono adatti alla produzione.</td>
+    </tr>
+    <tr>
+      <td style="border:1px solid #ddd; padding:8px;"><strong>B. On-premise</strong><br>(sui vostri server Sineto)</td>
+      <td style="border:1px solid #ddd; padding:8px;">Installazione: una tantum (da quantificare)<br>Gestione ordinaria: IT interno</td>
+      <td style="border:1px solid #ddd; padding:8px;">Dati 100% in house, nessun canone mensile. Necessario server/node raggiungibile dai commerciali (o VPN per la trasferta).</td>
+    </tr>
+  </table>
+
+  <p style="font-size:13px; color:#666;"><em>Nota di confronto:</em> nel modulo visite l'hosting è quotato ~7 €/mese (solo hosting, server Render). Qui il totale è più alto perché l'app listini include anche il <strong>database e l'autenticazione gestiti</strong> (voci Vercel + Supabase), che nel modulo visite non erano previsti.</p>
+
+  <h3 style="color:#1a1a1a;">4. Nota sul listino attuale</h3>
+  <p>L'excel contiene oggi i prezzi per <strong>PP e PE</strong>. <strong>PETG e PE PCR</strong> sono selezionabili ma i prezzi restano <strong>vuoti</strong> finché il listino non li prevede: quando i dati saranno disponibili si popolano dall'admin in pochi minuti.</p>
+
+  <h3 style="color:#1a1a1a;">5. Prossimi passi</h3>
+  <ol>
+    <li><strong>Validazione prototipo</strong> — conferma se va bene o cosa cambiare</li>
+    <li><strong>Scelta opzione</strong> (cloud o on-premise)</li>
+    <li><strong>Eventuali personalizzazioni</strong>: stampa/export PDF, popolamento dati PETG/PE PCR, definizione ruoli (amministratore vs commerciale)</li>
+  </ol>
+</body>
+</html>

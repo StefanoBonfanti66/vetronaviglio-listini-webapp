@@ -1,5 +1,13 @@
 # Changelog — Vetronaviglio Listini Webapp
 
+## 2026-08-06 — Preventivo + email a Federico Rosi (bozza)
+
+- **`docs/proposals/`** creati: `preventivo-listini-webapp.md` (+ versione `preventivo-listini-webapp.html` da allegare) e `email-listini-webapp.md` (bozza email).
+- **Struttura coerente con `vetronaviglio-report-visite`** (`docs/proposals/email-preventivo-report-visite.*`): prototipo online → cosa include → due opzioni hosting (A. Cloud gestito da me / B. On-premise server Sineto, una tantum da quantificare, dati in house) → prossimi passi (validazione, scelta opzione, personalizzazioni PDF/PETG/PE PCR/ruoli).
+- **Verifica costi Opzione A (06/08, procurement)**: fonti ufficiali Vercel/Supabase/Render letti in data. Hobby=uso non commerciale (ToS), Supabase Free=pausa DB dopo 7gg inattività → per produzione gestita: Vercel Pro $20 + Supabase Pro $25 = $45 ≈ **41 €/mese escl. IVA** (50–56 € con IVA). Nota di confronto con report-visite (~7 € solo hosting, qui DB+auth gestiti).
+- **Credenziali 3 account**: reset password via Admin API + login verificati (06/08): f.rosi (admin), b.solitodesolis (admin), f.ruffini (commerciale).
+- **Draft Gmail su account personale** (`bonfantistefano4@gmail.com`) → `f.rosi@vetronaviglio.it`, oggetto "Listini — prototipo pronto per validazione", allegato `preventivo-listini-webapp.html`, credenziali nel corpo. Da rivedere e inoltrare dall'utente.
+
 ## 2026-08-06 — Deploy Vercel verificato in produzione
 
 - **Deploy attivo:** project `vetronaviglio-listini-webapp` su Vercel, auto-deploy via GitHub integration (7 deployment, tutti READY); ultimo production = commit `4d548cf` (ultimo su `main`). URL: `https://vetronaviglio-listini-webapp.vercel.app`.
