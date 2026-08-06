@@ -1,5 +1,12 @@
 # Changelog — Vetronaviglio Listini Webapp
 
+## 2026-08-06 — Deploy Vercel verificato in produzione
+
+- **Deploy attivo:** project `vetronaviglio-listini-webapp` su Vercel, auto-deploy via GitHub integration (7 deployment, tutti READY); ultimo production = commit `4d548cf` (ultimo su `main`). URL: `https://vetronaviglio-listini-webapp.vercel.app`.
+- **Env correttamente iniettate al build:** bundle JS contiene `https://fkjaqhydotxubxnieguh.supabase.co` + anon key (identiche a `app/.env.local`).
+- **Smoke test produzione (Playwright):** login `s.bonfanti@vetronaviglio.it` OK → `30ML PP NBN fascia1 = 0,57 €` allineato / `0,51 €` rinfusa (identico excel AC 0.5725…). Breakdown calcolo popolato; materiali PP/PE/PETG/PE PCR presenti; link "Gestione dati" visibile per ruolo admin. Nessun runtime error su Vercel (7d). RLS attiva (query anonima su `materials` → `[]`).
+- Docs: `docs/overview.md` + `docs/project/overview.md` aggiornate (last_updated 06/08, Percorso B, nuovo project, 3 utenti).
+
 ## 2026-08-04 — Allineamento label colore COL ("Colorato")
 
 - Unica nota aperta risolta: label colore COL era in disaccordo (DB "Colorato custom" vs import_listino.py/seed.json "Colorato").

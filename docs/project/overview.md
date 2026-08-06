@@ -7,7 +7,7 @@ Vista PM sintetica. Riferimento primario: [../overview.md](../overview.md).
 | Area | Stato |
 |---|---|
 | Commerciale | `lead` — brief compilato, in attesa chiarimenti |
-| Operativo | `staging` — UI completa, motore prezzi testato (1932 check), deploy da confermare |
+| Operativo | `staging` — UI completa, motore prezzi testato (1932 check), admin CRUD, deploy Vercel in verifica |
 | Amministrativo | `inactive` — progetto gratuito |
 
 ## Obiettivo MVP
@@ -26,13 +26,15 @@ Selettore materiale / colore / capacità → prezzi di vendita allineato e rinfu
 
 ## Realizzato (2026-08-03/04)
 
-- Schema Supabase (`0001_init.sql`, 6 tabelle + RLS) e seed (4 materiali, 2 colori, 12 capacità, 11 fasce, 44 config).
+- Schema Supabase (`0001_init.sql` + `0002_capacities_enabled.sql`, 6 tabelle + RLS) e seed (4 materiali, 2 colori, 12 capacità, 11 fasce, 44 config).
 - Motore prezzi (`app/src/lib/pricing.ts`): replica formule excel; 1932/1932 check vs valori reali.
 - Import excel (`scripts/import_listino.py` → `supabase/seed/listino_seed.json`).
 - UI: login, pagina prezzi con select + tabella 11 fasce + breakdown, pagina admin CRUD (materie prime, imballo, parametri macchina allineato/rinfusa editabili).
+- Percorso B: admin come unica fonte dati — CRUD config listino + anagrafiche (materiali/colori/capacità) + fasce, toggle attivo/disattivo live.
+- DB su nuovo project Supabase `fkjaqhydotxubxnieguh`; 3 utenti auth creati (f.rosi, b.solitodesolis admin; f.ruffini commerciale).
+- Tema e identità visiva Vetronaviglio (uniformità con ecommerce); responsive mobile/tablet.
 
 ## Prossimo passo
 
 1. Chiarire domande aperte (stampa/export, ruoli admin, popolamento iniziale dati).
-2. Deploy Vercel (configurazione + secret) e smoke test in produzione.
-3. Chiusura work in corso: commit e aggiornamento docs.
+2. Deploy Vercel (configurazione + env) e smoke test in produzione.

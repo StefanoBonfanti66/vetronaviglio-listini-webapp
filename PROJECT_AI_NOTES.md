@@ -2,8 +2,8 @@
 
 ## Obiettivo
 - Scopo: web app per i commerciali Vetronaviglio — selezionare materiale/colore/capacità e ottenere i prezzi di vendita allineato e rinfusa (replica dell'excel `Nuovo Listino Plastica_06 2025_Rev01.xlsx`), con login e pagina admin per gestire i dati di listino.
-- Stato attuale: MVP implementato e testato (1932/1932 check vs excel). Percorso B completato: admin è l'unica fonte dati (CRUD config/anagrafiche/fasce), PETG/PE PCR popolabili da admin. Tema Vetronaviglio applicato (uniformità con ecommerce). UI responsive mobile/tablet (card risultati su phone, tabelle admin ridotte <768px).
-- Risultato atteso della sessione: chiusura del WIP (commit), docs aggiornate, prossimo step = deploy Vercel.
+- Stato attuale: MVP implementato e testato (1932/1932 check vs excel). Percorso B completato: admin è l'unica fonte dati (CRUD config/anagrafiche/fasce), PETG/PE PCR popolabili da admin. Tema Vetronaviglio applicato (uniformità con ecommerce). UI responsive mobile/tablet (card risultati su phone, tabelle admin ridotte <768px). **Deploy Vercel attivo e verificato in produzione (2026-08-06).**
+- Risultato atteso della sessione: chiusura del WIP (commit), docs aggiornate, prossimo step = chiarimenti cliente (stampa/export, popolamento dati).
 
 ## Stack e vincoli
 - Frontend: React 19 + TypeScript + Vite + TailwindCSS
@@ -37,8 +37,8 @@
 2. [fatto] Migration DB su nuovo project `fkjaqhydotxubxnieguh` (migrazioni + seed) + admin rigenerato.
 3. [fatto] Creazione 3 utenti Supabase Auth via Admin API (no email): `f.rosi@vetronaviglio.it` (admin), `b.solitodesolis@vetronaviglio.it` (admin), `f.ruffini@vetronaviglio.it` (commerciale). Profili auto-creati via DB trigger. Puliti 2 utenti test accidentalmente creati via signup.
 4. [fatto] Log login persistente disponibile in Supabase Dashboard → Authentication → Logs.
-5. Deploy preview Vercel (via dashboard GitHub integration, env `VITE_SUPABASE_URL`+`VITE_SUPABASE_ANON_KEY`) + smoke test produzione.
-6. Smoketest browser su nuovo project: RIATTIVARE dev server (`npm run dev`, per leggire `.env.local`) → login admin → `30ML PP NBN fascia1 = 0,57 €`.
+5. [fatto] Deploy preview Vercel: project attivo su `https://vetronaviglio-listini-webapp.vercel.app`, auto-deploy via GitHub integration, env `VITE_SUPABASE_URL`+`VITE_SUPABASE_ANON_KEY` iniettate al build (verificato nel bundle JS).
+6. [fatto] Smoketest browser su nuovo project: login `s.bonfanti@vetronaviglio.it` in produzione OK → `30ML PP NBN fascia1 = 0,57 €` (identico excel AC 0.5725…). Breakdown popolato, PETG/PE PCR presenti, link admin visibile.
 7. Allineare label colore COL hardcodata ("Colorato" vs "Colorato custom") — **RISOLTO**: DB + seed_listino.py + seed.sql allineati a "Colorato" (nessun impatto prezzi).
 
 ## Problemi aperti
@@ -50,4 +50,4 @@
 - `app/src/context/AuthContext.tsx`, `app/src/pages/LoginPage.tsx`, `app/src/pages/AdminPage.tsx`, `app/src/components/admin/CrudManager.tsx`, `app/src/components/admin/BracketsManager.tsx`, `app/src/lib/api.ts`, `app/src/lib/types.ts`, `app/src/lib/pricing.ts`, `supabase/migrations/0001_init.sql`, `supabase/migrations/0002_capacities_enabled.sql`, `scripts/import_listino.py`, `docs/*`
 
 ## Prossimo step suggerito
-- Commit del WIP corrente (tema + restyle + Percorso B) dopo validazione umana, poi configurare deploy Vercel (vedi `docs/bootstrap.md`).
+- Deploy Vercel attivo e verificato (2026-08-06). Prossimi: chiarimenti con cliente (stampa/export PDF, popolamento dati PETG/PE PCR, ruoli admin) e chiusura docs condivise.

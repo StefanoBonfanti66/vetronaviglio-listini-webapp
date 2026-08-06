@@ -7,7 +7,7 @@ operational_status: staging
 administrative_status: inactive
 client: Vetronaviglio s.r.l.
 owner: Zetabytenexus
-last_updated: 2026-08-03
+last_updated: 2026-08-06
 mcp_profile: saas
 ---
 
@@ -39,9 +39,11 @@ MVP di una web app dove il commerciale seleziona **materiale** (PP, PE, PETG, PE
 - Lead ricevuto (email Federico Rosi 03/08/2026), brief compilato in `docs/leads/`
 - Excel sorgente copiato in `data/listini/` e analizzato (44 fogli)
 - **Decisioni confermate (03/08):** PETG/PE PCR vuoti (dati futuri via excel); niente excel a runtime → pagina admin; 11 fasce in tabella; login; GitHub+Vercel; plus = breakdown calcolo prezzi
-- **Realizzato (03–04/08):** schema Supabase + seed, motore prezzi (1932 check vs excel), import excel, UI completa (login, prezzi con breakdown, admin CRUD), parametri macchina editabili in admin
-- Gap noto: **PETG e PE PCR** selezionabili ma senza valori listino (da aggiungere in futuro)
-- Prossimi step: chiarimenti residui (stampa/export, ruoli admin), deploy Vercel
+- **Realizzato (03–04/08):** schema Supabase + seed, motore prezzi (1932 check vs excel), import excel, UI completa (login, prezzi con breakdown, admin CRUD), parametri macchina editabili in admin, tema Vetronaviglio, responsive mobile/tablet
+- **Percorso B completato (04/08):** admin = unica fonte dati (CRUD config listino + anagrafiche materiali/colori/capacità + fasce, toggle attivo/disattivo live). Migrazione `0002_capacities_enabled.sql`
+- **DB su nuovo project Supabase `fkjaqhydotxubxnieguh`** (04/08): migration 0001+0002 + seed applicati (4/2/12/11/44); 3 utenti auth creati (f.rosi, b.solitodesolis admin; f.ruffini commerciale)
+- Gap noto: **PETG e PE PCR** selezionabili ma senza valori listino (popolabili da admin, dati futuri via excel)
+- Prossimi step: chiarimenti residui (stampa/export, ruoli admin), deploy Vercel + smoke test produzione
 
 ## Documentazione operativa
 

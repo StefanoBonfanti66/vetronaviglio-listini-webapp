@@ -25,12 +25,11 @@
 - Pulizia: rimosso favicon non usato, `*.tsbuildinfo` in `.gitignore`.
 - **3 utenti creati in Supabase Auth** (via Admin API, no email inviate): `f.rosi@vetronaviglio.it` (admin), `b.solitodesolis@vetronaviglio.it` (admin), `f.ruffini@vetronaviglio.it` (commerciale/user). Profile auto-create via DB trigger. Puliti 2 utenti test accidentalmente creati via signup.
 - **Log login persistente**: disponibile in Supabase Dashboard → Authentication → Logs (`https://supabase.com/dashboard/project/fkjaqhydotxubxnieguh/auth/logs`).
+- **Deploy Vercel attivo e verificato (06/08)**: `https://vetronaviglio-listini-webapp.vercel.app`, auto-deploy via GitHub integration; smoketest produzione login + `30ML PP NBN fascia1 = 0,57 €` (identico excel). Bundle JS contiene env corrette del nuovo project.
 
 ### Da fare / miglioramenti futuri
-- **Deploy preview Vercel** (manuale, via dashboard GitHub integration) con env `VITE_SUPABASE_URL` + `VITE_SUPABASE_ANON_KEY` (MCP non supporta env vars / JS 493 kB inline).
-- Smoketest browser su nuovo project (dev riavvio per .env.local). 30ML PP NBN fascia1 = 0,57 €.
+- Chiarire con cliente: stampa/export PDF, popolamento dati PETG/PE PCR, ruoli admin.
 - Allineare label colore COL hardcodata (non bloccante prezzi).
-- Chiarire con cliente: stampa/export PDF, popolamento dati.
 
 ### Prossimo step concreto
-- Deploy preview Vercel + smoketest browser. (`docs/bootstrap.md`)
+- Chiarimenti con cliente (stampa/export, popolamento dati) e chiusura docs condivise. (`docs/changelog.md`)
