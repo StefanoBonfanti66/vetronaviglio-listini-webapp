@@ -1,0 +1,26 @@
+name: Supabase Keep-Alive
+
+on:
+  schedule:
+    # Every 5 days at 06:00 UTC (well within the 7-day window)
+    - cron: '0 6 */5 * *'
+  workflow_dispatch: # Manual trigger for testing
+
+jobs:
+  keepalive:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping Supabase database
+        run: |
+          echo "Pinging Supabase to prevent free-tier pause..."
+          RESPONSE=$(curl -s -o /dev/null -w "%{http_code}" \
+            -H "apikey: ${{ secrets.SUPABASE_ANON_KEY }}" \
+            -H "Authorization: Bearer ${{ secrets.SUPABASE_ANON_KEY }}" \
+            "${{ secrets.SUPABASE_URL }}/rest/v1/?select=1")
+          
+          if [ "$RESPONSE" -ge 200 ] && [ "$RESPONSE" -lt 300 ]; then
+            echo "✅ Keep-alive ping successful (HTTP $RESPONSE)"
+          else
+            echo "❌ Ping failed with HTTP $RESPONSE"
+            exit 1
+          fi
