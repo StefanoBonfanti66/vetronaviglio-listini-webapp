@@ -6,6 +6,8 @@ on:
     - cron: '0 6 */5 * *'
   workflow_dispatch: # Manual trigger for testing
 
+permissions: read-all
+
 jobs:
   keepalive:
     runs-on: ubuntu-latest
