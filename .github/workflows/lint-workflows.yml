@@ -11,6 +11,8 @@ on:
       - '.github/workflows/*.yaml'
   workflow_dispatch:
 
+permissions: read-all
+
 jobs:
   yamllint:
     runs-on: ubuntu-latest
