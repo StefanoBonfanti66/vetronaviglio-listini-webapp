@@ -1,5 +1,7 @@
 name: Telegram Notify Reusable
 
+permissions: {}
+
 on:
   workflow_call:
     inputs:
