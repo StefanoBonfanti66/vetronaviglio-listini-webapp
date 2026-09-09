@@ -3,7 +3,7 @@ name: Telegram Test Reusable
 on:
   workflow_dispatch:
 
-  permissions: {}
+permissions: {}
 
 jobs:
   notify:
