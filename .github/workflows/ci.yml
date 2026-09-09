@@ -9,6 +9,8 @@ on:
       - 'fix/**'
   pull_request:
 
+permissions: read-all
+
 jobs:
   ci:
     runs-on: ubuntu-latest
