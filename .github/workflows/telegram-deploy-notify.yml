@@ -5,6 +5,8 @@ on:
     workflows: ["Deploy"]
     types: [completed]
 
+permissions: {}
+
 jobs:
   notify:
     uses: ./.github/workflows/telegram-notify-reusable.yml
