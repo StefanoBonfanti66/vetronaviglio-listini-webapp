@@ -1,17 +1,24 @@
-// Validazione end-to-end: motore (dai listino_configs del seed) contro i valori
-// reali di TUTTI i 44 fogli excel estratti in tests/fixtures/expected_excel.json.
+// Validazione end-to-end (baseline legacy): motore (dal seed congelato
+// tests/fixtures/seed_legacy.json) contro i valori reali di TUTTI i 44 fogli
+// excel 06-2025 estratti in tests/fixtures/expected_excel.json.
+//
+// Il seed legacy corrisponde all'Excel 06-2025 (costi MP e master di allora):
+// congelato per preservare la regressione del motore rispetto a quell'Excel.
+// I costi correnti (MP ultimo acquisto 1,69 €/kg, master 10/20 €/kg, velocita
+// 450/350 pz/h) sono coperti dal test snapshot sui costi attuali.
 //
 // Verifica che U (costo unit. allineato), AA (costo unit. rinfusa),
 // AC (prezzo allineato) e AD (prezzo rinfusa) combacino a meno di 1e-6.
 
 import { readFileSync } from 'node:fs'
-import { resolve } from 'node:path'
+import { dirname, resolve } from 'node:path'
+import { fileURLToPath } from 'node:url'
 import { calcBracket } from '../src/lib/pricing'
 import type { ListinoConfigInput } from '../src/lib/pricing'
 
-const cwd = process.cwd()
-const seed = JSON.parse(readFileSync(resolve(cwd, '../supabase/seed/listino_seed.json'), 'utf8'))
-const expected = JSON.parse(readFileSync(resolve(cwd, 'tests/fixtures/expected_excel.json'), 'utf8'))
+const here = dirname(fileURLToPath(import.meta.url))
+const seed = JSON.parse(readFileSync(resolve(here, 'fixtures/seed_legacy.json'), 'utf8'))
+const expected = JSON.parse(readFileSync(resolve(here, 'fixtures/expected_excel.json'), 'utf8'))
 
 const brackets = seed.price_brackets
 const cfgByKey = new Map<string, any>()

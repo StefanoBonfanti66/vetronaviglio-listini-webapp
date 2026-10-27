@@ -4,6 +4,9 @@ export interface Material {
   name: string
   sort_order: number
   enabled: boolean
+  // Costo €/kg della materia prima (quota 96% della miscela).
+  // NULL = non definito.
+  costo_kg?: number | null
 }
 
 export interface Color {
@@ -12,6 +15,9 @@ export interface Color {
   name: string
   sort_order: number
   enabled: boolean
+  // Costo €/kg del master color (quota 4% della miscela).
+  // NULL = non definito.
+  master_color_costo_kg?: number | null
 }
 
 export interface Capacity {
@@ -61,6 +67,7 @@ export interface ListinoConfig {
   allineato: MachineParams
   rinfusa: MachineParams
   rinfusa_ricarico_div_100: boolean
+  master_color_costo_kg?: number | null
   updated_at?: string
 }
 
@@ -68,4 +75,16 @@ export interface Profile {
   id: string
   full_name: string | null
   role: 'commerciale' | 'admin'
+}
+
+export type ModalitaImballo = 'allineato' | 'rinfusa'
+export type FasciaImballo = 'fino_125' | 'oltre_125'
+
+export interface ImballoFisso {
+  id: string
+  modalita: ModalitaImballo
+  fascia: FasciaImballo
+  // Costo €/pezzo (costo imballo fisso, sommato ai costi diretti).
+  // NULL = non definito: si usa il calcolo da pallettizzazione.
+  costo_eur_per_pezzo?: number | null
 }

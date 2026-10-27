@@ -95,6 +95,65 @@ const r500b7 = calcBracket(config500PECOL, {
 check('500ML PE COL b7 allineato.costoUnitario', r500b7.allineato.costoUnitario, 0.1845354)
 check('500ML PE COL b7 allineato.prezzoVendita', r500b7.allineato.prezzoVendita, 0.3413905)
 
+// --- Nuova miscela 96% base + 4% master (master_color_costo_kg valorizzato) ---
+// Il costo base è mp_costos_kg[0] (riga 22 excel, quota 96%).
+const config500PECOLMaster20: P[0] = {
+  ...config500PECOL,
+  master_color_costo_kg: 20,
+}
+check(
+  '500ML PE COL master 20 costoMpKgPesato',
+  calcBracket(config500PECOLMaster20, {
+    sort_order: 0,
+    quantita_lotto: 2000,
+    sfrido: 0.1,
+    ricarico_vendite: 180,
+    regola_vendita: 'doppio80',
+  }).costoMpKgPesato,
+  1.5 * 0.96 + 20 * 0.04,
+)
+
+// Percorso legacy esplicito (master assente) resta invariato: 2.04
+check(
+  '500ML PE COL legacy (master assente) costoMpKgPesato',
+  calcBracket(config500PECOL, {
+    sort_order: 0,
+    quantita_lotto: 2000,
+    sfrido: 0.1,
+    ricarico_vendite: 180,
+    regola_vendita: 'doppio80',
+  }).costoMpKgPesato,
+  2.04,
+)
+
+// Master a 0 è un valore valido (non "legacy"): costo = base * 96%
+check(
+  '500ML PE COL master 0 costoMpKgPesato',
+  calcBracket({ ...config500PECOL, master_color_costo_kg: 0 }, {
+    sort_order: 0,
+    quantita_lotto: 2000,
+    sfrido: 0.1,
+    ricarico_vendite: 180,
+    regola_vendita: 'doppio80',
+  }).costoMpKgPesato,
+  1.5 * 0.96,
+)
+
+// Master negativo -> errore esplicito
+let masterNegativoErrore = false
+try {
+  calcBracket({ ...config500PECOL, master_color_costo_kg: -1 }, {
+    sort_order: 0,
+    quantita_lotto: 2000,
+    sfrido: 0.1,
+    ricarico_vendite: 180,
+    regola_vendita: 'doppio80',
+  })
+} catch {
+  masterNegativoErrore = true
+}
+check('master negativo solleva errore', masterNegativoErrore ? 1 : 0, 1)
+
 if (failures > 0) {
   console.log(`\n${failures} check(s) FAILED`)
   process.exit(1)

@@ -2,29 +2,45 @@
   "materials": [
     {
       "code": "PP",
-      "name": "PP"
+      "name": "PP",
+      "costo_kg": 1.69
     },
     {
       "code": "PE",
-      "name": "PE"
+      "name": "PE",
+      "costo_kg": 1.69
     },
     {
       "code": "PETG",
-      "name": "PETG"
+      "name": "PETG",
+      "costo_kg": 3.822
     },
     {
       "code": "PE_PCR",
-      "name": "PE PCR"
+      "name": "PE PCR",
+      "costo_kg": 1.98
+    },
+    {
+      "code": "BIOBASED",
+      "name": "Biobased",
+      "costo_kg": null
     }
   ],
   "colors": [
     {
       "code": "NBN",
-      "name": "Non bianco / neutro"
+      "name": "Non bianco / neutro",
+      "master_color_costo_kg": 10.0
     },
     {
       "code": "COL",
-      "name": "Colorato"
+      "name": "Colorato",
+      "master_color_costo_kg": 20.0
+    },
+    {
+      "code": "CUSTOM",
+      "name": "Custom color definitivo",
+      "master_color_costo_kg": null
     }
   ],
   "capacities": [
@@ -186,8 +202,8 @@
       "peso_disegno_g": 8.0,
       "rinfusa_ricarico_div_100": false,
       "mp_costos_kg": [
-        2.0,
-        4.0,
+        1.69,
+        10.0,
         0.0,
         0.0
       ],
@@ -197,6 +213,7 @@
         0.0,
         0.0
       ],
+      "master_color_costo_kg": 10.0,
       "imballo_items": [
         {
           "name": "scatole",
@@ -242,8 +259,8 @@
       "peso_disegno_g": 8.0,
       "rinfusa_ricarico_div_100": false,
       "mp_costos_kg": [
-        2.0,
-        15.0,
+        1.69,
+        20.0,
         0.0,
         0.0
       ],
@@ -253,6 +270,7 @@
         0.0,
         0.0
       ],
+      "master_color_costo_kg": 20.0,
       "imballo_items": [
         {
           "name": "scatole",
@@ -298,8 +316,8 @@
       "peso_disegno_g": 8.0,
       "rinfusa_ricarico_div_100": false,
       "mp_costos_kg": [
-        1.5,
-        4.0,
+        1.69,
+        10.0,
         0.0,
         0.0
       ],
@@ -309,6 +327,7 @@
         0.0,
         0.0
       ],
+      "master_color_costo_kg": 10.0,
       "imballo_items": [
         {
           "name": "scatole",
@@ -354,8 +373,8 @@
       "peso_disegno_g": 8.0,
       "rinfusa_ricarico_div_100": false,
       "mp_costos_kg": [
-        1.5,
-        15.0,
+        1.69,
+        20.0,
         0.0,
         0.0
       ],
@@ -365,6 +384,7 @@
         0.0,
         0.0
       ],
+      "master_color_costo_kg": 20.0,
       "imballo_items": [
         {
           "name": "scatole",
@@ -410,8 +430,8 @@
       "peso_disegno_g": 10.0,
       "rinfusa_ricarico_div_100": false,
       "mp_costos_kg": [
-        1.39,
-        4.0,
+        1.69,
+        10.0,
         0.0,
         0.0
       ],
@@ -421,6 +441,7 @@
         0.0,
         0.0
       ],
+      "master_color_costo_kg": 10.0,
       "imballo_items": [
         {
           "name": "scatole",
@@ -443,7 +464,7 @@
       "allineato": {
         "ore_uomo": 4.0,
         "costo_rsu": 32.0,
-        "velocita_pz_h": 550.0,
+        "velocita_pz_h": 450.0,
         "rsu_unit": 0.5,
         "costo_orario_macchina": 5.0,
         "costo_orario_rsu": 25.0,
@@ -452,7 +473,7 @@
       "rinfusa": {
         "ore_uomo": 4.0,
         "costo_rsu": 32.0,
-        "velocita_pz_h": 550.0,
+        "velocita_pz_h": 450.0,
         "rsu_unit": 0.25,
         "costo_orario_macchina": 5.0,
         "costo_orario_rsu": 25.0,
@@ -466,8 +487,8 @@
       "peso_disegno_g": 10.0,
       "rinfusa_ricarico_div_100": false,
       "mp_costos_kg": [
-        2.0,
-        15.0,
+        1.69,
+        20.0,
         0.0,
         0.0
       ],
@@ -477,6 +498,7 @@
         0.0,
         0.0
       ],
+      "master_color_costo_kg": 20.0,
       "imballo_items": [
         {
           "name": "scatole",
@@ -522,8 +544,8 @@
       "peso_disegno_g": 20.0,
       "rinfusa_ricarico_div_100": false,
       "mp_costos_kg": [
-        1.5,
-        4.0,
+        1.69,
+        10.0,
         0.0,
         0.0
       ],
@@ -533,6 +555,7 @@
         0.0,
         0.0
       ],
+      "master_color_costo_kg": 10.0,
       "imballo_items": [
         {
           "name": "scatole",
@@ -578,8 +601,8 @@
       "peso_disegno_g": 10.0,
       "rinfusa_ricarico_div_100": false,
       "mp_costos_kg": [
-        1.5,
-        15.0,
+        1.69,
+        20.0,
         0.0,
         0.0
       ],
@@ -589,6 +612,7 @@
         0.0,
         0.0
       ],
+      "master_color_costo_kg": 20.0,
       "imballo_items": [
         {
           "name": "scatole",
@@ -634,8 +658,8 @@
       "peso_disegno_g": 12.0,
       "rinfusa_ricarico_div_100": false,
       "mp_costos_kg": [
-        2.0,
-        4.0,
+        1.69,
+        10.0,
         0.0,
         0.0
       ],
@@ -645,6 +669,7 @@
         0.0,
         0.0
       ],
+      "master_color_costo_kg": 10.0,
       "imballo_items": [
         {
           "name": "scatole",
@@ -690,8 +715,8 @@
       "peso_disegno_g": 12.0,
       "rinfusa_ricarico_div_100": false,
       "mp_costos_kg": [
-        2.0,
-        15.0,
+        1.69,
+        20.0,
         0.0,
         0.0
       ],
@@ -701,6 +726,7 @@
         0.0,
         0.0
       ],
+      "master_color_costo_kg": 20.0,
       "imballo_items": [
         {
           "name": "scatole",
@@ -746,8 +772,8 @@
       "peso_disegno_g": 12.0,
       "rinfusa_ricarico_div_100": false,
       "mp_costos_kg": [
-        1.5,
-        4.0,
+        1.69,
+        10.0,
         0.0,
         0.0
       ],
@@ -757,6 +783,7 @@
         0.0,
         0.0
       ],
+      "master_color_costo_kg": 10.0,
       "imballo_items": [
         {
           "name": "scatole",
@@ -802,8 +829,8 @@
       "peso_disegno_g": 12.0,
       "rinfusa_ricarico_div_100": false,
       "mp_costos_kg": [
-        1.5,
-        15.0,
+        1.69,
+        20.0,
         0.0,
         0.0
       ],
@@ -813,6 +840,7 @@
         0.0,
         0.0
       ],
+      "master_color_costo_kg": 20.0,
       "imballo_items": [
         {
           "name": "scatole",
@@ -858,8 +886,8 @@
       "peso_disegno_g": 15.0,
       "rinfusa_ricarico_div_100": false,
       "mp_costos_kg": [
-        2.0,
-        4.0,
+        1.69,
+        10.0,
         0.0,
         0.0
       ],
@@ -869,6 +897,7 @@
         0.0,
         0.0
       ],
+      "master_color_costo_kg": 10.0,
       "imballo_items": [
         {
           "name": "scatole",
@@ -914,8 +943,8 @@
       "peso_disegno_g": 15.0,
       "rinfusa_ricarico_div_100": false,
       "mp_costos_kg": [
-        2.0,
-        15.0,
+        1.69,
+        20.0,
         0.0,
         0.0
       ],
@@ -925,6 +954,7 @@
         0.0,
         0.0
       ],
+      "master_color_costo_kg": 20.0,
       "imballo_items": [
         {
           "name": "scatole",
@@ -970,8 +1000,8 @@
       "peso_disegno_g": 15.0,
       "rinfusa_ricarico_div_100": false,
       "mp_costos_kg": [
-        1.5,
-        4.0,
+        1.69,
+        10.0,
         0.0,
         0.0
       ],
@@ -981,6 +1011,7 @@
         0.0,
         0.0
       ],
+      "master_color_costo_kg": 10.0,
       "imballo_items": [
         {
           "name": "scatole",
@@ -1026,8 +1057,8 @@
       "peso_disegno_g": 15.0,
       "rinfusa_ricarico_div_100": false,
       "mp_costos_kg": [
-        1.5,
-        15.0,
+        1.69,
+        20.0,
         0.0,
         0.0
       ],
@@ -1037,6 +1068,7 @@
         0.0,
         0.0
       ],
+      "master_color_costo_kg": 20.0,
       "imballo_items": [
         {
           "name": "scatole",
@@ -1082,8 +1114,8 @@
       "peso_disegno_g": 18.0,
       "rinfusa_ricarico_div_100": false,
       "mp_costos_kg": [
-        2.0,
-        4.0,
+        1.69,
+        10.0,
         0.0,
         0.0
       ],
@@ -1093,6 +1125,7 @@
         0.0,
         0.0
       ],
+      "master_color_costo_kg": 10.0,
       "imballo_items": [
         {
           "name": "scatole",
@@ -1138,8 +1171,8 @@
       "peso_disegno_g": 18.0,
       "rinfusa_ricarico_div_100": false,
       "mp_costos_kg": [
-        2.0,
-        15.0,
+        1.69,
+        20.0,
         0.0,
         0.0
       ],
@@ -1149,6 +1182,7 @@
         0.0,
         0.0
       ],
+      "master_color_costo_kg": 20.0,
       "imballo_items": [
         {
           "name": "scatole",
@@ -1194,8 +1228,8 @@
       "peso_disegno_g": 18.0,
       "rinfusa_ricarico_div_100": false,
       "mp_costos_kg": [
-        1.5,
-        4.0,
+        1.69,
+        10.0,
         0.0,
         0.0
       ],
@@ -1205,6 +1239,7 @@
         0.0,
         0.0
       ],
+      "master_color_costo_kg": 10.0,
       "imballo_items": [
         {
           "name": "scatole",
@@ -1250,8 +1285,8 @@
       "peso_disegno_g": 18.0,
       "rinfusa_ricarico_div_100": false,
       "mp_costos_kg": [
-        1.5,
-        15.0,
+        1.69,
+        20.0,
         0.0,
         0.0
       ],
@@ -1261,6 +1296,7 @@
         0.0,
         0.0
       ],
+      "master_color_costo_kg": 20.0,
       "imballo_items": [
         {
           "name": "scatole",
@@ -1306,8 +1342,8 @@
       "peso_disegno_g": 21.0,
       "rinfusa_ricarico_div_100": false,
       "mp_costos_kg": [
-        2.0,
-        4.0,
+        1.69,
+        10.0,
         0.0,
         0.0
       ],
@@ -1317,6 +1353,7 @@
         0.0,
         0.0
       ],
+      "master_color_costo_kg": 10.0,
       "imballo_items": [
         {
           "name": "scatole",
@@ -1339,7 +1376,7 @@
       "allineato": {
         "ore_uomo": 4.0,
         "costo_rsu": 32.0,
-        "velocita_pz_h": 450.0,
+        "velocita_pz_h": 350.0,
         "rsu_unit": 0.5,
         "costo_orario_macchina": 5.0,
         "costo_orario_rsu": 25.0,
@@ -1348,7 +1385,7 @@
       "rinfusa": {
         "ore_uomo": 4.0,
         "costo_rsu": 32.0,
-        "velocita_pz_h": 450.0,
+        "velocita_pz_h": 350.0,
         "rsu_unit": 0.25,
         "costo_orario_macchina": 5.0,
         "costo_orario_rsu": 25.0,
@@ -1362,8 +1399,8 @@
       "peso_disegno_g": 21.0,
       "rinfusa_ricarico_div_100": false,
       "mp_costos_kg": [
-        2.0,
-        15.0,
+        1.69,
+        20.0,
         0.0,
         0.0
       ],
@@ -1373,6 +1410,7 @@
         0.0,
         0.0
       ],
+      "master_color_costo_kg": 20.0,
       "imballo_items": [
         {
           "name": "scatole",
@@ -1395,7 +1433,7 @@
       "allineato": {
         "ore_uomo": 4.0,
         "costo_rsu": 32.0,
-        "velocita_pz_h": 450.0,
+        "velocita_pz_h": 350.0,
         "rsu_unit": 0.5,
         "costo_orario_macchina": 5.0,
         "costo_orario_rsu": 25.0,
@@ -1404,7 +1442,7 @@
       "rinfusa": {
         "ore_uomo": 4.0,
         "costo_rsu": 32.0,
-        "velocita_pz_h": 450.0,
+        "velocita_pz_h": 350.0,
         "rsu_unit": 0.25,
         "costo_orario_macchina": 5.0,
         "costo_orario_rsu": 25.0,
@@ -1418,8 +1456,8 @@
       "peso_disegno_g": 21.0,
       "rinfusa_ricarico_div_100": false,
       "mp_costos_kg": [
-        1.5,
-        4.0,
+        1.69,
+        10.0,
         0.0,
         0.0
       ],
@@ -1429,6 +1467,7 @@
         0.0,
         0.0
       ],
+      "master_color_costo_kg": 10.0,
       "imballo_items": [
         {
           "name": "scatole",
@@ -1451,7 +1490,7 @@
       "allineato": {
         "ore_uomo": 4.0,
         "costo_rsu": 32.0,
-        "velocita_pz_h": 450.0,
+        "velocita_pz_h": 350.0,
         "rsu_unit": 0.5,
         "costo_orario_macchina": 5.0,
         "costo_orario_rsu": 25.0,
@@ -1460,7 +1499,7 @@
       "rinfusa": {
         "ore_uomo": 4.0,
         "costo_rsu": 32.0,
-        "velocita_pz_h": 450.0,
+        "velocita_pz_h": 350.0,
         "rsu_unit": 0.25,
         "costo_orario_macchina": 5.0,
         "costo_orario_rsu": 25.0,
@@ -1474,8 +1513,8 @@
       "peso_disegno_g": 21.0,
       "rinfusa_ricarico_div_100": false,
       "mp_costos_kg": [
-        1.5,
-        15.0,
+        1.69,
+        20.0,
         0.0,
         0.0
       ],
@@ -1485,6 +1524,7 @@
         0.0,
         0.0
       ],
+      "master_color_costo_kg": 20.0,
       "imballo_items": [
         {
           "name": "scatole",
@@ -1507,7 +1547,7 @@
       "allineato": {
         "ore_uomo": 4.0,
         "costo_rsu": 32.0,
-        "velocita_pz_h": 450.0,
+        "velocita_pz_h": 350.0,
         "rsu_unit": 0.5,
         "costo_orario_macchina": 5.0,
         "costo_orario_rsu": 25.0,
@@ -1516,7 +1556,7 @@
       "rinfusa": {
         "ore_uomo": 4.0,
         "costo_rsu": 32.0,
-        "velocita_pz_h": 450.0,
+        "velocita_pz_h": 350.0,
         "rsu_unit": 0.25,
         "costo_orario_macchina": 5.0,
         "costo_orario_rsu": 25.0,
@@ -1530,8 +1570,8 @@
       "peso_disegno_g": 25.0,
       "rinfusa_ricarico_div_100": false,
       "mp_costos_kg": [
-        2.0,
-        4.0,
+        1.69,
+        10.0,
         0.0,
         0.0
       ],
@@ -1541,6 +1581,7 @@
         0.0,
         0.0
       ],
+      "master_color_costo_kg": 10.0,
       "imballo_items": [
         {
           "name": "scatole",
@@ -1563,7 +1604,7 @@
       "allineato": {
         "ore_uomo": 4.0,
         "costo_rsu": 32.0,
-        "velocita_pz_h": 450.0,
+        "velocita_pz_h": 350.0,
         "rsu_unit": 0.5,
         "costo_orario_macchina": 5.0,
         "costo_orario_rsu": 25.0,
@@ -1572,7 +1613,7 @@
       "rinfusa": {
         "ore_uomo": 4.0,
         "costo_rsu": 32.0,
-        "velocita_pz_h": 450.0,
+        "velocita_pz_h": 350.0,
         "rsu_unit": 0.25,
         "costo_orario_macchina": 5.0,
         "costo_orario_rsu": 25.0,
@@ -1586,8 +1627,8 @@
       "peso_disegno_g": 25.0,
       "rinfusa_ricarico_div_100": false,
       "mp_costos_kg": [
-        2.0,
-        15.0,
+        1.69,
+        20.0,
         0.0,
         0.0
       ],
@@ -1597,6 +1638,7 @@
         0.0,
         0.0
       ],
+      "master_color_costo_kg": 20.0,
       "imballo_items": [
         {
           "name": "scatole",
@@ -1619,7 +1661,7 @@
       "allineato": {
         "ore_uomo": 4.0,
         "costo_rsu": 32.0,
-        "velocita_pz_h": 450.0,
+        "velocita_pz_h": 350.0,
         "rsu_unit": 0.5,
         "costo_orario_macchina": 5.0,
         "costo_orario_rsu": 25.0,
@@ -1628,7 +1670,7 @@
       "rinfusa": {
         "ore_uomo": 4.0,
         "costo_rsu": 32.0,
-        "velocita_pz_h": 450.0,
+        "velocita_pz_h": 350.0,
         "rsu_unit": 0.25,
         "costo_orario_macchina": 5.0,
         "costo_orario_rsu": 25.0,
@@ -1642,8 +1684,8 @@
       "peso_disegno_g": 25.0,
       "rinfusa_ricarico_div_100": false,
       "mp_costos_kg": [
-        1.5,
-        4.0,
+        1.69,
+        10.0,
         0.0,
         0.0
       ],
@@ -1653,6 +1695,7 @@
         0.0,
         0.0
       ],
+      "master_color_costo_kg": 10.0,
       "imballo_items": [
         {
           "name": "scatole",
@@ -1675,7 +1718,7 @@
       "allineato": {
         "ore_uomo": 4.0,
         "costo_rsu": 32.0,
-        "velocita_pz_h": 450.0,
+        "velocita_pz_h": 350.0,
         "rsu_unit": 0.5,
         "costo_orario_macchina": 5.0,
         "costo_orario_rsu": 25.0,
@@ -1684,7 +1727,7 @@
       "rinfusa": {
         "ore_uomo": 4.0,
         "costo_rsu": 32.0,
-        "velocita_pz_h": 450.0,
+        "velocita_pz_h": 350.0,
         "rsu_unit": 0.25,
         "costo_orario_macchina": 5.0,
         "costo_orario_rsu": 25.0,
@@ -1698,8 +1741,8 @@
       "peso_disegno_g": 25.0,
       "rinfusa_ricarico_div_100": false,
       "mp_costos_kg": [
-        1.5,
-        15.0,
+        1.69,
+        20.0,
         0.0,
         0.0
       ],
@@ -1709,6 +1752,7 @@
         0.0,
         0.0
       ],
+      "master_color_costo_kg": 20.0,
       "imballo_items": [
         {
           "name": "scatole",
@@ -1731,7 +1775,7 @@
       "allineato": {
         "ore_uomo": 4.0,
         "costo_rsu": 32.0,
-        "velocita_pz_h": 450.0,
+        "velocita_pz_h": 350.0,
         "rsu_unit": 0.5,
         "costo_orario_macchina": 5.0,
         "costo_orario_rsu": 25.0,
@@ -1740,7 +1784,7 @@
       "rinfusa": {
         "ore_uomo": 4.0,
         "costo_rsu": 32.0,
-        "velocita_pz_h": 450.0,
+        "velocita_pz_h": 350.0,
         "rsu_unit": 0.25,
         "costo_orario_macchina": 5.0,
         "costo_orario_rsu": 25.0,
@@ -1754,8 +1798,8 @@
       "peso_disegno_g": 28.0,
       "rinfusa_ricarico_div_100": false,
       "mp_costos_kg": [
-        2.0,
-        4.0,
+        1.69,
+        10.0,
         0.0,
         0.0
       ],
@@ -1765,6 +1809,7 @@
         0.0,
         0.0
       ],
+      "master_color_costo_kg": 10.0,
       "imballo_items": [
         {
           "name": "scatole",
@@ -1787,7 +1832,7 @@
       "allineato": {
         "ore_uomo": 4.0,
         "costo_rsu": 32.0,
-        "velocita_pz_h": 450.0,
+        "velocita_pz_h": 350.0,
         "rsu_unit": 0.5,
         "costo_orario_macchina": 5.0,
         "costo_orario_rsu": 25.0,
@@ -1796,7 +1841,7 @@
       "rinfusa": {
         "ore_uomo": 4.0,
         "costo_rsu": 32.0,
-        "velocita_pz_h": 450.0,
+        "velocita_pz_h": 350.0,
         "rsu_unit": 0.25,
         "costo_orario_macchina": 5.0,
         "costo_orario_rsu": 25.0,
@@ -1810,8 +1855,8 @@
       "peso_disegno_g": 28.0,
       "rinfusa_ricarico_div_100": false,
       "mp_costos_kg": [
-        2.0,
-        15.0,
+        1.69,
+        20.0,
         0.0,
         0.0
       ],
@@ -1821,6 +1866,7 @@
         0.0,
         0.0
       ],
+      "master_color_costo_kg": 20.0,
       "imballo_items": [
         {
           "name": "scatole",
@@ -1843,7 +1889,7 @@
       "allineato": {
         "ore_uomo": 4.0,
         "costo_rsu": 32.0,
-        "velocita_pz_h": 450.0,
+        "velocita_pz_h": 350.0,
         "rsu_unit": 0.5,
         "costo_orario_macchina": 5.0,
         "costo_orario_rsu": 25.0,
@@ -1852,7 +1898,7 @@
       "rinfusa": {
         "ore_uomo": 4.0,
         "costo_rsu": 32.0,
-        "velocita_pz_h": 450.0,
+        "velocita_pz_h": 350.0,
         "rsu_unit": 0.25,
         "costo_orario_macchina": 5.0,
         "costo_orario_rsu": 25.0,
@@ -1866,8 +1912,8 @@
       "peso_disegno_g": 28.0,
       "rinfusa_ricarico_div_100": false,
       "mp_costos_kg": [
-        1.5,
-        4.0,
+        1.69,
+        10.0,
         0.0,
         0.0
       ],
@@ -1877,6 +1923,7 @@
         0.0,
         0.0
       ],
+      "master_color_costo_kg": 10.0,
       "imballo_items": [
         {
           "name": "scatole",
@@ -1899,7 +1946,7 @@
       "allineato": {
         "ore_uomo": 4.0,
         "costo_rsu": 32.0,
-        "velocita_pz_h": 450.0,
+        "velocita_pz_h": 350.0,
         "rsu_unit": 0.5,
         "costo_orario_macchina": 5.0,
         "costo_orario_rsu": 25.0,
@@ -1908,7 +1955,7 @@
       "rinfusa": {
         "ore_uomo": 4.0,
         "costo_rsu": 32.0,
-        "velocita_pz_h": 450.0,
+        "velocita_pz_h": 350.0,
         "rsu_unit": 0.25,
         "costo_orario_macchina": 5.0,
         "costo_orario_rsu": 25.0,
@@ -1922,8 +1969,8 @@
       "peso_disegno_g": 28.0,
       "rinfusa_ricarico_div_100": false,
       "mp_costos_kg": [
-        1.5,
-        15.0,
+        1.69,
+        20.0,
         0.0,
         0.0
       ],
@@ -1933,6 +1980,7 @@
         0.0,
         0.0
       ],
+      "master_color_costo_kg": 20.0,
       "imballo_items": [
         {
           "name": "scatole",
@@ -1955,7 +2003,7 @@
       "allineato": {
         "ore_uomo": 4.0,
         "costo_rsu": 32.0,
-        "velocita_pz_h": 450.0,
+        "velocita_pz_h": 350.0,
         "rsu_unit": 0.5,
         "costo_orario_macchina": 5.0,
         "costo_orario_rsu": 25.0,
@@ -1964,7 +2012,7 @@
       "rinfusa": {
         "ore_uomo": 4.0,
         "costo_rsu": 32.0,
-        "velocita_pz_h": 450.0,
+        "velocita_pz_h": 350.0,
         "rsu_unit": 0.25,
         "costo_orario_macchina": 5.0,
         "costo_orario_rsu": 25.0,
@@ -1978,8 +2026,8 @@
       "peso_disegno_g": 38.0,
       "rinfusa_ricarico_div_100": false,
       "mp_costos_kg": [
-        2.0,
-        4.0,
+        1.69,
+        10.0,
         0.0,
         0.0
       ],
@@ -1989,6 +2037,7 @@
         0.0,
         0.0
       ],
+      "master_color_costo_kg": 10.0,
       "imballo_items": [
         {
           "name": "scatole",
@@ -2011,7 +2060,7 @@
       "allineato": {
         "ore_uomo": 4.0,
         "costo_rsu": 32.0,
-        "velocita_pz_h": 450.0,
+        "velocita_pz_h": 350.0,
         "rsu_unit": 0.5,
         "costo_orario_macchina": 5.0,
         "costo_orario_rsu": 25.0,
@@ -2020,7 +2069,7 @@
       "rinfusa": {
         "ore_uomo": 4.0,
         "costo_rsu": 32.0,
-        "velocita_pz_h": 450.0,
+        "velocita_pz_h": 350.0,
         "rsu_unit": 0.25,
         "costo_orario_macchina": 5.0,
         "costo_orario_rsu": 25.0,
@@ -2034,8 +2083,8 @@
       "peso_disegno_g": 38.0,
       "rinfusa_ricarico_div_100": false,
       "mp_costos_kg": [
-        2.0,
-        15.0,
+        1.69,
+        20.0,
         0.0,
         0.0
       ],
@@ -2045,6 +2094,7 @@
         0.0,
         0.0
       ],
+      "master_color_costo_kg": 20.0,
       "imballo_items": [
         {
           "name": "scatole",
@@ -2067,7 +2117,7 @@
       "allineato": {
         "ore_uomo": 4.0,
         "costo_rsu": 32.0,
-        "velocita_pz_h": 450.0,
+        "velocita_pz_h": 350.0,
         "rsu_unit": 0.5,
         "costo_orario_macchina": 5.0,
         "costo_orario_rsu": 25.0,
@@ -2076,7 +2126,7 @@
       "rinfusa": {
         "ore_uomo": 4.0,
         "costo_rsu": 32.0,
-        "velocita_pz_h": 450.0,
+        "velocita_pz_h": 350.0,
         "rsu_unit": 0.25,
         "costo_orario_macchina": 5.0,
         "costo_orario_rsu": 25.0,
@@ -2090,8 +2140,8 @@
       "peso_disegno_g": 38.0,
       "rinfusa_ricarico_div_100": false,
       "mp_costos_kg": [
-        1.5,
-        4.0,
+        1.69,
+        10.0,
         0.0,
         0.0
       ],
@@ -2101,6 +2151,7 @@
         0.0,
         0.0
       ],
+      "master_color_costo_kg": 10.0,
       "imballo_items": [
         {
           "name": "scatole",
@@ -2123,7 +2174,7 @@
       "allineato": {
         "ore_uomo": 4.0,
         "costo_rsu": 32.0,
-        "velocita_pz_h": 450.0,
+        "velocita_pz_h": 350.0,
         "rsu_unit": 0.5,
         "costo_orario_macchina": 5.0,
         "costo_orario_rsu": 25.0,
@@ -2132,7 +2183,7 @@
       "rinfusa": {
         "ore_uomo": 4.0,
         "costo_rsu": 32.0,
-        "velocita_pz_h": 450.0,
+        "velocita_pz_h": 350.0,
         "rsu_unit": 0.25,
         "costo_orario_macchina": 5.0,
         "costo_orario_rsu": 25.0,
@@ -2146,8 +2197,8 @@
       "peso_disegno_g": 38.0,
       "rinfusa_ricarico_div_100": false,
       "mp_costos_kg": [
-        1.5,
-        15.0,
+        1.69,
+        20.0,
         0.0,
         0.0
       ],
@@ -2157,6 +2208,7 @@
         0.0,
         0.0
       ],
+      "master_color_costo_kg": 20.0,
       "imballo_items": [
         {
           "name": "scatole",
@@ -2179,7 +2231,7 @@
       "allineato": {
         "ore_uomo": 4.0,
         "costo_rsu": 32.0,
-        "velocita_pz_h": 450.0,
+        "velocita_pz_h": 350.0,
         "rsu_unit": 0.5,
         "costo_orario_macchina": 5.0,
         "costo_orario_rsu": 25.0,
@@ -2188,7 +2240,7 @@
       "rinfusa": {
         "ore_uomo": 4.0,
         "costo_rsu": 32.0,
-        "velocita_pz_h": 450.0,
+        "velocita_pz_h": 350.0,
         "rsu_unit": 0.25,
         "costo_orario_macchina": 5.0,
         "costo_orario_rsu": 25.0,
@@ -2202,8 +2254,8 @@
       "peso_disegno_g": 42.0,
       "rinfusa_ricarico_div_100": false,
       "mp_costos_kg": [
-        2.0,
-        4.0,
+        1.69,
+        10.0,
         0.0,
         0.0
       ],
@@ -2213,6 +2265,7 @@
         0.0,
         0.0
       ],
+      "master_color_costo_kg": 10.0,
       "imballo_items": [
         {
           "name": "scatole",
@@ -2235,7 +2288,7 @@
       "allineato": {
         "ore_uomo": 4.0,
         "costo_rsu": 32.0,
-        "velocita_pz_h": 450.0,
+        "velocita_pz_h": 350.0,
         "rsu_unit": 0.5,
         "costo_orario_macchina": 5.0,
         "costo_orario_rsu": 25.0,
@@ -2244,7 +2297,7 @@
       "rinfusa": {
         "ore_uomo": 4.0,
         "costo_rsu": 32.0,
-        "velocita_pz_h": 450.0,
+        "velocita_pz_h": 350.0,
         "rsu_unit": 0.25,
         "costo_orario_macchina": 5.0,
         "costo_orario_rsu": 25.0,
@@ -2258,8 +2311,8 @@
       "peso_disegno_g": 42.0,
       "rinfusa_ricarico_div_100": false,
       "mp_costos_kg": [
-        2.0,
-        15.0,
+        1.69,
+        20.0,
         0.0,
         0.0
       ],
@@ -2269,6 +2322,7 @@
         0.0,
         0.0
       ],
+      "master_color_costo_kg": 20.0,
       "imballo_items": [
         {
           "name": "scatole",
@@ -2291,7 +2345,7 @@
       "allineato": {
         "ore_uomo": 4.0,
         "costo_rsu": 32.0,
-        "velocita_pz_h": 450.0,
+        "velocita_pz_h": 350.0,
         "rsu_unit": 0.5,
         "costo_orario_macchina": 5.0,
         "costo_orario_rsu": 25.0,
@@ -2300,7 +2354,7 @@
       "rinfusa": {
         "ore_uomo": 4.0,
         "costo_rsu": 32.0,
-        "velocita_pz_h": 450.0,
+        "velocita_pz_h": 350.0,
         "rsu_unit": 0.25,
         "costo_orario_macchina": 5.0,
         "costo_orario_rsu": 25.0,
@@ -2314,8 +2368,8 @@
       "peso_disegno_g": 42.0,
       "rinfusa_ricarico_div_100": false,
       "mp_costos_kg": [
-        1.5,
-        4.0,
+        1.69,
+        10.0,
         0.0,
         0.0
       ],
@@ -2325,6 +2379,7 @@
         0.0,
         0.0
       ],
+      "master_color_costo_kg": 10.0,
       "imballo_items": [
         {
           "name": "scatole",
@@ -2347,7 +2402,7 @@
       "allineato": {
         "ore_uomo": 4.0,
         "costo_rsu": 32.0,
-        "velocita_pz_h": 450.0,
+        "velocita_pz_h": 350.0,
         "rsu_unit": 0.5,
         "costo_orario_macchina": 5.0,
         "costo_orario_rsu": 25.0,
@@ -2356,7 +2411,7 @@
       "rinfusa": {
         "ore_uomo": 4.0,
         "costo_rsu": 32.0,
-        "velocita_pz_h": 450.0,
+        "velocita_pz_h": 350.0,
         "rsu_unit": 0.25,
         "costo_orario_macchina": 5.0,
         "costo_orario_rsu": 25.0,
@@ -2370,8 +2425,8 @@
       "peso_disegno_g": 42.0,
       "rinfusa_ricarico_div_100": false,
       "mp_costos_kg": [
-        1.5,
-        15.0,
+        1.69,
+        20.0,
         0.0,
         0.0
       ],
@@ -2381,6 +2436,7 @@
         0.0,
         0.0
       ],
+      "master_color_costo_kg": 20.0,
       "imballo_items": [
         {
           "name": "scatole",
@@ -2403,7 +2459,7 @@
       "allineato": {
         "ore_uomo": 4.0,
         "costo_rsu": 32.0,
-        "velocita_pz_h": 450.0,
+        "velocita_pz_h": 350.0,
         "rsu_unit": 0.5,
         "costo_orario_macchina": 5.0,
         "costo_orario_rsu": 25.0,
@@ -2412,7 +2468,7 @@
       "rinfusa": {
         "ore_uomo": 4.0,
         "costo_rsu": 32.0,
-        "velocita_pz_h": 450.0,
+        "velocita_pz_h": 350.0,
         "rsu_unit": 0.25,
         "costo_orario_macchina": 5.0,
         "costo_orario_rsu": 25.0,
@@ -2426,8 +2482,8 @@
       "peso_disegno_g": 60.0,
       "rinfusa_ricarico_div_100": false,
       "mp_costos_kg": [
-        2.0,
-        15.0,
+        1.69,
+        20.0,
         0.0,
         0.0
       ],
@@ -2437,6 +2493,7 @@
         0.0,
         0.0
       ],
+      "master_color_costo_kg": 20.0,
       "imballo_items": [
         {
           "name": "scatole",
@@ -2459,7 +2516,7 @@
       "allineato": {
         "ore_uomo": 4.0,
         "costo_rsu": 32.0,
-        "velocita_pz_h": 200.0,
+        "velocita_pz_h": 350.0,
         "rsu_unit": 0.5,
         "costo_orario_macchina": 5.0,
         "costo_orario_rsu": 25.0,
@@ -2468,7 +2525,7 @@
       "rinfusa": {
         "ore_uomo": 4.0,
         "costo_rsu": 32.0,
-        "velocita_pz_h": 200.0,
+        "velocita_pz_h": 350.0,
         "rsu_unit": 0.25,
         "costo_orario_macchina": 5.0,
         "costo_orario_rsu": 25.0,
@@ -2482,8 +2539,8 @@
       "peso_disegno_g": 60.0,
       "rinfusa_ricarico_div_100": false,
       "mp_costos_kg": [
-        2.0,
-        4.0,
+        1.69,
+        10.0,
         0.0,
         0.0
       ],
@@ -2493,6 +2550,7 @@
         0.0,
         0.0
       ],
+      "master_color_costo_kg": 10.0,
       "imballo_items": [
         {
           "name": "scatole",
@@ -2515,7 +2573,7 @@
       "allineato": {
         "ore_uomo": 4.0,
         "costo_rsu": 32.0,
-        "velocita_pz_h": 200.0,
+        "velocita_pz_h": 350.0,
         "rsu_unit": 0.5,
         "costo_orario_macchina": 5.0,
         "costo_orario_rsu": 25.0,
@@ -2524,7 +2582,7 @@
       "rinfusa": {
         "ore_uomo": 4.0,
         "costo_rsu": 32.0,
-        "velocita_pz_h": 200.0,
+        "velocita_pz_h": 350.0,
         "rsu_unit": 0.25,
         "costo_orario_macchina": 5.0,
         "costo_orario_rsu": 25.0,
@@ -2538,8 +2596,8 @@
       "peso_disegno_g": 60.0,
       "rinfusa_ricarico_div_100": false,
       "mp_costos_kg": [
-        1.5,
-        4.0,
+        1.69,
+        10.0,
         0.0,
         0.0
       ],
@@ -2549,6 +2607,7 @@
         0.0,
         0.0
       ],
+      "master_color_costo_kg": 10.0,
       "imballo_items": [
         {
           "name": "scatole",
@@ -2571,7 +2630,7 @@
       "allineato": {
         "ore_uomo": 4.0,
         "costo_rsu": 32.0,
-        "velocita_pz_h": 200.0,
+        "velocita_pz_h": 350.0,
         "rsu_unit": 0.5,
         "costo_orario_macchina": 5.0,
         "costo_orario_rsu": 25.0,
@@ -2580,7 +2639,7 @@
       "rinfusa": {
         "ore_uomo": 4.0,
         "costo_rsu": 32.0,
-        "velocita_pz_h": 200.0,
+        "velocita_pz_h": 350.0,
         "rsu_unit": 0.25,
         "costo_orario_macchina": 5.0,
         "costo_orario_rsu": 25.0,
@@ -2594,8 +2653,8 @@
       "peso_disegno_g": 60.0,
       "rinfusa_ricarico_div_100": true,
       "mp_costos_kg": [
-        1.5,
-        15.0,
+        1.69,
+        20.0,
         0.0,
         0.0
       ],
@@ -2605,6 +2664,7 @@
         0.0,
         0.0
       ],
+      "master_color_costo_kg": 20.0,
       "imballo_items": [
         {
           "name": "scatole",
@@ -2627,7 +2687,7 @@
       "allineato": {
         "ore_uomo": 4.0,
         "costo_rsu": 32.0,
-        "velocita_pz_h": 200.0,
+        "velocita_pz_h": 350.0,
         "rsu_unit": 0.5,
         "costo_orario_macchina": 5.0,
         "costo_orario_rsu": 25.0,
@@ -2636,12 +2696,34 @@
       "rinfusa": {
         "ore_uomo": 4.0,
         "costo_rsu": 32.0,
-        "velocita_pz_h": 200.0,
+        "velocita_pz_h": 350.0,
         "rsu_unit": 0.25,
         "costo_orario_macchina": 5.0,
         "costo_orario_rsu": 25.0,
         "ricarico_costi_ind": 0.3
       }
+    }
+  ],
+  "imballi_fissi": [
+    {
+      "modalita": "allineato",
+      "fascia": "fino_125",
+      "costo_eur_per_pezzo": null
+    },
+    {
+      "modalita": "allineato",
+      "fascia": "oltre_125",
+      "costo_eur_per_pezzo": null
+    },
+    {
+      "modalita": "rinfusa",
+      "fascia": "fino_125",
+      "costo_eur_per_pezzo": null
+    },
+    {
+      "modalita": "rinfusa",
+      "fascia": "oltre_125",
+      "costo_eur_per_pezzo": null
     }
   ]
 }

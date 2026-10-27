@@ -1,0 +1,2647 @@
+{
+  "materials": [
+    {
+      "code": "PP",
+      "name": "PP"
+    },
+    {
+      "code": "PE",
+      "name": "PE"
+    },
+    {
+      "code": "PETG",
+      "name": "PETG"
+    },
+    {
+      "code": "PE_PCR",
+      "name": "PE PCR"
+    }
+  ],
+  "colors": [
+    {
+      "code": "NBN",
+      "name": "Non bianco / neutro"
+    },
+    {
+      "code": "COL",
+      "name": "Colorato"
+    }
+  ],
+  "capacities": [
+    {
+      "label": "30",
+      "peso_disegno_g": 8.0
+    },
+    {
+      "label": "50",
+      "peso_disegno_g": 10.0
+    },
+    {
+      "label": "75",
+      "peso_disegno_g": 12.0
+    },
+    {
+      "label": "100",
+      "peso_disegno_g": 15.0
+    },
+    {
+      "label": "125",
+      "peso_disegno_g": 18.0
+    },
+    {
+      "label": "150",
+      "peso_disegno_g": 21.0
+    },
+    {
+      "label": "200",
+      "peso_disegno_g": 25.0
+    },
+    {
+      "label": "250",
+      "peso_disegno_g": 28.0
+    },
+    {
+      "label": "300 / 350",
+      "peso_disegno_g": 38.0
+    },
+    {
+      "label": "400",
+      "peso_disegno_g": 38.0
+    },
+    {
+      "label": "500",
+      "peso_disegno_g": 42.0
+    },
+    {
+      "label": "1000",
+      "peso_disegno_g": 60.0
+    }
+  ],
+  "price_brackets": [
+    {
+      "sort_order": 1,
+      "da": 1000,
+      "fino": 2999,
+      "quantita_lotto": 2000,
+      "sfrido": 0.1,
+      "ricarico_vendite": 180,
+      "regola_vendita": "doppio80"
+    },
+    {
+      "sort_order": 2,
+      "da": 3000,
+      "fino": 4999,
+      "quantita_lotto": 4000,
+      "sfrido": 0.1,
+      "ricarico_vendite": 160,
+      "regola_vendita": "doppio80"
+    },
+    {
+      "sort_order": 3,
+      "da": 5000,
+      "fino": 9999,
+      "quantita_lotto": 7500,
+      "sfrido": 0.07,
+      "ricarico_vendite": 140,
+      "regola_vendita": "doppio80"
+    },
+    {
+      "sort_order": 4,
+      "da": 10000,
+      "fino": 14999,
+      "quantita_lotto": 12500,
+      "sfrido": 0.07,
+      "ricarico_vendite": 85,
+      "regola_vendita": "percentuale"
+    },
+    {
+      "sort_order": 5,
+      "da": 15000,
+      "fino": 19999,
+      "quantita_lotto": 17500,
+      "sfrido": 0.07,
+      "ricarico_vendite": 80,
+      "regola_vendita": "percentuale"
+    },
+    {
+      "sort_order": 6,
+      "da": 20000,
+      "fino": 29999,
+      "quantita_lotto": 25000,
+      "sfrido": 0.05,
+      "ricarico_vendite": 75,
+      "regola_vendita": "percentuale"
+    },
+    {
+      "sort_order": 7,
+      "da": 30000,
+      "fino": 39999,
+      "quantita_lotto": 35000,
+      "sfrido": 0.05,
+      "ricarico_vendite": 75,
+      "regola_vendita": "percentuale"
+    },
+    {
+      "sort_order": 8,
+      "da": 40000,
+      "fino": 49999,
+      "quantita_lotto": 45000,
+      "sfrido": 0.05,
+      "ricarico_vendite": 70,
+      "regola_vendita": "percentuale"
+    },
+    {
+      "sort_order": 9,
+      "da": 50000,
+      "fino": 99999,
+      "quantita_lotto": 75000,
+      "sfrido": 0.05,
+      "ricarico_vendite": 70,
+      "regola_vendita": "percentuale"
+    },
+    {
+      "sort_order": 10,
+      "da": 100000,
+      "fino": 150000,
+      "quantita_lotto": 125000,
+      "sfrido": 0.03,
+      "ricarico_vendite": 65,
+      "regola_vendita": "percentuale"
+    },
+    {
+      "sort_order": 11,
+      "da": 150000,
+      "fino": 300000,
+      "quantita_lotto": 200000,
+      "sfrido": 0.03,
+      "ricarico_vendite": 60,
+      "regola_vendita": "percentuale"
+    }
+  ],
+  "listino_configs": [
+    {
+      "capacity_label": "30",
+      "material_code": "PP",
+      "color_code": "NBN",
+      "peso_disegno_g": 8.0,
+      "rinfusa_ricarico_div_100": false,
+      "mp_costos_kg": [
+        2.0,
+        4.0,
+        0.0,
+        0.0
+      ],
+      "mp_utilizzi_pct": [
+        96.0,
+        4.0,
+        0.0,
+        0.0
+      ],
+      "imballo_items": [
+        {
+          "name": "scatole",
+          "costo": 6.129
+        },
+        {
+          "name": "sacchetti",
+          "costo": 1.242
+        },
+        {
+          "name": "veline",
+          "costo": 1.953
+        },
+        {
+          "name": "film",
+          "costo": 2.0
+        }
+      ],
+      "pezzi_pallet": 9900.0,
+      "allineato": {
+        "ore_uomo": 4.0,
+        "costo_rsu": 32.0,
+        "velocita_pz_h": 450.0,
+        "rsu_unit": 0.5,
+        "costo_orario_macchina": 5.0,
+        "costo_orario_rsu": 25.0,
+        "ricarico_costi_ind": 0.3
+      },
+      "rinfusa": {
+        "ore_uomo": 4.0,
+        "costo_rsu": 32.0,
+        "velocita_pz_h": 450.0,
+        "rsu_unit": 0.25,
+        "costo_orario_macchina": 5.0,
+        "costo_orario_rsu": 25.0,
+        "ricarico_costi_ind": 0.3
+      }
+    },
+    {
+      "capacity_label": "30",
+      "material_code": "PP",
+      "color_code": "COL",
+      "peso_disegno_g": 8.0,
+      "rinfusa_ricarico_div_100": false,
+      "mp_costos_kg": [
+        2.0,
+        15.0,
+        0.0,
+        0.0
+      ],
+      "mp_utilizzi_pct": [
+        96.0,
+        4.0,
+        0.0,
+        0.0
+      ],
+      "imballo_items": [
+        {
+          "name": "scatole",
+          "costo": 6.129
+        },
+        {
+          "name": "sacchetti",
+          "costo": 1.242
+        },
+        {
+          "name": "veline",
+          "costo": 1.953
+        },
+        {
+          "name": "film",
+          "costo": 2.0
+        }
+      ],
+      "pezzi_pallet": 9900.0,
+      "allineato": {
+        "ore_uomo": 4.0,
+        "costo_rsu": 32.0,
+        "velocita_pz_h": 450.0,
+        "rsu_unit": 0.5,
+        "costo_orario_macchina": 5.0,
+        "costo_orario_rsu": 25.0,
+        "ricarico_costi_ind": 0.3
+      },
+      "rinfusa": {
+        "ore_uomo": 4.0,
+        "costo_rsu": 32.0,
+        "velocita_pz_h": 450.0,
+        "rsu_unit": 0.25,
+        "costo_orario_macchina": 5.0,
+        "costo_orario_rsu": 25.0,
+        "ricarico_costi_ind": 0.3
+      }
+    },
+    {
+      "capacity_label": "30",
+      "material_code": "PE",
+      "color_code": "NBN",
+      "peso_disegno_g": 8.0,
+      "rinfusa_ricarico_div_100": false,
+      "mp_costos_kg": [
+        1.5,
+        4.0,
+        0.0,
+        0.0
+      ],
+      "mp_utilizzi_pct": [
+        96.0,
+        4.0,
+        0.0,
+        0.0
+      ],
+      "imballo_items": [
+        {
+          "name": "scatole",
+          "costo": 6.129
+        },
+        {
+          "name": "sacchetti",
+          "costo": 1.242
+        },
+        {
+          "name": "veline",
+          "costo": 1.953
+        },
+        {
+          "name": "film",
+          "costo": 2.0
+        }
+      ],
+      "pezzi_pallet": 9900.0,
+      "allineato": {
+        "ore_uomo": 4.0,
+        "costo_rsu": 32.0,
+        "velocita_pz_h": 450.0,
+        "rsu_unit": 0.5,
+        "costo_orario_macchina": 5.0,
+        "costo_orario_rsu": 25.0,
+        "ricarico_costi_ind": 0.3
+      },
+      "rinfusa": {
+        "ore_uomo": 4.0,
+        "costo_rsu": 32.0,
+        "velocita_pz_h": 450.0,
+        "rsu_unit": 0.25,
+        "costo_orario_macchina": 5.0,
+        "costo_orario_rsu": 25.0,
+        "ricarico_costi_ind": 0.3
+      }
+    },
+    {
+      "capacity_label": "30",
+      "material_code": "PE",
+      "color_code": "COL",
+      "peso_disegno_g": 8.0,
+      "rinfusa_ricarico_div_100": false,
+      "mp_costos_kg": [
+        1.5,
+        15.0,
+        0.0,
+        0.0
+      ],
+      "mp_utilizzi_pct": [
+        96.0,
+        4.0,
+        0.0,
+        0.0
+      ],
+      "imballo_items": [
+        {
+          "name": "scatole",
+          "costo": 6.129
+        },
+        {
+          "name": "sacchetti",
+          "costo": 1.242
+        },
+        {
+          "name": "veline",
+          "costo": 1.953
+        },
+        {
+          "name": "film",
+          "costo": 2.0
+        }
+      ],
+      "pezzi_pallet": 9900.0,
+      "allineato": {
+        "ore_uomo": 4.0,
+        "costo_rsu": 32.0,
+        "velocita_pz_h": 450.0,
+        "rsu_unit": 0.5,
+        "costo_orario_macchina": 5.0,
+        "costo_orario_rsu": 25.0,
+        "ricarico_costi_ind": 0.3
+      },
+      "rinfusa": {
+        "ore_uomo": 4.0,
+        "costo_rsu": 32.0,
+        "velocita_pz_h": 450.0,
+        "rsu_unit": 0.25,
+        "costo_orario_macchina": 5.0,
+        "costo_orario_rsu": 25.0,
+        "ricarico_costi_ind": 0.3
+      }
+    },
+    {
+      "capacity_label": "50",
+      "material_code": "PP",
+      "color_code": "NBN",
+      "peso_disegno_g": 10.0,
+      "rinfusa_ricarico_div_100": false,
+      "mp_costos_kg": [
+        1.39,
+        4.0,
+        0.0,
+        0.0
+      ],
+      "mp_utilizzi_pct": [
+        96.0,
+        4.0,
+        0.0,
+        0.0
+      ],
+      "imballo_items": [
+        {
+          "name": "scatole",
+          "costo": 6.129
+        },
+        {
+          "name": "sacchetti",
+          "costo": 1.242
+        },
+        {
+          "name": "veline",
+          "costo": 1.953
+        },
+        {
+          "name": "film",
+          "costo": 2.0
+        }
+      ],
+      "pezzi_pallet": 9900.0,
+      "allineato": {
+        "ore_uomo": 4.0,
+        "costo_rsu": 32.0,
+        "velocita_pz_h": 550.0,
+        "rsu_unit": 0.5,
+        "costo_orario_macchina": 5.0,
+        "costo_orario_rsu": 25.0,
+        "ricarico_costi_ind": 0.3
+      },
+      "rinfusa": {
+        "ore_uomo": 4.0,
+        "costo_rsu": 32.0,
+        "velocita_pz_h": 550.0,
+        "rsu_unit": 0.25,
+        "costo_orario_macchina": 5.0,
+        "costo_orario_rsu": 25.0,
+        "ricarico_costi_ind": 0.3
+      }
+    },
+    {
+      "capacity_label": "50",
+      "material_code": "PP",
+      "color_code": "COL",
+      "peso_disegno_g": 10.0,
+      "rinfusa_ricarico_div_100": false,
+      "mp_costos_kg": [
+        2.0,
+        15.0,
+        0.0,
+        0.0
+      ],
+      "mp_utilizzi_pct": [
+        96.0,
+        4.0,
+        0.0,
+        0.0
+      ],
+      "imballo_items": [
+        {
+          "name": "scatole",
+          "costo": 6.129
+        },
+        {
+          "name": "sacchetti",
+          "costo": 1.242
+        },
+        {
+          "name": "veline",
+          "costo": 1.953
+        },
+        {
+          "name": "film",
+          "costo": 2.0
+        }
+      ],
+      "pezzi_pallet": 9900.0,
+      "allineato": {
+        "ore_uomo": 4.0,
+        "costo_rsu": 32.0,
+        "velocita_pz_h": 450.0,
+        "rsu_unit": 0.5,
+        "costo_orario_macchina": 5.0,
+        "costo_orario_rsu": 25.0,
+        "ricarico_costi_ind": 0.3
+      },
+      "rinfusa": {
+        "ore_uomo": 4.0,
+        "costo_rsu": 32.0,
+        "velocita_pz_h": 450.0,
+        "rsu_unit": 0.25,
+        "costo_orario_macchina": 5.0,
+        "costo_orario_rsu": 25.0,
+        "ricarico_costi_ind": 0.3
+      }
+    },
+    {
+      "capacity_label": "50",
+      "material_code": "PE",
+      "color_code": "NBN",
+      "peso_disegno_g": 20.0,
+      "rinfusa_ricarico_div_100": false,
+      "mp_costos_kg": [
+        1.5,
+        4.0,
+        0.0,
+        0.0
+      ],
+      "mp_utilizzi_pct": [
+        96.0,
+        4.0,
+        0.0,
+        0.0
+      ],
+      "imballo_items": [
+        {
+          "name": "scatole",
+          "costo": 6.129
+        },
+        {
+          "name": "sacchetti",
+          "costo": 1.242
+        },
+        {
+          "name": "veline",
+          "costo": 1.953
+        },
+        {
+          "name": "film",
+          "costo": 2.0
+        }
+      ],
+      "pezzi_pallet": 9900.0,
+      "allineato": {
+        "ore_uomo": 4.0,
+        "costo_rsu": 32.0,
+        "velocita_pz_h": 450.0,
+        "rsu_unit": 0.5,
+        "costo_orario_macchina": 5.0,
+        "costo_orario_rsu": 25.0,
+        "ricarico_costi_ind": 0.3
+      },
+      "rinfusa": {
+        "ore_uomo": 4.0,
+        "costo_rsu": 32.0,
+        "velocita_pz_h": 450.0,
+        "rsu_unit": 0.25,
+        "costo_orario_macchina": 5.0,
+        "costo_orario_rsu": 25.0,
+        "ricarico_costi_ind": 0.3
+      }
+    },
+    {
+      "capacity_label": "50",
+      "material_code": "PE",
+      "color_code": "COL",
+      "peso_disegno_g": 10.0,
+      "rinfusa_ricarico_div_100": false,
+      "mp_costos_kg": [
+        1.5,
+        15.0,
+        0.0,
+        0.0
+      ],
+      "mp_utilizzi_pct": [
+        96.0,
+        4.0,
+        0.0,
+        0.0
+      ],
+      "imballo_items": [
+        {
+          "name": "scatole",
+          "costo": 6.129
+        },
+        {
+          "name": "sacchetti",
+          "costo": 1.242
+        },
+        {
+          "name": "veline",
+          "costo": 1.953
+        },
+        {
+          "name": "film",
+          "costo": 2.0
+        }
+      ],
+      "pezzi_pallet": 9900.0,
+      "allineato": {
+        "ore_uomo": 4.0,
+        "costo_rsu": 32.0,
+        "velocita_pz_h": 450.0,
+        "rsu_unit": 0.5,
+        "costo_orario_macchina": 5.0,
+        "costo_orario_rsu": 25.0,
+        "ricarico_costi_ind": 0.3
+      },
+      "rinfusa": {
+        "ore_uomo": 4.0,
+        "costo_rsu": 32.0,
+        "velocita_pz_h": 450.0,
+        "rsu_unit": 0.25,
+        "costo_orario_macchina": 5.0,
+        "costo_orario_rsu": 25.0,
+        "ricarico_costi_ind": 0.3
+      }
+    },
+    {
+      "capacity_label": "75",
+      "material_code": "PP",
+      "color_code": "NBN",
+      "peso_disegno_g": 12.0,
+      "rinfusa_ricarico_div_100": false,
+      "mp_costos_kg": [
+        2.0,
+        4.0,
+        0.0,
+        0.0
+      ],
+      "mp_utilizzi_pct": [
+        96.0,
+        4.0,
+        0.0,
+        0.0
+      ],
+      "imballo_items": [
+        {
+          "name": "scatole",
+          "costo": 6.129
+        },
+        {
+          "name": "sacchetti",
+          "costo": 1.242
+        },
+        {
+          "name": "veline",
+          "costo": 1.953
+        },
+        {
+          "name": "film",
+          "costo": 2.0
+        }
+      ],
+      "pezzi_pallet": 9900.0,
+      "allineato": {
+        "ore_uomo": 4.0,
+        "costo_rsu": 32.0,
+        "velocita_pz_h": 450.0,
+        "rsu_unit": 0.5,
+        "costo_orario_macchina": 5.0,
+        "costo_orario_rsu": 25.0,
+        "ricarico_costi_ind": 0.3
+      },
+      "rinfusa": {
+        "ore_uomo": 4.0,
+        "costo_rsu": 32.0,
+        "velocita_pz_h": 450.0,
+        "rsu_unit": 0.25,
+        "costo_orario_macchina": 5.0,
+        "costo_orario_rsu": 25.0,
+        "ricarico_costi_ind": 0.3
+      }
+    },
+    {
+      "capacity_label": "75",
+      "material_code": "PP",
+      "color_code": "COL",
+      "peso_disegno_g": 12.0,
+      "rinfusa_ricarico_div_100": false,
+      "mp_costos_kg": [
+        2.0,
+        15.0,
+        0.0,
+        0.0
+      ],
+      "mp_utilizzi_pct": [
+        96.0,
+        4.0,
+        0.0,
+        0.0
+      ],
+      "imballo_items": [
+        {
+          "name": "scatole",
+          "costo": 6.129
+        },
+        {
+          "name": "sacchetti",
+          "costo": 1.242
+        },
+        {
+          "name": "veline",
+          "costo": 1.953
+        },
+        {
+          "name": "film",
+          "costo": 2.0
+        }
+      ],
+      "pezzi_pallet": 9900.0,
+      "allineato": {
+        "ore_uomo": 4.0,
+        "costo_rsu": 32.0,
+        "velocita_pz_h": 450.0,
+        "rsu_unit": 0.5,
+        "costo_orario_macchina": 5.0,
+        "costo_orario_rsu": 25.0,
+        "ricarico_costi_ind": 0.3
+      },
+      "rinfusa": {
+        "ore_uomo": 4.0,
+        "costo_rsu": 32.0,
+        "velocita_pz_h": 450.0,
+        "rsu_unit": 0.25,
+        "costo_orario_macchina": 5.0,
+        "costo_orario_rsu": 25.0,
+        "ricarico_costi_ind": 0.3
+      }
+    },
+    {
+      "capacity_label": "75",
+      "material_code": "PE",
+      "color_code": "NBN",
+      "peso_disegno_g": 12.0,
+      "rinfusa_ricarico_div_100": false,
+      "mp_costos_kg": [
+        1.5,
+        4.0,
+        0.0,
+        0.0
+      ],
+      "mp_utilizzi_pct": [
+        96.0,
+        4.0,
+        0.0,
+        0.0
+      ],
+      "imballo_items": [
+        {
+          "name": "scatole",
+          "costo": 6.129
+        },
+        {
+          "name": "sacchetti",
+          "costo": 1.242
+        },
+        {
+          "name": "veline",
+          "costo": 1.953
+        },
+        {
+          "name": "film",
+          "costo": 2.0
+        }
+      ],
+      "pezzi_pallet": 9900.0,
+      "allineato": {
+        "ore_uomo": 4.0,
+        "costo_rsu": 32.0,
+        "velocita_pz_h": 450.0,
+        "rsu_unit": 0.5,
+        "costo_orario_macchina": 5.0,
+        "costo_orario_rsu": 25.0,
+        "ricarico_costi_ind": 0.3
+      },
+      "rinfusa": {
+        "ore_uomo": 4.0,
+        "costo_rsu": 32.0,
+        "velocita_pz_h": 450.0,
+        "rsu_unit": 0.25,
+        "costo_orario_macchina": 5.0,
+        "costo_orario_rsu": 25.0,
+        "ricarico_costi_ind": 0.3
+      }
+    },
+    {
+      "capacity_label": "75",
+      "material_code": "PE",
+      "color_code": "COL",
+      "peso_disegno_g": 12.0,
+      "rinfusa_ricarico_div_100": false,
+      "mp_costos_kg": [
+        1.5,
+        15.0,
+        0.0,
+        0.0
+      ],
+      "mp_utilizzi_pct": [
+        96.0,
+        4.0,
+        0.0,
+        0.0
+      ],
+      "imballo_items": [
+        {
+          "name": "scatole",
+          "costo": 6.129
+        },
+        {
+          "name": "sacchetti",
+          "costo": 1.242
+        },
+        {
+          "name": "veline",
+          "costo": 1.953
+        },
+        {
+          "name": "film",
+          "costo": 2.0
+        }
+      ],
+      "pezzi_pallet": 9900.0,
+      "allineato": {
+        "ore_uomo": 4.0,
+        "costo_rsu": 32.0,
+        "velocita_pz_h": 450.0,
+        "rsu_unit": 0.5,
+        "costo_orario_macchina": 5.0,
+        "costo_orario_rsu": 25.0,
+        "ricarico_costi_ind": 0.3
+      },
+      "rinfusa": {
+        "ore_uomo": 4.0,
+        "costo_rsu": 32.0,
+        "velocita_pz_h": 450.0,
+        "rsu_unit": 0.25,
+        "costo_orario_macchina": 5.0,
+        "costo_orario_rsu": 25.0,
+        "ricarico_costi_ind": 0.3
+      }
+    },
+    {
+      "capacity_label": "100",
+      "material_code": "PP",
+      "color_code": "NBN",
+      "peso_disegno_g": 15.0,
+      "rinfusa_ricarico_div_100": false,
+      "mp_costos_kg": [
+        2.0,
+        4.0,
+        0.0,
+        0.0
+      ],
+      "mp_utilizzi_pct": [
+        96.0,
+        4.0,
+        0.0,
+        0.0
+      ],
+      "imballo_items": [
+        {
+          "name": "scatole",
+          "costo": 6.129
+        },
+        {
+          "name": "sacchetti",
+          "costo": 1.242
+        },
+        {
+          "name": "veline",
+          "costo": 1.953
+        },
+        {
+          "name": "film",
+          "costo": 2.0
+        }
+      ],
+      "pezzi_pallet": 9900.0,
+      "allineato": {
+        "ore_uomo": 4.0,
+        "costo_rsu": 32.0,
+        "velocita_pz_h": 450.0,
+        "rsu_unit": 0.5,
+        "costo_orario_macchina": 5.0,
+        "costo_orario_rsu": 25.0,
+        "ricarico_costi_ind": 0.3
+      },
+      "rinfusa": {
+        "ore_uomo": 4.0,
+        "costo_rsu": 32.0,
+        "velocita_pz_h": 450.0,
+        "rsu_unit": 0.25,
+        "costo_orario_macchina": 5.0,
+        "costo_orario_rsu": 25.0,
+        "ricarico_costi_ind": 0.3
+      }
+    },
+    {
+      "capacity_label": "100",
+      "material_code": "PP",
+      "color_code": "COL",
+      "peso_disegno_g": 15.0,
+      "rinfusa_ricarico_div_100": false,
+      "mp_costos_kg": [
+        2.0,
+        15.0,
+        0.0,
+        0.0
+      ],
+      "mp_utilizzi_pct": [
+        96.0,
+        4.0,
+        0.0,
+        0.0
+      ],
+      "imballo_items": [
+        {
+          "name": "scatole",
+          "costo": 6.129
+        },
+        {
+          "name": "sacchetti",
+          "costo": 1.242
+        },
+        {
+          "name": "veline",
+          "costo": 1.953
+        },
+        {
+          "name": "film",
+          "costo": 2.0
+        }
+      ],
+      "pezzi_pallet": 9900.0,
+      "allineato": {
+        "ore_uomo": 4.0,
+        "costo_rsu": 32.0,
+        "velocita_pz_h": 450.0,
+        "rsu_unit": 0.5,
+        "costo_orario_macchina": 5.0,
+        "costo_orario_rsu": 25.0,
+        "ricarico_costi_ind": 0.3
+      },
+      "rinfusa": {
+        "ore_uomo": 4.0,
+        "costo_rsu": 32.0,
+        "velocita_pz_h": 450.0,
+        "rsu_unit": 0.25,
+        "costo_orario_macchina": 5.0,
+        "costo_orario_rsu": 25.0,
+        "ricarico_costi_ind": 0.3
+      }
+    },
+    {
+      "capacity_label": "100",
+      "material_code": "PE",
+      "color_code": "NBN",
+      "peso_disegno_g": 15.0,
+      "rinfusa_ricarico_div_100": false,
+      "mp_costos_kg": [
+        1.5,
+        4.0,
+        0.0,
+        0.0
+      ],
+      "mp_utilizzi_pct": [
+        96.0,
+        4.0,
+        0.0,
+        0.0
+      ],
+      "imballo_items": [
+        {
+          "name": "scatole",
+          "costo": 6.129
+        },
+        {
+          "name": "sacchetti",
+          "costo": 1.242
+        },
+        {
+          "name": "veline",
+          "costo": 1.953
+        },
+        {
+          "name": "film",
+          "costo": 2.0
+        }
+      ],
+      "pezzi_pallet": 9900.0,
+      "allineato": {
+        "ore_uomo": 4.0,
+        "costo_rsu": 32.0,
+        "velocita_pz_h": 450.0,
+        "rsu_unit": 0.5,
+        "costo_orario_macchina": 5.0,
+        "costo_orario_rsu": 25.0,
+        "ricarico_costi_ind": 0.3
+      },
+      "rinfusa": {
+        "ore_uomo": 4.0,
+        "costo_rsu": 32.0,
+        "velocita_pz_h": 450.0,
+        "rsu_unit": 0.25,
+        "costo_orario_macchina": 5.0,
+        "costo_orario_rsu": 25.0,
+        "ricarico_costi_ind": 0.3
+      }
+    },
+    {
+      "capacity_label": "100",
+      "material_code": "PE",
+      "color_code": "COL",
+      "peso_disegno_g": 15.0,
+      "rinfusa_ricarico_div_100": false,
+      "mp_costos_kg": [
+        1.5,
+        15.0,
+        0.0,
+        0.0
+      ],
+      "mp_utilizzi_pct": [
+        96.0,
+        4.0,
+        0.0,
+        0.0
+      ],
+      "imballo_items": [
+        {
+          "name": "scatole",
+          "costo": 6.129
+        },
+        {
+          "name": "sacchetti",
+          "costo": 1.242
+        },
+        {
+          "name": "veline",
+          "costo": 1.953
+        },
+        {
+          "name": "film",
+          "costo": 2.0
+        }
+      ],
+      "pezzi_pallet": 9900.0,
+      "allineato": {
+        "ore_uomo": 4.0,
+        "costo_rsu": 32.0,
+        "velocita_pz_h": 450.0,
+        "rsu_unit": 0.5,
+        "costo_orario_macchina": 5.0,
+        "costo_orario_rsu": 25.0,
+        "ricarico_costi_ind": 0.3
+      },
+      "rinfusa": {
+        "ore_uomo": 4.0,
+        "costo_rsu": 32.0,
+        "velocita_pz_h": 450.0,
+        "rsu_unit": 0.25,
+        "costo_orario_macchina": 5.0,
+        "costo_orario_rsu": 25.0,
+        "ricarico_costi_ind": 0.3
+      }
+    },
+    {
+      "capacity_label": "125",
+      "material_code": "PP",
+      "color_code": "NBN",
+      "peso_disegno_g": 18.0,
+      "rinfusa_ricarico_div_100": false,
+      "mp_costos_kg": [
+        2.0,
+        4.0,
+        0.0,
+        0.0
+      ],
+      "mp_utilizzi_pct": [
+        96.0,
+        4.0,
+        0.0,
+        0.0
+      ],
+      "imballo_items": [
+        {
+          "name": "scatole",
+          "costo": 6.129
+        },
+        {
+          "name": "sacchetti",
+          "costo": 1.242
+        },
+        {
+          "name": "veline",
+          "costo": 1.953
+        },
+        {
+          "name": "film",
+          "costo": 2.0
+        }
+      ],
+      "pezzi_pallet": 9900.0,
+      "allineato": {
+        "ore_uomo": 4.0,
+        "costo_rsu": 32.0,
+        "velocita_pz_h": 450.0,
+        "rsu_unit": 0.5,
+        "costo_orario_macchina": 5.0,
+        "costo_orario_rsu": 25.0,
+        "ricarico_costi_ind": 0.3
+      },
+      "rinfusa": {
+        "ore_uomo": 4.0,
+        "costo_rsu": 32.0,
+        "velocita_pz_h": 450.0,
+        "rsu_unit": 0.25,
+        "costo_orario_macchina": 5.0,
+        "costo_orario_rsu": 25.0,
+        "ricarico_costi_ind": 0.3
+      }
+    },
+    {
+      "capacity_label": "125",
+      "material_code": "PP",
+      "color_code": "COL",
+      "peso_disegno_g": 18.0,
+      "rinfusa_ricarico_div_100": false,
+      "mp_costos_kg": [
+        2.0,
+        15.0,
+        0.0,
+        0.0
+      ],
+      "mp_utilizzi_pct": [
+        96.0,
+        4.0,
+        0.0,
+        0.0
+      ],
+      "imballo_items": [
+        {
+          "name": "scatole",
+          "costo": 6.129
+        },
+        {
+          "name": "sacchetti",
+          "costo": 1.242
+        },
+        {
+          "name": "veline",
+          "costo": 1.953
+        },
+        {
+          "name": "film",
+          "costo": 2.0
+        }
+      ],
+      "pezzi_pallet": 9900.0,
+      "allineato": {
+        "ore_uomo": 4.0,
+        "costo_rsu": 32.0,
+        "velocita_pz_h": 450.0,
+        "rsu_unit": 0.5,
+        "costo_orario_macchina": 5.0,
+        "costo_orario_rsu": 25.0,
+        "ricarico_costi_ind": 0.3
+      },
+      "rinfusa": {
+        "ore_uomo": 4.0,
+        "costo_rsu": 32.0,
+        "velocita_pz_h": 450.0,
+        "rsu_unit": 0.25,
+        "costo_orario_macchina": 5.0,
+        "costo_orario_rsu": 25.0,
+        "ricarico_costi_ind": 0.3
+      }
+    },
+    {
+      "capacity_label": "125",
+      "material_code": "PE",
+      "color_code": "NBN",
+      "peso_disegno_g": 18.0,
+      "rinfusa_ricarico_div_100": false,
+      "mp_costos_kg": [
+        1.5,
+        4.0,
+        0.0,
+        0.0
+      ],
+      "mp_utilizzi_pct": [
+        96.0,
+        4.0,
+        0.0,
+        0.0
+      ],
+      "imballo_items": [
+        {
+          "name": "scatole",
+          "costo": 6.129
+        },
+        {
+          "name": "sacchetti",
+          "costo": 1.242
+        },
+        {
+          "name": "veline",
+          "costo": 1.953
+        },
+        {
+          "name": "film",
+          "costo": 2.0
+        }
+      ],
+      "pezzi_pallet": 9900.0,
+      "allineato": {
+        "ore_uomo": 4.0,
+        "costo_rsu": 32.0,
+        "velocita_pz_h": 450.0,
+        "rsu_unit": 0.5,
+        "costo_orario_macchina": 5.0,
+        "costo_orario_rsu": 25.0,
+        "ricarico_costi_ind": 0.3
+      },
+      "rinfusa": {
+        "ore_uomo": 4.0,
+        "costo_rsu": 32.0,
+        "velocita_pz_h": 450.0,
+        "rsu_unit": 0.25,
+        "costo_orario_macchina": 5.0,
+        "costo_orario_rsu": 25.0,
+        "ricarico_costi_ind": 0.3
+      }
+    },
+    {
+      "capacity_label": "125",
+      "material_code": "PE",
+      "color_code": "COL",
+      "peso_disegno_g": 18.0,
+      "rinfusa_ricarico_div_100": false,
+      "mp_costos_kg": [
+        1.5,
+        15.0,
+        0.0,
+        0.0
+      ],
+      "mp_utilizzi_pct": [
+        96.0,
+        4.0,
+        0.0,
+        0.0
+      ],
+      "imballo_items": [
+        {
+          "name": "scatole",
+          "costo": 6.129
+        },
+        {
+          "name": "sacchetti",
+          "costo": 1.242
+        },
+        {
+          "name": "veline",
+          "costo": 1.953
+        },
+        {
+          "name": "film",
+          "costo": 2.0
+        }
+      ],
+      "pezzi_pallet": 9900.0,
+      "allineato": {
+        "ore_uomo": 4.0,
+        "costo_rsu": 32.0,
+        "velocita_pz_h": 450.0,
+        "rsu_unit": 0.5,
+        "costo_orario_macchina": 5.0,
+        "costo_orario_rsu": 25.0,
+        "ricarico_costi_ind": 0.3
+      },
+      "rinfusa": {
+        "ore_uomo": 4.0,
+        "costo_rsu": 32.0,
+        "velocita_pz_h": 450.0,
+        "rsu_unit": 0.25,
+        "costo_orario_macchina": 5.0,
+        "costo_orario_rsu": 25.0,
+        "ricarico_costi_ind": 0.3
+      }
+    },
+    {
+      "capacity_label": "150",
+      "material_code": "PP",
+      "color_code": "NBN",
+      "peso_disegno_g": 21.0,
+      "rinfusa_ricarico_div_100": false,
+      "mp_costos_kg": [
+        2.0,
+        4.0,
+        0.0,
+        0.0
+      ],
+      "mp_utilizzi_pct": [
+        96.0,
+        4.0,
+        0.0,
+        0.0
+      ],
+      "imballo_items": [
+        {
+          "name": "scatole",
+          "costo": 6.129
+        },
+        {
+          "name": "sacchetti",
+          "costo": 1.242
+        },
+        {
+          "name": "veline",
+          "costo": 1.953
+        },
+        {
+          "name": "film",
+          "costo": 2.0
+        }
+      ],
+      "pezzi_pallet": 9900.0,
+      "allineato": {
+        "ore_uomo": 4.0,
+        "costo_rsu": 32.0,
+        "velocita_pz_h": 450.0,
+        "rsu_unit": 0.5,
+        "costo_orario_macchina": 5.0,
+        "costo_orario_rsu": 25.0,
+        "ricarico_costi_ind": 0.3
+      },
+      "rinfusa": {
+        "ore_uomo": 4.0,
+        "costo_rsu": 32.0,
+        "velocita_pz_h": 450.0,
+        "rsu_unit": 0.25,
+        "costo_orario_macchina": 5.0,
+        "costo_orario_rsu": 25.0,
+        "ricarico_costi_ind": 0.3
+      }
+    },
+    {
+      "capacity_label": "150",
+      "material_code": "PP",
+      "color_code": "COL",
+      "peso_disegno_g": 21.0,
+      "rinfusa_ricarico_div_100": false,
+      "mp_costos_kg": [
+        2.0,
+        15.0,
+        0.0,
+        0.0
+      ],
+      "mp_utilizzi_pct": [
+        96.0,
+        4.0,
+        0.0,
+        0.0
+      ],
+      "imballo_items": [
+        {
+          "name": "scatole",
+          "costo": 6.129
+        },
+        {
+          "name": "sacchetti",
+          "costo": 1.242
+        },
+        {
+          "name": "veline",
+          "costo": 1.953
+        },
+        {
+          "name": "film",
+          "costo": 2.0
+        }
+      ],
+      "pezzi_pallet": 9900.0,
+      "allineato": {
+        "ore_uomo": 4.0,
+        "costo_rsu": 32.0,
+        "velocita_pz_h": 450.0,
+        "rsu_unit": 0.5,
+        "costo_orario_macchina": 5.0,
+        "costo_orario_rsu": 25.0,
+        "ricarico_costi_ind": 0.3
+      },
+      "rinfusa": {
+        "ore_uomo": 4.0,
+        "costo_rsu": 32.0,
+        "velocita_pz_h": 450.0,
+        "rsu_unit": 0.25,
+        "costo_orario_macchina": 5.0,
+        "costo_orario_rsu": 25.0,
+        "ricarico_costi_ind": 0.3
+      }
+    },
+    {
+      "capacity_label": "150",
+      "material_code": "PE",
+      "color_code": "NBN",
+      "peso_disegno_g": 21.0,
+      "rinfusa_ricarico_div_100": false,
+      "mp_costos_kg": [
+        1.5,
+        4.0,
+        0.0,
+        0.0
+      ],
+      "mp_utilizzi_pct": [
+        96.0,
+        4.0,
+        0.0,
+        0.0
+      ],
+      "imballo_items": [
+        {
+          "name": "scatole",
+          "costo": 6.129
+        },
+        {
+          "name": "sacchetti",
+          "costo": 1.242
+        },
+        {
+          "name": "veline",
+          "costo": 1.953
+        },
+        {
+          "name": "film",
+          "costo": 2.0
+        }
+      ],
+      "pezzi_pallet": 9900.0,
+      "allineato": {
+        "ore_uomo": 4.0,
+        "costo_rsu": 32.0,
+        "velocita_pz_h": 450.0,
+        "rsu_unit": 0.5,
+        "costo_orario_macchina": 5.0,
+        "costo_orario_rsu": 25.0,
+        "ricarico_costi_ind": 0.3
+      },
+      "rinfusa": {
+        "ore_uomo": 4.0,
+        "costo_rsu": 32.0,
+        "velocita_pz_h": 450.0,
+        "rsu_unit": 0.25,
+        "costo_orario_macchina": 5.0,
+        "costo_orario_rsu": 25.0,
+        "ricarico_costi_ind": 0.3
+      }
+    },
+    {
+      "capacity_label": "150",
+      "material_code": "PE",
+      "color_code": "COL",
+      "peso_disegno_g": 21.0,
+      "rinfusa_ricarico_div_100": false,
+      "mp_costos_kg": [
+        1.5,
+        15.0,
+        0.0,
+        0.0
+      ],
+      "mp_utilizzi_pct": [
+        96.0,
+        4.0,
+        0.0,
+        0.0
+      ],
+      "imballo_items": [
+        {
+          "name": "scatole",
+          "costo": 6.129
+        },
+        {
+          "name": "sacchetti",
+          "costo": 1.242
+        },
+        {
+          "name": "veline",
+          "costo": 1.953
+        },
+        {
+          "name": "film",
+          "costo": 2.0
+        }
+      ],
+      "pezzi_pallet": 9900.0,
+      "allineato": {
+        "ore_uomo": 4.0,
+        "costo_rsu": 32.0,
+        "velocita_pz_h": 450.0,
+        "rsu_unit": 0.5,
+        "costo_orario_macchina": 5.0,
+        "costo_orario_rsu": 25.0,
+        "ricarico_costi_ind": 0.3
+      },
+      "rinfusa": {
+        "ore_uomo": 4.0,
+        "costo_rsu": 32.0,
+        "velocita_pz_h": 450.0,
+        "rsu_unit": 0.25,
+        "costo_orario_macchina": 5.0,
+        "costo_orario_rsu": 25.0,
+        "ricarico_costi_ind": 0.3
+      }
+    },
+    {
+      "capacity_label": "200",
+      "material_code": "PP",
+      "color_code": "NBN",
+      "peso_disegno_g": 25.0,
+      "rinfusa_ricarico_div_100": false,
+      "mp_costos_kg": [
+        2.0,
+        4.0,
+        0.0,
+        0.0
+      ],
+      "mp_utilizzi_pct": [
+        96.0,
+        4.0,
+        0.0,
+        0.0
+      ],
+      "imballo_items": [
+        {
+          "name": "scatole",
+          "costo": 6.129
+        },
+        {
+          "name": "sacchetti",
+          "costo": 1.242
+        },
+        {
+          "name": "veline",
+          "costo": 1.953
+        },
+        {
+          "name": "film",
+          "costo": 2.0
+        }
+      ],
+      "pezzi_pallet": 9900.0,
+      "allineato": {
+        "ore_uomo": 4.0,
+        "costo_rsu": 32.0,
+        "velocita_pz_h": 450.0,
+        "rsu_unit": 0.5,
+        "costo_orario_macchina": 5.0,
+        "costo_orario_rsu": 25.0,
+        "ricarico_costi_ind": 0.3
+      },
+      "rinfusa": {
+        "ore_uomo": 4.0,
+        "costo_rsu": 32.0,
+        "velocita_pz_h": 450.0,
+        "rsu_unit": 0.25,
+        "costo_orario_macchina": 5.0,
+        "costo_orario_rsu": 25.0,
+        "ricarico_costi_ind": 0.3
+      }
+    },
+    {
+      "capacity_label": "200",
+      "material_code": "PP",
+      "color_code": "COL",
+      "peso_disegno_g": 25.0,
+      "rinfusa_ricarico_div_100": false,
+      "mp_costos_kg": [
+        2.0,
+        15.0,
+        0.0,
+        0.0
+      ],
+      "mp_utilizzi_pct": [
+        96.0,
+        4.0,
+        0.0,
+        0.0
+      ],
+      "imballo_items": [
+        {
+          "name": "scatole",
+          "costo": 6.129
+        },
+        {
+          "name": "sacchetti",
+          "costo": 1.242
+        },
+        {
+          "name": "veline",
+          "costo": 1.953
+        },
+        {
+          "name": "film",
+          "costo": 2.0
+        }
+      ],
+      "pezzi_pallet": 9900.0,
+      "allineato": {
+        "ore_uomo": 4.0,
+        "costo_rsu": 32.0,
+        "velocita_pz_h": 450.0,
+        "rsu_unit": 0.5,
+        "costo_orario_macchina": 5.0,
+        "costo_orario_rsu": 25.0,
+        "ricarico_costi_ind": 0.3
+      },
+      "rinfusa": {
+        "ore_uomo": 4.0,
+        "costo_rsu": 32.0,
+        "velocita_pz_h": 450.0,
+        "rsu_unit": 0.25,
+        "costo_orario_macchina": 5.0,
+        "costo_orario_rsu": 25.0,
+        "ricarico_costi_ind": 0.3
+      }
+    },
+    {
+      "capacity_label": "200",
+      "material_code": "PE",
+      "color_code": "NBN",
+      "peso_disegno_g": 25.0,
+      "rinfusa_ricarico_div_100": false,
+      "mp_costos_kg": [
+        1.5,
+        4.0,
+        0.0,
+        0.0
+      ],
+      "mp_utilizzi_pct": [
+        96.0,
+        4.0,
+        0.0,
+        0.0
+      ],
+      "imballo_items": [
+        {
+          "name": "scatole",
+          "costo": 6.129
+        },
+        {
+          "name": "sacchetti",
+          "costo": 1.242
+        },
+        {
+          "name": "veline",
+          "costo": 1.953
+        },
+        {
+          "name": "film",
+          "costo": 2.0
+        }
+      ],
+      "pezzi_pallet": 9900.0,
+      "allineato": {
+        "ore_uomo": 4.0,
+        "costo_rsu": 32.0,
+        "velocita_pz_h": 450.0,
+        "rsu_unit": 0.5,
+        "costo_orario_macchina": 5.0,
+        "costo_orario_rsu": 25.0,
+        "ricarico_costi_ind": 0.3
+      },
+      "rinfusa": {
+        "ore_uomo": 4.0,
+        "costo_rsu": 32.0,
+        "velocita_pz_h": 450.0,
+        "rsu_unit": 0.25,
+        "costo_orario_macchina": 5.0,
+        "costo_orario_rsu": 25.0,
+        "ricarico_costi_ind": 0.3
+      }
+    },
+    {
+      "capacity_label": "200",
+      "material_code": "PE",
+      "color_code": "COL",
+      "peso_disegno_g": 25.0,
+      "rinfusa_ricarico_div_100": false,
+      "mp_costos_kg": [
+        1.5,
+        15.0,
+        0.0,
+        0.0
+      ],
+      "mp_utilizzi_pct": [
+        96.0,
+        4.0,
+        0.0,
+        0.0
+      ],
+      "imballo_items": [
+        {
+          "name": "scatole",
+          "costo": 6.129
+        },
+        {
+          "name": "sacchetti",
+          "costo": 1.242
+        },
+        {
+          "name": "veline",
+          "costo": 1.953
+        },
+        {
+          "name": "film",
+          "costo": 2.0
+        }
+      ],
+      "pezzi_pallet": 9900.0,
+      "allineato": {
+        "ore_uomo": 4.0,
+        "costo_rsu": 32.0,
+        "velocita_pz_h": 450.0,
+        "rsu_unit": 0.5,
+        "costo_orario_macchina": 5.0,
+        "costo_orario_rsu": 25.0,
+        "ricarico_costi_ind": 0.3
+      },
+      "rinfusa": {
+        "ore_uomo": 4.0,
+        "costo_rsu": 32.0,
+        "velocita_pz_h": 450.0,
+        "rsu_unit": 0.25,
+        "costo_orario_macchina": 5.0,
+        "costo_orario_rsu": 25.0,
+        "ricarico_costi_ind": 0.3
+      }
+    },
+    {
+      "capacity_label": "250",
+      "material_code": "PP",
+      "color_code": "NBN",
+      "peso_disegno_g": 28.0,
+      "rinfusa_ricarico_div_100": false,
+      "mp_costos_kg": [
+        2.0,
+        4.0,
+        0.0,
+        0.0
+      ],
+      "mp_utilizzi_pct": [
+        96.0,
+        4.0,
+        0.0,
+        0.0
+      ],
+      "imballo_items": [
+        {
+          "name": "scatole",
+          "costo": 6.129
+        },
+        {
+          "name": "sacchetti",
+          "costo": 1.242
+        },
+        {
+          "name": "veline",
+          "costo": 1.953
+        },
+        {
+          "name": "film",
+          "costo": 2.0
+        }
+      ],
+      "pezzi_pallet": 9900.0,
+      "allineato": {
+        "ore_uomo": 4.0,
+        "costo_rsu": 32.0,
+        "velocita_pz_h": 450.0,
+        "rsu_unit": 0.5,
+        "costo_orario_macchina": 5.0,
+        "costo_orario_rsu": 25.0,
+        "ricarico_costi_ind": 0.3
+      },
+      "rinfusa": {
+        "ore_uomo": 4.0,
+        "costo_rsu": 32.0,
+        "velocita_pz_h": 450.0,
+        "rsu_unit": 0.25,
+        "costo_orario_macchina": 5.0,
+        "costo_orario_rsu": 25.0,
+        "ricarico_costi_ind": 0.3
+      }
+    },
+    {
+      "capacity_label": "250",
+      "material_code": "PP",
+      "color_code": "COL",
+      "peso_disegno_g": 28.0,
+      "rinfusa_ricarico_div_100": false,
+      "mp_costos_kg": [
+        2.0,
+        15.0,
+        0.0,
+        0.0
+      ],
+      "mp_utilizzi_pct": [
+        96.0,
+        4.0,
+        0.0,
+        0.0
+      ],
+      "imballo_items": [
+        {
+          "name": "scatole",
+          "costo": 6.129
+        },
+        {
+          "name": "sacchetti",
+          "costo": 1.242
+        },
+        {
+          "name": "veline",
+          "costo": 1.953
+        },
+        {
+          "name": "film",
+          "costo": 2.0
+        }
+      ],
+      "pezzi_pallet": 9900.0,
+      "allineato": {
+        "ore_uomo": 4.0,
+        "costo_rsu": 32.0,
+        "velocita_pz_h": 450.0,
+        "rsu_unit": 0.5,
+        "costo_orario_macchina": 5.0,
+        "costo_orario_rsu": 25.0,
+        "ricarico_costi_ind": 0.3
+      },
+      "rinfusa": {
+        "ore_uomo": 4.0,
+        "costo_rsu": 32.0,
+        "velocita_pz_h": 450.0,
+        "rsu_unit": 0.25,
+        "costo_orario_macchina": 5.0,
+        "costo_orario_rsu": 25.0,
+        "ricarico_costi_ind": 0.3
+      }
+    },
+    {
+      "capacity_label": "250",
+      "material_code": "PE",
+      "color_code": "NBN",
+      "peso_disegno_g": 28.0,
+      "rinfusa_ricarico_div_100": false,
+      "mp_costos_kg": [
+        1.5,
+        4.0,
+        0.0,
+        0.0
+      ],
+      "mp_utilizzi_pct": [
+        96.0,
+        4.0,
+        0.0,
+        0.0
+      ],
+      "imballo_items": [
+        {
+          "name": "scatole",
+          "costo": 6.129
+        },
+        {
+          "name": "sacchetti",
+          "costo": 1.242
+        },
+        {
+          "name": "veline",
+          "costo": 1.953
+        },
+        {
+          "name": "film",
+          "costo": 2.0
+        }
+      ],
+      "pezzi_pallet": 9900.0,
+      "allineato": {
+        "ore_uomo": 4.0,
+        "costo_rsu": 32.0,
+        "velocita_pz_h": 450.0,
+        "rsu_unit": 0.5,
+        "costo_orario_macchina": 5.0,
+        "costo_orario_rsu": 25.0,
+        "ricarico_costi_ind": 0.3
+      },
+      "rinfusa": {
+        "ore_uomo": 4.0,
+        "costo_rsu": 32.0,
+        "velocita_pz_h": 450.0,
+        "rsu_unit": 0.25,
+        "costo_orario_macchina": 5.0,
+        "costo_orario_rsu": 25.0,
+        "ricarico_costi_ind": 0.3
+      }
+    },
+    {
+      "capacity_label": "250",
+      "material_code": "PE",
+      "color_code": "COL",
+      "peso_disegno_g": 28.0,
+      "rinfusa_ricarico_div_100": false,
+      "mp_costos_kg": [
+        1.5,
+        15.0,
+        0.0,
+        0.0
+      ],
+      "mp_utilizzi_pct": [
+        96.0,
+        4.0,
+        0.0,
+        0.0
+      ],
+      "imballo_items": [
+        {
+          "name": "scatole",
+          "costo": 6.129
+        },
+        {
+          "name": "sacchetti",
+          "costo": 1.242
+        },
+        {
+          "name": "veline",
+          "costo": 1.953
+        },
+        {
+          "name": "film",
+          "costo": 2.0
+        }
+      ],
+      "pezzi_pallet": 9900.0,
+      "allineato": {
+        "ore_uomo": 4.0,
+        "costo_rsu": 32.0,
+        "velocita_pz_h": 450.0,
+        "rsu_unit": 0.5,
+        "costo_orario_macchina": 5.0,
+        "costo_orario_rsu": 25.0,
+        "ricarico_costi_ind": 0.3
+      },
+      "rinfusa": {
+        "ore_uomo": 4.0,
+        "costo_rsu": 32.0,
+        "velocita_pz_h": 450.0,
+        "rsu_unit": 0.25,
+        "costo_orario_macchina": 5.0,
+        "costo_orario_rsu": 25.0,
+        "ricarico_costi_ind": 0.3
+      }
+    },
+    {
+      "capacity_label": "300 / 350",
+      "material_code": "PP",
+      "color_code": "NBN",
+      "peso_disegno_g": 38.0,
+      "rinfusa_ricarico_div_100": false,
+      "mp_costos_kg": [
+        2.0,
+        4.0,
+        0.0,
+        0.0
+      ],
+      "mp_utilizzi_pct": [
+        96.0,
+        4.0,
+        0.0,
+        0.0
+      ],
+      "imballo_items": [
+        {
+          "name": "scatole",
+          "costo": 6.129
+        },
+        {
+          "name": "sacchetti",
+          "costo": 1.242
+        },
+        {
+          "name": "veline",
+          "costo": 1.953
+        },
+        {
+          "name": "film",
+          "costo": 2.0
+        }
+      ],
+      "pezzi_pallet": 9900.0,
+      "allineato": {
+        "ore_uomo": 4.0,
+        "costo_rsu": 32.0,
+        "velocita_pz_h": 450.0,
+        "rsu_unit": 0.5,
+        "costo_orario_macchina": 5.0,
+        "costo_orario_rsu": 25.0,
+        "ricarico_costi_ind": 0.3
+      },
+      "rinfusa": {
+        "ore_uomo": 4.0,
+        "costo_rsu": 32.0,
+        "velocita_pz_h": 450.0,
+        "rsu_unit": 0.25,
+        "costo_orario_macchina": 5.0,
+        "costo_orario_rsu": 25.0,
+        "ricarico_costi_ind": 0.3
+      }
+    },
+    {
+      "capacity_label": "300 / 350",
+      "material_code": "PP",
+      "color_code": "COL",
+      "peso_disegno_g": 38.0,
+      "rinfusa_ricarico_div_100": false,
+      "mp_costos_kg": [
+        2.0,
+        15.0,
+        0.0,
+        0.0
+      ],
+      "mp_utilizzi_pct": [
+        96.0,
+        4.0,
+        0.0,
+        0.0
+      ],
+      "imballo_items": [
+        {
+          "name": "scatole",
+          "costo": 6.129
+        },
+        {
+          "name": "sacchetti",
+          "costo": 1.242
+        },
+        {
+          "name": "veline",
+          "costo": 1.953
+        },
+        {
+          "name": "film",
+          "costo": 2.0
+        }
+      ],
+      "pezzi_pallet": 9900.0,
+      "allineato": {
+        "ore_uomo": 4.0,
+        "costo_rsu": 32.0,
+        "velocita_pz_h": 450.0,
+        "rsu_unit": 0.5,
+        "costo_orario_macchina": 5.0,
+        "costo_orario_rsu": 25.0,
+        "ricarico_costi_ind": 0.3
+      },
+      "rinfusa": {
+        "ore_uomo": 4.0,
+        "costo_rsu": 32.0,
+        "velocita_pz_h": 450.0,
+        "rsu_unit": 0.25,
+        "costo_orario_macchina": 5.0,
+        "costo_orario_rsu": 25.0,
+        "ricarico_costi_ind": 0.3
+      }
+    },
+    {
+      "capacity_label": "300 / 350",
+      "material_code": "PE",
+      "color_code": "NBN",
+      "peso_disegno_g": 38.0,
+      "rinfusa_ricarico_div_100": false,
+      "mp_costos_kg": [
+        1.5,
+        4.0,
+        0.0,
+        0.0
+      ],
+      "mp_utilizzi_pct": [
+        96.0,
+        4.0,
+        0.0,
+        0.0
+      ],
+      "imballo_items": [
+        {
+          "name": "scatole",
+          "costo": 6.129
+        },
+        {
+          "name": "sacchetti",
+          "costo": 1.242
+        },
+        {
+          "name": "veline",
+          "costo": 1.953
+        },
+        {
+          "name": "film",
+          "costo": 2.0
+        }
+      ],
+      "pezzi_pallet": 9900.0,
+      "allineato": {
+        "ore_uomo": 4.0,
+        "costo_rsu": 32.0,
+        "velocita_pz_h": 450.0,
+        "rsu_unit": 0.5,
+        "costo_orario_macchina": 5.0,
+        "costo_orario_rsu": 25.0,
+        "ricarico_costi_ind": 0.3
+      },
+      "rinfusa": {
+        "ore_uomo": 4.0,
+        "costo_rsu": 32.0,
+        "velocita_pz_h": 450.0,
+        "rsu_unit": 0.25,
+        "costo_orario_macchina": 5.0,
+        "costo_orario_rsu": 25.0,
+        "ricarico_costi_ind": 0.3
+      }
+    },
+    {
+      "capacity_label": "300 / 350",
+      "material_code": "PE",
+      "color_code": "COL",
+      "peso_disegno_g": 38.0,
+      "rinfusa_ricarico_div_100": false,
+      "mp_costos_kg": [
+        1.5,
+        15.0,
+        0.0,
+        0.0
+      ],
+      "mp_utilizzi_pct": [
+        96.0,
+        4.0,
+        0.0,
+        0.0
+      ],
+      "imballo_items": [
+        {
+          "name": "scatole",
+          "costo": 6.129
+        },
+        {
+          "name": "sacchetti",
+          "costo": 1.242
+        },
+        {
+          "name": "veline",
+          "costo": 1.953
+        },
+        {
+          "name": "film",
+          "costo": 2.0
+        }
+      ],
+      "pezzi_pallet": 9900.0,
+      "allineato": {
+        "ore_uomo": 4.0,
+        "costo_rsu": 32.0,
+        "velocita_pz_h": 450.0,
+        "rsu_unit": 0.5,
+        "costo_orario_macchina": 5.0,
+        "costo_orario_rsu": 25.0,
+        "ricarico_costi_ind": 0.3
+      },
+      "rinfusa": {
+        "ore_uomo": 4.0,
+        "costo_rsu": 32.0,
+        "velocita_pz_h": 450.0,
+        "rsu_unit": 0.25,
+        "costo_orario_macchina": 5.0,
+        "costo_orario_rsu": 25.0,
+        "ricarico_costi_ind": 0.3
+      }
+    },
+    {
+      "capacity_label": "500",
+      "material_code": "PP",
+      "color_code": "NBN",
+      "peso_disegno_g": 42.0,
+      "rinfusa_ricarico_div_100": false,
+      "mp_costos_kg": [
+        2.0,
+        4.0,
+        0.0,
+        0.0
+      ],
+      "mp_utilizzi_pct": [
+        96.0,
+        4.0,
+        0.0,
+        0.0
+      ],
+      "imballo_items": [
+        {
+          "name": "scatole",
+          "costo": 6.129
+        },
+        {
+          "name": "sacchetti",
+          "costo": 1.242
+        },
+        {
+          "name": "veline",
+          "costo": 1.953
+        },
+        {
+          "name": "film",
+          "costo": 2.0
+        }
+      ],
+      "pezzi_pallet": 9900.0,
+      "allineato": {
+        "ore_uomo": 4.0,
+        "costo_rsu": 32.0,
+        "velocita_pz_h": 450.0,
+        "rsu_unit": 0.5,
+        "costo_orario_macchina": 5.0,
+        "costo_orario_rsu": 25.0,
+        "ricarico_costi_ind": 0.3
+      },
+      "rinfusa": {
+        "ore_uomo": 4.0,
+        "costo_rsu": 32.0,
+        "velocita_pz_h": 450.0,
+        "rsu_unit": 0.25,
+        "costo_orario_macchina": 5.0,
+        "costo_orario_rsu": 25.0,
+        "ricarico_costi_ind": 0.3
+      }
+    },
+    {
+      "capacity_label": "500",
+      "material_code": "PP",
+      "color_code": "COL",
+      "peso_disegno_g": 42.0,
+      "rinfusa_ricarico_div_100": false,
+      "mp_costos_kg": [
+        2.0,
+        15.0,
+        0.0,
+        0.0
+      ],
+      "mp_utilizzi_pct": [
+        96.0,
+        4.0,
+        0.0,
+        0.0
+      ],
+      "imballo_items": [
+        {
+          "name": "scatole",
+          "costo": 6.129
+        },
+        {
+          "name": "sacchetti",
+          "costo": 1.242
+        },
+        {
+          "name": "veline",
+          "costo": 1.953
+        },
+        {
+          "name": "film",
+          "costo": 2.0
+        }
+      ],
+      "pezzi_pallet": 9900.0,
+      "allineato": {
+        "ore_uomo": 4.0,
+        "costo_rsu": 32.0,
+        "velocita_pz_h": 450.0,
+        "rsu_unit": 0.5,
+        "costo_orario_macchina": 5.0,
+        "costo_orario_rsu": 25.0,
+        "ricarico_costi_ind": 0.3
+      },
+      "rinfusa": {
+        "ore_uomo": 4.0,
+        "costo_rsu": 32.0,
+        "velocita_pz_h": 450.0,
+        "rsu_unit": 0.25,
+        "costo_orario_macchina": 5.0,
+        "costo_orario_rsu": 25.0,
+        "ricarico_costi_ind": 0.3
+      }
+    },
+    {
+      "capacity_label": "500",
+      "material_code": "PE",
+      "color_code": "NBN",
+      "peso_disegno_g": 42.0,
+      "rinfusa_ricarico_div_100": false,
+      "mp_costos_kg": [
+        1.5,
+        4.0,
+        0.0,
+        0.0
+      ],
+      "mp_utilizzi_pct": [
+        96.0,
+        4.0,
+        0.0,
+        0.0
+      ],
+      "imballo_items": [
+        {
+          "name": "scatole",
+          "costo": 6.129
+        },
+        {
+          "name": "sacchetti",
+          "costo": 1.242
+        },
+        {
+          "name": "veline",
+          "costo": 1.953
+        },
+        {
+          "name": "film",
+          "costo": 2.0
+        }
+      ],
+      "pezzi_pallet": 9900.0,
+      "allineato": {
+        "ore_uomo": 4.0,
+        "costo_rsu": 32.0,
+        "velocita_pz_h": 450.0,
+        "rsu_unit": 0.5,
+        "costo_orario_macchina": 5.0,
+        "costo_orario_rsu": 25.0,
+        "ricarico_costi_ind": 0.3
+      },
+      "rinfusa": {
+        "ore_uomo": 4.0,
+        "costo_rsu": 32.0,
+        "velocita_pz_h": 450.0,
+        "rsu_unit": 0.25,
+        "costo_orario_macchina": 5.0,
+        "costo_orario_rsu": 25.0,
+        "ricarico_costi_ind": 0.3
+      }
+    },
+    {
+      "capacity_label": "500",
+      "material_code": "PE",
+      "color_code": "COL",
+      "peso_disegno_g": 42.0,
+      "rinfusa_ricarico_div_100": false,
+      "mp_costos_kg": [
+        1.5,
+        15.0,
+        0.0,
+        0.0
+      ],
+      "mp_utilizzi_pct": [
+        96.0,
+        4.0,
+        0.0,
+        0.0
+      ],
+      "imballo_items": [
+        {
+          "name": "scatole",
+          "costo": 6.129
+        },
+        {
+          "name": "sacchetti",
+          "costo": 1.242
+        },
+        {
+          "name": "veline",
+          "costo": 1.953
+        },
+        {
+          "name": "film",
+          "costo": 2.0
+        }
+      ],
+      "pezzi_pallet": 9900.0,
+      "allineato": {
+        "ore_uomo": 4.0,
+        "costo_rsu": 32.0,
+        "velocita_pz_h": 450.0,
+        "rsu_unit": 0.5,
+        "costo_orario_macchina": 5.0,
+        "costo_orario_rsu": 25.0,
+        "ricarico_costi_ind": 0.3
+      },
+      "rinfusa": {
+        "ore_uomo": 4.0,
+        "costo_rsu": 32.0,
+        "velocita_pz_h": 450.0,
+        "rsu_unit": 0.25,
+        "costo_orario_macchina": 5.0,
+        "costo_orario_rsu": 25.0,
+        "ricarico_costi_ind": 0.3
+      }
+    },
+    {
+      "capacity_label": "1000",
+      "material_code": "PP",
+      "color_code": "COL",
+      "peso_disegno_g": 60.0,
+      "rinfusa_ricarico_div_100": false,
+      "mp_costos_kg": [
+        2.0,
+        15.0,
+        0.0,
+        0.0
+      ],
+      "mp_utilizzi_pct": [
+        96.0,
+        4.0,
+        0.0,
+        0.0
+      ],
+      "imballo_items": [
+        {
+          "name": "scatole",
+          "costo": 6.129
+        },
+        {
+          "name": "sacchetti",
+          "costo": 1.242
+        },
+        {
+          "name": "veline",
+          "costo": 1.953
+        },
+        {
+          "name": "film",
+          "costo": 2.0
+        }
+      ],
+      "pezzi_pallet": 9900.0,
+      "allineato": {
+        "ore_uomo": 4.0,
+        "costo_rsu": 32.0,
+        "velocita_pz_h": 200.0,
+        "rsu_unit": 0.5,
+        "costo_orario_macchina": 5.0,
+        "costo_orario_rsu": 25.0,
+        "ricarico_costi_ind": 0.3
+      },
+      "rinfusa": {
+        "ore_uomo": 4.0,
+        "costo_rsu": 32.0,
+        "velocita_pz_h": 200.0,
+        "rsu_unit": 0.25,
+        "costo_orario_macchina": 5.0,
+        "costo_orario_rsu": 25.0,
+        "ricarico_costi_ind": 0.3
+      }
+    },
+    {
+      "capacity_label": "1000",
+      "material_code": "PP",
+      "color_code": "NBN",
+      "peso_disegno_g": 60.0,
+      "rinfusa_ricarico_div_100": false,
+      "mp_costos_kg": [
+        2.0,
+        4.0,
+        0.0,
+        0.0
+      ],
+      "mp_utilizzi_pct": [
+        96.0,
+        4.0,
+        0.0,
+        0.0
+      ],
+      "imballo_items": [
+        {
+          "name": "scatole",
+          "costo": 6.129
+        },
+        {
+          "name": "sacchetti",
+          "costo": 1.242
+        },
+        {
+          "name": "veline",
+          "costo": 1.953
+        },
+        {
+          "name": "film",
+          "costo": 2.0
+        }
+      ],
+      "pezzi_pallet": 9900.0,
+      "allineato": {
+        "ore_uomo": 4.0,
+        "costo_rsu": 32.0,
+        "velocita_pz_h": 200.0,
+        "rsu_unit": 0.5,
+        "costo_orario_macchina": 5.0,
+        "costo_orario_rsu": 25.0,
+        "ricarico_costi_ind": 0.3
+      },
+      "rinfusa": {
+        "ore_uomo": 4.0,
+        "costo_rsu": 32.0,
+        "velocita_pz_h": 200.0,
+        "rsu_unit": 0.25,
+        "costo_orario_macchina": 5.0,
+        "costo_orario_rsu": 25.0,
+        "ricarico_costi_ind": 0.3
+      }
+    },
+    {
+      "capacity_label": "1000",
+      "material_code": "PE",
+      "color_code": "NBN",
+      "peso_disegno_g": 60.0,
+      "rinfusa_ricarico_div_100": false,
+      "mp_costos_kg": [
+        1.5,
+        4.0,
+        0.0,
+        0.0
+      ],
+      "mp_utilizzi_pct": [
+        96.0,
+        4.0,
+        0.0,
+        0.0
+      ],
+      "imballo_items": [
+        {
+          "name": "scatole",
+          "costo": 6.129
+        },
+        {
+          "name": "sacchetti",
+          "costo": 1.242
+        },
+        {
+          "name": "veline",
+          "costo": 1.953
+        },
+        {
+          "name": "film",
+          "costo": 2.0
+        }
+      ],
+      "pezzi_pallet": 9900.0,
+      "allineato": {
+        "ore_uomo": 4.0,
+        "costo_rsu": 32.0,
+        "velocita_pz_h": 200.0,
+        "rsu_unit": 0.5,
+        "costo_orario_macchina": 5.0,
+        "costo_orario_rsu": 25.0,
+        "ricarico_costi_ind": 0.3
+      },
+      "rinfusa": {
+        "ore_uomo": 4.0,
+        "costo_rsu": 32.0,
+        "velocita_pz_h": 200.0,
+        "rsu_unit": 0.25,
+        "costo_orario_macchina": 5.0,
+        "costo_orario_rsu": 25.0,
+        "ricarico_costi_ind": 0.3
+      }
+    },
+    {
+      "capacity_label": "1000",
+      "material_code": "PE",
+      "color_code": "COL",
+      "peso_disegno_g": 60.0,
+      "rinfusa_ricarico_div_100": true,
+      "mp_costos_kg": [
+        1.5,
+        15.0,
+        0.0,
+        0.0
+      ],
+      "mp_utilizzi_pct": [
+        96.0,
+        4.0,
+        0.0,
+        0.0
+      ],
+      "imballo_items": [
+        {
+          "name": "scatole",
+          "costo": 6.129
+        },
+        {
+          "name": "sacchetti",
+          "costo": 1.242
+        },
+        {
+          "name": "veline",
+          "costo": 1.953
+        },
+        {
+          "name": "film",
+          "costo": 2.0
+        }
+      ],
+      "pezzi_pallet": 9900.0,
+      "allineato": {
+        "ore_uomo": 4.0,
+        "costo_rsu": 32.0,
+        "velocita_pz_h": 200.0,
+        "rsu_unit": 0.5,
+        "costo_orario_macchina": 5.0,
+        "costo_orario_rsu": 25.0,
+        "ricarico_costi_ind": 0.3
+      },
+      "rinfusa": {
+        "ore_uomo": 4.0,
+        "costo_rsu": 32.0,
+        "velocita_pz_h": 200.0,
+        "rsu_unit": 0.25,
+        "costo_orario_macchina": 5.0,
+        "costo_orario_rsu": 25.0,
+        "ricarico_costi_ind": 0.3
+      }
+    }
+  ]
+}

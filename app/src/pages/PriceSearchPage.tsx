@@ -4,13 +4,19 @@ import {
   getCapacities,
   getColors,
   getConfig,
+  getImballiFissi,
   getMaterials,
   getPriceBrackets,
 } from '../lib/api'
 import { calcBracket } from '../lib/pricing'
+import {
+  fasciaPerLabelCapacity,
+  imballoFissoPerFascia,
+} from '../lib/imballi'
 import type {
   Capacity,
   Color,
+  ImballoFisso,
   ListinoConfig,
   Material,
   PriceBracket,
@@ -31,6 +37,7 @@ export default function PriceSearchPage() {
   const [colors, setColors] = useState<Color[]>([])
   const [capacities, setCapacities] = useState<Capacity[]>([])
   const [brackets, setBrackets] = useState<PriceBracket[]>([])
+  const [imballi, setImballi] = useState<ImballoFisso[]>([])
 
   const [materialId, setMaterialId] = useState('')
   const [colorId, setColorId] = useState('')
@@ -46,12 +53,14 @@ export default function PriceSearchPage() {
       getColors(accessToken, true),
       getCapacities(accessToken, true),
       getPriceBrackets(accessToken),
+      getImballiFissi(accessToken),
     ])
-      .then(([m, c, ca, b]) => {
+      .then(([m, c, ca, b, im]) => {
         setMaterials(m)
         setColors(c)
         setCapacities(ca)
         setBrackets(b)
+        setImballi(im)
         if (m.length > 0) setMaterialId(m[0].id)
         if (c.length > 0) setColorId(c[0].id)
         if (ca.length > 0) setCapacityId(ca[0].id)
@@ -84,6 +93,10 @@ export default function PriceSearchPage() {
 
   const results: BracketResult[] = useMemo(() => {
     if (!config) return []
+    const capacity = capacities.find((c) => c.id === capacityId)
+    const imballoFisso = capacity
+      ? imballoFissoPerFascia(imballi, fasciaPerLabelCapacity(capacity.label))
+      : null
     return brackets
       .slice()
       .sort((a, b) => a.sort_order - b.sort_order)
@@ -98,6 +111,7 @@ export default function PriceSearchPage() {
             allineato: config.allineato,
             rinfusa: config.rinfusa,
             rinfusaRicaricoDiv100: config.rinfusa_ricarico_div_100,
+            master_color_costo_kg: config.master_color_costo_kg ?? null,
           },
           {
             sort_order: b.sort_order,
@@ -106,9 +120,10 @@ export default function PriceSearchPage() {
             ricarico_vendite: b.ricarico_vendite,
             regola_vendita: b.regola_vendita,
           },
+          imballoFisso,
         ),
       )
-  }, [config, brackets])
+  }, [config, brackets, capacities, capacityId, imballi])
 
   useEffect(() => {
     if (!results.length) {
@@ -370,7 +385,7 @@ function BreakdownCard({
       <dl className="mt-3 space-y-1 font-sans text-xs">
         <Row label="Peso con sfrido (g)" value={`${a.pesoConSfrido} g`} />
         <Row label="Costo materia prima" value={euro(a.costoMateriaPrima)} />
-        <Row label="Costo imballo" value={euro(a.costoImballo)} />
+        <Row label="Costo imballo" value={euro(d.costoImballo)} />
         <Row label="Attrezzaggio" value={euro(a.costoAttrezzaggio)} />
         <Row
           label="Uomo + macchina"

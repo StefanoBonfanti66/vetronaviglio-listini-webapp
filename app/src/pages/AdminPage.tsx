@@ -11,8 +11,10 @@ import {
   getCapacities,
   getColors,
   getConfigs,
+  getImballiFissi,
   getMaterials,
   getPriceBrackets,
+  saveImballoFisso,
   updateCapacity,
   updateColor,
   updateConfig,
@@ -21,15 +23,25 @@ import {
 import type {
   Capacity,
   Color,
+  FasciaImballo,
+  ImballoFisso,
   ImballoItem,
   ListinoConfig,
   MachineParams,
   Material,
+  ModalitaImballo,
   PriceBracket,
 } from '../lib/types'
 import { useAuth } from '../context/AuthContext'
 import CrudManager from '../components/admin/CrudManager'
 import BracketsManager from '../components/admin/BracketsManager'
+import ImballiManager from '../components/admin/ImballiManager'
+import { findImballoFisso } from '../lib/imballi'
+import {
+  applyBaseCost,
+  applyMasterCost,
+  prefillFromAnagrafiche,
+} from '../lib/costs'
 
 const defaultMachineParams = (): MachineParams => ({
   ore_uomo: 0,
@@ -53,6 +65,7 @@ const makeEmptyConfig = (): Omit<ListinoConfig, 'id'> => ({
   allineato: defaultMachineParams(),
   rinfusa: defaultMachineParams(),
   rinfusa_ricarico_div_100: false,
+  master_color_costo_kg: null,
 })
 
 export default function AdminPage() {
@@ -63,6 +76,7 @@ export default function AdminPage() {
   const [capacities, setCapacities] = useState<Capacity[]>([])
   const [configs, setConfigs] = useState<ListinoConfig[]>([])
   const [brackets, setBrackets] = useState<PriceBracket[]>([])
+  const [imballi, setImballi] = useState<ImballoFisso[]>([])
   const [error, setError] = useState<string | null>(null)
   const [saved, setSaved] = useState<string | null>(null)
   const [editingId, setEditingId] = useState<string | null>(null)
@@ -81,13 +95,15 @@ export default function AdminPage() {
       getCapacities(accessToken),
       getConfigs(accessToken),
       getPriceBrackets(accessToken),
+      getImballiFissi(accessToken),
     ])
-      .then(([m, c, ca, cfg, br]) => {
+      .then(([m, c, ca, cfg, br, im]) => {
         setMaterials(m)
         setColors(c)
         setCapacities(ca)
         setConfigs(cfg)
         setBrackets(br)
+        setImballi(im)
       })
       .catch((e) => setError(String(e)))
   }, [accessToken])
@@ -95,6 +111,85 @@ export default function AdminPage() {
   const notify = (msg: string) => {
     setSaved(msg)
     setTimeout(() => setSaved(null), 3000)
+  }
+
+  // Propaga il nuovo costo del materiale a tutti i listini che lo usano.
+  const propagateMaterialCost = async (
+    token: string,
+    materialId: string,
+    costo: number | null,
+  ) => {
+    if (costo === null) return
+    const affected = configs.filter((c) => c.material_id === materialId)
+    if (affected.length === 0) return
+    const updated = await Promise.all(
+      affected.map((c) =>
+        updateConfig(token, c.id, {
+          mp_costos_kg: applyBaseCost(c.mp_costos_kg, costo),
+        }),
+      ),
+    )
+    setConfigs((prev) => prev.map((c) => updated.find((u) => u.id === c.id) ?? c))
+    notify(`Costo aggiornato su ${affected.length} listini`)
+  }
+
+  // Propaga il nuovo costo master del colore a tutti i listini che lo usano.
+  const propagateColorCost = async (
+    token: string,
+    colorId: string,
+    costo: number | null,
+  ) => {
+    if (costo === null) return
+    const affected = configs.filter((c) => c.color_id === colorId)
+    if (affected.length === 0) return
+    const updated = await Promise.all(
+      affected.map((c) =>
+        updateConfig(token, c.id, {
+          mp_costos_kg: applyMasterCost(c.mp_costos_kg, costo),
+          master_color_costo_kg: costo,
+        }),
+      ),
+    )
+    setConfigs((prev) => prev.map((c) => updated.find((u) => u.id === c.id) ?? c))
+    notify(`Costo master aggiornato su ${affected.length} listini`)
+  }
+
+  const saveMaterial = async (token: string, id: string, patch: Partial<Material>) => {
+    const previous = materials.find((m) => m.id === id)
+    const updated = await updateMaterial(token, id, patch)
+    const nextCost = updated.costo_kg ?? null
+    const prevCost = previous?.costo_kg ?? null
+    if (nextCost !== prevCost) {
+      await propagateMaterialCost(token, id, nextCost)
+    }
+    return updated
+  }
+
+  const saveColor = async (token: string, id: string, patch: Partial<Color>) => {
+    const previous = colors.find((c) => c.id === id)
+    const updated = await updateColor(token, id, patch)
+    const nextCost = updated.master_color_costo_kg ?? null
+    const prevCost = previous?.master_color_costo_kg ?? null
+    if (nextCost !== prevCost) {
+      await propagateColorCost(token, id, nextCost)
+    }
+    return updated
+  }
+
+  const saveImballo = async (
+    modalita: ModalitaImballo,
+    fascia: FasciaImballo,
+    value: number | null,
+  ) => {
+    if (!accessToken) return
+    const existing = findImballoFisso(imballi, modalita, fascia)
+    const saved = await saveImballoFisso(accessToken, existing, modalita, fascia, value)
+    setImballi((prev) => {
+      const without = prev.filter(
+        (r) => !(r.modalita === modalita && r.fascia === fascia),
+      )
+      return [...without, saved]
+    })
   }
 
   const startEdit = (cfg: ListinoConfig) => {
@@ -119,6 +214,7 @@ export default function AdminPage() {
         allineato: draft.allineato,
         rinfusa: draft.rinfusa,
         rinfusa_ricarico_div_100: draft.rinfusa_ricarico_div_100,
+        master_color_costo_kg: draft.master_color_costo_kg ?? null,
       }
       await updateConfig(accessToken, editingId, patch)
       setConfigs((prev) =>
@@ -345,7 +441,22 @@ export default function AdminPage() {
               <label className={formLabel}>Materiale</label>
               <select
                 value={newConfig.material_id}
-                onChange={(e) => setNewConfig({ ...newConfig, material_id: e.target.value })}
+                onChange={(e) => {
+                  const materialId = e.target.value
+                  const material = materials.find((m) => m.id === materialId) ?? null
+                  const color = colors.find((c) => c.id === newConfig.color_id) ?? null
+                  const prefill = prefillFromAnagrafiche(
+                    material,
+                    color,
+                    newConfig.mp_costos_kg,
+                    newConfig.mp_utilizzi_pct,
+                  )
+                  setNewConfig({
+                    ...newConfig,
+                    material_id: materialId,
+                    ...prefill,
+                  })
+                }}
                 className={selectCls}
               >
                 <option value="">Seleziona…</option>
@@ -358,7 +469,22 @@ export default function AdminPage() {
               <label className={formLabel}>Colore</label>
               <select
                 value={newConfig.color_id}
-                onChange={(e) => setNewConfig({ ...newConfig, color_id: e.target.value })}
+                onChange={(e) => {
+                  const colorId = e.target.value
+                  const material = materials.find((m) => m.id === newConfig.material_id) ?? null
+                  const color = colors.find((c) => c.id === colorId) ?? null
+                  const prefill = prefillFromAnagrafiche(
+                    material,
+                    color,
+                    newConfig.mp_costos_kg,
+                    newConfig.mp_utilizzi_pct,
+                  )
+                  setNewConfig({
+                    ...newConfig,
+                    color_id: colorId,
+                    ...prefill,
+                  })
+                }}
                 className={selectCls}
               >
                 <option value="">Seleziona…</option>
@@ -402,6 +528,24 @@ export default function AdminPage() {
                   }),
                 )}
               </div>
+            </div>
+
+            <div>
+              <label className={formLabel}>Costo master color (€/kg) — vuoto = legacy</label>
+              <input
+                type="number"
+                step={0.01}
+                value={newConfig.master_color_costo_kg ?? ''}
+                onChange={(e) => {
+                  const raw = e.target.value
+                  setNewConfig({
+                    ...newConfig,
+                    master_color_costo_kg: raw === '' ? null : parseFloat(raw) || 0,
+                  })
+                }}
+                placeholder="legacy"
+                className="w-24 md:w-28 border border-aluminum/20 bg-white px-1.5 py-1 font-sans text-xs text-onyx focus:border-onyx focus:outline-none"
+              />
             </div>
 
             <div className="sm:col-span-2">
@@ -498,6 +642,24 @@ export default function AdminPage() {
               </div>
             </div>
 
+            <div>
+              <label className={formLabel}>Costo master color (€/kg) — vuoto = legacy</label>
+              <input
+                type="number"
+                step={0.01}
+                value={draft.master_color_costo_kg ?? ''}
+                onChange={(e) => {
+                  const raw = e.target.value
+                  setDraft({
+                    ...draft,
+                    master_color_costo_kg: raw === '' ? null : parseFloat(raw) || 0,
+                  })
+                }}
+                placeholder="legacy"
+                className="w-24 md:w-28 border border-aluminum/20 bg-white px-1.5 py-1 font-sans text-xs text-onyx focus:border-onyx focus:outline-none"
+              />
+            </div>
+
             <div className="sm:col-span-2">
               <label className={formLabel}>Imballo (€/pezzo)</label>
               <div className="space-y-1">
@@ -552,37 +714,41 @@ export default function AdminPage() {
         </div>
       )}
 
+      <ImballiManager rows={imballi} onSave={saveImballo} />
+
       <CrudManager
         title="Materiali"
-        description="Materie prime disponibili. Disattiva un materiale per nasconderlo nella ricerca."
+        description="Materie prime disponibili. Il costo €/kg si propaga a tutti i listini del materiale. Disattiva un materiale per nasconderlo nella ricerca."
         cols={[
           { key: 'code', label: 'Codice' },
           { key: 'name', label: 'Nome' },
+          { key: 'costo_kg', label: 'Costo MP (€/kg)', inputType: 'decimal' },
           { key: 'sort_order', label: 'Ordine' },
           { key: 'enabled', label: 'Attivo', render: (r) => (r.enabled ? 'Sì' : 'No') },
         ]}
         rows={materials}
         setRows={setMaterials}
-        makeEmpty={() => ({ code: '', name: '', sort_order: 0, enabled: true })}
+        makeEmpty={() => ({ code: '', name: '', sort_order: 0, enabled: true, costo_kg: null })}
         create={createMaterial}
-        update={updateMaterial}
+        update={saveMaterial}
         remove={deleteMaterial}
       />
 
       <CrudManager
         title="Colori"
-        description="Colori disponibili. Disattiva un colore per nasconderlo nella ricerca."
+        description="Colori disponibili. Il costo master €/kg si propaga a tutti i listini del colore. Disattiva un colore per nasconderlo nella ricerca."
         cols={[
           { key: 'code', label: 'Codice' },
           { key: 'name', label: 'Nome' },
+          { key: 'master_color_costo_kg', label: 'Costo master (€/kg)', inputType: 'decimal' },
           { key: 'sort_order', label: 'Ordine' },
           { key: 'enabled', label: 'Attivo', render: (r) => (r.enabled ? 'Sì' : 'No') },
         ]}
         rows={colors}
         setRows={setColors}
-        makeEmpty={() => ({ code: '', name: '', sort_order: 0, enabled: true })}
+        makeEmpty={() => ({ code: '', name: '', sort_order: 0, enabled: true, master_color_costo_kg: null })}
         create={createColor}
-        update={updateColor}
+        update={saveColor}
         remove={deleteColor}
       />
 

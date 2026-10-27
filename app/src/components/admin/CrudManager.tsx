@@ -12,6 +12,9 @@ interface Col<T extends Row> {
   key: keyof T & string
   label: string
   render?: (row: T) => string | number
+  // 'number' = input numerico; 'decimal' = input numerico con 3 decimali e
+  // valore vuoto -> null (costo non definito).
+  inputType?: 'number' | 'decimal'
 }
 
 interface Props<T extends Row> {
@@ -51,7 +54,12 @@ export default function CrudManager<T extends Row>({
   }
 
   const isString = (v: unknown): v is string => typeof v === 'string'
-  const fieldVal = (row: Partial<T>, c: Col<T>) => row[c.key] as string | number
+  const fieldVal = (row: Partial<T>, c: Col<T>) => row[c.key] as string | number | null | undefined
+  const isNumericCol = (c: Col<T>) =>
+    c.inputType === 'number' ||
+    c.inputType === 'decimal' ||
+    c.key === 'sort_order' ||
+    c.key === 'peso_disegno_g'
 
   const startAdd = () => {
     setDraft(makeEmpty())
@@ -122,19 +130,24 @@ export default function CrudManager<T extends Row>({
       )
     }
     const val = fieldVal(row, c)
+    const decimal = c.inputType === 'decimal'
     return (
       <input
-        type={c.key === 'sort_order' || c.key === 'peso_disegno_g' ? 'number' : 'text'}
+        type={isNumericCol(c) ? 'number' : 'text'}
+        step={decimal ? 0.001 : undefined}
         value={val ?? ''}
-        onChange={(e) =>
-          set({
-            ...row,
-            [c.key]:
-              c.key === 'sort_order' || c.key === 'peso_disegno_g'
-                ? parseFloat(e.target.value) || 0
-                : e.target.value,
-          })
-        }
+        onChange={(e) => {
+          const raw = e.target.value
+          let value: string | number | null
+          if (decimal) {
+            value = raw === '' ? null : parseFloat(raw)
+          } else if (isNumericCol(c)) {
+            value = parseFloat(raw) || 0
+          } else {
+            value = raw
+          }
+          set({ ...row, [c.key]: value })
+        }}
         className="mt-0.5 w-full border border-aluminum/20 bg-white px-2 py-1 font-sans text-xs text-onyx focus:border-onyx focus:outline-none"
       />
     )
@@ -224,6 +237,8 @@ export default function CrudManager<T extends Row>({
                       c.render(row)
                     ) : isString(row[c.key]) ? (
                       String(row[c.key])
+                    ) : fieldVal(row, c) === null || fieldVal(row, c) === undefined ? (
+                      '—'
                     ) : (
                       fieldVal(row, c)
                     )}

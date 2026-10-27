@@ -1,5 +1,40 @@
 # Changelog — Vetronaviglio Listini Webapp
 
+## 2026-10-26 — Costi imballo fissi (€/pezzo) editabili in admin
+
+- **Richiesta clienti:** email Federico "I: listini" (22/10) → "TI PASSO DUE VALORI FISSI (MA COMUNQUE MODIFICABILI) UNO PER ALLINEATO E UNO PER RINFUSA … DA SOMMARE A COSTI DIRETTI PRIMA DI RICARICO VENDITE FINALE", con fasce FINO A 125 ML / OLTRE 125 ML. Federico non ha ancora comunicato i valori.
+- **Modello:** 4 campi €/pezzo (allineato|rinfusa × fino_125|oltre_125), modificabili in admin; il costo fisso **sostituisce** il calcolo da pallettizzazione (`imballo_items / pezzi_pallet`) per la modalità valorizzata e viene sommato ai costi diretti prima del ricarico vendite. Campo vuoto/NULL = non definito → fallback alla pallettizzazione (legacy).
+- **DB:** nuova migration `supabase/migrations/0005_imballi_fissi.sql` (tabella `imballo_fissi` con RLS, 4 righe iniziali NULL). Da applicare al DB on-prem con gate umano.
+- **App:** `app/src/lib/imballi.ts` (fascia per ml/label, lettura valori), `app/src/components/admin/ImballiManager.tsx` (4 input + salvataggio), `AdminPage` (caricamento e salvataggio), `PriceSearchPage` (selezione fascia in base alla capacità e passaggio al motore prezzi), `pricing.ts` (costo fisso allineato/rinfusa + `costoImballo` nel breakdown rinfusa).
+- **Seed:** `scripts/seed_listino.py` genera le 4 righe `imballo_fissi`; `supabase/seed/listino_seed.json` e `seed.sql` rigenerati.
+- **Test:** nuovo `app/tests/imballi.test.ts` (fasce, valori, precedenza fisso su pallettizzazione, 0 valido); unit + e2e 1932 + snapshot 1936 + costs + imballi OK, typecheck e build OK.
+
+## 2026-10-26 — Colore CUSTOM + verifica mix 96/4 sul listino
+
+- **Richiesta utente:** inserire la voce "CUSTOM COLOR DEFINITIVO" nei Colori (costo master da compilare) e verificare che il listino rispetti la miscela 96% materia prima / 4% master color, senza modifiche non approvate.
+- **Verifica (read-only):** 44/44 `listino_configs` conformi — `mp_utilizzi_pct` = [96,4,0,0], base = costo materiale, master = costo del colore, mix 96/4 identico al calcolo legacy. Nessun listino modificato.
+- **DB:** inserito colore `CUSTOM` = "Custom color definitivo" (sort_order 3, `master_color_costo_kg` NULL in attesa del valore da Federico).
+- **Seed:** `scripts/import_listino.py` (`MASTER_COLOR_COSTO_KG["CUSTOM"] = None`), `supabase/seed/listino_seed.json` e `seed.sql` rigenerati (3 colori).
+- **Da fare con approvazione:** valorizzare il costo master CUSTOM quando comunicato e creare i listini per il colore CUSTOM.
+
+## 2026-10-26 — Costi €/kg nelle anagrafiche admin (Materiali + Colori)
+
+- **Richiesta utente:** inserire/editare i costi €/kg nella maschera admin "Materiali" (alcuni già noti) e, per analogia, il costo master color nella maschera "Colori".
+- **Decisioni:** la modifica del costo di un materiale **propaga a tutti i listini** di quel materiale; il costo master color diventa editabile anche nei Colori.
+- **DB:** nuova migration `supabase/migrations/0004_anagrafiche_costi.sql` → `materials.costo_kg` e `colors.master_color_costo_kg` (nullable = non definito). Da applicare al DB on-prem con `sudo docker exec supabase-db psql -U postgres -d postgres -f /tmp/0004_anagrafiche_costi.sql`.
+- **App:** `app/src/lib/costs.ts` (helper puri + default quote 96/4), `CrudManager` con supporto input decimale nullable (vuoto = null, celle "—"), `AdminPage` con colonne "Costo MP (€/kg)" / "Costo master (€/kg)" e propagazione automatica ai `listino_configs` della famiglia; prefill costi alla scelta di materiale/colore nelle nuove configurazioni.
+- **Seed:** `scripts/import_listino.py` e `scripts/seed_listino.py` allineati (costi su materials/colors), `supabase/seed/listino_seed.json` e `seed.sql` rigenerati.
+- **Test:** nuovo `app/tests/costs.test.ts` (aggiunto a `npm test`); unit + e2e 1932 + snapshot 1936 + costs OK, typecheck e build OK.
+
+## 2026-10-26 — Costi MP ultimo acquisto + master color 96/4 + velocità ciclo
+
+- **Richieste clienti recepite:** email "I: listini" (Federico, 22/10) ed email "I: COSTO MP" (Margherita → Federico, cc Stefano).
+- **Modello costi MP:** miscela fissa **96% MP base + 4% master color**. MP base = ultimo costo di acquisto 1,69 €/kg (PP RM03.0056 INEOS, PE RM01.0001 ERACLENE); master color 10 €/kg (BIANCO/NERO/NEUTRO) e 20 €/kg (COLORATO), CUSTOM da compilare. Nuovo campo `listino_configs.master_color_costo_kg` (migration `0003_master_color.sql`) con percorso legacy se NULL.
+- **Velocità ciclo:** 450 pz/h fino a 125 ml, 350 pz/h oltre (1000 ml da 200 → 350; 50 ml PP NBN da 550 → 450), allineato e rinfusa.
+- **DB on-prem** (`192.168.24.130:8000`) aggiornato via REST sui 44 config; `supabase/seed/listino_seed.json` + `seed.sql` rigenerati e allineati (`scripts/import_listino.py` / `scripts/seed_listino.py`).
+- **Test:** baseline Excel 06-2025 congelata in `app/tests/fixtures/seed_legacy.json` (e2e 1932/1932 OK) + nuovo snapshot sui costi correnti `app/tests/pricing-current.test.ts` (1936 check OK, fixture `expected_current_costs.json`); unit, typecheck e build OK.
+- **Aperto:** l'Excel 06-2025 ha ancora i costi precedenti (PP 2, PE 1,5, master 4/15) → i prezzi 30-1000 ml cambiano e serve l'Excel aggiornato; mancano i 4 valori fissi di costo imballi e le config 400 ml / PETG / PE PCR.
+
 ## 2026-08-06 — Preventivo + email a Federico Rosi (bozza)
 
 - **`docs/proposals/`** creati: `preventivo-listini-webapp.md` (+ versione `preventivo-listini-webapp.html` da allegare) e `email-listini-webapp.md` (bozza email).

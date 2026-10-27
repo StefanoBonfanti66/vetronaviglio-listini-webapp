@@ -20,6 +20,39 @@ import openpyxl
 XLSX = Path(__file__).resolve().parent.parent / "data/listini/Nuovo_Listino_Plastica_06-2025_Rev01.xlsx"
 OUT = Path(__file__).resolve().parent.parent / "supabase/seed/listino_seed.json"
 
+# Costo €/kg del materiale base = ultimo costo di acquisto (email Margherita
+# "COSTO MP", 22/10/2026): PP RM03.0056 INEOS, PE RM01.0001 ERACLENE BC82.
+MP_COSTO_ULTIMO_ACQUISTO = {
+    "PP": 1.69,
+    "PE": 1.69,
+    "PETG": 3.822,
+    "PE_PCR": 1.98,
+}
+
+# Costo €/kg del master color (email Federico "I: listini", 22/10/2026):
+# BIANCO/NERO/NEUTRO (NBN) 10 €/kg, COLORATO (COL) 20 €/kg, CUSTOM da compilare.
+MASTER_COLOR_COSTO_KG = {
+    "NBN": 10.0,
+    "COL": 20.0,
+    # CUSTOM: valore da compilare dall'admin (ancora non comunicato).
+    "CUSTOM": None,
+}
+
+# Velocita ciclo (pz/h) secondo capacita (email Federico "I: listini",
+# 22/10/2026): 450 pz/h fino a 125 ml, 350 pz/h oltre 125 ml.
+VELOCITA_FINO_125ML = 450.0
+VELOCITA_OLTRE_125ML = 350.0
+SOGLIA_CAPACITA_125ML = 125.0
+
+
+def velocita_per_capacita(cap_label: str) -> float:
+    """Capacita oltre 125 ml -> 350 pz/h, altrimenti 450 pz/h."""
+    m = re.match(r"(\d+(?:[.,]\d+)?)", cap_label)
+    if not m:
+        return VELOCITA_FINO_125ML
+    valore = float(m.group(1).replace(",", "."))
+    return VELOCITA_FINO_125ML if valore <= SOGLIA_CAPACITA_125ML else VELOCITA_OLTRE_125ML
+
 
 def norm(name: str) -> str:
     n = name.strip()
@@ -36,15 +69,19 @@ def main() -> int:
     wbf = openpyxl.load_workbook(XLSX, data_only=False)  # per le formule
 
     # --- materials / colors / capacities (ordine canonico) ---
+    # costo_kg / master_color_costo_kg: anagrafiche dei costi, propagati ai
+    # listini dall'admin (single source of truth).
     materials = [
-        {"code": "PP", "name": "PP"},
-        {"code": "PE", "name": "PE"},
-        {"code": "PETG", "name": "PETG"},
-        {"code": "PE_PCR", "name": "PE PCR"},
+        {"code": "PP", "name": "PP", "costo_kg": MP_COSTO_ULTIMO_ACQUISTO["PP"]},
+        {"code": "PE", "name": "PE", "costo_kg": MP_COSTO_ULTIMO_ACQUISTO["PE"]},
+        {"code": "PETG", "name": "PETG", "costo_kg": MP_COSTO_ULTIMO_ACQUISTO["PETG"]},
+        {"code": "PE_PCR", "name": "PE PCR", "costo_kg": MP_COSTO_ULTIMO_ACQUISTO["PE_PCR"]},
+        {"code": "BIOBASED", "name": "Biobased", "costo_kg": None},
     ]
     colors = [
-        {"code": "NBN", "name": "Non bianco / neutro"},
-        {"code": "COL", "name": "Colorato"},
+        {"code": "NBN", "name": "Non bianco / neutro", "master_color_costo_kg": MASTER_COLOR_COSTO_KG["NBN"]},
+        {"code": "COL", "name": "Colorato", "master_color_costo_kg": MASTER_COLOR_COSTO_KG["COL"]},
+        {"code": "CUSTOM", "name": "Custom color definitivo", "master_color_costo_kg": MASTER_COLOR_COSTO_KG["CUSTOM"]},
     ]
 
     cap_sheet = wbv["CAP_PESI_LOTTI"]
@@ -115,6 +152,11 @@ def main() -> int:
 
         mp_costos = [f(g(r, 2)) for r in range(22, 26)]
         mp_pct = [f(g(r, 3)) for r in range(22, 26)]
+        # Miscela fissa 96% MP base + 4% master color (istruzioni cliente):
+        # base = ultimo costo di acquisto, master = 10 (NBN) / 20 (COL).
+        master_costo = MASTER_COLOR_COSTO_KG[col_code]
+        mp_costos = [MP_COSTO_ULTIMO_ACQUISTO[mat_code], master_costo, 0.0, 0.0]
+        mp_pct = [96.0, 4.0, 0.0, 0.0]
         n_scatole = f(g(30, 2))
         n_sacchetti = f(g(32, 2))
         n_veline = f(g(33, 2))
@@ -135,6 +177,13 @@ def main() -> int:
         z4 = wsf.cell(row=4, column=26).value
         rinfusa_div_100 = isinstance(z4, str) and "/100" in z4
 
+        # velocita ciclo fissa per fascia di capacita (450 fino a 125 ml, 350 oltre)
+        velocita = velocita_per_capacita(cap_label)
+        allineato = params(18)
+        rinfusa = params(19)
+        allineato["velocita_pz_h"] = velocita
+        rinfusa["velocita_pz_h"] = velocita
+
         configs.append({
             "capacity_label": cap_label,
             "material_code": mat_code,
@@ -143,10 +192,11 @@ def main() -> int:
             "rinfusa_ricarico_div_100": rinfusa_div_100,
             "mp_costos_kg": mp_costos,
             "mp_utilizzi_pct": mp_pct,
+            "master_color_costo_kg": master_costo,
             "imballo_items": imballo_items,
             "pezzi_pallet": round(pezzi_pallet, 2),
-            "allineato": params(18),
-            "rinfusa": params(19),
+            "allineato": allineato,
+            "rinfusa": rinfusa,
         })
 
     seed = {

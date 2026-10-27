@@ -1,13 +1,14 @@
 import type {
   Capacity,
   Color,
+  ImballoFisso,
   ListinoConfig,
   Material,
   PriceBracket,
   Profile,
 } from './types'
 
-const BASE_URL = 'https://fkjaqhydotxubxnieguh.supabase.co'
+const BASE_URL = (import.meta.env.VITE_SUPABASE_URL || '').replace(/\/$/, '')
 const ANON_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY
 
 function headers(accessToken: string) {
@@ -173,4 +174,58 @@ export async function updateBracket(accessToken: string, id: string, patch: Part
 
 export async function deleteBracket(accessToken: string, id: string): Promise<void> {
   return mutateJson<void>(`${BASE_URL}/rest/v1/price_brackets?id=eq.${id}`, accessToken, 'DELETE')
+}
+
+// --- Imballi fissi (€/pezzo) ---
+
+// Se la tabella non esiste ancora (migration non applicata) restituisce []
+// così l'app continua a usare il calcolo imballo da pallettizzazione.
+export async function getImballiFissi(accessToken: string): Promise<ImballoFisso[]> {
+  try {
+    return await fetchJson<ImballoFisso[]>(
+      `${BASE_URL}/rest/v1/imballo_fissi?select=*&order=fascia,modalita`,
+      accessToken,
+    )
+  } catch {
+    return []
+  }
+}
+
+export async function createImballoFisso(
+  accessToken: string,
+  row: Omit<ImballoFisso, 'id'>,
+): Promise<ImballoFisso> {
+  return mutateJson<ImballoFisso[]>(
+    `${BASE_URL}/rest/v1/imballo_fissi`,
+    accessToken,
+    'POST',
+    row,
+  ).then((d) => d[0])
+}
+
+export async function updateImballoFisso(
+  accessToken: string,
+  id: string,
+  patch: Partial<ImballoFisso>,
+): Promise<ImballoFisso> {
+  return mutateJson<ImballoFisso[]>(
+    `${BASE_URL}/rest/v1/imballo_fissi?id=eq.${id}`,
+    accessToken,
+    'PATCH',
+    patch,
+  ).then((d) => d[0])
+}
+
+// Salva il costo imballo di una (modalita, fascia): crea la riga se manca.
+export async function saveImballoFisso(
+  accessToken: string,
+  existing: ImballoFisso | undefined,
+  modalita: ImballoFisso['modalita'],
+  fascia: ImballoFisso['fascia'],
+  costo_eur_per_pezzo: number | null,
+): Promise<ImballoFisso> {
+  if (existing) {
+    return updateImballoFisso(accessToken, existing.id, { costo_eur_per_pezzo })
+  }
+  return createImballoFisso(accessToken, { modalita, fascia, costo_eur_per_pezzo })
 }

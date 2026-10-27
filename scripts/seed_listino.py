@@ -39,20 +39,27 @@ def main():
     lines = []
     lines.append("-- Seed generato da scripts/seed_listino.py (non modificare a mano)")
 
+    lines.append("INSERT INTO public.materials (code, name, costo_kg, sort_order, enabled) VALUES")
+    mat_rows = [
+        f"({q(m['code'])}, {q(m['name'])}, {q(m.get('costo_kg'))}, {i + 1}, true)"
+        for i, m in enumerate(data["materials"])
+    ]
+    lines.append(",\n    ".join(mat_rows))
     lines.append("""
-INSERT INTO public.materials (code, name, sort_order, enabled) VALUES
-    ('PP', 'PP', 1, true),
-    ('PE', 'PE', 2, true),
-    ('PETG', 'PETG', 3, true),
-    ('PE_PCR', 'PE PCR', 4, true)
-ON CONFLICT (code) DO UPDATE SET name = EXCLUDED.name, sort_order = EXCLUDED.sort_order, enabled = EXCLUDED.enabled;
+ON CONFLICT (code) DO UPDATE SET name = EXCLUDED.name, costo_kg = EXCLUDED.costo_kg,
+    sort_order = EXCLUDED.sort_order, enabled = EXCLUDED.enabled;
 """)
 
+    lines.append("INSERT INTO public.colors (code, name, master_color_costo_kg, sort_order, enabled) VALUES")
+    col_rows = [
+        f"({q(c['code'])}, {q(c['name'])}, {q(c.get('master_color_costo_kg'))}, {i + 1}, true)"
+        for i, c in enumerate(data["colors"])
+    ]
+    lines.append(",\n    ".join(col_rows))
     lines.append("""
-INSERT INTO public.colors (code, name, sort_order, enabled) VALUES
-    ('NBN', 'Non bianco / neutro', 1, true),
-    ('COL', 'Colorato', 2, true)
-ON CONFLICT (code) DO UPDATE SET name = EXCLUDED.name, sort_order = EXCLUDED.sort_order, enabled = EXCLUDED.enabled;
+ON CONFLICT (code) DO UPDATE SET name = EXCLUDED.name,
+    master_color_costo_kg = EXCLUDED.master_color_costo_kg,
+    sort_order = EXCLUDED.sort_order, enabled = EXCLUDED.enabled;
 """)
 
     lines.append("INSERT INTO public.capacities (label, peso_disegno_g, sort_order, enabled) VALUES")
@@ -79,7 +86,17 @@ ON CONFLICT (sort_order) DO UPDATE SET da = EXCLUDED.da, fino = EXCLUDED.fino,
     ricarico_vendite = EXCLUDED.ricarico_vendite, regola_vendita = EXCLUDED.regola_vendita;
 """)
 
-    lines.append("INSERT INTO public.listino_configs (capacity_id, material_id, color_id, peso_disegno_g, rinfusa_ricarico_div_100, mp_costos_kg, mp_utilizzi_pct, imballo_items, pezzi_pallet, allineato, rinfusa) VALUES")
+    lines.append("INSERT INTO public.imballo_fissi (modalita, fascia, costo_eur_per_pezzo) VALUES")
+    im_rows = [
+        f"({q(i['modalita'])}, {q(i['fascia'])}, {q(i.get('costo_eur_per_pezzo'))})"
+        for i in data.get("imballi_fissi", [])
+    ]
+    lines.append(",\n    ".join(im_rows))
+    lines.append("""
+ON CONFLICT (modalita, fascia) DO UPDATE SET costo_eur_per_pezzo = EXCLUDED.costo_eur_per_pezzo;
+""")
+
+    lines.append("INSERT INTO public.listino_configs (capacity_id, material_id, color_id, peso_disegno_g, rinfusa_ricarico_div_100, mp_costos_kg, mp_utilizzi_pct, master_color_costo_kg, imballo_items, pezzi_pallet, allineato, rinfusa) VALUES")
     cfg_rows = []
     for c in data["listino_configs"]:
         cfg_rows.append(
@@ -89,6 +106,7 @@ ON CONFLICT (sort_order) DO UPDATE SET da = EXCLUDED.da, fino = EXCLUDED.fino,
             f"(SELECT id FROM public.colors WHERE code = {q(c['color_code'])}), "
             f"{q(c['peso_disegno_g'])}, {q(c['rinfusa_ricarico_div_100'])}, "
             f"ARRAY{c.get('mp_costos_kg', [])}::numeric[], ARRAY{c.get('mp_utilizzi_pct', [])}::numeric[], "
+            f"{q(c.get('master_color_costo_kg'))}, "
             f"{jsonb_array(c['imballo_items'])}, {q(c['pezzi_pallet'])}, "
             f"{jsonb_array(c['allineato'])}, {jsonb_array(c['rinfusa'])}"
             ")"
@@ -100,6 +118,7 @@ ON CONFLICT (capacity_id, material_id, color_id) DO UPDATE SET
     rinfusa_ricarico_div_100 = EXCLUDED.rinfusa_ricarico_div_100,
     mp_costos_kg = EXCLUDED.mp_costos_kg,
     mp_utilizzi_pct = EXCLUDED.mp_utilizzi_pct,
+    master_color_costo_kg = EXCLUDED.master_color_costo_kg,
     imballo_items = EXCLUDED.imballo_items,
     pezzi_pallet = EXCLUDED.pezzi_pallet,
     allineato = EXCLUDED.allineato,
