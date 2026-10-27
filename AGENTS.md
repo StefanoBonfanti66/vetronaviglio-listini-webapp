@@ -39,7 +39,6 @@
 - Nota sicurezza: la select REST su `imballo_fissi` risponde anche con anon key (RLS select non restrittiva).
 
 ### Prossimo step concreto
-- **Allineare la documentazione al reale**: aggiornare `README.md`, `docs/overview.md`, `docs/project/overview.md`, `docs/project/runbook.md` alla situazione on-prem (produzione `http://listini.vetrodom.local`, DB self-hosted `192.168.24.130:8000`, WIP `d7ed92e` pushato), riusando le note esistenti e senza creare cartelle/file nuovi.
+- **Ottenere i dati mancanti dal cliente; quindi aggiornare i costi imballo e preparare il prospetto finale.** *(I campi autorevoli per la dashboard sono in `docs/project/project-status.json`.)*
 - Caricare in admin i **4 valori €/pezzo** appena arrivano da Federico e mandare il prospetto finale delle variazioni di prezzo (serve l'Excel aggiornato).
 - Incontro con cliente per validazione prototipo, scelta hosting e personalizzazioni (PDF, PETG/PE PCR, ruoli).
-

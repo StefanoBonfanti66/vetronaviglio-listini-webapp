@@ -1,0 +1,7 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-10-27T09:46:24.814Z",
+  "state": "active",
+  "phase": "Validazione cliente",
+  "next_action": "Ottenere i dati mancanti dal cliente; quindi aggiornare i costi imballo e preparare il prospetto finale."
+}
