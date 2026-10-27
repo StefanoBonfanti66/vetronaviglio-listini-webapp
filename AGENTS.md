@@ -12,7 +12,7 @@
 - Use `PROJECT_AI_NOTES.md` to track decisions, checkpoints, and pending items across sessions.
 - If you use custom commands in your OpenCode setup, document project-specific ones here or in the repository docs.
 
-## Current Focus — 2026-10-26
+## Current Focus — 2026-10-27
 
 ### Completato
 - MVP completo: schema Supabase + seed (44 config), motore prezzi (1932 check vs excel), import excel, UI (login, prezzi + breakdown, admin CRUD).
@@ -26,16 +26,20 @@
 - **Costi imballo fissi €/pezzo** (migration `0005`, applicata al DB on-prem): 4 campi in admin (allineato/rinfusa × fino 125 ml/oltre 125 ml), applicazione automatica per fascia di capacità con fallback alla palletizzazione, `0` valido. Test end-to-end su dev e DB reale (valori di prova poi azzerati).
 - **Deploy on-prem in produzione** (26/10): http://listini.vetrodom.local su `app-dev-01` (container `listini-webapp` su rete `intranet_proxy`, proxy nginx con reload dopo lo swap). Smoke test: login, prezzi, sezione admin "Costi imballi" OK. Rollback: immagine `vetronaviglio/listini-webapp:rollback-20261026` + container `listini-webapp-old` + tar sorgenti in `/opt/intranet/backups/`.
 - **Mail di risposta a Federico/Margherita/Bettina inviata** il 26/10 (Gmail ZBN, inoltrata manualmente dal proprio indirizzo per non mostrare "ZetaByteNexus"); restano da chiedere 4 valori imballi, Excel aggiornato, config 400 ml/PETG/PE_PCR, ricarichi vendite, master color CUSTOM.
+- **WIP committato e pushato** il 27/10: `d7ed92e` "feat: costi MP/master, anagrafiche costi e costi imballo fissi €/pezzo in admin" — 30 file (+8180/−276): `app/src/lib/costs.ts`, `app/src/lib/imballi.ts`, `app/src/components/admin/ImballiManager.tsx`, test `costs.test.ts`/`imballi.test.ts`/`pricing-current.test.ts` + snapshot, migration `0003`–`0005`, seed/import allineati, script `npm test`.
+- **Copia locale riallineata a `origin/main`** (27/10): scartate 3 modifiche locali stale del 23/10 (variante *pre-correzione* del mapping `material_code` in `pricing.ts`/`types.ts` + `0003_master_color.sql` untracked), poi `git merge --ff-only` → `d7ed92e`. Verifica su codice allineato: `npm test` OK (unit + 1932/1932 vs Excel baseline + 1936/1936 costi correnti + costs + imballi), `npm run typecheck` OK, `npm run build` OK.
+- **`.gitignore`**: aggiunto `*.jpg` (coerente con `*.png` già presente) → i 2 screenshot JPG di riferimento costi MP in `data/listini/` restano in locale e non sporcano `git status`.
 
 ### Da fare / miglioramenti futuri
 - **Dati mancanti da Federico/Margherita**: 4 valori €/pezzo costi imballi, Excel di riferimento aggiornato, conferma config 400 ml/PETG/PE_PCR, ricarichi vendite, valore master color CUSTOM.
+- **Docs allineati al reale** (incoerenze rilevate il 27/10): `README.md` è ancora il boilerplate "Triathlon Starter"; `docs/overview.md` e `docs/project/overview.md` sono fermi al 06/08 (dicono ancora Supabase cloud + Vercel, stato `lead`/`staging`) e non riflettono il deploy on-prem in produzione; `docs/project/runbook.md` ha comandi di test superati (`npm test` ora esiste) e deploy "da confermare". Riuso del `docs/` esistente, nessuna struttura nuova.
 - Chiarire con cliente: stampa/export PDF, popolamento dati PETG/PE PCR, ruoli admin.
 - Allineare label colore COL hardcodata (non bloccante prezzi).
 - **Rotazione anon key** (esposta in chat 31/08): utente rigenera la legacy anon key in Dashboard → Project Settings → API e aggiorna il secret GitHub `SUPABASE_ANON_KEY`.
 - Nota sicurezza: la select REST su `imballo_fissi` risponde anche con anon key (RLS select non restrittiva).
 
 ### Prossimo step concreto
-- **Committare e pushare il WIP** (costi MP/master/velocità, anagrafiche costs, costi imballi fissi, test, seed, migration 0003-0005) dopo conferma dei file approvati.
+- **Allineare la documentazione al reale**: aggiornare `README.md`, `docs/overview.md`, `docs/project/overview.md`, `docs/project/runbook.md` alla situazione on-prem (produzione `http://listini.vetrodom.local`, DB self-hosted `192.168.24.130:8000`, WIP `d7ed92e` pushato), riusando le note esistenti e senza creare cartelle/file nuovi.
 - Caricare in admin i **4 valori €/pezzo** appena arrivano da Federico e mandare il prospetto finale delle variazioni di prezzo (serve l'Excel aggiornato).
 - Incontro con cliente per validazione prototipo, scelta hosting e personalizzazioni (PDF, PETG/PE PCR, ruoli).
 
