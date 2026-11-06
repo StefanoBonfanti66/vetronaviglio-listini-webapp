@@ -19,8 +19,6 @@ Web app che permette ai commerciali di Vetronaviglio di ottenere il prezzo di ve
 
 Vetronaviglio è un produttore di packaging primario per il beauty (Bareggio MI). I commerciali oggi leggono i prezzi dal file `Nuovo Listino Plastica_06 2025_Rev01.xlsx` (colonne AC = prezzo allineato, AD = prezzo rinfusa). La richiesta di Federico Rosi (Direzione Qualità/R&D) è uno strumento web che replichi quella logica.
 
-**Natura:** progetto GRATUITO — Stefano è ancora dipendente di Vetronaviglio.
-
 ## Obiettivo
 
 MVP di una web app dove il commerciale seleziona **materiale** (PP, PE, PETG, PE PCR), **colore** (Colorato Custom, nero, bianco, neutro) e **capacità** (30–1000 ml) e ottiene i due prezzi di vendita per le fasce di quantità, con login e gestione dati via pagina admin.

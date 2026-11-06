@@ -297,6 +297,46 @@ export default function AdminPage() {
       {error && <p className="border border-red-600/20 bg-red-50 p-4 text-sm text-red-700">{error}</p>}
       {saved && <p className="border border-amber-accent/30 bg-surface p-4 text-sm text-onyx/80">{saved}</p>}
 
+            <CrudManager
+        title="Materiali"
+        description="Materie prime disponibili. Il costo €/kg si propaga a tutti i listini del materiale. Disattiva un materiale per nasconderlo nella ricerca."
+        cols={[
+          { key: 'code', label: 'Codice' },
+          { key: 'name', label: 'Nome' },
+          { key: 'costo_kg', label: 'Costo MP (€/kg)', inputType: 'decimal' },
+          { key: 'sort_order', label: 'Ordine' },
+          { key: 'enabled', label: 'Attivo', render: (r) => (r.enabled ? 'Sì' : 'No') },
+        ]}
+        rows={materials}
+        setRows={setMaterials}
+        makeEmpty={() => ({ code: '', name: '', sort_order: 0, enabled: true, costo_kg: null })}
+        create={createMaterial}
+        update={saveMaterial}
+        remove={deleteMaterial}
+      />
+
+      <CrudManager
+        title="Colori"
+        description="Colori disponibili. Il costo master €/kg si propaga a tutti i listini del colore. Disattiva un colore per nasconderlo nella ricerca."
+        cols={[
+          { key: 'code', label: 'Codice' },
+          { key: 'name', label: 'Nome' },
+          { key: 'master_color_costo_kg', label: 'Costo master (€/kg)', inputType: 'decimal' },
+          { key: 'sort_order', label: 'Ordine' },
+          { key: 'enabled', label: 'Attivo', render: (r) => (r.enabled ? 'Sì' : 'No') },
+        ]}
+        rows={colors}
+        setRows={setColors}
+        makeEmpty={() => ({ code: '', name: '', sort_order: 0, enabled: true, master_color_costo_kg: null })}
+        create={createColor}
+        update={saveColor}
+        remove={deleteColor}
+      />
+
+      <ImballiManager rows={imballi} onSave={saveImballo} />
+
+      <BracketsManager brackets={brackets} setBrackets={setBrackets} />
+
       <div className="bg-white border border-aluminum/10 p-6">
         <div className="flex flex-wrap items-center justify-between gap-4">
           <div>
@@ -714,44 +754,6 @@ export default function AdminPage() {
         </div>
       )}
 
-      <ImballiManager rows={imballi} onSave={saveImballo} />
-
-      <CrudManager
-        title="Materiali"
-        description="Materie prime disponibili. Il costo €/kg si propaga a tutti i listini del materiale. Disattiva un materiale per nasconderlo nella ricerca."
-        cols={[
-          { key: 'code', label: 'Codice' },
-          { key: 'name', label: 'Nome' },
-          { key: 'costo_kg', label: 'Costo MP (€/kg)', inputType: 'decimal' },
-          { key: 'sort_order', label: 'Ordine' },
-          { key: 'enabled', label: 'Attivo', render: (r) => (r.enabled ? 'Sì' : 'No') },
-        ]}
-        rows={materials}
-        setRows={setMaterials}
-        makeEmpty={() => ({ code: '', name: '', sort_order: 0, enabled: true, costo_kg: null })}
-        create={createMaterial}
-        update={saveMaterial}
-        remove={deleteMaterial}
-      />
-
-      <CrudManager
-        title="Colori"
-        description="Colori disponibili. Il costo master €/kg si propaga a tutti i listini del colore. Disattiva un colore per nasconderlo nella ricerca."
-        cols={[
-          { key: 'code', label: 'Codice' },
-          { key: 'name', label: 'Nome' },
-          { key: 'master_color_costo_kg', label: 'Costo master (€/kg)', inputType: 'decimal' },
-          { key: 'sort_order', label: 'Ordine' },
-          { key: 'enabled', label: 'Attivo', render: (r) => (r.enabled ? 'Sì' : 'No') },
-        ]}
-        rows={colors}
-        setRows={setColors}
-        makeEmpty={() => ({ code: '', name: '', sort_order: 0, enabled: true, master_color_costo_kg: null })}
-        create={createColor}
-        update={saveColor}
-        remove={deleteColor}
-      />
-
       <CrudManager
         title="Capacità"
         description="Capacità disponibili (ml). Disattiva una capacità per nasconderla nella ricerca."
@@ -768,8 +770,6 @@ export default function AdminPage() {
         update={updateCapacity}
         remove={deleteCapacity}
       />
-
-      <BracketsManager brackets={brackets} setBrackets={setBrackets} />
     </div>
   )
 }

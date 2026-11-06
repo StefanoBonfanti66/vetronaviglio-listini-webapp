@@ -141,7 +141,7 @@ def main() -> int:
 
         def params(row: int):
             return {
-                "ore_uomo": f(g(row, 1)),
+                "ore_uomo": 6.0,
                 "costo_rsu": f(g(row, 2)),
                 "velocita_pz_h": f(g(row, 3)),
                 "rsu_unit": f(g(row, 4)),

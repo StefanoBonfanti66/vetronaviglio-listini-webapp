@@ -4,7 +4,6 @@
 - **Contatto:** Federico Rosi <f.rosi@vetronaviglio.it> (Direttore Qualità, R&D e Sviluppo Prodotto, Vetronaviglio srl)
 - **Riferimento:** Email "I: listini" del 03/08/2026, inoltrata da Stefano a bonfantistefano4@gmail.com (id Gmail `19fc7a60f9f4b124`)
 - **Tipo Lead:** Delivery
-- **Natura:** Progetto GRATUITO — Stefano ancora dipendente di Vetronaviglio (vertenza in corso con avv. Ida Allocca)
 
 ---
 
