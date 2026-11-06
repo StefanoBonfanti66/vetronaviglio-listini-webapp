@@ -791,7 +791,7 @@ function MachineParamsGrid({
     ricarico_costi_ind: 0,
   }
   const fields: [keyof MachineParams, string][] = [
-    ['ore_uomo', 'Ore uomo'],
+    ['ore_uomo', 'Ore uomo attrezzaggio'],
     ['costo_rsu', 'Costo ora uomo attrezzaggio'],
     ['velocita_pz_h', 'Velocità (pz/h)'],
     ['rsu_unit', 'RSU (unità)'],
