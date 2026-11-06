@@ -792,7 +792,7 @@ function MachineParamsGrid({
   }
   const fields: [keyof MachineParams, string][] = [
     ['ore_uomo', 'Ore uomo'],
-    ['costo_rsu', 'Costo RSU'],
+    ['costo_rsu', 'Costo ora uomo attrezzaggio'],
     ['velocita_pz_h', 'Velocità (pz/h)'],
     ['rsu_unit', 'RSU (unità)'],
     ['costo_orario_macchina', 'Costo orario macchina'],
