@@ -658,8 +658,6 @@ export default function AdminPage() {
                     params={newConfig}
                     fields={[
                       ['velocita_pz_h', 'Velocità (pz/h)'],
-                      ['rsu_unit', 'RSU unità (allineato)'],
-                      ['rsu_unit_rinfusa', 'RSU unità (rinfusa)'],
                       ['costo_orario_macchina', 'Costo orario macchina'],
                       ['costo_orario_rsu', 'Costo orario RSU'],
                       ['ricarico_costi_ind', 'Ricarico costi ind.'],
@@ -692,6 +690,17 @@ export default function AdminPage() {
                       </div>
                     ))}
                   </div>
+                  <fieldset className="border border-aluminum/20 p-3 mt-2">
+                    <legend className="px-1 font-sans text-[10px] uppercase tracking-[0.2em] font-medium text-aluminum">RSU imballo</legend>
+                  <MachineParamsGrid
+                    params={newConfig}
+                    fields={[
+                      ['rsu_unit', 'RSU unità imballo allineato (0,5)'],
+                      ['rsu_unit_rinfusa', 'RSU unità imballo rinfusa (0,25)'],
+                    ]}
+                    onChange={(v) => setNewConfig({ ...newConfig, ...v })}
+                  />
+                  </fieldset>
                 </div>
               )}
             </div>
@@ -839,8 +848,6 @@ export default function AdminPage() {
                     params={draft}
                     fields={[
                       ['velocita_pz_h', 'Velocità (pz/h)'],
-                      ['rsu_unit', 'RSU unità (allineato)'],
-                      ['rsu_unit_rinfusa', 'RSU unità (rinfusa)'],
                       ['costo_orario_macchina', 'Costo orario macchina'],
                       ['costo_orario_rsu', 'Costo orario RSU'],
                       ['ricarico_costi_ind', 'Ricarico costi ind.'],
@@ -873,6 +880,17 @@ export default function AdminPage() {
                       </div>
                     ))}
                   </div>
+                  <fieldset className="border border-aluminum/20 p-3 mt-2">
+                    <legend className="px-1 font-sans text-[10px] uppercase tracking-[0.2em] font-medium text-aluminum">RSU imballo</legend>
+                  <MachineParamsGrid
+                    params={draft}
+                    fields={[
+                      ['rsu_unit', 'RSU unità imballo allineato (0,5)'],
+                      ['rsu_unit_rinfusa', 'RSU unità imballo rinfusa (0,25)'],
+                    ]}
+                    onChange={(v) => setDraft({ ...draft, ...v })}
+                  />
+                  </fieldset>
                 </div>
               )}
             </div>
