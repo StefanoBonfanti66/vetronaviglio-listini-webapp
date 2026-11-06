@@ -233,24 +233,13 @@
         }
       ],
       "pezzi_pallet": 9900.0,
-      "allineato": {
-        "ore_uomo": 6.0,
-        "costo_rsu": 32.0,
-        "velocita_pz_h": 450.0,
-        "rsu_unit": 0.5,
-        "costo_orario_macchina": 5.0,
-        "costo_orario_rsu": 25.0,
-        "ricarico_costi_ind": 0.3
-      },
-      "rinfusa": {
-        "ore_uomo": 6.0,
-        "costo_rsu": 32.0,
-        "velocita_pz_h": 450.0,
-        "rsu_unit": 0.25,
-        "costo_orario_macchina": 5.0,
-        "costo_orario_rsu": 25.0,
-        "ricarico_costi_ind": 0.3
-      }
+      "ore_uomo": 6.0,
+      "costo_rsu": 32.0,
+      "velocita_pz_h": 450.0,
+      "rsu_unit": 0.5,
+      "costo_orario_macchina": 5.0,
+      "costo_orario_rsu": 25.0,
+      "ricarico_costi_ind": 0.3
     },
     {
       "capacity_label": "30",
@@ -290,24 +279,13 @@
         }
       ],
       "pezzi_pallet": 9900.0,
-      "allineato": {
-        "ore_uomo": 6.0,
-        "costo_rsu": 32.0,
-        "velocita_pz_h": 450.0,
-        "rsu_unit": 0.5,
-        "costo_orario_macchina": 5.0,
-        "costo_orario_rsu": 25.0,
-        "ricarico_costi_ind": 0.3
-      },
-      "rinfusa": {
-        "ore_uomo": 6.0,
-        "costo_rsu": 32.0,
-        "velocita_pz_h": 450.0,
-        "rsu_unit": 0.25,
-        "costo_orario_macchina": 5.0,
-        "costo_orario_rsu": 25.0,
-        "ricarico_costi_ind": 0.3
-      }
+      "ore_uomo": 6.0,
+      "costo_rsu": 32.0,
+      "velocita_pz_h": 450.0,
+      "rsu_unit": 0.5,
+      "costo_orario_macchina": 5.0,
+      "costo_orario_rsu": 25.0,
+      "ricarico_costi_ind": 0.3
     },
     {
       "capacity_label": "30",
@@ -347,24 +325,13 @@
         }
       ],
       "pezzi_pallet": 9900.0,
-      "allineato": {
-        "ore_uomo": 6.0,
-        "costo_rsu": 32.0,
-        "velocita_pz_h": 450.0,
-        "rsu_unit": 0.5,
-        "costo_orario_macchina": 5.0,
-        "costo_orario_rsu": 25.0,
-        "ricarico_costi_ind": 0.3
-      },
-      "rinfusa": {
-        "ore_uomo": 6.0,
-        "costo_rsu": 32.0,
-        "velocita_pz_h": 450.0,
-        "rsu_unit": 0.25,
-        "costo_orario_macchina": 5.0,
-        "costo_orario_rsu": 25.0,
-        "ricarico_costi_ind": 0.3
-      }
+      "ore_uomo": 6.0,
+      "costo_rsu": 32.0,
+      "velocita_pz_h": 450.0,
+      "rsu_unit": 0.5,
+      "costo_orario_macchina": 5.0,
+      "costo_orario_rsu": 25.0,
+      "ricarico_costi_ind": 0.3
     },
     {
       "capacity_label": "30",
@@ -404,24 +371,13 @@
         }
       ],
       "pezzi_pallet": 9900.0,
-      "allineato": {
-        "ore_uomo": 6.0,
-        "costo_rsu": 32.0,
-        "velocita_pz_h": 450.0,
-        "rsu_unit": 0.5,
-        "costo_orario_macchina": 5.0,
-        "costo_orario_rsu": 25.0,
-        "ricarico_costi_ind": 0.3
-      },
-      "rinfusa": {
-        "ore_uomo": 6.0,
-        "costo_rsu": 32.0,
-        "velocita_pz_h": 450.0,
-        "rsu_unit": 0.25,
-        "costo_orario_macchina": 5.0,
-        "costo_orario_rsu": 25.0,
-        "ricarico_costi_ind": 0.3
-      }
+      "ore_uomo": 6.0,
+      "costo_rsu": 32.0,
+      "velocita_pz_h": 450.0,
+      "rsu_unit": 0.5,
+      "costo_orario_macchina": 5.0,
+      "costo_orario_rsu": 25.0,
+      "ricarico_costi_ind": 0.3
     },
     {
       "capacity_label": "50",
@@ -461,24 +417,13 @@
         }
       ],
       "pezzi_pallet": 9900.0,
-      "allineato": {
-        "ore_uomo": 6.0,
-        "costo_rsu": 32.0,
-        "velocita_pz_h": 450.0,
-        "rsu_unit": 0.5,
-        "costo_orario_macchina": 5.0,
-        "costo_orario_rsu": 25.0,
-        "ricarico_costi_ind": 0.3
-      },
-      "rinfusa": {
-        "ore_uomo": 6.0,
-        "costo_rsu": 32.0,
-        "velocita_pz_h": 450.0,
-        "rsu_unit": 0.25,
-        "costo_orario_macchina": 5.0,
-        "costo_orario_rsu": 25.0,
-        "ricarico_costi_ind": 0.3
-      }
+      "ore_uomo": 6.0,
+      "costo_rsu": 32.0,
+      "velocita_pz_h": 450.0,
+      "rsu_unit": 0.5,
+      "costo_orario_macchina": 5.0,
+      "costo_orario_rsu": 25.0,
+      "ricarico_costi_ind": 0.3
     },
     {
       "capacity_label": "50",
@@ -518,24 +463,13 @@
         }
       ],
       "pezzi_pallet": 9900.0,
-      "allineato": {
-        "ore_uomo": 6.0,
-        "costo_rsu": 32.0,
-        "velocita_pz_h": 450.0,
-        "rsu_unit": 0.5,
-        "costo_orario_macchina": 5.0,
-        "costo_orario_rsu": 25.0,
-        "ricarico_costi_ind": 0.3
-      },
-      "rinfusa": {
-        "ore_uomo": 6.0,
-        "costo_rsu": 32.0,
-        "velocita_pz_h": 450.0,
-        "rsu_unit": 0.25,
-        "costo_orario_macchina": 5.0,
-        "costo_orario_rsu": 25.0,
-        "ricarico_costi_ind": 0.3
-      }
+      "ore_uomo": 6.0,
+      "costo_rsu": 32.0,
+      "velocita_pz_h": 450.0,
+      "rsu_unit": 0.5,
+      "costo_orario_macchina": 5.0,
+      "costo_orario_rsu": 25.0,
+      "ricarico_costi_ind": 0.3
     },
     {
       "capacity_label": "50",
@@ -575,24 +509,13 @@
         }
       ],
       "pezzi_pallet": 9900.0,
-      "allineato": {
-        "ore_uomo": 6.0,
-        "costo_rsu": 32.0,
-        "velocita_pz_h": 450.0,
-        "rsu_unit": 0.5,
-        "costo_orario_macchina": 5.0,
-        "costo_orario_rsu": 25.0,
-        "ricarico_costi_ind": 0.3
-      },
-      "rinfusa": {
-        "ore_uomo": 6.0,
-        "costo_rsu": 32.0,
-        "velocita_pz_h": 450.0,
-        "rsu_unit": 0.25,
-        "costo_orario_macchina": 5.0,
-        "costo_orario_rsu": 25.0,
-        "ricarico_costi_ind": 0.3
-      }
+      "ore_uomo": 6.0,
+      "costo_rsu": 32.0,
+      "velocita_pz_h": 450.0,
+      "rsu_unit": 0.5,
+      "costo_orario_macchina": 5.0,
+      "costo_orario_rsu": 25.0,
+      "ricarico_costi_ind": 0.3
     },
     {
       "capacity_label": "50",
@@ -632,24 +555,13 @@
         }
       ],
       "pezzi_pallet": 9900.0,
-      "allineato": {
-        "ore_uomo": 6.0,
-        "costo_rsu": 32.0,
-        "velocita_pz_h": 450.0,
-        "rsu_unit": 0.5,
-        "costo_orario_macchina": 5.0,
-        "costo_orario_rsu": 25.0,
-        "ricarico_costi_ind": 0.3
-      },
-      "rinfusa": {
-        "ore_uomo": 6.0,
-        "costo_rsu": 32.0,
-        "velocita_pz_h": 450.0,
-        "rsu_unit": 0.25,
-        "costo_orario_macchina": 5.0,
-        "costo_orario_rsu": 25.0,
-        "ricarico_costi_ind": 0.3
-      }
+      "ore_uomo": 6.0,
+      "costo_rsu": 32.0,
+      "velocita_pz_h": 450.0,
+      "rsu_unit": 0.5,
+      "costo_orario_macchina": 5.0,
+      "costo_orario_rsu": 25.0,
+      "ricarico_costi_ind": 0.3
     },
     {
       "capacity_label": "75",
@@ -689,24 +601,13 @@
         }
       ],
       "pezzi_pallet": 9900.0,
-      "allineato": {
-        "ore_uomo": 6.0,
-        "costo_rsu": 32.0,
-        "velocita_pz_h": 450.0,
-        "rsu_unit": 0.5,
-        "costo_orario_macchina": 5.0,
-        "costo_orario_rsu": 25.0,
-        "ricarico_costi_ind": 0.3
-      },
-      "rinfusa": {
-        "ore_uomo": 6.0,
-        "costo_rsu": 32.0,
-        "velocita_pz_h": 450.0,
-        "rsu_unit": 0.25,
-        "costo_orario_macchina": 5.0,
-        "costo_orario_rsu": 25.0,
-        "ricarico_costi_ind": 0.3
-      }
+      "ore_uomo": 6.0,
+      "costo_rsu": 32.0,
+      "velocita_pz_h": 450.0,
+      "rsu_unit": 0.5,
+      "costo_orario_macchina": 5.0,
+      "costo_orario_rsu": 25.0,
+      "ricarico_costi_ind": 0.3
     },
     {
       "capacity_label": "75",
@@ -746,24 +647,13 @@
         }
       ],
       "pezzi_pallet": 9900.0,
-      "allineato": {
-        "ore_uomo": 6.0,
-        "costo_rsu": 32.0,
-        "velocita_pz_h": 450.0,
-        "rsu_unit": 0.5,
-        "costo_orario_macchina": 5.0,
-        "costo_orario_rsu": 25.0,
-        "ricarico_costi_ind": 0.3
-      },
-      "rinfusa": {
-        "ore_uomo": 6.0,
-        "costo_rsu": 32.0,
-        "velocita_pz_h": 450.0,
-        "rsu_unit": 0.25,
-        "costo_orario_macchina": 5.0,
-        "costo_orario_rsu": 25.0,
-        "ricarico_costi_ind": 0.3
-      }
+      "ore_uomo": 6.0,
+      "costo_rsu": 32.0,
+      "velocita_pz_h": 450.0,
+      "rsu_unit": 0.5,
+      "costo_orario_macchina": 5.0,
+      "costo_orario_rsu": 25.0,
+      "ricarico_costi_ind": 0.3
     },
     {
       "capacity_label": "75",
@@ -803,24 +693,13 @@
         }
       ],
       "pezzi_pallet": 9900.0,
-      "allineato": {
-        "ore_uomo": 6.0,
-        "costo_rsu": 32.0,
-        "velocita_pz_h": 450.0,
-        "rsu_unit": 0.5,
-        "costo_orario_macchina": 5.0,
-        "costo_orario_rsu": 25.0,
-        "ricarico_costi_ind": 0.3
-      },
-      "rinfusa": {
-        "ore_uomo": 6.0,
-        "costo_rsu": 32.0,
-        "velocita_pz_h": 450.0,
-        "rsu_unit": 0.25,
-        "costo_orario_macchina": 5.0,
-        "costo_orario_rsu": 25.0,
-        "ricarico_costi_ind": 0.3
-      }
+      "ore_uomo": 6.0,
+      "costo_rsu": 32.0,
+      "velocita_pz_h": 450.0,
+      "rsu_unit": 0.5,
+      "costo_orario_macchina": 5.0,
+      "costo_orario_rsu": 25.0,
+      "ricarico_costi_ind": 0.3
     },
     {
       "capacity_label": "75",
@@ -860,24 +739,13 @@
         }
       ],
       "pezzi_pallet": 9900.0,
-      "allineato": {
-        "ore_uomo": 6.0,
-        "costo_rsu": 32.0,
-        "velocita_pz_h": 450.0,
-        "rsu_unit": 0.5,
-        "costo_orario_macchina": 5.0,
-        "costo_orario_rsu": 25.0,
-        "ricarico_costi_ind": 0.3
-      },
-      "rinfusa": {
-        "ore_uomo": 6.0,
-        "costo_rsu": 32.0,
-        "velocita_pz_h": 450.0,
-        "rsu_unit": 0.25,
-        "costo_orario_macchina": 5.0,
-        "costo_orario_rsu": 25.0,
-        "ricarico_costi_ind": 0.3
-      }
+      "ore_uomo": 6.0,
+      "costo_rsu": 32.0,
+      "velocita_pz_h": 450.0,
+      "rsu_unit": 0.5,
+      "costo_orario_macchina": 5.0,
+      "costo_orario_rsu": 25.0,
+      "ricarico_costi_ind": 0.3
     },
     {
       "capacity_label": "100",
@@ -917,24 +785,13 @@
         }
       ],
       "pezzi_pallet": 9900.0,
-      "allineato": {
-        "ore_uomo": 6.0,
-        "costo_rsu": 32.0,
-        "velocita_pz_h": 450.0,
-        "rsu_unit": 0.5,
-        "costo_orario_macchina": 5.0,
-        "costo_orario_rsu": 25.0,
-        "ricarico_costi_ind": 0.3
-      },
-      "rinfusa": {
-        "ore_uomo": 6.0,
-        "costo_rsu": 32.0,
-        "velocita_pz_h": 450.0,
-        "rsu_unit": 0.25,
-        "costo_orario_macchina": 5.0,
-        "costo_orario_rsu": 25.0,
-        "ricarico_costi_ind": 0.3
-      }
+      "ore_uomo": 6.0,
+      "costo_rsu": 32.0,
+      "velocita_pz_h": 450.0,
+      "rsu_unit": 0.5,
+      "costo_orario_macchina": 5.0,
+      "costo_orario_rsu": 25.0,
+      "ricarico_costi_ind": 0.3
     },
     {
       "capacity_label": "100",
@@ -974,24 +831,13 @@
         }
       ],
       "pezzi_pallet": 9900.0,
-      "allineato": {
-        "ore_uomo": 6.0,
-        "costo_rsu": 32.0,
-        "velocita_pz_h": 450.0,
-        "rsu_unit": 0.5,
-        "costo_orario_macchina": 5.0,
-        "costo_orario_rsu": 25.0,
-        "ricarico_costi_ind": 0.3
-      },
-      "rinfusa": {
-        "ore_uomo": 6.0,
-        "costo_rsu": 32.0,
-        "velocita_pz_h": 450.0,
-        "rsu_unit": 0.25,
-        "costo_orario_macchina": 5.0,
-        "costo_orario_rsu": 25.0,
-        "ricarico_costi_ind": 0.3
-      }
+      "ore_uomo": 6.0,
+      "costo_rsu": 32.0,
+      "velocita_pz_h": 450.0,
+      "rsu_unit": 0.5,
+      "costo_orario_macchina": 5.0,
+      "costo_orario_rsu": 25.0,
+      "ricarico_costi_ind": 0.3
     },
     {
       "capacity_label": "100",
@@ -1031,24 +877,13 @@
         }
       ],
       "pezzi_pallet": 9900.0,
-      "allineato": {
-        "ore_uomo": 6.0,
-        "costo_rsu": 32.0,
-        "velocita_pz_h": 450.0,
-        "rsu_unit": 0.5,
-        "costo_orario_macchina": 5.0,
-        "costo_orario_rsu": 25.0,
-        "ricarico_costi_ind": 0.3
-      },
-      "rinfusa": {
-        "ore_uomo": 6.0,
-        "costo_rsu": 32.0,
-        "velocita_pz_h": 450.0,
-        "rsu_unit": 0.25,
-        "costo_orario_macchina": 5.0,
-        "costo_orario_rsu": 25.0,
-        "ricarico_costi_ind": 0.3
-      }
+      "ore_uomo": 6.0,
+      "costo_rsu": 32.0,
+      "velocita_pz_h": 450.0,
+      "rsu_unit": 0.5,
+      "costo_orario_macchina": 5.0,
+      "costo_orario_rsu": 25.0,
+      "ricarico_costi_ind": 0.3
     },
     {
       "capacity_label": "100",
@@ -1088,24 +923,13 @@
         }
       ],
       "pezzi_pallet": 9900.0,
-      "allineato": {
-        "ore_uomo": 6.0,
-        "costo_rsu": 32.0,
-        "velocita_pz_h": 450.0,
-        "rsu_unit": 0.5,
-        "costo_orario_macchina": 5.0,
-        "costo_orario_rsu": 25.0,
-        "ricarico_costi_ind": 0.3
-      },
-      "rinfusa": {
-        "ore_uomo": 6.0,
-        "costo_rsu": 32.0,
-        "velocita_pz_h": 450.0,
-        "rsu_unit": 0.25,
-        "costo_orario_macchina": 5.0,
-        "costo_orario_rsu": 25.0,
-        "ricarico_costi_ind": 0.3
-      }
+      "ore_uomo": 6.0,
+      "costo_rsu": 32.0,
+      "velocita_pz_h": 450.0,
+      "rsu_unit": 0.5,
+      "costo_orario_macchina": 5.0,
+      "costo_orario_rsu": 25.0,
+      "ricarico_costi_ind": 0.3
     },
     {
       "capacity_label": "125",
@@ -1145,24 +969,13 @@
         }
       ],
       "pezzi_pallet": 9900.0,
-      "allineato": {
-        "ore_uomo": 6.0,
-        "costo_rsu": 32.0,
-        "velocita_pz_h": 450.0,
-        "rsu_unit": 0.5,
-        "costo_orario_macchina": 5.0,
-        "costo_orario_rsu": 25.0,
-        "ricarico_costi_ind": 0.3
-      },
-      "rinfusa": {
-        "ore_uomo": 6.0,
-        "costo_rsu": 32.0,
-        "velocita_pz_h": 450.0,
-        "rsu_unit": 0.25,
-        "costo_orario_macchina": 5.0,
-        "costo_orario_rsu": 25.0,
-        "ricarico_costi_ind": 0.3
-      }
+      "ore_uomo": 6.0,
+      "costo_rsu": 32.0,
+      "velocita_pz_h": 450.0,
+      "rsu_unit": 0.5,
+      "costo_orario_macchina": 5.0,
+      "costo_orario_rsu": 25.0,
+      "ricarico_costi_ind": 0.3
     },
     {
       "capacity_label": "125",
@@ -1202,24 +1015,13 @@
         }
       ],
       "pezzi_pallet": 9900.0,
-      "allineato": {
-        "ore_uomo": 6.0,
-        "costo_rsu": 32.0,
-        "velocita_pz_h": 450.0,
-        "rsu_unit": 0.5,
-        "costo_orario_macchina": 5.0,
-        "costo_orario_rsu": 25.0,
-        "ricarico_costi_ind": 0.3
-      },
-      "rinfusa": {
-        "ore_uomo": 6.0,
-        "costo_rsu": 32.0,
-        "velocita_pz_h": 450.0,
-        "rsu_unit": 0.25,
-        "costo_orario_macchina": 5.0,
-        "costo_orario_rsu": 25.0,
-        "ricarico_costi_ind": 0.3
-      }
+      "ore_uomo": 6.0,
+      "costo_rsu": 32.0,
+      "velocita_pz_h": 450.0,
+      "rsu_unit": 0.5,
+      "costo_orario_macchina": 5.0,
+      "costo_orario_rsu": 25.0,
+      "ricarico_costi_ind": 0.3
     },
     {
       "capacity_label": "125",
@@ -1259,24 +1061,13 @@
         }
       ],
       "pezzi_pallet": 9900.0,
-      "allineato": {
-        "ore_uomo": 6.0,
-        "costo_rsu": 32.0,
-        "velocita_pz_h": 450.0,
-        "rsu_unit": 0.5,
-        "costo_orario_macchina": 5.0,
-        "costo_orario_rsu": 25.0,
-        "ricarico_costi_ind": 0.3
-      },
-      "rinfusa": {
-        "ore_uomo": 6.0,
-        "costo_rsu": 32.0,
-        "velocita_pz_h": 450.0,
-        "rsu_unit": 0.25,
-        "costo_orario_macchina": 5.0,
-        "costo_orario_rsu": 25.0,
-        "ricarico_costi_ind": 0.3
-      }
+      "ore_uomo": 6.0,
+      "costo_rsu": 32.0,
+      "velocita_pz_h": 450.0,
+      "rsu_unit": 0.5,
+      "costo_orario_macchina": 5.0,
+      "costo_orario_rsu": 25.0,
+      "ricarico_costi_ind": 0.3
     },
     {
       "capacity_label": "125",
@@ -1316,24 +1107,13 @@
         }
       ],
       "pezzi_pallet": 9900.0,
-      "allineato": {
-        "ore_uomo": 6.0,
-        "costo_rsu": 32.0,
-        "velocita_pz_h": 450.0,
-        "rsu_unit": 0.5,
-        "costo_orario_macchina": 5.0,
-        "costo_orario_rsu": 25.0,
-        "ricarico_costi_ind": 0.3
-      },
-      "rinfusa": {
-        "ore_uomo": 6.0,
-        "costo_rsu": 32.0,
-        "velocita_pz_h": 450.0,
-        "rsu_unit": 0.25,
-        "costo_orario_macchina": 5.0,
-        "costo_orario_rsu": 25.0,
-        "ricarico_costi_ind": 0.3
-      }
+      "ore_uomo": 6.0,
+      "costo_rsu": 32.0,
+      "velocita_pz_h": 450.0,
+      "rsu_unit": 0.5,
+      "costo_orario_macchina": 5.0,
+      "costo_orario_rsu": 25.0,
+      "ricarico_costi_ind": 0.3
     },
     {
       "capacity_label": "150",
@@ -1373,24 +1153,13 @@
         }
       ],
       "pezzi_pallet": 9900.0,
-      "allineato": {
-        "ore_uomo": 6.0,
-        "costo_rsu": 32.0,
-        "velocita_pz_h": 350.0,
-        "rsu_unit": 0.5,
-        "costo_orario_macchina": 5.0,
-        "costo_orario_rsu": 25.0,
-        "ricarico_costi_ind": 0.3
-      },
-      "rinfusa": {
-        "ore_uomo": 6.0,
-        "costo_rsu": 32.0,
-        "velocita_pz_h": 350.0,
-        "rsu_unit": 0.25,
-        "costo_orario_macchina": 5.0,
-        "costo_orario_rsu": 25.0,
-        "ricarico_costi_ind": 0.3
-      }
+      "ore_uomo": 6.0,
+      "costo_rsu": 32.0,
+      "velocita_pz_h": 350.0,
+      "rsu_unit": 0.5,
+      "costo_orario_macchina": 5.0,
+      "costo_orario_rsu": 25.0,
+      "ricarico_costi_ind": 0.3
     },
     {
       "capacity_label": "150",
@@ -1430,24 +1199,13 @@
         }
       ],
       "pezzi_pallet": 9900.0,
-      "allineato": {
-        "ore_uomo": 6.0,
-        "costo_rsu": 32.0,
-        "velocita_pz_h": 350.0,
-        "rsu_unit": 0.5,
-        "costo_orario_macchina": 5.0,
-        "costo_orario_rsu": 25.0,
-        "ricarico_costi_ind": 0.3
-      },
-      "rinfusa": {
-        "ore_uomo": 6.0,
-        "costo_rsu": 32.0,
-        "velocita_pz_h": 350.0,
-        "rsu_unit": 0.25,
-        "costo_orario_macchina": 5.0,
-        "costo_orario_rsu": 25.0,
-        "ricarico_costi_ind": 0.3
-      }
+      "ore_uomo": 6.0,
+      "costo_rsu": 32.0,
+      "velocita_pz_h": 350.0,
+      "rsu_unit": 0.5,
+      "costo_orario_macchina": 5.0,
+      "costo_orario_rsu": 25.0,
+      "ricarico_costi_ind": 0.3
     },
     {
       "capacity_label": "150",
@@ -1487,24 +1245,13 @@
         }
       ],
       "pezzi_pallet": 9900.0,
-      "allineato": {
-        "ore_uomo": 6.0,
-        "costo_rsu": 32.0,
-        "velocita_pz_h": 350.0,
-        "rsu_unit": 0.5,
-        "costo_orario_macchina": 5.0,
-        "costo_orario_rsu": 25.0,
-        "ricarico_costi_ind": 0.3
-      },
-      "rinfusa": {
-        "ore_uomo": 6.0,
-        "costo_rsu": 32.0,
-        "velocita_pz_h": 350.0,
-        "rsu_unit": 0.25,
-        "costo_orario_macchina": 5.0,
-        "costo_orario_rsu": 25.0,
-        "ricarico_costi_ind": 0.3
-      }
+      "ore_uomo": 6.0,
+      "costo_rsu": 32.0,
+      "velocita_pz_h": 350.0,
+      "rsu_unit": 0.5,
+      "costo_orario_macchina": 5.0,
+      "costo_orario_rsu": 25.0,
+      "ricarico_costi_ind": 0.3
     },
     {
       "capacity_label": "150",
@@ -1544,24 +1291,13 @@
         }
       ],
       "pezzi_pallet": 9900.0,
-      "allineato": {
-        "ore_uomo": 6.0,
-        "costo_rsu": 32.0,
-        "velocita_pz_h": 350.0,
-        "rsu_unit": 0.5,
-        "costo_orario_macchina": 5.0,
-        "costo_orario_rsu": 25.0,
-        "ricarico_costi_ind": 0.3
-      },
-      "rinfusa": {
-        "ore_uomo": 6.0,
-        "costo_rsu": 32.0,
-        "velocita_pz_h": 350.0,
-        "rsu_unit": 0.25,
-        "costo_orario_macchina": 5.0,
-        "costo_orario_rsu": 25.0,
-        "ricarico_costi_ind": 0.3
-      }
+      "ore_uomo": 6.0,
+      "costo_rsu": 32.0,
+      "velocita_pz_h": 350.0,
+      "rsu_unit": 0.5,
+      "costo_orario_macchina": 5.0,
+      "costo_orario_rsu": 25.0,
+      "ricarico_costi_ind": 0.3
     },
     {
       "capacity_label": "200",
@@ -1601,24 +1337,13 @@
         }
       ],
       "pezzi_pallet": 9900.0,
-      "allineato": {
-        "ore_uomo": 6.0,
-        "costo_rsu": 32.0,
-        "velocita_pz_h": 350.0,
-        "rsu_unit": 0.5,
-        "costo_orario_macchina": 5.0,
-        "costo_orario_rsu": 25.0,
-        "ricarico_costi_ind": 0.3
-      },
-      "rinfusa": {
-        "ore_uomo": 6.0,
-        "costo_rsu": 32.0,
-        "velocita_pz_h": 350.0,
-        "rsu_unit": 0.25,
-        "costo_orario_macchina": 5.0,
-        "costo_orario_rsu": 25.0,
-        "ricarico_costi_ind": 0.3
-      }
+      "ore_uomo": 6.0,
+      "costo_rsu": 32.0,
+      "velocita_pz_h": 350.0,
+      "rsu_unit": 0.5,
+      "costo_orario_macchina": 5.0,
+      "costo_orario_rsu": 25.0,
+      "ricarico_costi_ind": 0.3
     },
     {
       "capacity_label": "200",
@@ -1658,24 +1383,13 @@
         }
       ],
       "pezzi_pallet": 9900.0,
-      "allineato": {
-        "ore_uomo": 6.0,
-        "costo_rsu": 32.0,
-        "velocita_pz_h": 350.0,
-        "rsu_unit": 0.5,
-        "costo_orario_macchina": 5.0,
-        "costo_orario_rsu": 25.0,
-        "ricarico_costi_ind": 0.3
-      },
-      "rinfusa": {
-        "ore_uomo": 6.0,
-        "costo_rsu": 32.0,
-        "velocita_pz_h": 350.0,
-        "rsu_unit": 0.25,
-        "costo_orario_macchina": 5.0,
-        "costo_orario_rsu": 25.0,
-        "ricarico_costi_ind": 0.3
-      }
+      "ore_uomo": 6.0,
+      "costo_rsu": 32.0,
+      "velocita_pz_h": 350.0,
+      "rsu_unit": 0.5,
+      "costo_orario_macchina": 5.0,
+      "costo_orario_rsu": 25.0,
+      "ricarico_costi_ind": 0.3
     },
     {
       "capacity_label": "200",
@@ -1715,24 +1429,13 @@
         }
       ],
       "pezzi_pallet": 9900.0,
-      "allineato": {
-        "ore_uomo": 6.0,
-        "costo_rsu": 32.0,
-        "velocita_pz_h": 350.0,
-        "rsu_unit": 0.5,
-        "costo_orario_macchina": 5.0,
-        "costo_orario_rsu": 25.0,
-        "ricarico_costi_ind": 0.3
-      },
-      "rinfusa": {
-        "ore_uomo": 6.0,
-        "costo_rsu": 32.0,
-        "velocita_pz_h": 350.0,
-        "rsu_unit": 0.25,
-        "costo_orario_macchina": 5.0,
-        "costo_orario_rsu": 25.0,
-        "ricarico_costi_ind": 0.3
-      }
+      "ore_uomo": 6.0,
+      "costo_rsu": 32.0,
+      "velocita_pz_h": 350.0,
+      "rsu_unit": 0.5,
+      "costo_orario_macchina": 5.0,
+      "costo_orario_rsu": 25.0,
+      "ricarico_costi_ind": 0.3
     },
     {
       "capacity_label": "200",
@@ -1772,24 +1475,13 @@
         }
       ],
       "pezzi_pallet": 9900.0,
-      "allineato": {
-        "ore_uomo": 6.0,
-        "costo_rsu": 32.0,
-        "velocita_pz_h": 350.0,
-        "rsu_unit": 0.5,
-        "costo_orario_macchina": 5.0,
-        "costo_orario_rsu": 25.0,
-        "ricarico_costi_ind": 0.3
-      },
-      "rinfusa": {
-        "ore_uomo": 6.0,
-        "costo_rsu": 32.0,
-        "velocita_pz_h": 350.0,
-        "rsu_unit": 0.25,
-        "costo_orario_macchina": 5.0,
-        "costo_orario_rsu": 25.0,
-        "ricarico_costi_ind": 0.3
-      }
+      "ore_uomo": 6.0,
+      "costo_rsu": 32.0,
+      "velocita_pz_h": 350.0,
+      "rsu_unit": 0.5,
+      "costo_orario_macchina": 5.0,
+      "costo_orario_rsu": 25.0,
+      "ricarico_costi_ind": 0.3
     },
     {
       "capacity_label": "250",
@@ -1829,24 +1521,13 @@
         }
       ],
       "pezzi_pallet": 9900.0,
-      "allineato": {
-        "ore_uomo": 6.0,
-        "costo_rsu": 32.0,
-        "velocita_pz_h": 350.0,
-        "rsu_unit": 0.5,
-        "costo_orario_macchina": 5.0,
-        "costo_orario_rsu": 25.0,
-        "ricarico_costi_ind": 0.3
-      },
-      "rinfusa": {
-        "ore_uomo": 6.0,
-        "costo_rsu": 32.0,
-        "velocita_pz_h": 350.0,
-        "rsu_unit": 0.25,
-        "costo_orario_macchina": 5.0,
-        "costo_orario_rsu": 25.0,
-        "ricarico_costi_ind": 0.3
-      }
+      "ore_uomo": 6.0,
+      "costo_rsu": 32.0,
+      "velocita_pz_h": 350.0,
+      "rsu_unit": 0.5,
+      "costo_orario_macchina": 5.0,
+      "costo_orario_rsu": 25.0,
+      "ricarico_costi_ind": 0.3
     },
     {
       "capacity_label": "250",
@@ -1886,24 +1567,13 @@
         }
       ],
       "pezzi_pallet": 9900.0,
-      "allineato": {
-        "ore_uomo": 6.0,
-        "costo_rsu": 32.0,
-        "velocita_pz_h": 350.0,
-        "rsu_unit": 0.5,
-        "costo_orario_macchina": 5.0,
-        "costo_orario_rsu": 25.0,
-        "ricarico_costi_ind": 0.3
-      },
-      "rinfusa": {
-        "ore_uomo": 6.0,
-        "costo_rsu": 32.0,
-        "velocita_pz_h": 350.0,
-        "rsu_unit": 0.25,
-        "costo_orario_macchina": 5.0,
-        "costo_orario_rsu": 25.0,
-        "ricarico_costi_ind": 0.3
-      }
+      "ore_uomo": 6.0,
+      "costo_rsu": 32.0,
+      "velocita_pz_h": 350.0,
+      "rsu_unit": 0.5,
+      "costo_orario_macchina": 5.0,
+      "costo_orario_rsu": 25.0,
+      "ricarico_costi_ind": 0.3
     },
     {
       "capacity_label": "250",
@@ -1943,24 +1613,13 @@
         }
       ],
       "pezzi_pallet": 9900.0,
-      "allineato": {
-        "ore_uomo": 6.0,
-        "costo_rsu": 32.0,
-        "velocita_pz_h": 350.0,
-        "rsu_unit": 0.5,
-        "costo_orario_macchina": 5.0,
-        "costo_orario_rsu": 25.0,
-        "ricarico_costi_ind": 0.3
-      },
-      "rinfusa": {
-        "ore_uomo": 6.0,
-        "costo_rsu": 32.0,
-        "velocita_pz_h": 350.0,
-        "rsu_unit": 0.25,
-        "costo_orario_macchina": 5.0,
-        "costo_orario_rsu": 25.0,
-        "ricarico_costi_ind": 0.3
-      }
+      "ore_uomo": 6.0,
+      "costo_rsu": 32.0,
+      "velocita_pz_h": 350.0,
+      "rsu_unit": 0.5,
+      "costo_orario_macchina": 5.0,
+      "costo_orario_rsu": 25.0,
+      "ricarico_costi_ind": 0.3
     },
     {
       "capacity_label": "250",
@@ -2000,24 +1659,13 @@
         }
       ],
       "pezzi_pallet": 9900.0,
-      "allineato": {
-        "ore_uomo": 6.0,
-        "costo_rsu": 32.0,
-        "velocita_pz_h": 350.0,
-        "rsu_unit": 0.5,
-        "costo_orario_macchina": 5.0,
-        "costo_orario_rsu": 25.0,
-        "ricarico_costi_ind": 0.3
-      },
-      "rinfusa": {
-        "ore_uomo": 6.0,
-        "costo_rsu": 32.0,
-        "velocita_pz_h": 350.0,
-        "rsu_unit": 0.25,
-        "costo_orario_macchina": 5.0,
-        "costo_orario_rsu": 25.0,
-        "ricarico_costi_ind": 0.3
-      }
+      "ore_uomo": 6.0,
+      "costo_rsu": 32.0,
+      "velocita_pz_h": 350.0,
+      "rsu_unit": 0.5,
+      "costo_orario_macchina": 5.0,
+      "costo_orario_rsu": 25.0,
+      "ricarico_costi_ind": 0.3
     },
     {
       "capacity_label": "300 / 350",
@@ -2057,24 +1705,13 @@
         }
       ],
       "pezzi_pallet": 9900.0,
-      "allineato": {
-        "ore_uomo": 6.0,
-        "costo_rsu": 32.0,
-        "velocita_pz_h": 350.0,
-        "rsu_unit": 0.5,
-        "costo_orario_macchina": 5.0,
-        "costo_orario_rsu": 25.0,
-        "ricarico_costi_ind": 0.3
-      },
-      "rinfusa": {
-        "ore_uomo": 6.0,
-        "costo_rsu": 32.0,
-        "velocita_pz_h": 350.0,
-        "rsu_unit": 0.25,
-        "costo_orario_macchina": 5.0,
-        "costo_orario_rsu": 25.0,
-        "ricarico_costi_ind": 0.3
-      }
+      "ore_uomo": 6.0,
+      "costo_rsu": 32.0,
+      "velocita_pz_h": 350.0,
+      "rsu_unit": 0.5,
+      "costo_orario_macchina": 5.0,
+      "costo_orario_rsu": 25.0,
+      "ricarico_costi_ind": 0.3
     },
     {
       "capacity_label": "300 / 350",
@@ -2114,24 +1751,13 @@
         }
       ],
       "pezzi_pallet": 9900.0,
-      "allineato": {
-        "ore_uomo": 6.0,
-        "costo_rsu": 32.0,
-        "velocita_pz_h": 350.0,
-        "rsu_unit": 0.5,
-        "costo_orario_macchina": 5.0,
-        "costo_orario_rsu": 25.0,
-        "ricarico_costi_ind": 0.3
-      },
-      "rinfusa": {
-        "ore_uomo": 6.0,
-        "costo_rsu": 32.0,
-        "velocita_pz_h": 350.0,
-        "rsu_unit": 0.25,
-        "costo_orario_macchina": 5.0,
-        "costo_orario_rsu": 25.0,
-        "ricarico_costi_ind": 0.3
-      }
+      "ore_uomo": 6.0,
+      "costo_rsu": 32.0,
+      "velocita_pz_h": 350.0,
+      "rsu_unit": 0.5,
+      "costo_orario_macchina": 5.0,
+      "costo_orario_rsu": 25.0,
+      "ricarico_costi_ind": 0.3
     },
     {
       "capacity_label": "300 / 350",
@@ -2171,24 +1797,13 @@
         }
       ],
       "pezzi_pallet": 9900.0,
-      "allineato": {
-        "ore_uomo": 6.0,
-        "costo_rsu": 32.0,
-        "velocita_pz_h": 350.0,
-        "rsu_unit": 0.5,
-        "costo_orario_macchina": 5.0,
-        "costo_orario_rsu": 25.0,
-        "ricarico_costi_ind": 0.3
-      },
-      "rinfusa": {
-        "ore_uomo": 6.0,
-        "costo_rsu": 32.0,
-        "velocita_pz_h": 350.0,
-        "rsu_unit": 0.25,
-        "costo_orario_macchina": 5.0,
-        "costo_orario_rsu": 25.0,
-        "ricarico_costi_ind": 0.3
-      }
+      "ore_uomo": 6.0,
+      "costo_rsu": 32.0,
+      "velocita_pz_h": 350.0,
+      "rsu_unit": 0.5,
+      "costo_orario_macchina": 5.0,
+      "costo_orario_rsu": 25.0,
+      "ricarico_costi_ind": 0.3
     },
     {
       "capacity_label": "300 / 350",
@@ -2228,24 +1843,13 @@
         }
       ],
       "pezzi_pallet": 9900.0,
-      "allineato": {
-        "ore_uomo": 6.0,
-        "costo_rsu": 32.0,
-        "velocita_pz_h": 350.0,
-        "rsu_unit": 0.5,
-        "costo_orario_macchina": 5.0,
-        "costo_orario_rsu": 25.0,
-        "ricarico_costi_ind": 0.3
-      },
-      "rinfusa": {
-        "ore_uomo": 6.0,
-        "costo_rsu": 32.0,
-        "velocita_pz_h": 350.0,
-        "rsu_unit": 0.25,
-        "costo_orario_macchina": 5.0,
-        "costo_orario_rsu": 25.0,
-        "ricarico_costi_ind": 0.3
-      }
+      "ore_uomo": 6.0,
+      "costo_rsu": 32.0,
+      "velocita_pz_h": 350.0,
+      "rsu_unit": 0.5,
+      "costo_orario_macchina": 5.0,
+      "costo_orario_rsu": 25.0,
+      "ricarico_costi_ind": 0.3
     },
     {
       "capacity_label": "500",
@@ -2285,24 +1889,13 @@
         }
       ],
       "pezzi_pallet": 9900.0,
-      "allineato": {
-        "ore_uomo": 6.0,
-        "costo_rsu": 32.0,
-        "velocita_pz_h": 350.0,
-        "rsu_unit": 0.5,
-        "costo_orario_macchina": 5.0,
-        "costo_orario_rsu": 25.0,
-        "ricarico_costi_ind": 0.3
-      },
-      "rinfusa": {
-        "ore_uomo": 6.0,
-        "costo_rsu": 32.0,
-        "velocita_pz_h": 350.0,
-        "rsu_unit": 0.25,
-        "costo_orario_macchina": 5.0,
-        "costo_orario_rsu": 25.0,
-        "ricarico_costi_ind": 0.3
-      }
+      "ore_uomo": 6.0,
+      "costo_rsu": 32.0,
+      "velocita_pz_h": 350.0,
+      "rsu_unit": 0.5,
+      "costo_orario_macchina": 5.0,
+      "costo_orario_rsu": 25.0,
+      "ricarico_costi_ind": 0.3
     },
     {
       "capacity_label": "500",
@@ -2342,24 +1935,13 @@
         }
       ],
       "pezzi_pallet": 9900.0,
-      "allineato": {
-        "ore_uomo": 6.0,
-        "costo_rsu": 32.0,
-        "velocita_pz_h": 350.0,
-        "rsu_unit": 0.5,
-        "costo_orario_macchina": 5.0,
-        "costo_orario_rsu": 25.0,
-        "ricarico_costi_ind": 0.3
-      },
-      "rinfusa": {
-        "ore_uomo": 6.0,
-        "costo_rsu": 32.0,
-        "velocita_pz_h": 350.0,
-        "rsu_unit": 0.25,
-        "costo_orario_macchina": 5.0,
-        "costo_orario_rsu": 25.0,
-        "ricarico_costi_ind": 0.3
-      }
+      "ore_uomo": 6.0,
+      "costo_rsu": 32.0,
+      "velocita_pz_h": 350.0,
+      "rsu_unit": 0.5,
+      "costo_orario_macchina": 5.0,
+      "costo_orario_rsu": 25.0,
+      "ricarico_costi_ind": 0.3
     },
     {
       "capacity_label": "500",
@@ -2399,24 +1981,13 @@
         }
       ],
       "pezzi_pallet": 9900.0,
-      "allineato": {
-        "ore_uomo": 6.0,
-        "costo_rsu": 32.0,
-        "velocita_pz_h": 350.0,
-        "rsu_unit": 0.5,
-        "costo_orario_macchina": 5.0,
-        "costo_orario_rsu": 25.0,
-        "ricarico_costi_ind": 0.3
-      },
-      "rinfusa": {
-        "ore_uomo": 6.0,
-        "costo_rsu": 32.0,
-        "velocita_pz_h": 350.0,
-        "rsu_unit": 0.25,
-        "costo_orario_macchina": 5.0,
-        "costo_orario_rsu": 25.0,
-        "ricarico_costi_ind": 0.3
-      }
+      "ore_uomo": 6.0,
+      "costo_rsu": 32.0,
+      "velocita_pz_h": 350.0,
+      "rsu_unit": 0.5,
+      "costo_orario_macchina": 5.0,
+      "costo_orario_rsu": 25.0,
+      "ricarico_costi_ind": 0.3
     },
     {
       "capacity_label": "500",
@@ -2456,24 +2027,13 @@
         }
       ],
       "pezzi_pallet": 9900.0,
-      "allineato": {
-        "ore_uomo": 6.0,
-        "costo_rsu": 32.0,
-        "velocita_pz_h": 350.0,
-        "rsu_unit": 0.5,
-        "costo_orario_macchina": 5.0,
-        "costo_orario_rsu": 25.0,
-        "ricarico_costi_ind": 0.3
-      },
-      "rinfusa": {
-        "ore_uomo": 6.0,
-        "costo_rsu": 32.0,
-        "velocita_pz_h": 350.0,
-        "rsu_unit": 0.25,
-        "costo_orario_macchina": 5.0,
-        "costo_orario_rsu": 25.0,
-        "ricarico_costi_ind": 0.3
-      }
+      "ore_uomo": 6.0,
+      "costo_rsu": 32.0,
+      "velocita_pz_h": 350.0,
+      "rsu_unit": 0.5,
+      "costo_orario_macchina": 5.0,
+      "costo_orario_rsu": 25.0,
+      "ricarico_costi_ind": 0.3
     },
     {
       "capacity_label": "1000",
@@ -2513,24 +2073,13 @@
         }
       ],
       "pezzi_pallet": 9900.0,
-      "allineato": {
-        "ore_uomo": 6.0,
-        "costo_rsu": 32.0,
-        "velocita_pz_h": 350.0,
-        "rsu_unit": 0.5,
-        "costo_orario_macchina": 5.0,
-        "costo_orario_rsu": 25.0,
-        "ricarico_costi_ind": 0.3
-      },
-      "rinfusa": {
-        "ore_uomo": 6.0,
-        "costo_rsu": 32.0,
-        "velocita_pz_h": 350.0,
-        "rsu_unit": 0.25,
-        "costo_orario_macchina": 5.0,
-        "costo_orario_rsu": 25.0,
-        "ricarico_costi_ind": 0.3
-      }
+      "ore_uomo": 6.0,
+      "costo_rsu": 32.0,
+      "velocita_pz_h": 350.0,
+      "rsu_unit": 0.5,
+      "costo_orario_macchina": 5.0,
+      "costo_orario_rsu": 25.0,
+      "ricarico_costi_ind": 0.3
     },
     {
       "capacity_label": "1000",
@@ -2570,24 +2119,13 @@
         }
       ],
       "pezzi_pallet": 9900.0,
-      "allineato": {
-        "ore_uomo": 6.0,
-        "costo_rsu": 32.0,
-        "velocita_pz_h": 350.0,
-        "rsu_unit": 0.5,
-        "costo_orario_macchina": 5.0,
-        "costo_orario_rsu": 25.0,
-        "ricarico_costi_ind": 0.3
-      },
-      "rinfusa": {
-        "ore_uomo": 6.0,
-        "costo_rsu": 32.0,
-        "velocita_pz_h": 350.0,
-        "rsu_unit": 0.25,
-        "costo_orario_macchina": 5.0,
-        "costo_orario_rsu": 25.0,
-        "ricarico_costi_ind": 0.3
-      }
+      "ore_uomo": 6.0,
+      "costo_rsu": 32.0,
+      "velocita_pz_h": 350.0,
+      "rsu_unit": 0.5,
+      "costo_orario_macchina": 5.0,
+      "costo_orario_rsu": 25.0,
+      "ricarico_costi_ind": 0.3
     },
     {
       "capacity_label": "1000",
@@ -2627,24 +2165,13 @@
         }
       ],
       "pezzi_pallet": 9900.0,
-      "allineato": {
-        "ore_uomo": 6.0,
-        "costo_rsu": 32.0,
-        "velocita_pz_h": 350.0,
-        "rsu_unit": 0.5,
-        "costo_orario_macchina": 5.0,
-        "costo_orario_rsu": 25.0,
-        "ricarico_costi_ind": 0.3
-      },
-      "rinfusa": {
-        "ore_uomo": 6.0,
-        "costo_rsu": 32.0,
-        "velocita_pz_h": 350.0,
-        "rsu_unit": 0.25,
-        "costo_orario_macchina": 5.0,
-        "costo_orario_rsu": 25.0,
-        "ricarico_costi_ind": 0.3
-      }
+      "ore_uomo": 6.0,
+      "costo_rsu": 32.0,
+      "velocita_pz_h": 350.0,
+      "rsu_unit": 0.5,
+      "costo_orario_macchina": 5.0,
+      "costo_orario_rsu": 25.0,
+      "ricarico_costi_ind": 0.3
     },
     {
       "capacity_label": "1000",
@@ -2684,24 +2211,13 @@
         }
       ],
       "pezzi_pallet": 9900.0,
-      "allineato": {
-        "ore_uomo": 6.0,
-        "costo_rsu": 32.0,
-        "velocita_pz_h": 350.0,
-        "rsu_unit": 0.5,
-        "costo_orario_macchina": 5.0,
-        "costo_orario_rsu": 25.0,
-        "ricarico_costi_ind": 0.3
-      },
-      "rinfusa": {
-        "ore_uomo": 6.0,
-        "costo_rsu": 32.0,
-        "velocita_pz_h": 350.0,
-        "rsu_unit": 0.25,
-        "costo_orario_macchina": 5.0,
-        "costo_orario_rsu": 25.0,
-        "ricarico_costi_ind": 0.3
-      }
+      "ore_uomo": 6.0,
+      "costo_rsu": 32.0,
+      "velocita_pz_h": 350.0,
+      "rsu_unit": 0.5,
+      "costo_orario_macchina": 5.0,
+      "costo_orario_rsu": 25.0,
+      "ricarico_costi_ind": 0.3
     }
   ],
   "imballi_fissi": [

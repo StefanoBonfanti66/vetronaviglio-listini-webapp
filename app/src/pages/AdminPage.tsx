@@ -27,7 +27,6 @@ import type {
   ImballoFisso,
   ImballoItem,
   ListinoConfig,
-  MachineParams,
   Material,
   ModalitaImballo,
   PriceBracket,
@@ -43,16 +42,6 @@ import {
   prefillFromAnagrafiche,
 } from '../lib/costs'
 
-const defaultMachineParams = (): MachineParams => ({
-  ore_uomo: 0,
-  costo_rsu: 0,
-  velocita_pz_h: 0,
-  rsu_unit: 0,
-  costo_orario_macchina: 0,
-  costo_orario_rsu: 0,
-  ricarico_costi_ind: 0,
-})
-
 const makeEmptyConfig = (): Omit<ListinoConfig, 'id'> => ({
   capacity_id: '',
   material_id: '',
@@ -62,8 +51,15 @@ const makeEmptyConfig = (): Omit<ListinoConfig, 'id'> => ({
   mp_utilizzi_pct: [0, 0, 0, 0],
   imballo_items: [{ name: '', costo: 0 }],
   pezzi_pallet: 0,
-  allineato: defaultMachineParams(),
-  rinfusa: defaultMachineParams(),
+  // Fase 1 - Attrezzaggio
+  ore_uomo: 0,
+  costo_rsu: 0,
+  // Fase 2 - Produzione/Ciclo
+  velocita_pz_h: 0,
+  rsu_unit: 0,
+  costo_orario_macchina: 0,
+  costo_orario_rsu: 0,
+  ricarico_costi_ind: 0,
   rinfusa_ricarico_div_100: false,
   master_color_costo_kg: null,
 })
@@ -86,6 +82,7 @@ export default function AdminPage() {
   const [filterMaterial, setFilterMaterial] = useState('')
   const [filterColor, setFilterColor] = useState('')
   const [filterCapacity, setFilterCapacity] = useState('')
+  const [activeTab, setActiveTab] = useState<'attrezzaggio' | 'ciclo' | 'imballo'>('attrezzaggio')
 
   useEffect(() => {
     if (!accessToken) return
@@ -211,8 +208,13 @@ export default function AdminPage() {
         mp_utilizzi_pct: draft.mp_utilizzi_pct,
         imballo_items: draft.imballo_items,
         pezzi_pallet: draft.pezzi_pallet,
-        allineato: draft.allineato,
-        rinfusa: draft.rinfusa,
+        ore_uomo: draft.ore_uomo,
+        costo_rsu: draft.costo_rsu,
+        velocita_pz_h: draft.velocita_pz_h,
+        rsu_unit: draft.rsu_unit,
+        costo_orario_macchina: draft.costo_orario_macchina,
+        costo_orario_rsu: draft.costo_orario_rsu,
+        ricarico_costi_ind: draft.ricarico_costi_ind,
         rinfusa_ricarico_div_100: draft.rinfusa_ricarico_div_100,
         master_color_costo_kg: draft.master_color_costo_kg ?? null,
       }
@@ -614,14 +616,82 @@ export default function AdminPage() {
             </div>
 
             <div className="sm:col-span-2 border-t border-aluminum/10 pt-4">
-              <fieldset className="border border-aluminum/20 p-3">
-                <legend className="px-1 font-sans text-[10px] uppercase tracking-[0.2em] font-medium text-aluminum">Allineato</legend>
-                <MachineParamsGrid params={newConfig.allineato} onChange={(v) => setNewConfig({ ...newConfig, allineato: v })} />
-              </fieldset>
-              <fieldset className="border border-aluminum/20 p-3 mt-2">
-                <legend className="px-1 font-sans text-[10px] uppercase tracking-[0.2em] font-medium text-aluminum">Rinfusa</legend>
-                <MachineParamsGrid params={newConfig.rinfusa} onChange={(v) => setNewConfig({ ...newConfig, rinfusa: v })} />
-              </fieldset>
+              <div className="flex gap-1 mb-3">
+                <button
+                  onClick={() => setActiveTab('attrezzaggio')}
+                  className={`px-3 py-1 text-xs font-sans font-medium border rounded ${activeTab === 'attrezzaggio' ? 'bg-onyx text-bone' : 'border-aluminum/20 text-aluminum hover:bg-aluminum/5'}`}
+                >
+                  Fase 1 · Attrezzaggio
+                </button>
+                <button
+                  onClick={() => setActiveTab('ciclo')}
+                  className={`px-3 py-1 text-xs font-sans font-medium border rounded ${activeTab === 'ciclo' ? 'bg-onyx text-bone' : 'border-aluminum/20 text-aluminum hover:bg-aluminum/5'}`}
+                >
+                  Fase 2 · Ciclo produttivo
+                </button>
+                <button
+                  onClick={() => setActiveTab('imballo')}
+                  className={`px-3 py-1 text-xs font-sans font-medium border rounded ${activeTab === 'imballo' ? 'bg-onyx text-bone' : 'border-aluminum/20 text-aluminum hover:bg-aluminum/5'}`}
+                >
+                  Fase 3 · Imballo
+                </button>
+              </div>
+
+              {activeTab === 'attrezzaggio' && (
+                <fieldset className="border border-aluminum/20 p-3">
+                  <legend className="px-1 font-sans text-[10px] uppercase tracking-[0.2em] font-medium text-aluminum">Fase 1 — Attrezzaggio (una sola volta)</legend>
+                  <MachineParamsGrid
+                    params={newConfig}
+                    fields={[
+                      ['ore_uomo', 'Ore uomo attrezzaggio'],
+                      ['costo_rsu', 'Costo ora uomo attrezzaggio'],
+                    ]}
+                    onChange={(v) => setNewConfig({ ...newConfig, ...v })}
+                  />
+                </fieldset>
+              )}
+              {activeTab === 'ciclo' && (
+                <fieldset className="border border-aluminum/20 p-3">
+                  <legend className="px-1 font-sans text-[10px] uppercase tracking-[0.2em] font-medium text-aluminum">Fase 2 — Ciclo produttivo</legend>
+                  <MachineParamsGrid
+                    params={newConfig}
+                    fields={[
+                      ['velocita_pz_h', 'Velocità (pz/h)'],
+                      ['rsu_unit', 'RSU (unità)'],
+                      ['costo_orario_macchina', 'Costo orario macchina'],
+                      ['costo_orario_rsu', 'Costo orario RSU'],
+                      ['ricarico_costi_ind', 'Ricarico costi ind.'],
+                    ]}
+                    onChange={(v) => setNewConfig({ ...newConfig, ...v })}
+                  />
+                </fieldset>
+              )}
+              {activeTab === 'imballo' && (
+                <div className="space-y-1">
+                  <label className="font-sans text-[10px] text-aluminum">Imballo (€/pezzo)</label>
+                  <div className="space-y-1">
+                    {newConfig.imballo_items.map((it: ImballoItem, i: number) => (
+                      <div key={i} className="flex items-center gap-2">
+                        <input
+                          type="text"
+                          value={it.name}
+                          onChange={(e) => {
+                            const a = [...newConfig.imballo_items]
+                            a[i] = { ...it, name: e.target.value }
+                            setNewConfig({ ...newConfig, imballo_items: a })
+                          }}
+                          className="w-40 md:w-48 border border-aluminum/20 bg-white px-2 py-1 font-sans text-xs text-onyx focus:border-onyx focus:outline-none"
+                        />
+                        {numInput(i + 100, it.costo, (v) => {
+                          const a = [...newConfig.imballo_items]
+                          a[i] = { ...it, costo: v }
+                          setNewConfig({ ...newConfig, imballo_items: a })
+                        })}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
           </div>
 
@@ -726,14 +796,82 @@ export default function AdminPage() {
             </div>
 
             <div className="sm:col-span-2 border-t border-aluminum/10 pt-4">
-              <fieldset className="border border-aluminum/20 p-3">
-                <legend className="px-1 font-sans text-[10px] uppercase tracking-[0.2em] font-medium text-aluminum">Allineato</legend>
-                <MachineParamsGrid params={draft.allineato ?? null} onChange={(v) => setDraft({ ...draft, allineato: v })} />
-              </fieldset>
-              <fieldset className="border border-aluminum/20 p-3 mt-2">
-                <legend className="px-1 font-sans text-[10px] uppercase tracking-[0.2em] font-medium text-aluminum">Rinfusa</legend>
-                <MachineParamsGrid params={draft.rinfusa ?? null} onChange={(v) => setDraft({ ...draft, rinfusa: v })} />
-              </fieldset>
+              <div className="flex gap-1 mb-3">
+                <button
+                  onClick={() => setActiveTab('attrezzaggio')}
+                  className={`px-3 py-1 text-xs font-sans font-medium border rounded ${activeTab === 'attrezzaggio' ? 'bg-onyx text-bone' : 'border-aluminum/20 text-aluminum hover:bg-aluminum/5'}`}
+                >
+                  Fase 1 · Attrezzaggio
+                </button>
+                <button
+                  onClick={() => setActiveTab('ciclo')}
+                  className={`px-3 py-1 text-xs font-sans font-medium border rounded ${activeTab === 'ciclo' ? 'bg-onyx text-bone' : 'border-aluminum/20 text-aluminum hover:bg-aluminum/5'}`}
+                >
+                  Fase 2 · Ciclo produttivo
+                </button>
+                <button
+                  onClick={() => setActiveTab('imballo')}
+                  className={`px-3 py-1 text-xs font-sans font-medium border rounded ${activeTab === 'imballo' ? 'bg-onyx text-bone' : 'border-aluminum/20 text-aluminum hover:bg-aluminum/5'}`}
+                >
+                  Fase 3 · Imballo
+                </button>
+              </div>
+
+              {activeTab === 'attrezzaggio' && (
+                <fieldset className="border border-aluminum/20 p-3">
+                  <legend className="px-1 font-sans text-[10px] uppercase tracking-[0.2em] font-medium text-aluminum">Fase 1 — Attrezzaggio (una sola volta)</legend>
+                  <MachineParamsGrid
+                    params={draft}
+                    fields={[
+                      ['ore_uomo', 'Ore uomo attrezzaggio'],
+                      ['costo_rsu', 'Costo ora uomo attrezzaggio'],
+                    ]}
+                    onChange={(v) => setDraft({ ...draft, ...v })}
+                  />
+                </fieldset>
+              )}
+              {activeTab === 'ciclo' && (
+                <fieldset className="border border-aluminum/20 p-3">
+                  <legend className="px-1 font-sans text-[10px] uppercase tracking-[0.2em] font-medium text-aluminum">Fase 2 — Ciclo produttivo</legend>
+                  <MachineParamsGrid
+                    params={draft}
+                    fields={[
+                      ['velocita_pz_h', 'Velocità (pz/h)'],
+                      ['rsu_unit', 'RSU (unità)'],
+                      ['costo_orario_macchina', 'Costo orario macchina'],
+                      ['costo_orario_rsu', 'Costo orario RSU'],
+                      ['ricarico_costi_ind', 'Ricarico costi ind.'],
+                    ]}
+                    onChange={(v) => setDraft({ ...draft, ...v })}
+                  />
+                </fieldset>
+              )}
+              {activeTab === 'imballo' && (
+                <div className="space-y-1">
+                  <label className="font-sans text-[10px] text-aluminum">Imballo (€/pezzo)</label>
+                  <div className="space-y-1">
+                    {(draft.imballo_items ?? []).map((it: ImballoItem, i: number) => (
+                      <div key={i} className="flex items-center gap-2">
+                        <input
+                          type="text"
+                          value={it.name}
+                          onChange={(e) => {
+                            const a = [...(draft.imballo_items ?? [])]
+                            a[i] = { ...it, name: e.target.value }
+                            setDraft({ ...draft, imballo_items: a })
+                          }}
+                          className="w-40 md:w-48 border border-aluminum/20 bg-white px-2 py-1 font-sans text-xs text-onyx focus:border-onyx focus:outline-none"
+                        />
+                        {numInput(i + 100, it.costo, (v) => {
+                          const a = [...(draft.imballo_items ?? [])]
+                          a[i] = { ...it, costo: v }
+                          setDraft({ ...draft, imballo_items: a })
+                        })}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
           </div>
 
@@ -777,20 +915,14 @@ export default function AdminPage() {
 function MachineParamsGrid({
   params,
   onChange,
+  fields,
 }: {
-  params: MachineParams | null
-  onChange: (v: MachineParams) => void
+  params: Record<string, unknown> | null
+  onChange: (v: Record<string, unknown>) => void
+  fields?: [string, string][]
 }) {
-  const p: MachineParams = params ?? {
-    ore_uomo: 0,
-    costo_rsu: 0,
-    velocita_pz_h: 0,
-    rsu_unit: 0,
-    costo_orario_macchina: 0,
-    costo_orario_rsu: 0,
-    ricarico_costi_ind: 0,
-  }
-  const fields: [keyof MachineParams, string][] = [
+  const p: Record<string, unknown> = params ?? {}
+  const fieldList: [string, string][] = fields ?? [
     ['ore_uomo', 'Ore uomo attrezzaggio'],
     ['costo_rsu', 'Costo ora uomo attrezzaggio'],
     ['velocita_pz_h', 'Velocità (pz/h)'],
@@ -801,13 +933,13 @@ function MachineParamsGrid({
   ]
   return (
     <div className="grid grid-cols-2 gap-2 md:grid-cols-3">
-      {fields.map(([k, lbl]) => (
+      {fieldList.map(([k, lbl]) => (
         <div key={k}>
           <label className="font-sans text-[10px] text-aluminum">{lbl}</label>
           <input
             type="number"
             step={0.01}
-            value={p[k] ?? 0}
+            value={Number(p[k]) || 0}
             onChange={(e) => {
               onChange({ ...p, [k]: parseFloat(e.target.value) || 0 })
             }}

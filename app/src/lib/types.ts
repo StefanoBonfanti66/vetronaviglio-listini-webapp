@@ -64,8 +64,15 @@ export interface ListinoConfig {
   mp_utilizzi_pct: number[]
   imballo_items: ImballoItem[]
   pezzi_pallet: number
-  allineato: MachineParams
-  rinfusa: MachineParams
+  // Fase 1 - Attrezzaggio (comune, una sola volta)
+  ore_uomo: number
+  costo_rsu: number
+  // Fase 2 - Produzione/Ciclo (comune)
+  velocita_pz_h: number
+  rsu_unit: number
+  costo_orario_macchina: number
+  costo_orario_rsu: number
+  ricarico_costi_ind: number
   rinfusa_ricarico_div_100: boolean
   master_color_costo_kg?: number | null
   updated_at?: string

@@ -179,10 +179,8 @@ def main() -> int:
 
         # velocita ciclo fissa per fascia di capacita (450 fino a 125 ml, 350 oltre)
         velocita = velocita_per_capacita(cap_label)
-        allineato = params(18)
-        rinfusa = params(19)
-        allineato["velocita_pz_h"] = velocita
-        rinfusa["velocita_pz_h"] = velocita
+        p = params(18)
+        p["velocita_pz_h"] = velocita
 
         configs.append({
             "capacity_label": cap_label,
@@ -195,8 +193,13 @@ def main() -> int:
             "master_color_costo_kg": master_costo,
             "imballo_items": imballo_items,
             "pezzi_pallet": round(pezzi_pallet, 2),
-            "allineato": allineato,
-            "rinfusa": rinfusa,
+            "ore_uomo": p["ore_uomo"],
+            "costo_rsu": p["costo_rsu"],
+            "velocita_pz_h": p["velocita_pz_h"],
+            "rsu_unit": p["rsu_unit"],
+            "costo_orario_macchina": p["costo_orario_macchina"],
+            "costo_orario_rsu": p["costo_orario_rsu"],
+            "ricarico_costi_ind": p["ricarico_costi_ind"],
         })
 
     seed = {

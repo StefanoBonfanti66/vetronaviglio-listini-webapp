@@ -43,8 +43,15 @@ export type ListinoConfigInput = {
   mp_utilizzi_pct: number[]
   imballo_items: { name: string; costo: number }[]
   pezzi_pallet: number
-  allineato: MachineParams
-  rinfusa: MachineParams
+  // Fase 1 - Attrezzaggio (comune, una sola volta)
+  ore_uomo: number
+  costo_rsu: number
+  // Fase 2 - Produzione/Ciclo (comune)
+  velocita_pz_h: number
+  rsu_unit: number
+  costo_orario_macchina: number
+  costo_orario_rsu: number
+  ricarico_costi_ind: number
   // Variante formula excel: alcuni fogli applicano il ricarico industriale
   // rinfusa come percentuale (Z = X + X*ric/100, es. '1000ML PE COL'),
   // altri come frazione (Z = X + X*ric, default).
@@ -209,25 +216,26 @@ export function calcBracket(
   const K = KAllineato
   const L = K * D
   const LR = KRinfusa * D
-  const P = D / config.allineato.velocita_pz_h
+
+  // Fase 1 - Attrezzaggio (comune, una sola volta)
+  const P = D / config.velocita_pz_h
+  const M = config.ore_uomo * config.costo_rsu
+
+  // Fase 2 - Produzione/Ciclo (comune)
+  const O = config.costo_orario_macchina + config.costo_orario_rsu * config.rsu_unit
+  const Q = O * P
 
   // --- allineato ---
-  const a = config.allineato
-  const M = a.ore_uomo * a.costo_rsu
-  const Oa = a.costo_orario_macchina + a.costo_orario_rsu * a.rsu_unit
-  const Qa = Oa * P
-  const Ra = Qa + L + J + M
-  const Ta = Ra + Ra * a.ricarico_costi_ind
+  const Ra = Q + L + J + M
+  const Ta = Ra + Ra * config.ricarico_costi_ind
   const Ua = Ta / D
 
   // --- rinfusa (attrezzaggio M riusato dall'allineato, come in excel) ---
-  const r = config.rinfusa
-  const Or = r.costo_orario_macchina + r.costo_orario_rsu * r.rsu_unit
-  const W = Or * P
+  const W = O * P
   const X = W + M + LR + J
   const Z = config.rinfusaRicaricoDiv100
-    ? X + (X * r.ricarico_costi_ind) / 100
-    : X + X * r.ricarico_costi_ind
+    ? X + (X * config.ricarico_costi_ind) / 100
+    : X + X * config.ricarico_costi_ind
   const AA = Z / D
 
   const prezzoAllineato = calcPrezzoUnitario(
@@ -253,7 +261,7 @@ export function calcBracket(
       costoImballo: round(L),
       costoAttrezzaggio: round(M),
       oreLavorate: round(P, 4),
-      costoUomoMacchina: round(Qa),
+      costoUomoMacchina: round(Q),
       totaleCosto: round(Ra),
       totaleConRicaricoInd: round(Ta),
       costoUnitario: round(Ua, 6),
