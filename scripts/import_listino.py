@@ -181,6 +181,7 @@ def main() -> int:
         velocita = velocita_per_capacita(cap_label)
         p = params(18)
         p["velocita_pz_h"] = velocita
+        p_rinfusa = params(19)
 
         configs.append({
             "capacity_label": cap_label,
@@ -197,6 +198,7 @@ def main() -> int:
             "costo_rsu": p["costo_rsu"],
             "velocita_pz_h": p["velocita_pz_h"],
             "rsu_unit": p["rsu_unit"],
+            "rsu_unit_rinfusa": p_rinfusa["rsu_unit"],
             "costo_orario_macchina": p["costo_orario_macchina"],
             "costo_orario_rsu": p["costo_orario_rsu"],
             "ricarico_costi_ind": p["ricarico_costi_ind"],

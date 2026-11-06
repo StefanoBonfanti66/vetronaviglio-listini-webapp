@@ -112,6 +112,7 @@ export default function PriceSearchPage() {
             costo_rsu: config.costo_rsu,
             velocita_pz_h: config.velocita_pz_h,
             rsu_unit: config.rsu_unit,
+            rsu_unit_rinfusa: config.rsu_unit_rinfusa,
             costo_orario_macchina: config.costo_orario_macchina,
             costo_orario_rsu: config.costo_orario_rsu,
             ricarico_costi_ind: config.ricarico_costi_ind,

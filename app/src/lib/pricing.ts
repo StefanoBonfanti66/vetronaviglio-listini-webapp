@@ -46,9 +46,10 @@ export type ListinoConfigInput = {
   // Fase 1 - Attrezzaggio (comune, una sola volta)
   ore_uomo: number
   costo_rsu: number
-  // Fase 2 - Produzione/Ciclo (comune)
+  // Fase 2 - Produzione/Ciclo (comune tranne rsu_unit che differisce per modalità)
   velocita_pz_h: number
-  rsu_unit: number
+  rsu_unit: number              // RSU unità per allineato (0.5)
+  rsu_unit_rinfusa: number      // RSU unità per rinfusa (0.25)
   costo_orario_macchina: number
   costo_orario_rsu: number
   ricarico_costi_ind: number
@@ -221,17 +222,19 @@ export function calcBracket(
   const P = D / config.velocita_pz_h
   const M = config.ore_uomo * config.costo_rsu
 
-  // Fase 2 - Produzione/Ciclo (comune)
-  const O = config.costo_orario_macchina + config.costo_orario_rsu * config.rsu_unit
-  const Q = O * P
+  // Fase 2 - Produzione/Ciclo (rsu_unit differisce per modalità)
+  const Oa = config.costo_orario_macchina + config.costo_orario_rsu * config.rsu_unit
+  const Or = config.costo_orario_macchina + config.costo_orario_rsu * config.rsu_unit_rinfusa
+  const Qa = Oa * P
+  const Q = Or * P
 
   // --- allineato ---
-  const Ra = Q + L + J + M
+  const Ra = Qa + L + J + M
   const Ta = Ra + Ra * config.ricarico_costi_ind
   const Ua = Ta / D
 
   // --- rinfusa (attrezzaggio M riusato dall'allineato, come in excel) ---
-  const W = O * P
+  const W = Q
   const X = W + M + LR + J
   const Z = config.rinfusaRicaricoDiv100
     ? X + (X * config.ricarico_costi_ind) / 100

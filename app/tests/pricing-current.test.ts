@@ -44,6 +44,7 @@ for (const cfg of seed.listino_configs) {
       costo_rsu: cfg.costo_rsu,
       velocita_pz_h: cfg.velocita_pz_h,
       rsu_unit: cfg.rsu_unit,
+      rsu_unit_rinfusa: cfg.rsu_unit_rinfusa,
       costo_orario_macchina: cfg.costo_orario_macchina,
       costo_orario_rsu: cfg.costo_orario_rsu,
       ricarico_costi_ind: cfg.ricarico_costi_ind,

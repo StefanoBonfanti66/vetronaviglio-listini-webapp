@@ -57,6 +57,7 @@ const makeEmptyConfig = (): Omit<ListinoConfig, 'id'> => ({
   // Fase 2 - Produzione/Ciclo
   velocita_pz_h: 0,
   rsu_unit: 0,
+  rsu_unit_rinfusa: 0,
   costo_orario_macchina: 0,
   costo_orario_rsu: 0,
   ricarico_costi_ind: 0,
@@ -657,7 +658,8 @@ export default function AdminPage() {
                     params={newConfig}
                     fields={[
                       ['velocita_pz_h', 'Velocità (pz/h)'],
-                      ['rsu_unit', 'RSU (unità)'],
+                      ['rsu_unit', 'RSU unità (allineato)'],
+                      ['rsu_unit_rinfusa', 'RSU unità (rinfusa)'],
                       ['costo_orario_macchina', 'Costo orario macchina'],
                       ['costo_orario_rsu', 'Costo orario RSU'],
                       ['ricarico_costi_ind', 'Ricarico costi ind.'],
@@ -837,7 +839,8 @@ export default function AdminPage() {
                     params={draft}
                     fields={[
                       ['velocita_pz_h', 'Velocità (pz/h)'],
-                      ['rsu_unit', 'RSU (unità)'],
+                      ['rsu_unit', 'RSU unità (allineato)'],
+                      ['rsu_unit_rinfusa', 'RSU unità (rinfusa)'],
                       ['costo_orario_macchina', 'Costo orario macchina'],
                       ['costo_orario_rsu', 'Costo orario RSU'],
                       ['ricarico_costi_ind', 'Ricarico costi ind.'],

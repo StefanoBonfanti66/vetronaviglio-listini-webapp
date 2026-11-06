@@ -67,9 +67,10 @@ export interface ListinoConfig {
   // Fase 1 - Attrezzaggio (comune, una sola volta)
   ore_uomo: number
   costo_rsu: number
-  // Fase 2 - Produzione/Ciclo (comune)
+  // Fase 2 - Produzione/Ciclo (comune tranne rsu_unit che differisce per modalità)
   velocita_pz_h: number
-  rsu_unit: number
+  rsu_unit: number              // RSU unità per allineato (0.5)
+  rsu_unit_rinfusa: number      // RSU unità per rinfusa (0.25)
   costo_orario_macchina: number
   costo_orario_rsu: number
   ricarico_costi_ind: number

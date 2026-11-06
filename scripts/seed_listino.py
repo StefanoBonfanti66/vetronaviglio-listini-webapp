@@ -96,7 +96,7 @@ ON CONFLICT (sort_order) DO UPDATE SET da = EXCLUDED.da, fino = EXCLUDED.fino,
 ON CONFLICT (modalita, fascia) DO UPDATE SET costo_eur_per_pezzo = EXCLUDED.costo_eur_per_pezzo;
 """)
 
-    lines.append("INSERT INTO public.listino_configs (capacity_id, material_id, color_id, peso_disegno_g, rinfusa_ricarico_div_100, mp_costos_kg, mp_utilizzi_pct, master_color_costo_kg, imballo_items, pezzi_pallet, ore_uomo, costo_rsu, velocita_pz_h, rsu_unit, costo_orario_macchina, costo_orario_rsu, ricarico_costi_ind) VALUES")
+    lines.append("INSERT INTO public.listino_configs (capacity_id, material_id, color_id, peso_disegno_g, rinfusa_ricarico_div_100, mp_costos_kg, mp_utilizzi_pct, master_color_costo_kg, imballo_items, pezzi_pallet, ore_uomo, costo_rsu, velocita_pz_h, rsu_unit, rsu_unit_rinfusa, costo_orario_macchina, costo_orario_rsu, ricarico_costi_ind) VALUES")
     cfg_rows = []
     for c in data["listino_configs"]:
         cfg_rows.append(
@@ -108,7 +108,7 @@ ON CONFLICT (modalita, fascia) DO UPDATE SET costo_eur_per_pezzo = EXCLUDED.cost
             f"ARRAY{c.get('mp_costos_kg', [])}::numeric[], ARRAY{c.get('mp_utilizzi_pct', [])}::numeric[], "
             f"{q(c.get('master_color_costo_kg'))}, "
             f"{jsonb_array(c['imballo_items'])}, {q(c['pezzi_pallet'])}, "
-            f"{q(c.get('ore_uomo'))}, {q(c.get('costo_rsu'))}, {q(c.get('velocita_pz_h'))}, {q(c.get('rsu_unit'))}, {q(c.get('costo_orario_macchina'))}, {q(c.get('costo_orario_rsu'))}, {q(c.get('ricarico_costi_ind'))}"
+            f"{q(c.get('ore_uomo'))}, {q(c.get('costo_rsu'))}, {q(c.get('velocita_pz_h'))}, {q(c.get('rsu_unit'))}, {q(c.get('rsu_unit_rinfusa'))}, {q(c.get('costo_orario_macchina'))}, {q(c.get('costo_orario_rsu'))}, {q(c.get('ricarico_costi_ind'))}"
             ")"
         )
     lines.append(",\n    ".join(cfg_rows))
@@ -125,6 +125,7 @@ ON CONFLICT (capacity_id, material_id, color_id) DO UPDATE SET
     costo_rsu = EXCLUDED.costo_rsu,
     velocita_pz_h = EXCLUDED.velocita_pz_h,
     rsu_unit = EXCLUDED.rsu_unit,
+    rsu_unit_rinfusa = EXCLUDED.rsu_unit_rinfusa,
     costo_orario_macchina = EXCLUDED.costo_orario_macchina,
     costo_orario_rsu = EXCLUDED.costo_orario_rsu,
     ricarico_costi_ind = EXCLUDED.ricarico_costi_ind,

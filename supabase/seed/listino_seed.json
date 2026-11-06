@@ -239,7 +239,8 @@
       "rsu_unit": 0.5,
       "costo_orario_macchina": 5.0,
       "costo_orario_rsu": 25.0,
-      "ricarico_costi_ind": 0.3
+      "ricarico_costi_ind": 0.3,
+      "rsu_unit_rinfusa": 0.25
     },
     {
       "capacity_label": "30",
@@ -285,7 +286,8 @@
       "rsu_unit": 0.5,
       "costo_orario_macchina": 5.0,
       "costo_orario_rsu": 25.0,
-      "ricarico_costi_ind": 0.3
+      "ricarico_costi_ind": 0.3,
+      "rsu_unit_rinfusa": 0.25
     },
     {
       "capacity_label": "30",
@@ -331,7 +333,8 @@
       "rsu_unit": 0.5,
       "costo_orario_macchina": 5.0,
       "costo_orario_rsu": 25.0,
-      "ricarico_costi_ind": 0.3
+      "ricarico_costi_ind": 0.3,
+      "rsu_unit_rinfusa": 0.25
     },
     {
       "capacity_label": "30",
@@ -377,7 +380,8 @@
       "rsu_unit": 0.5,
       "costo_orario_macchina": 5.0,
       "costo_orario_rsu": 25.0,
-      "ricarico_costi_ind": 0.3
+      "ricarico_costi_ind": 0.3,
+      "rsu_unit_rinfusa": 0.25
     },
     {
       "capacity_label": "50",
@@ -423,7 +427,8 @@
       "rsu_unit": 0.5,
       "costo_orario_macchina": 5.0,
       "costo_orario_rsu": 25.0,
-      "ricarico_costi_ind": 0.3
+      "ricarico_costi_ind": 0.3,
+      "rsu_unit_rinfusa": 0.25
     },
     {
       "capacity_label": "50",
@@ -469,7 +474,8 @@
       "rsu_unit": 0.5,
       "costo_orario_macchina": 5.0,
       "costo_orario_rsu": 25.0,
-      "ricarico_costi_ind": 0.3
+      "ricarico_costi_ind": 0.3,
+      "rsu_unit_rinfusa": 0.25
     },
     {
       "capacity_label": "50",
@@ -515,7 +521,8 @@
       "rsu_unit": 0.5,
       "costo_orario_macchina": 5.0,
       "costo_orario_rsu": 25.0,
-      "ricarico_costi_ind": 0.3
+      "ricarico_costi_ind": 0.3,
+      "rsu_unit_rinfusa": 0.25
     },
     {
       "capacity_label": "50",
@@ -561,7 +568,8 @@
       "rsu_unit": 0.5,
       "costo_orario_macchina": 5.0,
       "costo_orario_rsu": 25.0,
-      "ricarico_costi_ind": 0.3
+      "ricarico_costi_ind": 0.3,
+      "rsu_unit_rinfusa": 0.25
     },
     {
       "capacity_label": "75",
@@ -607,7 +615,8 @@
       "rsu_unit": 0.5,
       "costo_orario_macchina": 5.0,
       "costo_orario_rsu": 25.0,
-      "ricarico_costi_ind": 0.3
+      "ricarico_costi_ind": 0.3,
+      "rsu_unit_rinfusa": 0.25
     },
     {
       "capacity_label": "75",
@@ -653,7 +662,8 @@
       "rsu_unit": 0.5,
       "costo_orario_macchina": 5.0,
       "costo_orario_rsu": 25.0,
-      "ricarico_costi_ind": 0.3
+      "ricarico_costi_ind": 0.3,
+      "rsu_unit_rinfusa": 0.25
     },
     {
       "capacity_label": "75",
@@ -699,7 +709,8 @@
       "rsu_unit": 0.5,
       "costo_orario_macchina": 5.0,
       "costo_orario_rsu": 25.0,
-      "ricarico_costi_ind": 0.3
+      "ricarico_costi_ind": 0.3,
+      "rsu_unit_rinfusa": 0.25
     },
     {
       "capacity_label": "75",
@@ -745,7 +756,8 @@
       "rsu_unit": 0.5,
       "costo_orario_macchina": 5.0,
       "costo_orario_rsu": 25.0,
-      "ricarico_costi_ind": 0.3
+      "ricarico_costi_ind": 0.3,
+      "rsu_unit_rinfusa": 0.25
     },
     {
       "capacity_label": "100",
@@ -791,7 +803,8 @@
       "rsu_unit": 0.5,
       "costo_orario_macchina": 5.0,
       "costo_orario_rsu": 25.0,
-      "ricarico_costi_ind": 0.3
+      "ricarico_costi_ind": 0.3,
+      "rsu_unit_rinfusa": 0.25
     },
     {
       "capacity_label": "100",
@@ -837,7 +850,8 @@
       "rsu_unit": 0.5,
       "costo_orario_macchina": 5.0,
       "costo_orario_rsu": 25.0,
-      "ricarico_costi_ind": 0.3
+      "ricarico_costi_ind": 0.3,
+      "rsu_unit_rinfusa": 0.25
     },
     {
       "capacity_label": "100",
@@ -883,7 +897,8 @@
       "rsu_unit": 0.5,
       "costo_orario_macchina": 5.0,
       "costo_orario_rsu": 25.0,
-      "ricarico_costi_ind": 0.3
+      "ricarico_costi_ind": 0.3,
+      "rsu_unit_rinfusa": 0.25
     },
     {
       "capacity_label": "100",
@@ -929,7 +944,8 @@
       "rsu_unit": 0.5,
       "costo_orario_macchina": 5.0,
       "costo_orario_rsu": 25.0,
-      "ricarico_costi_ind": 0.3
+      "ricarico_costi_ind": 0.3,
+      "rsu_unit_rinfusa": 0.25
     },
     {
       "capacity_label": "125",
@@ -975,7 +991,8 @@
       "rsu_unit": 0.5,
       "costo_orario_macchina": 5.0,
       "costo_orario_rsu": 25.0,
-      "ricarico_costi_ind": 0.3
+      "ricarico_costi_ind": 0.3,
+      "rsu_unit_rinfusa": 0.25
     },
     {
       "capacity_label": "125",
@@ -1021,7 +1038,8 @@
       "rsu_unit": 0.5,
       "costo_orario_macchina": 5.0,
       "costo_orario_rsu": 25.0,
-      "ricarico_costi_ind": 0.3
+      "ricarico_costi_ind": 0.3,
+      "rsu_unit_rinfusa": 0.25
     },
     {
       "capacity_label": "125",
@@ -1067,7 +1085,8 @@
       "rsu_unit": 0.5,
       "costo_orario_macchina": 5.0,
       "costo_orario_rsu": 25.0,
-      "ricarico_costi_ind": 0.3
+      "ricarico_costi_ind": 0.3,
+      "rsu_unit_rinfusa": 0.25
     },
     {
       "capacity_label": "125",
@@ -1113,7 +1132,8 @@
       "rsu_unit": 0.5,
       "costo_orario_macchina": 5.0,
       "costo_orario_rsu": 25.0,
-      "ricarico_costi_ind": 0.3
+      "ricarico_costi_ind": 0.3,
+      "rsu_unit_rinfusa": 0.25
     },
     {
       "capacity_label": "150",
@@ -1159,7 +1179,8 @@
       "rsu_unit": 0.5,
       "costo_orario_macchina": 5.0,
       "costo_orario_rsu": 25.0,
-      "ricarico_costi_ind": 0.3
+      "ricarico_costi_ind": 0.3,
+      "rsu_unit_rinfusa": 0.25
     },
     {
       "capacity_label": "150",
@@ -1205,7 +1226,8 @@
       "rsu_unit": 0.5,
       "costo_orario_macchina": 5.0,
       "costo_orario_rsu": 25.0,
-      "ricarico_costi_ind": 0.3
+      "ricarico_costi_ind": 0.3,
+      "rsu_unit_rinfusa": 0.25
     },
     {
       "capacity_label": "150",
@@ -1251,7 +1273,8 @@
       "rsu_unit": 0.5,
       "costo_orario_macchina": 5.0,
       "costo_orario_rsu": 25.0,
-      "ricarico_costi_ind": 0.3
+      "ricarico_costi_ind": 0.3,
+      "rsu_unit_rinfusa": 0.25
     },
     {
       "capacity_label": "150",
@@ -1297,7 +1320,8 @@
       "rsu_unit": 0.5,
       "costo_orario_macchina": 5.0,
       "costo_orario_rsu": 25.0,
-      "ricarico_costi_ind": 0.3
+      "ricarico_costi_ind": 0.3,
+      "rsu_unit_rinfusa": 0.25
     },
     {
       "capacity_label": "200",
@@ -1343,7 +1367,8 @@
       "rsu_unit": 0.5,
       "costo_orario_macchina": 5.0,
       "costo_orario_rsu": 25.0,
-      "ricarico_costi_ind": 0.3
+      "ricarico_costi_ind": 0.3,
+      "rsu_unit_rinfusa": 0.25
     },
     {
       "capacity_label": "200",
@@ -1389,7 +1414,8 @@
       "rsu_unit": 0.5,
       "costo_orario_macchina": 5.0,
       "costo_orario_rsu": 25.0,
-      "ricarico_costi_ind": 0.3
+      "ricarico_costi_ind": 0.3,
+      "rsu_unit_rinfusa": 0.25
     },
     {
       "capacity_label": "200",
@@ -1435,7 +1461,8 @@
       "rsu_unit": 0.5,
       "costo_orario_macchina": 5.0,
       "costo_orario_rsu": 25.0,
-      "ricarico_costi_ind": 0.3
+      "ricarico_costi_ind": 0.3,
+      "rsu_unit_rinfusa": 0.25
     },
     {
       "capacity_label": "200",
@@ -1481,7 +1508,8 @@
       "rsu_unit": 0.5,
       "costo_orario_macchina": 5.0,
       "costo_orario_rsu": 25.0,
-      "ricarico_costi_ind": 0.3
+      "ricarico_costi_ind": 0.3,
+      "rsu_unit_rinfusa": 0.25
     },
     {
       "capacity_label": "250",
@@ -1527,7 +1555,8 @@
       "rsu_unit": 0.5,
       "costo_orario_macchina": 5.0,
       "costo_orario_rsu": 25.0,
-      "ricarico_costi_ind": 0.3
+      "ricarico_costi_ind": 0.3,
+      "rsu_unit_rinfusa": 0.25
     },
     {
       "capacity_label": "250",
@@ -1573,7 +1602,8 @@
       "rsu_unit": 0.5,
       "costo_orario_macchina": 5.0,
       "costo_orario_rsu": 25.0,
-      "ricarico_costi_ind": 0.3
+      "ricarico_costi_ind": 0.3,
+      "rsu_unit_rinfusa": 0.25
     },
     {
       "capacity_label": "250",
@@ -1619,7 +1649,8 @@
       "rsu_unit": 0.5,
       "costo_orario_macchina": 5.0,
       "costo_orario_rsu": 25.0,
-      "ricarico_costi_ind": 0.3
+      "ricarico_costi_ind": 0.3,
+      "rsu_unit_rinfusa": 0.25
     },
     {
       "capacity_label": "250",
@@ -1665,7 +1696,8 @@
       "rsu_unit": 0.5,
       "costo_orario_macchina": 5.0,
       "costo_orario_rsu": 25.0,
-      "ricarico_costi_ind": 0.3
+      "ricarico_costi_ind": 0.3,
+      "rsu_unit_rinfusa": 0.25
     },
     {
       "capacity_label": "300 / 350",
@@ -1711,7 +1743,8 @@
       "rsu_unit": 0.5,
       "costo_orario_macchina": 5.0,
       "costo_orario_rsu": 25.0,
-      "ricarico_costi_ind": 0.3
+      "ricarico_costi_ind": 0.3,
+      "rsu_unit_rinfusa": 0.25
     },
     {
       "capacity_label": "300 / 350",
@@ -1757,7 +1790,8 @@
       "rsu_unit": 0.5,
       "costo_orario_macchina": 5.0,
       "costo_orario_rsu": 25.0,
-      "ricarico_costi_ind": 0.3
+      "ricarico_costi_ind": 0.3,
+      "rsu_unit_rinfusa": 0.25
     },
     {
       "capacity_label": "300 / 350",
@@ -1803,7 +1837,8 @@
       "rsu_unit": 0.5,
       "costo_orario_macchina": 5.0,
       "costo_orario_rsu": 25.0,
-      "ricarico_costi_ind": 0.3
+      "ricarico_costi_ind": 0.3,
+      "rsu_unit_rinfusa": 0.25
     },
     {
       "capacity_label": "300 / 350",
@@ -1849,7 +1884,8 @@
       "rsu_unit": 0.5,
       "costo_orario_macchina": 5.0,
       "costo_orario_rsu": 25.0,
-      "ricarico_costi_ind": 0.3
+      "ricarico_costi_ind": 0.3,
+      "rsu_unit_rinfusa": 0.25
     },
     {
       "capacity_label": "500",
@@ -1895,7 +1931,8 @@
       "rsu_unit": 0.5,
       "costo_orario_macchina": 5.0,
       "costo_orario_rsu": 25.0,
-      "ricarico_costi_ind": 0.3
+      "ricarico_costi_ind": 0.3,
+      "rsu_unit_rinfusa": 0.25
     },
     {
       "capacity_label": "500",
@@ -1941,7 +1978,8 @@
       "rsu_unit": 0.5,
       "costo_orario_macchina": 5.0,
       "costo_orario_rsu": 25.0,
-      "ricarico_costi_ind": 0.3
+      "ricarico_costi_ind": 0.3,
+      "rsu_unit_rinfusa": 0.25
     },
     {
       "capacity_label": "500",
@@ -1987,7 +2025,8 @@
       "rsu_unit": 0.5,
       "costo_orario_macchina": 5.0,
       "costo_orario_rsu": 25.0,
-      "ricarico_costi_ind": 0.3
+      "ricarico_costi_ind": 0.3,
+      "rsu_unit_rinfusa": 0.25
     },
     {
       "capacity_label": "500",
@@ -2033,7 +2072,8 @@
       "rsu_unit": 0.5,
       "costo_orario_macchina": 5.0,
       "costo_orario_rsu": 25.0,
-      "ricarico_costi_ind": 0.3
+      "ricarico_costi_ind": 0.3,
+      "rsu_unit_rinfusa": 0.25
     },
     {
       "capacity_label": "1000",
@@ -2079,7 +2119,8 @@
       "rsu_unit": 0.5,
       "costo_orario_macchina": 5.0,
       "costo_orario_rsu": 25.0,
-      "ricarico_costi_ind": 0.3
+      "ricarico_costi_ind": 0.3,
+      "rsu_unit_rinfusa": 0.25
     },
     {
       "capacity_label": "1000",
@@ -2125,7 +2166,8 @@
       "rsu_unit": 0.5,
       "costo_orario_macchina": 5.0,
       "costo_orario_rsu": 25.0,
-      "ricarico_costi_ind": 0.3
+      "ricarico_costi_ind": 0.3,
+      "rsu_unit_rinfusa": 0.25
     },
     {
       "capacity_label": "1000",
@@ -2171,7 +2213,8 @@
       "rsu_unit": 0.5,
       "costo_orario_macchina": 5.0,
       "costo_orario_rsu": 25.0,
-      "ricarico_costi_ind": 0.3
+      "ricarico_costi_ind": 0.3,
+      "rsu_unit_rinfusa": 0.25
     },
     {
       "capacity_label": "1000",
@@ -2217,7 +2260,8 @@
       "rsu_unit": 0.5,
       "costo_orario_macchina": 5.0,
       "costo_orario_rsu": 25.0,
-      "ricarico_costi_ind": 0.3
+      "ricarico_costi_ind": 0.3,
+      "rsu_unit_rinfusa": 0.25
     }
   ],
   "imballi_fissi": [
