@@ -30,6 +30,8 @@ interface Props<T extends Row> {
   // Quando restituisce true per una riga, la riga viene evidenziata come
   // da aggiornare (campi rossi: variazione prezzi mancante da oltre un mese).
   rowIsStale?: (row: T) => boolean
+  // Azioni extra da rendere nella colonna Azioni di ogni riga (es. "Conferma prezzo").
+  extraActions?: (row: T) => ReactNode
 }
 
 export default function CrudManager<T extends Row>({
@@ -43,6 +45,7 @@ export default function CrudManager<T extends Row>({
   update,
   remove,
   rowIsStale,
+  extraActions,
 }: Props<T>) {
   const { session } = useAuth()
   const token = session?.access_token
@@ -278,6 +281,7 @@ export default function CrudManager<T extends Row>({
                       >
                         Modifica
                       </button>
+                      {extraActions?.(row)}
                       <button
                         onClick={() => confirmRemove(row)}
                         className="border border-red-600/30 px-2 py-1 font-sans text-[10px] uppercase tracking-[0.2em] text-red-600 hover:bg-red-600 hover:text-bone transition-all"

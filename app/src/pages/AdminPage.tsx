@@ -98,6 +98,8 @@ export default function AdminPage() {
   const [filterColor, setFilterColor] = useState('')
   const [filterCapacity, setFilterCapacity] = useState('')
   const [activeTab, setActiveTab] = useState<'attrezzaggio' | 'ciclo' | 'imballo'>('attrezzaggio')
+  const [confirmingPrice, setConfirmingPrice] = useState<Set<string>>(new Set())
+  const [confirmError, setConfirmError] = useState<string | null>(null)
 
   useEffect(() => {
     if (!accessToken) return
@@ -213,7 +215,7 @@ export default function AdminPage() {
       ...patch,
       updated_at: now,
       updated_by: session?.user?.id ?? null,
-      ...(patch.costo_kg !== undefined && patch.costo_kg !== oldCost
+      ...(patch.costo_kg !== undefined && patch.costo_kg !== (previous?.costo_kg ?? null)
         ? { prezzo_aggiornato_at: now, prezzo_aggiornato_da: session?.user?.id ?? null }
         : {}),
     })
@@ -233,7 +235,7 @@ export default function AdminPage() {
       ...patch,
       updated_at: now,
       updated_by: session?.user?.id ?? null,
-      ...(patch.master_color_costo_kg !== undefined && patch.master_color_costo_kg !== oldCost
+      ...(patch.master_color_costo_kg !== undefined && patch.master_color_costo_kg !== (previous?.master_color_costo_kg ?? null)
         ? { prezzo_aggiornato_at: now, prezzo_aggiornato_da: session?.user?.id ?? null }
         : {}),
     })
@@ -243,6 +245,56 @@ export default function AdminPage() {
       await logPriceChange(token, 'colors', id, 'master_color_costo_kg', oldCost, nextCost)
     }
     return updated
+  }
+
+  // Conferma esplicita del prezzo corrente senza modificarlo.
+  // Aggiorna solo prezzo_aggiornato_at e prezzo_aggiornato_da.
+  // Non propaga ai listini e non crea voce di audit.
+  const confirmPrice = async (
+    token: string,
+    table: 'materials' | 'colors',
+    id: string,
+    currentPrice: number | null,
+  ) => {
+    if (currentPrice === null) return
+    setConfirmingPrice((prev) => new Set([...prev, id]))
+    setConfirmError(null)
+    try {
+      const now = new Date().toISOString()
+      const userId = session?.user?.id ?? null
+      if (table === 'materials') {
+        await updateMaterial(token, id, {
+          prezzo_aggiornato_at: now,
+          prezzo_aggiornato_da: userId,
+        })
+        setMaterials((prev) =>
+          prev.map((m) =>
+            m.id === id ? { ...m, prezzo_aggiornato_at: now, prezzo_aggiornato_da: userId } : m
+          )
+        )
+      } else {
+        await updateColor(token, id, {
+          prezzo_aggiornato_at: now,
+          prezzo_aggiornato_da: userId,
+        })
+        setColors((prev) =>
+          prev.map((c) =>
+            c.id === id ? { ...c, prezzo_aggiornato_at: now, prezzo_aggiornato_da: userId } : c
+          )
+        )
+      }
+    } catch (e) {
+      const msg = String(e)
+      setConfirmError(msg)
+      setError(msg)
+      throw e
+    } finally {
+      setConfirmingPrice((prev) => {
+        const next = new Set(prev)
+        next.delete(id)
+        return next
+      })
+    }
   }
 
   const saveImballo = async (
@@ -379,6 +431,11 @@ export default function AdminPage() {
         ← Torna al listino
       </Link>
       {error && <p className="border border-red-600/20 bg-red-50 p-4 text-sm text-red-700">{error}</p>}
+      {confirmError && (
+        <p className="border border-red-600/20 bg-red-50 p-4 text-sm text-red-700 mt-2">
+          Errore conferma prezzo: {confirmError}
+        </p>
+      )}
       {saved && <p className="border border-amber-accent/30 bg-surface p-4 text-sm text-onyx/80">{saved}</p>}
       {staleTotal > 0 && (
         <div className="border border-red-600/50 border-l-4 border-red-600 bg-red-100 p-4 rounded mb-4">
@@ -449,6 +506,27 @@ export default function AdminPage() {
         update={saveMaterial}
         remove={deleteMaterial}
         rowIsStale={(r) => isStale((r as Material).prezzo_aggiornato_at)}
+        extraActions={(r) => {
+          const m = r as Material
+          const hasPrice = m.costo_kg !== null && m.costo_kg !== undefined
+          const isConfirming = confirmingPrice.has(m.id)
+          const disabled = editingId === m.id || isConfirming || !hasPrice
+          return (
+            <button
+              onClick={() => confirmPrice(accessToken!, 'materials', m.id, m.costo_kg ?? null)}
+              disabled={disabled}
+              className={`px-2 py-1 font-sans text-[10px] uppercase tracking-[0.2em] border rounded transition-colors duration-200 ${
+                disabled
+                  ? 'border-aluminum/30 text-aluminum cursor-not-allowed'
+                  : isConfirming
+                    ? 'border-amber-accent text-amber-accent'
+                    : 'border-onyx text-onyx hover:bg-onyx hover:text-bone'
+              }`}
+            >
+              {isConfirming ? 'Conferma…' : 'Conferma prezzo'}
+            </button>
+          )
+        }}
       />
 
       <CrudManager
@@ -509,6 +587,27 @@ export default function AdminPage() {
         update={saveColor}
         remove={deleteColor}
         rowIsStale={(r) => isStale((r as Color).prezzo_aggiornato_at)}
+        extraActions={(r) => {
+          const c = r as Color
+          const hasPrice = c.master_color_costo_kg !== null && c.master_color_costo_kg !== undefined
+          const isConfirming = confirmingPrice.has(c.id)
+          const disabled = editingId === c.id || isConfirming || !hasPrice
+          return (
+            <button
+              onClick={() => confirmPrice(accessToken!, 'colors', c.id, c.master_color_costo_kg ?? null)}
+              disabled={disabled}
+              className={`px-2 py-1 font-sans text-[10px] uppercase tracking-[0.2em] border rounded transition-colors duration-200 ${
+                disabled
+                  ? 'border-aluminum/30 text-aluminum cursor-not-allowed'
+                  : isConfirming
+                    ? 'border-amber-accent text-amber-accent'
+                    : 'border-onyx text-onyx hover:bg-onyx hover:text-bone'
+              }`}
+            >
+              {isConfirming ? 'Conferma…' : 'Conferma prezzo'}
+            </button>
+          )
+        }}
       />
 
       <ImballiManager rows={imballi} onSave={saveImballo} />
