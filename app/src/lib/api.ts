@@ -5,6 +5,7 @@ import type {
   ListinoConfig,
   Material,
   PriceBracket,
+  PriceChangeLog,
   Profile,
 } from './types'
 
@@ -85,6 +86,10 @@ export async function getProfile(accessToken: string, userId: string): Promise<P
   const url = `${BASE_URL}/rest/v1/profiles?select=*&id=eq.${userId}`
   const data = await fetchJson<Profile[]>(url, accessToken)
   return data[0] ?? null
+}
+
+export async function getProfiles(accessToken: string): Promise<Profile[]> {
+  return fetchJson<Profile[]>(`${BASE_URL}/rest/v1/profiles?select=*&order=full_name`, accessToken)
 }
 
 export async function updateConfig(
@@ -176,9 +181,28 @@ export async function deleteBracket(accessToken: string, id: string): Promise<vo
   return mutateJson<void>(`${BASE_URL}/rest/v1/price_brackets?id=eq.${id}`, accessToken, 'DELETE')
 }
 
-// --- Imballi fissi (€/pezzo) ---
+// --- Log variazioni prezzi (audit trail) ---
 
-// Se la tabella non esiste ancora (migration non applicata) restituisce []
+export async function getPriceChangeLog(accessToken: string): Promise<PriceChangeLog[]> {
+  return fetchJson<PriceChangeLog[]>(
+    `${BASE_URL}/rest/v1/price_change_log?select=*&order=changed_at.desc`,
+    accessToken,
+  )
+}
+
+export async function createPriceChangeLog(
+  accessToken: string,
+  log: Omit<PriceChangeLog, 'id' | 'changed_at'>,
+): Promise<PriceChangeLog> {
+  return mutateJson<PriceChangeLog[]>(
+    `${BASE_URL}/rest/v1/price_change_log`,
+    accessToken,
+    'POST',
+    log,
+  ).then((d) => d[0])
+}
+
+// --- Imballi fissi (€/pezzo) ---
 // così l'app continua a usare il calcolo imballo da pallettizzazione.
 export async function getImballiFissi(accessToken: string): Promise<ImballoFisso[]> {
   try {

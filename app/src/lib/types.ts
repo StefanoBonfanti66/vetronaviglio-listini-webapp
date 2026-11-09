@@ -7,6 +7,8 @@ export interface Material {
   // Costo €/kg della materia prima (quota 96% della miscela).
   // NULL = non definito.
   costo_kg?: number | null
+  updated_at?: string
+  updated_by?: string | null
 }
 
 export interface Color {
@@ -18,6 +20,8 @@ export interface Color {
   // Costo €/kg del master color (quota 4% della miscela).
   // NULL = non definito.
   master_color_costo_kg?: number | null
+  updated_at?: string
+  updated_by?: string | null
 }
 
 export interface Capacity {
@@ -83,6 +87,17 @@ export interface Profile {
   id: string
   full_name: string | null
   role: 'commerciale' | 'admin'
+}
+
+export interface PriceChangeLog {
+  id: string
+  table_name: 'materials' | 'colors'
+  record_id: string
+  field_changed: 'costo_kg' | 'master_color_costo_kg'
+  old_value: number | null
+  new_value: number | null
+  changed_by: string | null
+  changed_at: string
 }
 
 export type ModalitaImballo = 'allineato' | 'rinfusa'

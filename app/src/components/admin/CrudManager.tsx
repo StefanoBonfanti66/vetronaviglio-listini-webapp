@@ -27,6 +27,9 @@ interface Props<T extends Row> {
   create: (token: string, row: any) => Promise<T>
   update: (token: string, id: string, patch: any) => Promise<T>
   remove: (token: string, id: string) => Promise<void>
+  // Quando restituisce true per una riga, la riga viene evidenziata come
+  // da aggiornare (campi rossi: variazione prezzi mancante da oltre un mese).
+  rowIsStale?: (row: T) => boolean
 }
 
 export default function CrudManager<T extends Row>({
@@ -39,6 +42,7 @@ export default function CrudManager<T extends Row>({
   create,
   update,
   remove,
+  rowIsStale,
 }: Props<T>) {
   const { session } = useAuth()
   const token = session?.access_token
@@ -212,7 +216,13 @@ export default function CrudManager<T extends Row>({
           </thead>
           <tbody>
             {rows.map((row) => (
-              <tr key={row.id} className="border-b border-aluminum/10">
+              <tr
+                key={row.id}
+                className={
+                  'border-b border-aluminum/10' +
+                  (rowIsStale?.(row) ? ' bg-red-50/40 border-red-300' : '')
+                }
+              >
                 {cols.map((c) => (
                   <td key={c.key} className="px-3 py-2 text-onyx/80">
                     {editingId === row.id ? (

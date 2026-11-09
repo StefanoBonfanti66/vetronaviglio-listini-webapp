@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
+import { useEffect, useMemo, useState } from 'react'
 import {
   createCapacity,
   createColor,
@@ -14,11 +15,14 @@ import {
   getImballiFissi,
   getMaterials,
   getPriceBrackets,
+  getPriceChangeLog,
+  getProfiles,
   saveImballoFisso,
   updateCapacity,
   updateColor,
   updateConfig,
   updateMaterial,
+  createPriceChangeLog,
 } from '../lib/api'
 import type {
   Capacity,
@@ -29,6 +33,8 @@ import type {
   Material,
   ModalitaImballo,
   PriceBracket,
+  PriceChangeLog,
+  Profile,
 } from '../lib/types'
 import { useAuth } from '../context/AuthContext'
 import CrudManager from '../components/admin/CrudManager'
@@ -73,6 +79,15 @@ export default function AdminPage() {
   const [configs, setConfigs] = useState<ListinoConfig[]>([])
   const [brackets, setBrackets] = useState<PriceBracket[]>([])
   const [imballi, setImballi] = useState<ImballoFisso[]>([])
+  const [priceChangeLog, setPriceChangeLog] = useState<PriceChangeLog[]>([])
+  const [profiles, setProfiles] = useState<Profile[]>([])
+  const profileMap = useMemo(() => {
+    const m: Record<string, string> = {}
+    for (const p of profiles) {
+      if (p.id) m[p.id] = p.full_name ?? p.id
+    }
+    return m
+  }, [profiles])
   const [error, setError] = useState<string | null>(null)
   const [saved, setSaved] = useState<string | null>(null)
   const [editingId, setEditingId] = useState<string | null>(null)
@@ -93,14 +108,18 @@ export default function AdminPage() {
       getConfigs(accessToken),
       getPriceBrackets(accessToken),
       getImballiFissi(accessToken),
+      getPriceChangeLog(accessToken),
+      getProfiles(accessToken),
     ])
-      .then(([m, c, ca, cfg, br, im]) => {
+      .then(([m, c, ca, cfg, br, im, pcl, pr]) => {
         setMaterials(m)
         setColors(c)
         setCapacities(ca)
         setConfigs(cfg)
         setBrackets(br)
         setImballi(im)
+        setPriceChangeLog(pcl)
+        setProfiles(pr)
       })
       .catch((e) => setError(String(e)))
   }, [accessToken])
@@ -108,6 +127,14 @@ export default function AdminPage() {
   const notify = (msg: string) => {
     setSaved(msg)
     setTimeout(() => setSaved(null), 3000)
+  }
+
+  // Restituisce true se l'ultima variazione del record risale a oltre 30 giorni fa
+  // (o se non è mai stata registrata): usato per evidenziare i campi in rosso.
+  const isStale = (updatedAt: string | null | undefined): boolean => {
+    if (!updatedAt) return true
+    const days = (Date.now() - new Date(updatedAt).getTime()) / (1000 * 60 * 60 * 24)
+    return days > 30
   }
 
   // Propaga il nuovo costo del materiale a tutti i listini che lo usano.
@@ -151,24 +178,62 @@ export default function AdminPage() {
     notify(`Costo master aggiornato su ${affected.length} listini`)
   }
 
-  const saveMaterial = async (token: string, id: string, patch: Partial<Material>) => {
+  // Registra una variazione di prezzo nell'audit trail.
+  const logPriceChange = async (
+    token: string,
+    tableName: 'materials' | 'colors',
+    recordId: string,
+    fieldChanged: 'costo_kg' | 'master_color_costo_kg',
+    oldValue: number | null,
+    newValue: number | null,
+  ) => {
+    try {
+      await createPriceChangeLog(token, {
+        table_name: tableName,
+        record_id: recordId,
+        field_changed: fieldChanged,
+        old_value: oldValue,
+        new_value: newValue,
+        changed_by: session?.user?.id ?? null,
+      })
+      // Ricarica il log per mostrare la nuova riga.
+      const updated = await getPriceChangeLog(token)
+      setPriceChangeLog(updated)
+    } catch {
+      // Il log non deve bloccare l'operazione principale se il fallback fallisce.
+    }
+  }
+
+  const saveMaterial = async (token: string, id: string, patch: Partial<Material>): Promise<Material> => {
     const previous = materials.find((m) => m.id === id)
-    const updated = await updateMaterial(token, id, patch)
+    const oldCost = previous?.costo_kg ?? null
+    const now = new Date().toISOString()
+    const updated = await updateMaterial(token, id, {
+      ...patch,
+      updated_at: now,
+      updated_by: session?.user?.id ?? null,
+    })
     const nextCost = updated.costo_kg ?? null
-    const prevCost = previous?.costo_kg ?? null
-    if (nextCost !== prevCost) {
+    if (nextCost !== oldCost) {
       await propagateMaterialCost(token, id, nextCost)
+      await logPriceChange(token, 'materials', id, 'costo_kg', oldCost, nextCost)
     }
     return updated
   }
 
-  const saveColor = async (token: string, id: string, patch: Partial<Color>) => {
+  const saveColor = async (token: string, id: string, patch: Partial<Color>): Promise<Color> => {
     const previous = colors.find((c) => c.id === id)
-    const updated = await updateColor(token, id, patch)
+    const oldCost = previous?.master_color_costo_kg ?? null
+    const now = new Date().toISOString()
+    const updated = await updateColor(token, id, {
+      ...patch,
+      updated_at: now,
+      updated_by: session?.user?.id ?? null,
+    })
     const nextCost = updated.master_color_costo_kg ?? null
-    const prevCost = previous?.master_color_costo_kg ?? null
-    if (nextCost !== prevCost) {
+    if (nextCost !== oldCost) {
       await propagateColorCost(token, id, nextCost)
+      await logPriceChange(token, 'colors', id, 'master_color_costo_kg', oldCost, nextCost)
     }
     return updated
   }
@@ -296,6 +361,12 @@ export default function AdminPage() {
 
   return (
     <div className="mx-auto max-w-6xl space-y-6 px-6 py-8">
+      <Link
+        to="/"
+        className="inline-block mb-4 font-sans text-[11px] uppercase tracking-[0.2em] text-amber-accent hover:text-onyx transition-colors"
+      >
+        ← Torna al listino
+      </Link>
       {error && <p className="border border-red-600/20 bg-red-50 p-4 text-sm text-red-700">{error}</p>}
       {saved && <p className="border border-amber-accent/30 bg-surface p-4 text-sm text-onyx/80">{saved}</p>}
 
@@ -308,6 +379,16 @@ export default function AdminPage() {
           { key: 'costo_kg', label: 'Costo MP (€/kg)', inputType: 'decimal' },
           { key: 'sort_order', label: 'Ordine' },
           { key: 'enabled', label: 'Attivo', render: (r) => (r.enabled ? 'Sì' : 'No') },
+          { key: 'updated_at', label: 'Ultima variazione', render: (r) => (r.updated_at ? new Date(r.updated_at).toLocaleDateString('it-IT') : '—') },
+          {
+            key: 'updated_by',
+            label: 'Modificato da',
+            render: (r) => {
+              const id = (r as Material).updated_by ?? '';
+              const name = profileMap[id] ?? '';
+              return name || (id ? id.slice(0, 8) : '—');
+            },
+          },
         ]}
         rows={materials}
         setRows={setMaterials}
@@ -315,6 +396,7 @@ export default function AdminPage() {
         create={createMaterial}
         update={saveMaterial}
         remove={deleteMaterial}
+        rowIsStale={(r) => isStale((r as Material).updated_at)}
       />
 
       <CrudManager
@@ -326,6 +408,16 @@ export default function AdminPage() {
           { key: 'master_color_costo_kg', label: 'Costo master (€/kg)', inputType: 'decimal' },
           { key: 'sort_order', label: 'Ordine' },
           { key: 'enabled', label: 'Attivo', render: (r) => (r.enabled ? 'Sì' : 'No') },
+          { key: 'updated_at', label: 'Ultima variazione', render: (r) => (r.updated_at ? new Date(r.updated_at).toLocaleDateString('it-IT') : '—') },
+          {
+            key: 'updated_by',
+            label: 'Modificato da',
+            render: (r) => {
+              const id = (r as Color).updated_by ?? '';
+              const name = profileMap[id] ?? '';
+              return name || (id ? id.slice(0, 8) : '—');
+            },
+          },
         ]}
         rows={colors}
         setRows={setColors}
@@ -333,6 +425,7 @@ export default function AdminPage() {
         create={createColor}
         update={saveColor}
         remove={deleteColor}
+        rowIsStale={(r) => isStale((r as Color).updated_at)}
       />
 
       <ImballiManager rows={imballi} onSave={saveImballo} />
@@ -632,8 +725,8 @@ export default function AdminPage() {
                     params={newConfig}
                     fields={[
                       ['velocita_pz_h', 'Velocità (pz/h)'],
-                      ['costo_orario_macchina', 'Costo orario macchina'],
                       ['costo_orario_rsu', 'Costo orario RSU'],
+                      ['costo_orario_macchina', 'Costo orario macchina'],
                       ['ricarico_costi_ind', 'Ricarico costi ind.'],
                     ]}
                     onChange={(v) => setNewConfig({ ...newConfig, ...v })}
@@ -775,8 +868,8 @@ export default function AdminPage() {
                     params={draft}
                     fields={[
                       ['velocita_pz_h', 'Velocità (pz/h)'],
-                      ['costo_orario_macchina', 'Costo orario macchina'],
                       ['costo_orario_rsu', 'Costo orario RSU'],
+                      ['costo_orario_macchina', 'Costo orario macchina'],
                       ['ricarico_costi_ind', 'Ricarico costi ind.'],
                     ]}
                     onChange={(v) => setDraft({ ...draft, ...v })}
@@ -834,6 +927,140 @@ export default function AdminPage() {
         update={updateCapacity}
         remove={deleteCapacity}
       />
+
+      {priceChangeLog.length > 0 && (
+        <div className="mt-8 bg-white border border-aluminum/10 p-6">
+          <h2 className="font-display text-xl font-semibold tracking-tight mb-4">
+            Log Variazioni Prezzi
+          </h2>
+          <p className="mt-1 font-sans text-[12px] text-aluminum mb-4">
+            Storico delle modifiche a costo MP (materiali) e costo master (colori).
+            Le righe con variazioni da oltre 30 giorni sono evidenziate in rosso.
+          </p>
+          <div className="overflow-x-auto">
+            <table className="w-full font-sans text-xs">
+              <thead>
+                <tr className="border-b border-aluminum/10 text-left font-sans text-[10px] uppercase tracking-[0.15em] text-aluminum">
+                  <th className="px-3 py-2 font-medium">Data</th>
+                  <th className="px-3 py-2 font-medium">Tabella</th>
+                  <th className="px-3 py-2 font-medium">Record</th>
+                  <th className="px-3 py-2 font-medium">Campo</th>
+                  <th className="px-3 py-2 font-medium">Valore prima</th>
+                  <th className="px-3 py-2 font-medium">Valore dopo</th>
+                  <th className="px-3 py-2 font-medium">Modificato da</th>
+                </tr>
+              </thead>
+              <tbody>
+                {priceChangeLog.map((log) => (
+                  <tr key={log.id} className="border-b border-aluminum/10">
+                    <td className="px-3 py-2 text-onyx/80">
+                      {new Date(log.changed_at).toLocaleString('it-IT')}
+                    </td>
+                    <td className="px-3 py-2 text-onyx/80">
+                      {log.table_name === 'materials' ? 'Materiali' : 'Colori'}
+                    </td>
+                    <td className="px-3 py-2 text-onyx/80">{log.record_id}</td>
+                    <td className="px-3 py-2 text-onyx/80">
+                      {log.field_changed === 'costo_kg'
+                        ? 'Costo MP (€/kg)'
+                        : 'Costo master (€/kg)'}
+                    </td>
+                    <td className="px-3 py-2 text-onyx/80">
+                      {log.old_value !== null ? log.old_value.toFixed(3) : '—'}
+                    </td>
+                    <td className="px-3 py-2 text-onyx/80">
+                      {log.new_value !== null ? log.new_value.toFixed(3) : '—'}
+                    </td>
+                    <td className="px-3 py-2 text-onyx/80">
+                      {(() => {
+                        const id = log.changed_by ?? '';
+                        const name = profileMap[id] ?? '';
+                        return name || (id ? id.slice(0, 8) : '—');
+                      })()}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      )}
+
+      {!priceChangeLog || priceChangeLog.length === 0 && (
+        <div className="mt-8 bg-white border border-aluminum/10 p-6">
+          <h2 className="font-display text-xl font-semibold tracking-tight mb-4">
+            Log Variazioni Prezzi
+          </h2>
+          <p className="font-sans text-[12px] text-aluminum">
+            Nessuna variazione prezzi registrata.
+          </p>
+        </div>
+      )}
+
+      <div className="mt-12 bg-white border border-aluminum/10 p-6">
+        <h2 className="font-display text-xl font-semibold tracking-tight mb-4">
+          Legenda calcolo costi
+        </h2>
+        <div className="grid gap-4 md:grid-cols-2">
+          <div className="bg-aluminum/10 p-4 rounded">
+            <h3 className="font-sans text-[11px] uppercase tracking-[0.2em] text-aluminum mb-3">
+              Materie prime
+            </h3>
+            <p className="font-sans text-[11px] text-aluminum leading-relaxed">
+              Costo MP pesato = Σ (costo €/kg × % utilizzo / 100) per ogni
+              materiale della configurazione. Valori di base configurabili
+              in anagrafica materiali.
+            </p>
+          </div>
+          <div className="bg-aluminum/10 p-4 rounded">
+            <h3 className="font-sans text-[11px] uppercase tracking-[0.2em] text-aluminum mb-3">
+              Master colore
+            </h3>
+            <p className="font-sans text-[11px] text-aluminum leading-relaxed">
+              Costo master €/kg per colore, applicato con mix fisso 96/4 (MP
+              / master). Colore neutro 10 €/kg, colorato 20 €/kg.
+            </p>
+          </div>
+          <div className="bg-aluminum/10 p-4 rounded">
+            <h3 className="font-sans text-[11px] uppercase tracking-[0.2em] text-aluminum mb-3">
+              Imballo (€/pezzo)
+            </h3>
+            <p className="font-sans text-[11px] text-aluminum leading-relaxed">
+              Costo fisso per pezzo, distinto per modalità (allineato /
+              rinfusa) e fascia capacità (fino 125 ml / oltre 125 ml). Se
+              vuoto, si usa il calcolo da pallettizzazione
+              (imballo_items ÷ pezzi_pallet).
+            </p>
+          </div>
+          <div className="bg-aluminum/10 p-4 rounded">
+            <h3 className="font-sans text-[11px] uppercase tracking-[0.2em] text-aluminum mb-3">
+              Fasi produzione
+            </h3>
+            <p className="font-sans text-[11px] text-aluminum leading-relaxed">
+              Fase 1 attrezzaggio: ore uomo × costo orario. Fase 2 ciclo:
+              velocità pz/h, costo orario macchina e RSU. Fase 3 imballo:
+              RSU unità allineato (0,5) e rinfusa (0,25).
+            </p>
+          </div>
+          <div className="bg-aluminum/10 p-4 rounded">
+            <h3 className="font-sans text-[11px] uppercase tracking-[0.2em] text-aluminum mb-3">
+              Ricarico vendite
+            </h3>
+            <p className="font-sans text-[11px] text-aluminum leading-relaxed">
+              Applicato sul costo totale per fascia di quantità, con due regole
+              possibili:<br/>
+              • <strong>percentuale</strong>: prezzo = costo + costo × ricarico%<br/>
+              • <strong>doppio80</strong>: prezzo = costo × 2 + (costo × 2 × 0,8)
+              = costo × 3,6 (usata nelle prime fasce di quantità).<br/>
+              Sfrido già incluso nel calcolo unitario.
+            </p>
+          </div>
+        </div>
+        <p className="mt-4 font-sans text-[10px] text-aluminum/60">
+          I prezzi vengono ricalcolati automaticamente alla modifica di qualsiasi
+          parametro: costi MP, master, imballo, fasi macchina o fasce di vendita.
+        </p>
+      </div>
     </div>
   )
 }
@@ -853,8 +1080,8 @@ function MachineParamsGrid({
     ['costo_rsu', 'Costo ora uomo attrezzaggio'],
     ['velocita_pz_h', 'Velocità (pz/h)'],
     ['rsu_unit', 'RSU (unità)'],
-    ['costo_orario_macchina', 'Costo orario macchina'],
-    ['costo_orario_rsu', 'Costo orario RSU'],
+                      ['costo_orario_rsu', 'Costo orario RSU'],
+                      ['costo_orario_macchina', 'Costo orario macchina'],
     ['ricarico_costi_ind', 'Ricarico costi ind.'],
   ]
   return (
