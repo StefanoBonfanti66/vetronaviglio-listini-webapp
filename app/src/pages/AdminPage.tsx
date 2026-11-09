@@ -366,6 +366,10 @@ export default function AdminPage() {
 
   const formLabel = 'block font-sans text-[10px] uppercase tracking-[0.2em] text-aluminum mb-1'
 
+  const staleMaterialsCount = materials.filter((m) => isStale((m as Material).prezzo_aggiornato_at)).length
+  const staleColorsCount = colors.filter((c) => isStale((c as Color).prezzo_aggiornato_at)).length
+  const staleTotal = staleMaterialsCount + staleColorsCount
+
   return (
     <div className="mx-auto max-w-6xl space-y-6 px-6 py-8">
       <Link
@@ -376,10 +380,13 @@ export default function AdminPage() {
       </Link>
       {error && <p className="border border-red-600/20 bg-red-50 p-4 text-sm text-red-700">{error}</p>}
       {saved && <p className="border border-amber-accent/30 bg-surface p-4 text-sm text-onyx/80">{saved}</p>}
-      {materials.some((m) => isStale((m as Material).prezzo_aggiornato_at)) && (
-        <div className="border border-red-600/30 bg-red-50 p-4 rounded mb-4">
-          <p className="font-sans text-sm text-red-700 font-semibold">
-            ATTENZIONE: aggiorna i prezzi dei materiali. Uno o più prezzi non risultano aggiornati da oltre un mese.
+      {staleTotal > 0 && (
+        <div className="border border-red-600/50 border-l-4 border-red-600 bg-red-100 p-4 rounded mb-4">
+          <p className="font-sans text-base text-red-800 font-bold mb-1">
+            ATTENZIONE: PREZZI DA AGGIORNARE
+          </p>
+          <p className="font-sans text-sm text-red-700">
+            Uno o più prezzi di materiali e colori non risultano aggiornati da oltre un mese ({staleTotal} elemento{staleTotal !== 1 ? 'i' : ''} da aggiornare).
           </p>
         </div>
       )}
@@ -390,10 +397,41 @@ export default function AdminPage() {
         cols={[
           { key: 'code', label: 'Codice' },
           { key: 'name', label: 'Nome' },
-          { key: 'costo_kg', label: 'Costo MP (€/kg)', inputType: 'decimal' },
+          {
+            key: 'costo_kg',
+            label: 'Costo MP (€/kg)',
+            inputType: 'decimal',
+            render: (r) => {
+              const m = r as Material
+              const stale = isStale(m.prezzo_aggiornato_at)
+              return (
+                <span className={stale ? 'text-red-800 font-bold' : 'text-onyx/80'}>
+                  {m.costo_kg !== null && m.costo_kg !== undefined ? m.costo_kg.toString() : '—'}
+                </span>
+              )
+            },
+          },
           { key: 'sort_order', label: 'Ordine' },
           { key: 'enabled', label: 'Attivo', render: (r) => (r.enabled ? 'Sì' : 'No') },
-          { key: 'prezzo_aggiornato_at', label: 'Ultima variazione prezzo', render: (r) => (r.prezzo_aggiornato_at ? new Date(r.prezzo_aggiornato_at).toLocaleDateString('it-IT') : '—') },
+          {
+            key: 'prezzo_aggiornato_at',
+            label: 'Ultima variazione prezzo',
+            render: (r) => {
+              const m = r as Material
+              const stale = isStale(m.prezzo_aggiornato_at)
+              const hasDate = Boolean(m.prezzo_aggiornato_at)
+              return (
+                <span className={stale ? 'text-red-800 font-bold' : 'text-onyx/80'}>
+                  {hasDate ? new Date(m.prezzo_aggiornato_at!).toLocaleDateString('it-IT') : '—'}
+                  {stale ? (
+                    <span className="ml-1 inline-block px-1.5 py-0.5 rounded text-[9px] font-bold uppercase border text-red-800 border-red-800 bg-red-200">
+                      {!hasDate ? 'DATA NON NOTA' : 'DA AGGIORNARE'}
+                    </span>
+                  ) : null}
+                </span>
+              )
+            },
+          },
           {
             key: 'updated_by',
             label: 'Modificato da',
@@ -419,10 +457,41 @@ export default function AdminPage() {
         cols={[
           { key: 'code', label: 'Codice' },
           { key: 'name', label: 'Nome' },
-          { key: 'master_color_costo_kg', label: 'Costo master (€/kg)', inputType: 'decimal' },
+          {
+            key: 'master_color_costo_kg',
+            label: 'Costo master (€/kg)',
+            inputType: 'decimal',
+            render: (r) => {
+              const c = r as Color
+              const stale = isStale(c.prezzo_aggiornato_at)
+              return (
+                <span className={stale ? 'text-red-800 font-bold' : 'text-onyx/80'}>
+                  {c.master_color_costo_kg !== null && c.master_color_costo_kg !== undefined ? c.master_color_costo_kg.toString() : '—'}
+                </span>
+              )
+            },
+          },
           { key: 'sort_order', label: 'Ordine' },
           { key: 'enabled', label: 'Attivo', render: (r) => (r.enabled ? 'Sì' : 'No') },
-          { key: 'prezzo_aggiornato_at', label: 'Ultima variazione prezzo', render: (r) => (r.prezzo_aggiornato_at ? new Date(r.prezzo_aggiornato_at).toLocaleDateString('it-IT') : '—') },
+          {
+            key: 'prezzo_aggiornato_at',
+            label: 'Ultima variazione prezzo',
+            render: (r) => {
+              const c = r as Color
+              const stale = isStale(c.prezzo_aggiornato_at)
+              const hasDate = Boolean(c.prezzo_aggiornato_at)
+              return (
+                <span className={stale ? 'text-red-800 font-bold' : 'text-onyx/80'}>
+                  {hasDate ? new Date(c.prezzo_aggiornato_at!).toLocaleDateString('it-IT') : '—'}
+                  {stale ? (
+                    <span className="ml-1 inline-block px-1.5 py-0.5 rounded text-[9px] font-bold uppercase border text-red-800 border-red-800 bg-red-200">
+                      {!hasDate ? 'DATA NON NOTA' : 'DA AGGIORNARE'}
+                    </span>
+                  ) : null}
+                </span>
+              )
+            },
+          },
           {
             key: 'updated_by',
             label: 'Modificato da',

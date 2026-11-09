@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, type ReactNode } from 'react'
 import type {
   Capacity,
   Color,
@@ -11,7 +11,7 @@ type Row = Material | Color | Capacity
 interface Col<T extends Row> {
   key: keyof T & string
   label: string
-  render?: (row: T) => string | number
+  render?: (row: T) => string | number | ReactNode
   // 'number' = input numerico; 'decimal' = input numerico con 3 decimali e
   // valore vuoto -> null (costo non definito).
   inputType?: 'number' | 'decimal'
@@ -220,7 +220,7 @@ export default function CrudManager<T extends Row>({
                 key={row.id}
                 className={
                   'border-b border-aluminum/10' +
-                  (rowIsStale?.(row) ? ' bg-red-50/40 border-red-300' : '')
+                  (rowIsStale?.(row) ? ' bg-red-100 border-red-400' : '')
                 }
               >
                 {cols.map((c) => (
