@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-27T09:46:24.814Z",
+  "updated_at": "2026-11-09T00:00:00.000Z",
   "state": "active",
   "phase": "Validazione cliente",
-  "next_action": "Ottenere i dati mancanti dal cliente; quindi aggiornare i costi imballo e preparare il prospetto finale."
+  "next_action": "Ricevere Excel aggiornato, config 400ml/PETG/PE_PCR/BIO BASED, ricarichi vendite e master color CUSTOM da Federico; poi preparare il prospetto finale delle variazioni di prezzo e pubblicare i 5 commit locali su origin/main."
 }
