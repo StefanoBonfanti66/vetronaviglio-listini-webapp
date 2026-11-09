@@ -7,6 +7,10 @@ export interface Material {
   // Costo €/kg della materia prima (quota 96% della miscela).
   // NULL = non definito.
   costo_kg?: number | null
+  // Ultimo aggiornamento del solo campo costo_kg (non tocca nome/ordine/attivo).
+  // Null = prezzo mai aggiornato o data sconosciuta -> considerato non aggiornato.
+  prezzo_aggiornato_at?: string | null
+  prezzo_aggiornato_da?: string | null
   updated_at?: string
   updated_by?: string | null
 }
@@ -20,6 +24,10 @@ export interface Color {
   // Costo €/kg del master color (quota 4% della miscela).
   // NULL = non definito.
   master_color_costo_kg?: number | null
+  // Ultimo aggiornamento del solo campo master_color_costo_kg (non tocca nome/ordine/attivo).
+  // Null = prezzo mai aggiornato o data sconosciuta -> considerato non aggiornato.
+  prezzo_aggiornato_at?: string | null
+  prezzo_aggiornato_da?: string | null
   updated_at?: string
   updated_by?: string | null
 }

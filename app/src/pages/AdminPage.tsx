@@ -129,11 +129,12 @@ export default function AdminPage() {
     setTimeout(() => setSaved(null), 3000)
   }
 
-  // Restituisce true se l'ultima variazione del record risale a oltre 30 giorni fa
-  // (o se non è mai stata registrata): usato per evidenziare i campi in rosso.
-  const isStale = (updatedAt: string | null | undefined): boolean => {
-    if (!updatedAt) return true
-    const days = (Date.now() - new Date(updatedAt).getTime()) / (1000 * 60 * 60 * 24)
+  // Restituisce true se l'ultimo aggiornamento del PREZZO risale a oltre 30 giorni fa
+  // (o se la data non è nota): usato per evidenziare i campi in rosso.
+  // Criterio: prezzo_aggiornato_at null -> stale; > 30 giorni -> stale; altrimenti aggiornato.
+  const isStale = (prezzoAggiornatoAt: string | null | undefined): boolean => {
+    if (!prezzoAggiornatoAt) return true
+    const days = (Date.now() - new Date(prezzoAggiornatoAt).getTime()) / (1000 * 60 * 60 * 24)
     return days > 30
   }
 
@@ -212,6 +213,9 @@ export default function AdminPage() {
       ...patch,
       updated_at: now,
       updated_by: session?.user?.id ?? null,
+      ...(patch.costo_kg !== undefined && patch.costo_kg !== oldCost
+        ? { prezzo_aggiornato_at: now, prezzo_aggiornato_da: session?.user?.id ?? null }
+        : {}),
     })
     const nextCost = updated.costo_kg ?? null
     if (nextCost !== oldCost) {
@@ -229,6 +233,9 @@ export default function AdminPage() {
       ...patch,
       updated_at: now,
       updated_by: session?.user?.id ?? null,
+      ...(patch.master_color_costo_kg !== undefined && patch.master_color_costo_kg !== oldCost
+        ? { prezzo_aggiornato_at: now, prezzo_aggiornato_da: session?.user?.id ?? null }
+        : {}),
     })
     const nextCost = updated.master_color_costo_kg ?? null
     if (nextCost !== oldCost) {
@@ -369,6 +376,13 @@ export default function AdminPage() {
       </Link>
       {error && <p className="border border-red-600/20 bg-red-50 p-4 text-sm text-red-700">{error}</p>}
       {saved && <p className="border border-amber-accent/30 bg-surface p-4 text-sm text-onyx/80">{saved}</p>}
+      {materials.some((m) => isStale((m as Material).prezzo_aggiornato_at)) && (
+        <div className="border border-red-600/30 bg-red-50 p-4 rounded mb-4">
+          <p className="font-sans text-sm text-red-700 font-semibold">
+            ATTENZIONE: aggiorna i prezzi dei materiali. Uno o più prezzi non risultano aggiornati da oltre un mese.
+          </p>
+        </div>
+      )}
 
             <CrudManager
         title="Materiali"
@@ -379,7 +393,7 @@ export default function AdminPage() {
           { key: 'costo_kg', label: 'Costo MP (€/kg)', inputType: 'decimal' },
           { key: 'sort_order', label: 'Ordine' },
           { key: 'enabled', label: 'Attivo', render: (r) => (r.enabled ? 'Sì' : 'No') },
-          { key: 'updated_at', label: 'Ultima variazione', render: (r) => (r.updated_at ? new Date(r.updated_at).toLocaleDateString('it-IT') : '—') },
+          { key: 'prezzo_aggiornato_at', label: 'Ultima variazione prezzo', render: (r) => (r.prezzo_aggiornato_at ? new Date(r.prezzo_aggiornato_at).toLocaleDateString('it-IT') : '—') },
           {
             key: 'updated_by',
             label: 'Modificato da',
@@ -392,11 +406,11 @@ export default function AdminPage() {
         ]}
         rows={materials}
         setRows={setMaterials}
-        makeEmpty={() => ({ code: '', name: '', sort_order: 0, enabled: true, costo_kg: null })}
+        makeEmpty={() => ({ code: '', name: '', sort_order: 0, enabled: true, costo_kg: null, prezzo_aggiornato_at: null })}
         create={createMaterial}
         update={saveMaterial}
         remove={deleteMaterial}
-        rowIsStale={(r) => isStale((r as Material).updated_at)}
+        rowIsStale={(r) => isStale((r as Material).prezzo_aggiornato_at)}
       />
 
       <CrudManager
@@ -408,7 +422,7 @@ export default function AdminPage() {
           { key: 'master_color_costo_kg', label: 'Costo master (€/kg)', inputType: 'decimal' },
           { key: 'sort_order', label: 'Ordine' },
           { key: 'enabled', label: 'Attivo', render: (r) => (r.enabled ? 'Sì' : 'No') },
-          { key: 'updated_at', label: 'Ultima variazione', render: (r) => (r.updated_at ? new Date(r.updated_at).toLocaleDateString('it-IT') : '—') },
+          { key: 'prezzo_aggiornato_at', label: 'Ultima variazione prezzo', render: (r) => (r.prezzo_aggiornato_at ? new Date(r.prezzo_aggiornato_at).toLocaleDateString('it-IT') : '—') },
           {
             key: 'updated_by',
             label: 'Modificato da',
@@ -421,11 +435,11 @@ export default function AdminPage() {
         ]}
         rows={colors}
         setRows={setColors}
-        makeEmpty={() => ({ code: '', name: '', sort_order: 0, enabled: true, master_color_costo_kg: null })}
+        makeEmpty={() => ({ code: '', name: '', sort_order: 0, enabled: true, master_color_costo_kg: null, prezzo_aggiornato_at: null })}
         create={createColor}
         update={saveColor}
         remove={deleteColor}
-        rowIsStale={(r) => isStale((r as Color).updated_at)}
+        rowIsStale={(r) => isStale((r as Color).prezzo_aggiornato_at)}
       />
 
       <ImballiManager rows={imballi} onSave={saveImballo} />
