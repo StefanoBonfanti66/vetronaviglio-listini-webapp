@@ -2,13 +2,13 @@
 title: "Vetronaviglio Listini Webapp"
 slug: vetronaviglio-listini-webapp
 project_type: internal
-commercial_status: lead
-operational_status: staging
-administrative_status: inactive
+commercial_status: validazione_cliente
+operational_status: produzione
+administrative_status: inattivo
 client: Vetronaviglio s.r.l.
 owner: Zetabytenexus
-last_updated: 2026-08-06
-mcp_profile: saas
+last_updated: 2026-11-09
+mcp_profile: onprem
 ---
 
 # Vetronaviglio Listini Webapp
@@ -36,12 +36,13 @@ MVP di una web app dove il commerciale seleziona **materiale** (PP, PE, PETG, PE
 
 - Lead ricevuto (email Federico Rosi 03/08/2026), brief compilato in `docs/leads/`
 - Excel sorgente copiato in `data/listini/` e analizzato (44 fogli)
-- **Decisioni confermate (03/08):** PETG/PE PCR vuoti (dati futuri via excel); niente excel a runtime → pagina admin; 11 fasce in tabella; login; GitHub+Vercel; plus = breakdown calcolo prezzi
+- **Decisioni confermate (03/08):** PETG/PE PCR vuoti (dati futuri via excel); niente excel a runtime → pagina admin; 11 fasce in tabella; login; deploy on-prem produzione (http://listini.vetrodom.local); plus = breakdown calcolo prezzi
 - **Realizzato (03–04/08):** schema Supabase + seed, motore prezzi (1932 check vs excel), import excel, UI completa (login, prezzi con breakdown, admin CRUD), parametri macchina editabili in admin, tema Vetronaviglio, responsive mobile/tablet
 - **Percorso B completato (04/08):** admin = unica fonte dati (CRUD config listino + anagrafiche materiali/colori/capacità + fasce, toggle attivo/disattivo live). Migrazione `0002_capacities_enabled.sql`
-- **DB su nuovo project Supabase `fkjaqhydotxubxnieguh`** (04/08): migration 0001+0002 + seed applicati (4/2/12/11/44); 3 utenti auth creati (f.rosi, b.solitodesolis admin; f.ruffini commerciale)
+- **DB on-prem self-hosted** (`192.168.24.132:8000`, container `supabase-db`): migrazioni 0001–0005 applicate (44 config), anagrafiche costi €/kg, costi imballo fissi €/pezzo in admin; migrazione 0006 (3 fasi costi) da applicare al DB live con gate umano
+- **Deploy on-prem in produzione** (26/10): http://listini.vetrodom.local su `app-dev-01` (container `listini-webapp`, rete `intranet_proxy`, proxy nginx). Smoke test OK: login, prezzi, sezione admin "Costi imballi".
 - Gap noto: **PETG e PE PCR** selezionabili ma senza valori listino (popolabili da admin, dati futuri via excel)
-- Prossimi step: chiarimenti residui (stampa/export, ruoli admin), deploy Vercel + smoke test produzione
+- Prossimi step: ottenere i 4 valori €/pezzo costi imballi da Federico, Excel aggiornato, config 400 ml/PETG/PE_PCR, ricarichi vendite, master color CUSTOM; quindi aggiornare costi imballo e preparare il prospetto finale
 
 ## Documentazione operativa
 

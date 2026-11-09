@@ -6,9 +6,9 @@ Vista PM sintetica. Riferimento primario: [../overview.md](../overview.md).
 
 | Area | Stato |
 |---|---|
-| Commerciale | `lead` — brief compilato, in attesa chiarimenti |
-| Operativo | `staging` — UI completa, motore prezzi testato (1932 check), admin CRUD, deploy Vercel in verifica |
-| Amministrativo | `inactive` — progetto gratuito |
+| Commerciale | `validazione_cliente` — brief compilato, in attesa chiarimenti cliente (4 valori imballi, Excel aggiornato, config mancanti) |
+| Operativo | `produzione` — UI completa, motore prezzi testato (1932/1932), admin CRUD, deploy on-prem in produzione (http://listini.vetrodom.local) |
+| Amministrativo | `inattivo` — progetto gratuito |
 
 ## Obiettivo MVP
 
@@ -36,5 +36,6 @@ Selettore materiale / colore / capacità → prezzi di vendita allineato e rinfu
 
 ## Prossimo passo
 
-1. Chiarire domande aperte (stampa/export, ruoli admin, popolamento iniziale dati).
-2. Deploy Vercel (configurazione + env) e smoke test in produzione.
+1. Ottenere i 4 valori €/pezzo costi imballi da Federico, Excel aggiornato, config 400 ml/PETG/PE_PCR, ricarichi vendite, master color CUSTOM.
+2. Aggiornare i costi imballo in admin e preparare il prospetto finale delle variazioni di prezzo.
+3. Incontro cliente per validazione prototipo, scelta hosting e personalizzazioni (PDF, PETG/PE PCR, ruoli).

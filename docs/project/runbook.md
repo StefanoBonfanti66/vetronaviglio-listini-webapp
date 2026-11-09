@@ -22,11 +22,8 @@ Istruzioni operative per lavorare sul progetto.
 3. Verificare il motore di calcolo contro i valori reali dell'excel:
 
 ```bash
-# e2e: 1932 check su 44 fogli (U/AA/AC/AD a 1e-6)
-cd app && ./node_modules/.bin/esbuild tests/pricing-e2e.test.ts --bundle --platform=node --format=esm --outfile=/tmp/opencode/pricing-e2e.mjs && node /tmp/opencode/pricing-e2e.mjs
-
-# unit: 30ML PP NBN + 500ML PE COL
-./node_modules/.bin/esbuild tests/pricing.test.ts --bundle --platform=node --format=esm --outfile=/tmp/opencode/pricing.mjs && node /tmp/opencode/pricing.mjs
+# unit + e2e legacy (1932/1932) + costi correnti (1936) + costs + imballi
+cd app && npm test
 
 # typecheck + build
 npm run typecheck && npm run build
@@ -50,4 +47,11 @@ npm run dev
 
 ## Deploy
 
-Da confermare (Vercel). Vedi `docs/bootstrap.md` per la procedura standard triathlon-starter.
+Deploy on-prem in produzione (26/10): http://listini.vetrodom.local su `app-dev-01` (container `listini-webapp`, rete `intranet_proxy`, proxy nginx con reload dopo lo swap).
+- Backup sorgenti: `tar` in `/opt/intranet/backups/`
+- Immagine rollback: `vetronaviglio/listini-webapp:rollback-20261026` + container `listini-webapp-old`
+- Migrazioni DB: applicate al DB live on-prem con gate umano (migrazioni 0001–0005 applicate; 0006 in attesa)
+- Rollback: stop/rename container + `docker exec intranet-proxy nginx -s reload`
+- Smoke test: login, prezzi, sezione admin "Costi imballi".
+
+Vedi `docs/bootstrap.md` per la procedura standard triathlon-starter.

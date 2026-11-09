@@ -25,7 +25,6 @@ import type {
   Color,
   FasciaImballo,
   ImballoFisso,
-  ImballoItem,
   ListinoConfig,
   Material,
   ModalitaImballo,
@@ -49,10 +48,10 @@ const makeEmptyConfig = (): Omit<ListinoConfig, 'id'> => ({
   peso_disegno_g: 0,
   mp_costos_kg: [0, 0, 0, 0],
   mp_utilizzi_pct: [0, 0, 0, 0],
-  imballo_items: [{ name: '', costo: 0 }],
+  imballo_items: [],
   pezzi_pallet: 0,
   // Fase 1 - Attrezzaggio
-  ore_uomo: 0,
+  ore_uomo: 6,
   costo_rsu: 0,
   // Fase 2 - Produzione/Ciclo
   velocita_pz_h: 0,
@@ -591,31 +590,6 @@ export default function AdminPage() {
               />
             </div>
 
-            <div className="sm:col-span-2">
-              <label className={formLabel}>Imballo (€/pezzo)</label>
-              <div className="space-y-1">
-                {newConfig.imballo_items.map((it: ImballoItem, i: number) => (
-                  <div key={i} className="flex items-center gap-2">
-                    <input
-                      type="text"
-                      value={it.name}
-                      onChange={(e) => {
-                        const a = [...newConfig.imballo_items]
-                        a[i] = { ...it, name: e.target.value }
-                        setNewConfig({ ...newConfig, imballo_items: a })
-                      }}
-                      className="w-40 md:w-48 border border-aluminum/20 bg-white px-2 py-1 font-sans text-xs text-onyx focus:border-onyx focus:outline-none"
-                    />
-                    {numInput(i + 100, it.costo, (v) => {
-                      const a = [...newConfig.imballo_items]
-                      a[i] = { ...it, costo: v }
-                      setNewConfig({ ...newConfig, imballo_items: a })
-                    })}
-                  </div>
-                ))}
-              </div>
-            </div>
-
             <div className="sm:col-span-2 border-t border-aluminum/10 pt-4">
               <div className="flex gap-1 mb-3">
                 <button
@@ -668,30 +642,8 @@ export default function AdminPage() {
               )}
               {activeTab === 'imballo' && (
                 <div className="space-y-1">
-                  <label className="font-sans text-[10px] text-aluminum">Imballo (€/pezzo)</label>
-                  <div className="space-y-1">
-                    {newConfig.imballo_items.map((it: ImballoItem, i: number) => (
-                      <div key={i} className="flex items-center gap-2">
-                        <input
-                          type="text"
-                          value={it.name}
-                          onChange={(e) => {
-                            const a = [...newConfig.imballo_items]
-                            a[i] = { ...it, name: e.target.value }
-                            setNewConfig({ ...newConfig, imballo_items: a })
-                          }}
-                          className="w-40 md:w-48 border border-aluminum/20 bg-white px-2 py-1 font-sans text-xs text-onyx focus:border-onyx focus:outline-none"
-                        />
-                        {numInput(i + 100, it.costo, (v) => {
-                          const a = [...newConfig.imballo_items]
-                          a[i] = { ...it, costo: v }
-                          setNewConfig({ ...newConfig, imballo_items: a })
-                        })}
-                      </div>
-                    ))}
-                  </div>
                   <fieldset className="border border-aluminum/20 p-3 mt-2">
-                    <legend className="px-1 font-sans text-[10px] uppercase tracking-[0.2em] font-medium text-aluminum">RSU imballo</legend>
+                    <div className="px-1 font-sans text-[10px] uppercase tracking-[0.2em] font-medium text-aluminum">IMBALLO</div>
                   <MachineParamsGrid
                     params={newConfig}
                     fields={[
@@ -781,31 +733,6 @@ export default function AdminPage() {
               />
             </div>
 
-            <div className="sm:col-span-2">
-              <label className={formLabel}>Imballo (€/pezzo)</label>
-              <div className="space-y-1">
-                {(draft.imballo_items ?? []).map((it: ImballoItem, i: number) => (
-                  <div key={i} className="flex items-center gap-2">
-                    <input
-                      type="text"
-                      value={it.name}
-                      onChange={(e) => {
-                        const a = [...(draft.imballo_items ?? [])]
-                        a[i] = { ...it, name: e.target.value }
-                        setDraft({ ...draft, imballo_items: a })
-                      }}
-                      className="w-40 md:w-48 border border-aluminum/20 bg-white px-2 py-1 font-sans text-xs text-onyx focus:border-onyx focus:outline-none"
-                    />
-                    {numInput(i + 100, it.costo, (v) => {
-                      const a = [...(draft.imballo_items ?? [])]
-                      a[i] = { ...it, costo: v }
-                      setDraft({ ...draft, imballo_items: a })
-                    })}
-                  </div>
-                ))}
-              </div>
-            </div>
-
             <div className="sm:col-span-2 border-t border-aluminum/10 pt-4">
               <div className="flex gap-1 mb-3">
                 <button
@@ -858,30 +785,8 @@ export default function AdminPage() {
               )}
               {activeTab === 'imballo' && (
                 <div className="space-y-1">
-                  <label className="font-sans text-[10px] text-aluminum">Imballo (€/pezzo)</label>
-                  <div className="space-y-1">
-                    {(draft.imballo_items ?? []).map((it: ImballoItem, i: number) => (
-                      <div key={i} className="flex items-center gap-2">
-                        <input
-                          type="text"
-                          value={it.name}
-                          onChange={(e) => {
-                            const a = [...(draft.imballo_items ?? [])]
-                            a[i] = { ...it, name: e.target.value }
-                            setDraft({ ...draft, imballo_items: a })
-                          }}
-                          className="w-40 md:w-48 border border-aluminum/20 bg-white px-2 py-1 font-sans text-xs text-onyx focus:border-onyx focus:outline-none"
-                        />
-                        {numInput(i + 100, it.costo, (v) => {
-                          const a = [...(draft.imballo_items ?? [])]
-                          a[i] = { ...it, costo: v }
-                          setDraft({ ...draft, imballo_items: a })
-                        })}
-                      </div>
-                    ))}
-                  </div>
                   <fieldset className="border border-aluminum/20 p-3 mt-2">
-                    <legend className="px-1 font-sans text-[10px] uppercase tracking-[0.2em] font-medium text-aluminum">RSU imballo</legend>
+                    <div className="px-1 font-sans text-[10px] uppercase tracking-[0.2em] font-medium text-aluminum">IMBALLO</div>
                   <MachineParamsGrid
                     params={draft}
                     fields={[
