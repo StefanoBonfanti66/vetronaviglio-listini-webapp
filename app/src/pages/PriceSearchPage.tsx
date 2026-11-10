@@ -6,9 +6,13 @@ import {
   getConfig,
   getImballiFissi,
   getMaterials,
+  getParametriCostiOrari,
   getPriceBrackets,
 } from '../lib/api'
-import { calcBracket } from '../lib/pricing'
+import {
+  calcBracket,
+  type CostiOrariGlobali,
+} from '../lib/pricing'
 import {
   fasciaPerLabelCapacity,
   imballoFissoPerFascia,
@@ -38,6 +42,7 @@ export default function PriceSearchPage() {
   const [capacities, setCapacities] = useState<Capacity[]>([])
   const [brackets, setBrackets] = useState<PriceBracket[]>([])
   const [imballi, setImballi] = useState<ImballoFisso[]>([])
+  const [parametriCostiOrari, setParametriCostiOrari] = useState<CostiOrariGlobali | null>(null)
 
   const [materialId, setMaterialId] = useState('')
   const [colorId, setColorId] = useState('')
@@ -54,13 +59,15 @@ export default function PriceSearchPage() {
       getCapacities(accessToken, true),
       getPriceBrackets(accessToken),
       getImballiFissi(accessToken),
+      getParametriCostiOrari(accessToken),
     ])
-      .then(([m, c, ca, b, im]) => {
+      .then(([m, c, ca, b, im, po]) => {
         setMaterials(m)
         setColors(c)
         setCapacities(ca)
         setBrackets(b)
         setImballi(im)
+        setParametriCostiOrari(po)
         if (m.length > 0) setMaterialId(m[0].id)
         if (c.length > 0) setColorId(c[0].id)
         if (ca.length > 0) setCapacityId(ca[0].id)
@@ -127,9 +134,10 @@ export default function PriceSearchPage() {
             regola_vendita: b.regola_vendita,
           },
           imballoFisso,
+          parametriCostiOrari,
         ),
       )
-  }, [config, brackets, capacities, capacityId, imballi])
+  }, [config, brackets, capacities, capacityId, imballi, parametriCostiOrari])
 
   useEffect(() => {
     if (!results.length) {

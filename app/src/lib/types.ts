@@ -119,3 +119,17 @@ export interface ImballoFisso {
   // NULL = non definito: si usa il calcolo da pallettizzazione.
   costo_eur_per_pezzo?: number | null
 }
+
+// Parametri costi orari globali (singola riga, valore per tutte le varianti).
+// Mappatura email Federico 10/11/2026:
+//   attrezzista 40 -> usato in M = ore_uomo * costo_orario_attrezzista
+//   operatore    20 -> usato in O = macchina + operatore * rsu_unit
+//   macchina     15 -> usato in O = macchina + operatore * rsu_unit
+export interface ParametriCostiOrari {
+  id: string
+  costo_orario_attrezzista: number
+  costo_orario_operatore: number
+  costo_orario_macchina: number
+  updated_at?: string
+  updated_by?: string | null
+}

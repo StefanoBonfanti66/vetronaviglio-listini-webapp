@@ -14,6 +14,7 @@ import {
   getConfigs,
   getImballiFissi,
   getMaterials,
+  getParametriCostiOrari,
   getPriceBrackets,
   getPriceChangeLog,
   getProfiles,
@@ -22,6 +23,7 @@ import {
   updateColor,
   updateConfig,
   updateMaterial,
+  updateParametriCostiOrari,
   createPriceChangeLog,
 } from '../lib/api'
 import type {
@@ -32,6 +34,7 @@ import type {
   ListinoConfig,
   Material,
   ModalitaImballo,
+  ParametriCostiOrari,
   PriceBracket,
   PriceChangeLog,
   Profile,
@@ -79,6 +82,7 @@ export default function AdminPage() {
   const [configs, setConfigs] = useState<ListinoConfig[]>([])
   const [brackets, setBrackets] = useState<PriceBracket[]>([])
   const [imballi, setImballi] = useState<ImballoFisso[]>([])
+  const [parametriCostiOrari, setParametriCostiOrari] = useState<ParametriCostiOrari | null>(null)
   const [priceChangeLog, setPriceChangeLog] = useState<PriceChangeLog[]>([])
   const [profiles, setProfiles] = useState<Profile[]>([])
   const profileMap = useMemo(() => {
@@ -110,16 +114,18 @@ export default function AdminPage() {
       getConfigs(accessToken),
       getPriceBrackets(accessToken),
       getImballiFissi(accessToken),
+      getParametriCostiOrari(accessToken),
       getPriceChangeLog(accessToken),
       getProfiles(accessToken),
     ])
-      .then(([m, c, ca, cfg, br, im, pcl, pr]) => {
+      .then(([m, c, ca, cfg, br, im, po, pcl, pr]) => {
         setMaterials(m)
         setColors(c)
         setCapacities(ca)
         setConfigs(cfg)
         setBrackets(br)
         setImballi(im)
+        setParametriCostiOrari(po)
         setPriceChangeLog(pcl)
         setProfiles(pr)
       })
@@ -311,6 +317,22 @@ export default function AdminPage() {
       )
       return [...without, saved]
     })
+  }
+
+  const saveParametriCostiOrari = async () => {
+    if (!accessToken || !parametriCostiOrari) return
+    try {
+      await updateParametriCostiOrari(accessToken, parametriCostiOrari.id, {
+        costo_orario_attrezzista: parametriCostiOrari.costo_orario_attrezzista,
+        costo_orario_operatore: parametriCostiOrari.costo_orario_operatore,
+        costo_orario_macchina: parametriCostiOrari.costo_orario_macchina,
+        updated_at: new Date().toISOString(),
+        updated_by: session?.user?.id ?? null,
+      })
+      notify('Costi orari globali aggiornati')
+    } catch (e) {
+      notify('Errore: ' + String(e))
+    }
   }
 
   const startEdit = (cfg: ListinoConfig) => {
@@ -611,6 +633,64 @@ export default function AdminPage() {
       />
 
       <ImballiManager rows={imballi} onSave={saveImballo} />
+
+      {parametriCostiOrari && (
+        <div className="bg-white border border-aluminum/10 p-6">
+          <h2 className="font-display text-xl font-semibold tracking-tight">
+            Costi orari globali
+          </h2>
+          <p className="mt-1 font-sans text-[12px] text-aluminum">
+            Valore unico per tutte le varianti (email Federico, 10/11/2026).
+            Modifica qui per aggiornare tutti i listini in una volta.
+          </p>
+          <div className="mt-4 grid gap-4 sm:grid-cols-3">
+            <div>
+              <label className={formLabel}>Attrezzista (€/ora)</label>
+              {numInput(
+                0,
+                parametriCostiOrari.costo_orario_attrezzista,
+                (v) =>
+                  setParametriCostiOrari({
+                    ...parametriCostiOrari,
+                    costo_orario_attrezzista: v,
+                  }),
+              )}
+            </div>
+            <div>
+              <label className={formLabel}>Operatore (€/ora)</label>
+              {numInput(
+                1,
+                parametriCostiOrari.costo_orario_operatore,
+                (v) =>
+                  setParametriCostiOrari({
+                    ...parametriCostiOrari,
+                    costo_orario_operatore: v,
+                  }),
+              )}
+            </div>
+            <div>
+              <label className={formLabel}>Macchina (€/ora)</label>
+              {numInput(
+                2,
+                parametriCostiOrari.costo_orario_macchina,
+                (v) =>
+                  setParametriCostiOrari({
+                    ...parametriCostiOrari,
+                    costo_orario_macchina: v,
+                  }),
+              )}
+            </div>
+          </div>
+          <div className="mt-4 flex justify-end">
+            <button
+              onClick={saveParametriCostiOrari}
+              className="bg-onyx text-bone px-4 py-2 font-sans text-[10px] uppercase tracking-[0.2em] font-medium hover:bg-aluminum transition-all"
+            >
+              Salva costi orari globali
+            </button>
+          </div>
+        </div>
+      )}
 
       <BracketsManager brackets={brackets} setBrackets={setBrackets} />
 

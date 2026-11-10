@@ -37,6 +37,12 @@ export type MachineParams = {
   ricarico_costi_ind: number
 }
 
+export type CostiOrariGlobali = {
+  costo_orario_attrezzista: number
+  costo_orario_operatore: number
+  costo_orario_macchina: number
+}
+
 export type ListinoConfigInput = {
   peso_disegno_g: number
   mp_costos_kg: number[]
@@ -182,6 +188,7 @@ export function calcBracket(
   config: ListinoConfigInput,
   bracket: BracketInput,
   imballoFisso?: ImballoFissoInput | null,
+  parametriCostiOrari?: CostiOrariGlobali | null,
 ): BracketResult {
   const D = bracket.quantita_lotto
   const E = bracket.sfrido
@@ -218,13 +225,19 @@ export function calcBracket(
   const L = K * D
   const LR = KRinfusa * D
 
+  // Costi orari globali (email Federico 10/11/2026): valgono per tutte le varianti.
+  // Fallback ai campi per-config per retro-compatibilità.
+  const costoAttrezzista = parametriCostiOrari?.costo_orario_attrezzista ?? config.costo_rsu
+  const costoMacchina = parametriCostiOrari?.costo_orario_macchina ?? config.costo_orario_macchina
+  const costoOperatore = parametriCostiOrari?.costo_orario_operatore ?? config.costo_orario_rsu
+
   // Fase 1 - Attrezzaggio (comune, una sola volta)
   const P = D / config.velocita_pz_h
-  const M = config.ore_uomo * config.costo_rsu
+  const M = config.ore_uomo * costoAttrezzista
 
   // Fase 2 - Produzione/Ciclo (rsu_unit differisce per modalità)
-  const Oa = config.costo_orario_macchina + config.costo_orario_rsu * config.rsu_unit
-  const Or = config.costo_orario_macchina + config.costo_orario_rsu * config.rsu_unit_rinfusa
+  const Oa = costoMacchina + costoOperatore * config.rsu_unit
+  const Or = costoMacchina + costoOperatore * config.rsu_unit_rinfusa
   const Qa = Oa * P
   const Q = Or * P
 
@@ -285,9 +298,10 @@ export function calcListino(
   config: ListinoConfigInput,
   brackets: BracketInput[],
   imballoFisso?: ImballoFissoInput | null,
+  parametriCostiOrari?: CostiOrariGlobali | null,
 ): BracketResult[] {
   return brackets
     .slice()
     .sort((a, b) => a.sort_order - b.sort_order)
-    .map((b) => calcBracket(config, b, imballoFisso))
+    .map((b) => calcBracket(config, b, imballoFisso, parametriCostiOrari))
 }

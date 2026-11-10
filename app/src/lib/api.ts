@@ -4,6 +4,7 @@ import type {
   ImballoFisso,
   ListinoConfig,
   Material,
+  ParametriCostiOrari,
   PriceBracket,
   PriceChangeLog,
   Profile,
@@ -252,4 +253,33 @@ export async function saveImballoFisso(
     return updateImballoFisso(accessToken, existing.id, { costo_eur_per_pezzo })
   }
   return createImballoFisso(accessToken, { modalita, fascia, costo_eur_per_pezzo })
+}
+
+// --- Parametri costi orari globali (singola riga) ---
+
+export async function getParametriCostiOrari(
+  accessToken: string,
+): Promise<ParametriCostiOrari | null> {
+  try {
+    const data = await fetchJson<ParametriCostiOrari[]>(
+      `${BASE_URL}/rest/v1/parametri_costi_orari?select=*&limit=1`,
+      accessToken,
+    )
+    return data[0] ?? null
+  } catch {
+    return null
+  }
+}
+
+export async function updateParametriCostiOrari(
+  accessToken: string,
+  id: string,
+  patch: Partial<ParametriCostiOrari>,
+): Promise<ParametriCostiOrari> {
+  return mutateJson<ParametriCostiOrari[]>(
+    `${BASE_URL}/rest/v1/parametri_costi_orari?id=eq.${id}`,
+    accessToken,
+    'PATCH',
+    patch,
+  ).then((d) => d[0])
 }
