@@ -243,7 +243,7 @@ export default function PriceSearchPage() {
         </p>
       )}
 
-      {config && (
+      {config && parametriCostiOrari ? (
         <>
           <div className="mt-8 flex flex-wrap items-center justify-between gap-3 print:hidden">
             <h2 className="font-display text-2xl font-semibold tracking-tight">
@@ -373,7 +373,11 @@ export default function PriceSearchPage() {
             />
           </div>
         </>
-      )}
+      ) : config ? (
+        <p className="mt-6 border-l-2 border-amber-accent/40 bg-surface p-4 font-sans text-sm text-onyx/70">
+          Parametri costi orari globali non caricati. I prezzi non possono essere calcolati.
+        </p>
+      ) : null}
     </div>
   )
 }

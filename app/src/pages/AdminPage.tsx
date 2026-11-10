@@ -355,11 +355,8 @@ export default function AdminPage() {
         imballo_items: draft.imballo_items,
         pezzi_pallet: draft.pezzi_pallet,
         ore_uomo: draft.ore_uomo,
-        costo_rsu: draft.costo_rsu,
         velocita_pz_h: draft.velocita_pz_h,
         rsu_unit: draft.rsu_unit,
-        costo_orario_macchina: draft.costo_orario_macchina,
-        costo_orario_rsu: draft.costo_orario_rsu,
         ricarico_costi_ind: draft.ricarico_costi_ind,
         rinfusa_ricarico_div_100: draft.rinfusa_ricarico_div_100,
         master_color_costo_kg: draft.master_color_costo_kg ?? null,
@@ -634,7 +631,7 @@ export default function AdminPage() {
 
       <ImballiManager rows={imballi} onSave={saveImballo} />
 
-      {parametriCostiOrari && (
+      {parametriCostiOrari ? (
         <div className="bg-white border border-aluminum/10 p-6">
           <h2 className="font-display text-xl font-semibold tracking-tight">
             Costi orari globali
@@ -690,8 +687,25 @@ export default function AdminPage() {
             </button>
           </div>
         </div>
+      ) : error ? (
+        <div className="bg-white border border-aluminum/10 p-6">
+          <h2 className="font-display text-xl font-semibold tracking-tight">
+            Costi orari globali
+          </h2>
+          <p className="mt-1 font-sans text-[12px] text-amber-accent">
+            Errore caricamento parametri globali: {error}
+          </p>
+        </div>
+      ) : (
+        <div className="bg-white border border-aluminum/10 p-6">
+          <h2 className="font-display text-xl font-semibold tracking-tight">
+            Costi orari globali
+          </h2>
+          <p className="mt-1 font-sans text-[12px] text-amber-accent">
+            Caricamento parametri costi orari...
+          </p>
+        </div>
       )}
-
       <BracketsManager brackets={brackets} setBrackets={setBrackets} />
 
       <div className="bg-white border border-aluminum/10 p-6">
@@ -974,10 +988,20 @@ export default function AdminPage() {
                     params={newConfig}
                     fields={[
                       ['ore_uomo', 'Ore uomo attrezzaggio'],
-                      ['costo_rsu', 'Costo ora uomo attrezzaggio'],
                     ]}
                     onChange={(v) => setNewConfig({ ...newConfig, ...v })}
                   />
+                  {parametriCostiOrari ? (
+                    <div className="mt-2 px-1 font-sans text-[10px] text-aluminum/70">
+                      Costo orario attrezzista: {parametriCostiOrari.costo_orario_attrezzista.toFixed(2)} €/ora{' '}
+                      <span className="text-[9px] uppercase tracking-[0.1em] ml-1">(Parametro globale)</span>
+                    </div>
+                  ) : (
+                    <div className="mt-2 px-1 font-sans text-[10px] text-amber-accent/70">
+                      Costo orario attrezzista: —{' '}
+                      <span className="text-[9px] uppercase tracking-[0.1em] ml-1">(in caricamento)</span>
+                    </div>
+                  )}
                 </fieldset>
               )}
               {activeTab === 'ciclo' && (
@@ -987,12 +1011,33 @@ export default function AdminPage() {
                     params={newConfig}
                     fields={[
                       ['velocita_pz_h', 'Velocità (pz/h)'],
-                      ['costo_orario_rsu', 'Costo orario RSU'],
-                      ['costo_orario_macchina', 'Costo orario macchina'],
                       ['ricarico_costi_ind', 'Ricarico costi ind.'],
                     ]}
                     onChange={(v) => setNewConfig({ ...newConfig, ...v })}
                   />
+                  {parametriCostiOrari ? (
+                    <>
+                      <div className="mt-2 px-1 font-sans text-[10px] text-aluminum/70">
+                        Costo orario operatore: {parametriCostiOrari.costo_orario_operatore.toFixed(2)} €/ora{' '}
+                        <span className="text-[9px] uppercase tracking-[0.1em] ml-1">(Parametro globale)</span>
+                      </div>
+                      <div className="mt-2 px-1 font-sans text-[10px] text-aluminum/70">
+                        Costo orario macchina: {parametriCostiOrari.costo_orario_macchina.toFixed(2)} €/ora{' '}
+                        <span className="text-[9px] uppercase tracking-[0.1em] ml-1">(Parametro globale)</span>
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      <div className="mt-2 px-1 font-sans text-[10px] text-amber-accent/70">
+                        Costo orario operatore: —{' '}
+                        <span className="text-[9px] uppercase tracking-[0.1em] ml-1">(in caricamento)</span>
+                      </div>
+                      <div className="mt-2 px-1 font-sans text-[10px] text-amber-accent/70">
+                        Costo orario macchina: —{' '}
+                        <span className="text-[9px] uppercase tracking-[0.1em] ml-1">(in caricamento)</span>
+                      </div>
+                    </>
+                  )}
                 </fieldset>
               )}
               {activeTab === 'imballo' && (
@@ -1117,7 +1162,7 @@ export default function AdminPage() {
                     params={draft}
                     fields={[
                       ['ore_uomo', 'Ore uomo attrezzaggio'],
-                      ['costo_rsu', 'Costo ora uomo attrezzaggio'],
+
                     ]}
                     onChange={(v) => setDraft({ ...draft, ...v })}
                   />
@@ -1130,12 +1175,33 @@ export default function AdminPage() {
                     params={draft}
                     fields={[
                       ['velocita_pz_h', 'Velocità (pz/h)'],
-                      ['costo_orario_rsu', 'Costo orario RSU'],
-                      ['costo_orario_macchina', 'Costo orario macchina'],
                       ['ricarico_costi_ind', 'Ricarico costi ind.'],
                     ]}
                     onChange={(v) => setDraft({ ...draft, ...v })}
                   />
+                  {parametriCostiOrari ? (
+                    <>
+                      <div className="mt-2 px-1 font-sans text-[10px] text-aluminum/70">
+                        Costo orario operatore: {parametriCostiOrari.costo_orario_operatore.toFixed(2)} €/ora{' '}
+                        <span className="text-[9px] uppercase tracking-[0.1em] ml-1">(Parametro globale)</span>
+                      </div>
+                      <div className="mt-2 px-1 font-sans text-[10px] text-aluminum/70">
+                        Costo orario macchina: {parametriCostiOrari.costo_orario_macchina.toFixed(2)} €/ora{' '}
+                        <span className="text-[9px] uppercase tracking-[0.1em] ml-1">(Parametro globale)</span>
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      <div className="mt-2 px-1 font-sans text-[10px] text-amber-accent/70">
+                        Costo orario operatore: —{' '}
+                        <span className="text-[9px] uppercase tracking-[0.1em] ml-1">(in caricamento)</span>
+                      </div>
+                      <div className="mt-2 px-1 font-sans text-[10px] text-amber-accent/70">
+                        Costo orario macchina: —{' '}
+                        <span className="text-[9px] uppercase tracking-[0.1em] ml-1">(in caricamento)</span>
+                      </div>
+                    </>
+                  )}
                 </fieldset>
               )}
               {activeTab === 'imballo' && (
@@ -1342,8 +1408,8 @@ function MachineParamsGrid({
     ['costo_rsu', 'Costo ora uomo attrezzaggio'],
     ['velocita_pz_h', 'Velocità (pz/h)'],
     ['rsu_unit', 'RSU (unità)'],
-                      ['costo_orario_rsu', 'Costo orario RSU'],
-                      ['costo_orario_macchina', 'Costo orario macchina'],
+
+
     ['ricarico_costi_ind', 'Ricarico costi ind.'],
   ]
   return (
