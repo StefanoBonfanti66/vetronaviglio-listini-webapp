@@ -640,7 +640,7 @@ export default function AdminPage() {
             Costi orari globali
           </h2>
           <p className="mt-1 font-sans text-[12px] text-aluminum">
-            Valore unico per tutte le varianti (email Federico, 10/11/2026).
+            Valore unico per tutte le varianti.
             Modifica qui per aggiornare tutti i listini in una volta.
           </p>
           <div className="mt-4 grid gap-4 sm:grid-cols-3">
