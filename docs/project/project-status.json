@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-10T00:00:00.000Z",
+  "updated_at": "2026-11-17T00:00:00.000Z",
   "state": "active",
   "phase": "Validazione cliente",
-  "next_action": "Ricevere Excel aggiornato, config 400ml/PETG/PE_PCR/BIO BASED, ricarichi vendite e master color CUSTOM da Federico; poi preparare il prospetto finale delle variazioni di prezzo. Invio manuale della mail bozza a Federico con costi imballi caricati e elenco dati mancanti."
+  "next_action": "Attendere Excel aggiornato da Federico con i fogli mancanti (PETG, PE PCR, BIOBASED × capacità inclusa 400 ml); poi rigenerare i listino_configs con scripts/import_listino.py, applicare al DB on-prem (gate umano) e preparare il prospetto finale delle variazioni di prezzo."
 }
