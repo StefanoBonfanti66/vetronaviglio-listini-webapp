@@ -3,5 +3,5 @@
   "updated_at": "2026-11-17T00:00:00.000Z",
   "state": "active",
   "phase": "Validazione cliente",
-  "next_action": "Applicare migration 0009_listino_configs_petg_pepcr_biobased.sql al DB on-prem live (192.168.24.132:8000) con gate umano (sudo docker). Poi aggiornare costi al DB cloud/Deploy Vercel quando confermato."
+  "next_action": "Invio mail a Federico con conferma risoluzione PETG, PE PCR e 400 ml (destinatario To: s.bonfanti@vetronaviglio.it; Cc: r.pezzoni@vetronaviglio.it)."
 }
